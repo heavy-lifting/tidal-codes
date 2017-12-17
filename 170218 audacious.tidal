@@ -1,0 +1,44 @@
+--heavy lifting
+--don't bother it'll take weeks
+--thanks to george michael and the band blood sport
+
+--george
+--george:1
+--george:2 - mmm
+--george:3 - oh
+--george:4 - sax
+
+--bskick:1
+--bshihat
+--bssnare:7
+--bsperc:3 - clap
+
+--bsnoise:11 - bloop
+--bsnoise:16 - click
+--bsnoise:14 - wet
+--bsnoise:13 - drum slurp
+--bsperc:2 - bip
+
+--bsbass:8 - loopAt 4
+--bsguitar:8 - randslice
+
+
+hush
+
+c1 $ slow 2 $ sound "{can ~ can ~, bskick:1 ~ bottle}"
+
+
+c2 $ sound "bd"
+
+c3 $ randslice 32 $ sound "george"
+
+c1 silence
+
+c5 $ loopAt 16 $ sound "bsbass:8 bsbass:8 ~ ~" # delay "0.2" # gain "0.8"
+c5 silence
+
+c6 $ slowspread ($) [slowspread (density) [2, 3], slowspread (chop) [16, 32, 64]] $ sound "{~ bsvocals:4 ~ bsvocals:4/2, ~ bsnoise:14 ~ ~}" # speed "0.5, -0.25" # vowel "a o a" # gain "0.8"
+c6 silence
+
+c7 $ jux (# speed "0.5") $ slow 2 $ sound "{voodoo? ~ [tink*2]? ~, ~ bottle? ~ [bsnoise:11 bsnoise:11]? ~}" # iter 2 (up "-11 -15 -13") # delay "0.4"
+c7 silence

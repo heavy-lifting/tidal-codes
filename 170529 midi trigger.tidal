@@ -1,0 +1,11 @@
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+m1 <- midiStream devices "LoopBe Internal MIDI" 1 synthController
+
+m2 <- midiStream devices "QUAD-CAPTURE" 2 synthController
+
+m2 $ midinote "60 60 60 60"

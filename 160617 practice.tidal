@@ -1,0 +1,13 @@
+bps (127/60)
+
+c1 $ slow 4 $ (0.2 ~>) $ sound "{~ ~ ~  , tink perc mouth}" # delay "0.8" #vowel "o a o"
+c1 silence
+
+c2 $ every 4 (rev) $ sound " [can can] ~ ~ ~ ~ ~ tabla:3" # vowel "oao"
+c2 $ silence
+
+c3 $ sound "lucy" # speed "-0.25, 0.25" # gain "0.8"
+c3 silence
+
+c4 $ sometimes (rev) $ (0.2 ~>) $ sound "{~ bottle? ~ bottle, metal? ~ metal? metal? metal ~ ~ ~ ~}" # vowel "o a o u u"
+c4 silence

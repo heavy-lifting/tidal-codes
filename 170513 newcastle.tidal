@@ -1,0 +1,55 @@
+cps 1.6
+
+c1 $ jux (slow 4) $ slow 2 $ degradeBy 0.6 $ sound "{bskick:1 bssnare:7 bskick:1 bsperc:3, ~ bshihat [bshihat bshihat]}"
+
+solo $ c2 $ loopAt 2 $ sound "montenegro"
+
+c2 silence
+
+c3 $ loopAt 2 $ sound "montenegro:1"
+
+c3 silence
+
+c4 $ slow 2 $ degradeBy 0 $ speed "1.1053 1.1839 1.1666 1.1852 1.2431 0.5302 0.5772 0.784 0.8728 0.8574" # sound "sanmarino" # cut 1
+
+
+c4 $ degradeBy 0.0 $ slow 2 $ sound "armenia" # cut 1 # gain "0.8"
+
+c4 silence
+
+c5 $ loopAt 8 $ sound "poland poland:1" # cut 1
+
+
+solo $ c6 $ slowspread (loopAt) [16,8] $ sound "switzerland:1"
+
+c6 silence
+
+hush
+
+
+
+
+
+  1.1053 1.1839 1.1666 1.1852 1.2431
+
+  0.5302 0.5772 0.784 0.8728 0.8574
+
+  0.1226241 0.1518646 0.1696783 0.1760351
+
+  0.4603304 0.4609579 0.4396602 0.4499443 0.4697699
+
+  0.7185992 0.7104468 0.7257602 0.747951 0.7195218
+
+  0.7185992 0.2888294 0.2848116 0.283944 0.3003021
+
+  ATOM 1 N ALA 1 26.469 31.379 17.775 1 0 N
+  ATOM 2 H1 ALA 1 27.469 31.539 17.734 1 0 H
+  ATOM 3 H2 ALA 1 26.039 32.109 18.314 1 0 H
+  ATOM 4 H3 ALA 1 26.339 30.489 18.235 1 0 H
+  ATOM 5 CA ALA 1 26.079 31.329 16.355 1 0 C
+
+  50 CD GLU 4 32.229 40.189 14.035 1 0 C
+  51 OE1 GLU 4 32.739 39.909 15.135 1 0 O
+  52 OE2 GLU 4 32.949 40.809 13.215 1 0 O
+  53 C GLU 4 32.399 37.459 12.605 1 0 C
+  54 O GLU 4 33.019 36.759 13.395 1 0 O

@@ -1,0 +1,15 @@
+d1 $ slowspread (loopAt) [4,3,2,1]
+  $ slowspread (density) [8,4,1]
+  $ sound "italy*4"
+  # cut 1
+  # up (run 4)
+  # gain "<1 1 0>"
+
+d3 $ jux (slow 2) $ sound "{bskick [hh hh hh]/2 , [~ bsperc:3] ~ ~ ~}"
+  # gain "<1 1 1 1 0>"
+
+bps (180/60)
+
+d1 silence
+
+hush

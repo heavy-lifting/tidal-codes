@@ -1,0 +1,42 @@
+new stuff in tidal 0.9
+
+you can now apply effects to a pattern of patterns..
+
+e.g.
+
+c1 $ sound "bd"
+
+c1 silence
+
+c1 $ jux (slow 2) $ sound "bd sn bd hh" # speed "<1 2 4>" # vowel "<a o e>"
+
+^^ this works with any patterns
+
+you can also add numbers to patterns...
+
+hush
+
+
+c1 $ loopAt 16 $ sound "bev"
+
+c2 $ sound "bd"
+
+hush
+
+e.g.
+
+c1 $ sound "bd sn bd hh" # speed ("1 2 4" + 2)
+
+c2 $ loopAt 0.1 $ sound "bev" # gain "1.2"
+
+
+
+one number on it's own no longer needs to be in quotes:
+
+c1 $ sound "bd sn bd hh" # speed 2
+
+you can do this with every etc:
+
+c2 $ jux (# vowel "<i u a>") $ n (every 2 (+ 2) "1 2 3 4") # sound "arpy" # gain "0.8" # vowel "<o i e>" # delay 1
+
+hush

@@ -1,0 +1,46 @@
+d1 $ sound "{bskick:1 bsperc:3 bskick:1 ~, bshihat bshihat [bshihat bshihat bshihat]}"
+  # gain "<1 1 1 1>"
+
+d2 $ iter 4 $ n "0 4 6 2" # sound "superpiano"
+
+d1 silence
+
+bps (128/60)
+
+d2 $ loopAt 2 $ chop "<32 16 8 4>" $ sound "stay*4" # cut 2
+
+d2 silence
+
+hush
+
+stay:0 - boop loopAt 2
+stay:1 - don't
+stay:2 - go away loopAt 8 4
+stay:3 - intro loopAt 8 4
+stay:4 - pads
+super808
+bs kit
+
+d3 $ jux (# up "-0 -5 -7")
+  $ every 2 (density 2)
+  $ sound "stay:1(3,8)"
+  # up "0 5 7"
+  # gain "<1 1 1 0>"
+
+d5 $ slow 1 $ n "[-1] -5 [~ -3] [~ ~ ~ -6]" # sound "super808"
+
+hush
+
+d9 silence
+
+solo $ d4 $ loopAt "<4 8>" $ chop 8 $ sound "stay:2*2"
+
+d6 $ loopAt "<8 4>" $ chop 8 $ sound "stay:3"
+
+d7 $ loopAt "<1 2 4 8>" $ sound "stay:4*4" # cut 1
+
+d8 $ loopAt 2 $ randslice 8 $ sound "stay:5*4" # cut 4
+
+d9 $ loopAt 2 $ sound "stay:5"
+
+hush

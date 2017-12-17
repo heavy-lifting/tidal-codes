@@ -1,0 +1,84 @@
+cps 1.2
+
+c1 $ jux (rev) $ iter 3 $ up "{[1 2[1 [2]1 1]2], [1 2[1 2] 1 1] 1 [1[2 2]1] 1}"
+  # sound "bsperc:6"
+  # shape 0.5
+
+hush
+
+c1 silence
+
+c2 $ jux (slow 2) $ sound "{bskick:1 ~ bskick:1 ~, ~  bshihat [bshihat bshihat], bsperc:3/2 bsperc:3*4?}"
+
+c2 silence
+
+hush
+
+c3 $ slowspread (loopAt) [1,2,3,4,5]
+  $ slowspread (density) [1,2,4,8]
+  $ sound "italy*8"
+  # cut 1
+  # vowel "<a o a>"
+  # gain 1.5
+
+c3 silence
+
+c4 $ sound "skel" # cut 2 # gain 2
+
+c4 silence
+
+solo $ c5 $ sound "bsperc:3"
+
+hush
+
+c6 $ sound "skel:12" # cut 1
+
+
+
+c7 silence
+
+hush
+
+
+
+c8 $ jux (density 2) $ weave 10 (sound "bsperc*8")
+  [vowel "a o a"
+  # speed (rand + 1)
+  # shape 0.5
+  # delay (sine1 - 0.8)
+  ]
+
+c1 $ slowspread (density) [4,8,16] $ sound "bskick*4"
+
+c2 $ sound "{bsperc:6 bsperc:6 bsperc:6 [bsperc:6 bsperc:6], ~ ~ bsperc:3 ~ ~ [bsperc:3 bsperc:3] ~}"
+
+c3 $ slow 4 $ degradeBy 0.5 $ sound "skel:6*16" # cut 1 # up (run 8)
+
+solo $ c4 $ loopAt 4 $ chop 2 $ sound "skel:8 skel:8"
+
+c4 silence
+
+hush
+
+c1 $ sound "{~, skel:12 skel:12 skel:12 ~}" # cut 1
+
+c2 $ sound "{bsperc:3, ~ ~ ~ bsperc:3*8}"
+
+
+solo $ c5 $ slowspread (slow) [1,2,3,4] $ randslice 4 $ sound "skel:9*4"
+
+c6 $ sound "bskick:1*4"
+
+c7 $ slowspread (loopAt) [1,2,3,4,5]
+  $ slowspread (density) [2,4,8]
+  $ sound "italy*8"
+  # up (run 8)
+  # cut 1
+  # shape "<0 0 0.2 0.2 0.4 0.4 0.6 0.6>"
+
+
+hush
+
+solo $ c8 $ sound "bssnare:7(3,8) bssnare:7(5,8)" # shape 0.5
+
+c1 $ sound "bskick:1*2" # shape 0.8

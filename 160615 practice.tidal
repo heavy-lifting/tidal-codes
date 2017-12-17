@@ -1,0 +1,22 @@
+
+c1 $ every 2 (rev) $ striate 4 $ sound "lucy:1 lucy" # gain "0.6" # cut "1"
+c1 silence
+
+c2 $ every 3 (rev) $ every 2 (0.25~>)$ slow 2 $ sound "bass [bass bass] bass [bass bass]" # up "1 8 5 3" # delay "0.2"
+c2 $ silence
+
+c3 $ every 5 (rev) $ (0.25<~) $ sound "{ab ab ~ [sn sn], ~ ~ ~ ht ht}"
+c3 silence
+
+
+c4 $ slow 4 $ striate 18 $ sound " tink?" # delay "0.8"
+c4 silence
+
+c5 $ sound "{CAN? can can}%4" # up "1 5 8" # vowel "a o o"
+c5 silence
+
+c6 $ sound (samples "hc*8"(iter 4 $ run 4))
+t6 anticipate $ sound (samples "bd(3,8)" (run 3))
+c6 silence
+
+bps (100/60)

@@ -1,0 +1,17 @@
+c1 $ every 2 (rev) $ sound " ~ hh [hh hh] [hh hh hh]" #  pan sine1
+c1 silence
+
+
+--do this first
+import Sound.Tidal.MIDI.Context
+
+--then do this
+displayOutputDevices >>= putStrLn
+
+--then this
+devices <- midiDevices
+
+--then this
+m1 <- midiStream devices "QUAD-CAPTURE" 1 synthController
+
+m1 $ midinote "40 52"

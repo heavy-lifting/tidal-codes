@@ -1,0 +1,219 @@
+-- make a sound
+
+d1 $ sound "bd"
+
+
+-- flick sid can metal future gabba sn mouth co gretsch mt arp h cp cr
+-- newnotes bass hc tabla bass0 hh bass1 bass2 oc bass3 ho odx
+-- diphone2 house off ht tink perc bd industrial pluck trump
+-- printshort jazz voodoo birds3 procshort blip drum jvbass psr wobble
+-- drumtraks koy rave bottle kurt latibro rm sax lighter lt arpy feel
+-- less stab ul
+
+-- Where do these sounds come from? How do I add more?
+
+-- silence / hush
+
+d1 silence
+
+-- make a sequence (denser / sparser by adding - fixed cycle)
+
+d1 $ sound "bd hh sn hh"
+
+
+d1 $ sound "bd [hh hh] sn [hh hh]"
+
+d1 $ sound "bd hh*2 sn hh*2"
+
+
+d1 $ sound "bd hh/2 sn hh/2"
+
+
+-- play more than one sequence at once
+
+
+d1 $ sound "bd hh sn hh"
+d2 $ sound "cp [cp cp] ~ ~"
+
+hush
+
+-- what is ~ ? a silence/rest.
+
+-- What is pattern, anyway?
+
+-- cyclic / repetitive
+
+-- symmetry
+
+-- self similarity
+
+-- abstraction
+
+-- interference
+
+-- knitting / weaving
+-- http://gibber.mat.ucsb.edu/?path=yaxu/publications/meander
+
+-- EFFECTS
+
+-- vowel
+
+d1 $ sound "cp [cp cp] cp cp" # vowel "a o e i"
+
+-- gain
+
+d1 $ sound "bd hh sn hh" # gain "1.2"
+d2 $ sound "cp [cp cp] ~ ~" # gain "0.7"
+
+-- 'speed' and up
+
+d1 $ sound "bass [bass bass] ~ [bass ~ bass]"
+
+--sounds boring
+
+d1 $ sound "bass [bass bass] ~ [bass ~ bass]" # up "1 5 12 7"
+d1 $ sound "bass [bass bass] ~ [bass ~ bass]" # up "1 5 -12 -7"
+
+d1 $ sound "numbers:1 numbers:2 numbers:3 numbers:4"
+d1 $ sound "numbers:1 numbers:2 numbers:3 numbers:4" # speed "1 1.5 5 -1"
+
+
+-- pan
+d1 $ sound "numbers:1 numbers:2 numbers:3 numbers:4" # pan "1"
+
+d1 $ sound "numbers:1 numbers:2 numbers:3 numbers:4" # pan "-1"
+
+-- feeling brave ?
+
+-- http://tidalcycles.org/patterns.html#effects
+
+-- delay / delaytime / delayfeedback
+-- cutoff / resonance
+-- room / size
+
+-- OVERLAYING SEQUENCES
+
+d1 $ sound "[bass drum, hh*4]"
+
+
+d1 $ sound "[bass drum, hh*4, cp]"
+
+-- Polymeter
+
+cps 0.5
+
+c1 $ sound "ul metal metal metal"
+
+c2 $ sound "{bd, [{hh hh hh hh hh, cp sn cp}, arpy]}"
+
+hush
+
+-- Polyrhythm
+
+d1 $ sound "{bd sn, can:2 can:3 can:1}"
+
+-- transforming sequences
+
+d1 $ n "0 1 2 3" # sound "arpy" -- this selects samples 0, 1, 2, 3 from the arpy folder
+
+d1 $ sound "arpy" # n "0 1 2 3" -- this does the same thing but uses the arpy pattern as the dominant one
+
+
+
+
+d1 $ jux (# speed "-2") $ sound "bd cp" --jux with effects
+
+
+
+-- slow
+
+d1 $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+d1 $ slow 2 $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+-- Changing the cycles per second
+
+cps 0.5
+
+-- density
+
+d1 $ density 2 $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+-- rev
+
+d1 $ rev $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+-- jux
+
+d1 $ jux (rev) $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+-- iter
+
+d1 $ iter 4 $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+-- every
+
+d1 $ every 4 (density 2) $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+-- Feeling brave? More than one transformation
+
+d1 $ jux (rev . (slow 1.5)) $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+-- slowspread
+
+d1 $ slowspread (slow) [2, 4, 8, 16] $ sound "casio*32"
+
+-- slowcat
+
+-- TRANSFORMING EFFECT SEQUENCES
+
+-- Everything is a pattern!
+
+d1 $ sound (density 2 "arpy arpy:1 arpy:2 arpy:3")
+  # speed (every 2 (density 2) "1 2 3 4")
+
+-- Longer samples and 'granular synthesis'
+
+-- striate
+
+d1 $ slow 4 $ sound "rave"
+
+d1 $ slow 4 $ striate 4 $ sound "rave"
+
+d1 $ slow 4 $ striate 32 $ sound "rave"
+
+d1 $ slow 4 $ jux rev $ striate 32 $ sound "rave"
+
+d1 $ slow 2 $ striate 128 $ sound "breaks152"
+
+d1 $ slow 2 $ striate 128 $ sound "breaks152"
+
+-- chop
+
+d1 $ striate 4 $ sound "arpy:1 arpy:3 arpy:2 arpy:4"
+
+d1 $ chop 4 $ sound "arpy:1 arpy:3 arpy:2 arpy:4"
+
+-- ARBITRARINESS AND "RANDOM NUMBERS"
+
+-- randslice
+
+d1 $ randslice 16 $ sound "breaks152"
+
+-- random sample
+
+d1 $ sound "arpy*8" # n (irand 16)
+
+-- sometimes
+
+d1 $ sometimes (# speed "2") $ sound "arpy*8"
+
+-- often
+
+d1 $ often (# speed "2") $ sound "arpy*8"
+
+-- degrade
+
+d1 $ degrade $ density 4 $ sound "bd sn cp sn:2"
+
+-- Lets run-through some more complex examples...

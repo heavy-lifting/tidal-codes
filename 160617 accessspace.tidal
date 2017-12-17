@@ -1,0 +1,14 @@
+c1 $ slow 2 $ sound "can? [can can]? latibro voodoo" # gain sine1 # vowel "o a o"
+c1 silence
+
+c2 $ slow 2 $ every 4 (rev) $ sound "{~ ~ [hh hh], ~ ~ can ~ tink ~[cp cp]}" # delay "0.2"
+c2 silence
+
+c3 $ sound "perc:1? less ~ ~" # speed sine1
+c3 silence
+
+c4 $ sound "{bass ~ ~ ~, mouth [voodoo voodoo] ~ ~ mouth}" # up "1 1 7 9" # speed "0.4"
+c4 silence
+
+c5 $ slow 32 $ striate' 16 (1/32) $ sound "lucy:1" # speed "-0.25" # gain "0.5"
+c5 silence

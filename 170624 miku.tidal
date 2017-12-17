@@ -1,0 +1,18 @@
+cps 1
+
+d1 $ slowspread (loopAt) [0.5,1,0.25] $ slowspread (density) [1,2,4,8] $ sound "perc*4"
+
+d2 $ n (irand 8) # sound "voodoo" # gain "<1 1 1 0>"
+
+d3 $ superimpose (density 2) $ weave 4 (sound "jvbass") [
+  vowel "a o a o"
+  # up (run 32) ]
+  # gain "<1 1 1 0>"
+  # shape "0.8"
+  # cutoff 4000
+
+d4 $ jux (rev) $ sound "{bd ~ bd [cp cp?], ~ ~ hh [hh hh] [hh hh hh]}" # gain "<1 0 1 1>" # shape 0.4
+
+d5 $ sound "bd*16?" # up (irand 32)
+
+hush

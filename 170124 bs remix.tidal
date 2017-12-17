@@ -1,0 +1,254 @@
+--bsbass:0-8 (8 long)
+--bsguitar:0-17
+--bshihat:0-2
+--bskick:0-8 (4 6 7 long)
+--bsnoise:0-21
+--bsperc:0-6
+--bssnare:0-7
+--bsvocals:0-12 (1 7 10 long)
+
+--samples by the band blood sport
+
+--bsbass:0 and bsbass:1 same except 1 has breathing - workks well with randslice 4
+
+--foyer:
+--bsbass:0 - longer
+--bsbass:1 - longer with breathing
+--bsbass:2 - short clicks
+--bsguitar:15 - short riff
+--bsguitar:16 - short rhythmic
+--bsperc:0 - dongboop
+--bsperc:1 - as above but multiple
+--bssnare:4 - one two
+--bssnare:5 - with buzz
+--bssnare:6 - blonk
+--bsvocals:0 - bass stab with cough
+
+c1 $ sound "{~, bsbass bsbass:2 bsguitar:15 bsguitar:16 bsperc:0 bsperc:1 bssnare:5 bssnare:6 bsvocals}"
+c1 silence
+
+hush
+
+--c1 $ every 4 (density 2) $ sound "{bsperc:1/5 ~ bsbass:2/5 ~, ~ bssnare:5 [bssnare:5*2]/2}" # pan sine1 # gain "0.0"
+--c1 silence
+
+-- c1 $ every 4 (density 2) $ sound "{bsperc:1 ~ bsbass:2 ~, ~ bssnare:5 [bssnare:5 bssnare:5]}"
+-- c1 silence
+
+
+---------- START HERE ---------
+
+c1 $ sound "{~ ~ ~ ~, ~ bssnare:4 [bssnare:4 bssnare:4]}" # gain "0.6"
+c1 silence
+
+c2 $ jux (rev) $ slow 4 $ sound "[~][~[~[~]~][~]]~[~[~]]~[[bssnare:4]]bssnare:4[bssnare:4 bssnare:4]"
+c2 silence
+hush
+
+c1 $ sound "{bsperc/4 ~ bsbass:2 ~, ~ bssnare:4 [bssnare:4 bssnare:4]}" # gain "0.6"
+c1 silence
+
+c2 $ jux (rev) $ slow 4 $ sound "[bssnare:4][bssnare:4[bssnare:4[bssnare:4]bssnare:4][bssnare:4]]bssnare:4[bssnare:4[bssnare:4]]bssnare:4[[bssnare:4]]bssnare:4[bssnare:4 bssnare:4]"
+c2 silence
+
+c3 $ randslice 8 $ sound "{bsbass:1, ~ ~ ~}"
+c3 silence
+
+c3 $ randslice 8 $ sound "{bsbass:1, [bsbass:1 bsbass:1/2] ~ ~}"
+
+c3 $ randslice 8 $ sound "{bsbass:1, [bsbass:1 bsbass:1/2] [bsbass:1 bsbass:1/2 bsbass:1/3 bsbass:1/4] bsbass:1}"
+
+c3 $ randslice 8 $ iter 4 $ sound "{bsbass:1, [bsbass:1 bsbass:1/2] [bsbass:1 bsbass:1/2 bsbass:1/3 bsbass:1/4] bsbass:1}"
+
+c1 $ sound "{bsbass:2 ~ bsbass:2 ~, ~ bssnare:4/2 [bssnare:4/3 bssnare:4/4]}" # gain "0.6"
+
+c1 $ sound "{bsbass:2 ~ bsbass:2 ~, ~ bssnare:4/2 [bssnare:4/3 bssnare:4/4]}" # gain "0.4"
+
+c1 $ sound "{bsbass:2 ~ bsbass:2 ~, ~ bssnare:4/2 [bssnare:4/3 bssnare:4/4]}" # gain "0.0"
+
+c2 $ jux (rev) $ slow 4 $ sound "[bsbass:2][bssnare:4/2[bssnare:4/3[bssnare:4/4]bssnare:4][bssnare:4]]bssnare:4[bssnare:4[bssnare:4]]bsbass:2[[bssnare:4/4]]bssnare:4/3[bssnare:4/2 bssnare:4]"
+
+c3 silence
+c4 $ slow 2 $ chop 32 $ sound "bsguitar:15 bsguitar:16" # gain "0.8"
+
+
+-- c4 $ slow 2 $ randslice 8 $ chop 32 $ sound "bsguitar:15 bsguitar:16"
+
+c2 silence
+
+c4 $ slow 4 $ randslice 8 $ chop 32 $ sound "bsguitar:15 bsguitar:16"
+
+c4 $ slow 4 $ randslice 8 $ chop 16 $ sound "bsguitar:15 bsguitar:16"
+
+c4 $ slow 4 $ randslice 8 $ chop 8 $ sound "bsguitar:15 bsguitar:16"
+
+c4 $ slow 4 $ randslice 8 $ chop 8 $ sound "bsguitar:15? bsguitar:16"
+
+hush
+
+c3 $ often (rev) $ randslice 4 $ iter 4 $ sound "{~, [~ bsbass:1/5] [~ bsbass:1/2 bsbass:1/3 bsbass:1/4] ~}"
+
+-- c3 $ randslice 4 $ iter 4 $ sound "{bsbass:1, [bsbass:1 bsbass:1/2] [bsbass:1 bsbass:1/2 bsbass:1/3 bsbass:1/4] bsbass:1}"
+-- c3 silence
+
+c4  $ randslice 8 $ chop 16 $ sound "bsguitar:16" # up "1 5 -3 3" # vowel "a o a"
+c4 silence
+
+hush
+
+c4 $ randslice 6 $ chop 16 $ sound "bsguitar:16" # iter 3 (up "1 5 -3 3") # vowel " a o a" # gain "0.8"
+c4 silence
+
+c5 $ sound "bsvocals:10"
+c5 silence
+
+
+
+hush
+
+-- # (speed $ scale (-0.5) (0.5) sine1)
+
+c5 silence
+
+hush
+
+--floating in credit
+--bsguitar:17 - dong
+--bsguitar:18 - ding
+--bshihat:2 - kinda a bass hit hat??
+--bskick:8 - bass snare
+--bsnoise:10 - droning ring
+--bssnare:3 - snare
+
+
+--harsh realm
+--bsbass:3 - medium trill
+--bsbass:4 - medium melodic
+--bsbass:5 - sim to 4 but with more phase
+--bsbass:6 - short
+--bsbass:7 - medium riff
+--bsbass:8 - warped fadout - could be nice for granular synthesis
+--bsguitar:8 - medium with breath
+--bsguitar:9 - short jangly
+--bsguitar:10 - click
+--bsguitar:11 - two clicks
+--bsguitar:12 - click
+--bskick:0 - fat pop at end
+--bskick:1 - fat
+--bskick:2 - flatter
+--bskick:3 - distorted
+--bskick:4 - rhythm
+--bsnoise:11 - bloop
+--bsnoise:12 - a bit disco? short
+--bsnoise:13 - drum slurp
+--bsnoise:14 - wet
+--bsnoise:15 - dramatic ring
+--bsnoise:16 - click
+--bsnoise:17 - medium fairies
+--bsnoise:18 - short as above
+--bsperc:2 - bip
+--bsperc:3 - clap
+--bsperc:4 - stab
+--bssnare:7 - thud
+--bsvocals:1 - rotates around the corner long
+--bsvocals:2 - i am here
+--bsvocals:3 - imagine the feeling
+--bsvocals:4 - meeting
+--bsvocals:5 - not vocals
+--bsvocals:6 - not vocals - lil buzz - clicks short?
+--bsvocals:7 - longer clicks and stuff - clicks long?
+
+--pastel
+--bsguitar:0 - click
+--bsguitar:1 - click
+--bsguitar:2 - med riff arpeg
+--bsguitar:3 - short phase
+--bsguitar:4 - click
+--bsguitar:5 - long
+--bsguitar:6 - med rhythmic
+--bsguitar:7 - short burst
+--bsnoise:19 - industrial
+
+--boiling in dust
+--bsguitar:13 - click
+--bsguitar:14 - clang
+--bshihat:0 - hat
+--bshihat:1 - same hat??
+--bskick:5 - almost bass tone
+--bskick:6 - as above but multiple
+--bskick:7 - med rhythm as above
+--bsnoise:0 - phasing ring
+--bsnoise:1 - phasing guitar
+--bsnoise:2 - droning buzz with v long tail
+--bsnoise:3 - distant cymbal
+--bsnoise:4 - insect
+--bsnoise:5 - dial up noise
+--bsnoise:6 - lightsabres - kinda long
+--bsnoise:7 - rattly guitar - med
+--bsnoise:8 - rattly guitar - med
+--bsnoise:9 - metallic - med
+--bsperc:5 - buzz
+--bsperc:6 - tick
+--bssnare:0 - yep
+--bssnare:1 - hatsnare
+--bssnare:2 - x2
+--bsvocals:8 - shhhh
+--bsvocals:9 - blips
+--bsvocals:10 - long i feel
+--bsvocals:11 - why is why??
+--bsvocals:12 - swirly
+
+--untitled
+--bsnoise:20 - crunchy
+--bsnoise:21 - drone short
+
+--bsvocals:0 - foyer cough
+--bsvocals:1 - boiling in dust bike vision
+--bsvocals:2 - boiling in dust i am here
+--bsvocals:3 - boiling in dust imagine the feeling
+--bsvocals:4 - boiling in dust meeting
+--bsvocals:5 - harsh realm
+--bsvocals:6 - harsh realm
+--bsvocals:7 - harsh realm clicks long
+--bsvocals:8 - harsh realm hush?
+--bsvocals:9 - harsh realm
+--bsvocals:10 - harsh realm
+--bsvocals:11 - harsh realm what is work
+--bsvocals:12 - boiling in dust swimming in chlorine
+
+
+c1 $ sound "{~, bsvocals:5 ~ ~ ~ ~ ~ ~}"
+c1 silence
+
+c2 $ jux (rev) $ randslice 4 $ sound "bsbass:1*4"
+c2 silence
+
+c3 $ sound "{~ ~, bsbass:2 bskick bsbass:2 bskick, bskick bsbass:2 bskick bsbass:2 bskick}" # gain "1.2"
+c3 silence
+
+
+c3 $ every 3 (rev) $ sound "{bskick bskick bskick bskick, [~ bssnare] ~ bssnare:1*2}" # vowel "a"
+c3 silence
+
+c4 $ speed "{~,[0.8/2 0.3/3 0.165/5, 0.99/3 0.67/5]}" # sound "bd"
+c4 silence
+
+c5 $ speed "0.25 0.5 1" # sound "bd"
+c5 silence
+
+hush
+
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+m1 <- midiStream devices "LoopBe Internal MIDI" 1 synthController
+m2 <- midiStream devices "LoopBe Internal MIDI" 2 synthController
+
+
+m1 $ midinote "60 [43 67] 40 52"
+m1 silence
+
+hush

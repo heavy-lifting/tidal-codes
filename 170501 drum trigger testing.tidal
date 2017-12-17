@@ -1,0 +1,61 @@
+import Sound.Tidal.MIDI.Context
+
+import Sound.Tidal.MIDI.KorgKP3
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+m1 <- midiStream devices "KAOSSILATOR PRO 1 SOUND" 1 kp3
+
+KorgKP3
+
+bps (149/60)
+
+m1 $ slow 2 xaxis "0.5 0.75 0.25" # yaxis "0.25 0.5" # padon "[1 0] [0 1]" # fxdepth "1"
+
+-- # fxdepth "1 ~ ~ ~ ~" # level " ~ ~ ~" # holdbut " ~ ~ ~"
+
+m1 silence
+
+c1 $ sound "bskick:1*4" # gain 2
+
+c1 silence
+
+c2 $ loopAt 16 $ sound "george" # gain 2
+
+c2 silence
+
+(xaxis, xaxis_p) = pF "xaxis" (Just 0)
+
+(yaxis, yaxis_p) = pF "yaxis" (Just 0)
+
+(padon, padon_p) = pF "padon" (Just 0)
+
+(level, level_p) = pF "level" (Just 0)
+
+(fxdepth, fxdepth_p) = pF "fxdepth" (Just 0)
+
+(holdbut, holdbut_p) = pF "holdbut" (Just 0)
+
+
+c1 $ sound "bd bd [cp cp]"
+c1 silence
+
+cps 1
+
+m1 $ midinote "60"
+
+m1 silence
+
+
+m1 silence
+
+m3 $ slow 2 $ midinote "60 62 64"
+m3 s5mnhilence
+
+c1 $ sound "arpy arpy:1 arpy:2"
+
+hush
+
+m1 midinote

@@ -1,0 +1,13 @@
+bps (132/60)
+
+--bsbass bsguitar bshihat bskick bsnoise bsperc bssnare bsvocals
+
+c1 $ loopAt 1 $ randslice 8 $ sound "bsguitar/2? bsguitar*2? bsguitar:1? bsguitar:1?" # n "1 6 2 4" # speed "0.2"
+c1 silence
+
+c2 $ sound "bskick:1*4 bskick*2 bskick:1 bskick:1"
+c2 silence
+
+c3 $ jux (slow 2) $ often (rev) $ sound "bsperc:2 bsperc:2*2 bsperc:2 bsperc:2*3" # iter 2 (up "-8 -12 -4") # gain "0.6"
+c3 silence
+hush

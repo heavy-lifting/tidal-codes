@@ -1,0 +1,23 @@
+cps 1
+
+c1 $ sound "{bskick:1 bskick:1 bskick:1}" # delay (sine1 -0.9) # gain "<1 0 1 0>"
+
+c2 $ jux (rev) $ sound "{bsperc:3 bssnare:7*2 [~ bsperc:3], bssnare:7 ~ ~ ~ [bsperc:6*3] ~}"
+  # gain "<0 0 0 0>"
+
+c3 $ striate 32 $ sound "[bsnoise:5 bsnoise:6]*3" # cut 1 # gain "<0 0 0 0>"
+
+c4 $ degradeBy 1 $ sound "italy*3" # cut 2 # up (run 3) # speed rand # vowel "a a a p"
+
+c5 $ degradeBy 1 $ slowspread (loopAt) [1,2,3,4]
+  $ sound "bsnoise:3*3"
+  # gain "0.7"
+  # cut 6
+
+c6 $ sound "skel" # cut 1
+
+c7 silence
+
+solo $ c7 $ loopAt 8 $ chop 32 $ sound "bsnoise bsnoise bsnoise" # shape "<0 0.2 0.5 0.75 1>"
+
+hush

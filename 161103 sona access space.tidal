@@ -1,0 +1,17 @@
+bps (120/60)
+
+c1 $ slow 2 $ randslice 4 $ sound "cdn:1? cdn:2? cdn:3? cdn:4? cdn:5? cdn:6? cdn:7? cdn:8?" # up "1 -2 1.5" # delay "0.2" # gain "0.3"
+c1 silence
+
+c2 $ slow 2 $ sound "stab? [stab stab]? stab? ~" # gain "0.2" # up "1 5 7 12"
+c2 silence
+
+c3 $ jux (density 8) $ sound "cdn:8/2" # speed "0.25 -0.25" # gain "0.2"
+c3 silence
+
+c4 $ jux (rev) $ sound "bass*4?" # iter 3 (up "1 5 12 7") # gain "0.2" # delay "0.3" # vowel "a a a" # pan sine1
+c4 silence
+
+hush
+
+hush

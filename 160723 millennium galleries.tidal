@@ -1,0 +1,28 @@
+--heavy lifting is lucy
+--for one night only feat. kasey keller audiovisual club
+
+--what do you say to the man who wants to make rotten egg?
+--good luck
+
+solo $ c1 $ slow 2 $ sound "{mouth? ~ [mouth mouth]? ~, ~ ~ ~ mouth [ab:2 ab:2]?}" # vowel "o a o a" # delay sine1 # shape "0.2" # gain "0.5"
+c1 silence
+
+c2 $ slow 2 $ every 2 (rev) (sound "{bd [sn sn] bd sn, ~ ~ sn ~ ~}" # pan sine1 # delay "0.2")
+c2 silence
+
+c3 $ sometimes (rev) (sound "{bass [what:10 what:10] ~ ~, feel ab:5 [stab stab]? ~}" # delay "0.2" # shape "0.2")
+c3 silence
+
+c4 $ slow 2 $ often (rev) (sound "{ab:2? [ab:2 can]? ~ ul, perc [perc perc] ~  ~ ul [ul ul] ~}" # up "-24 -14 -24 -10" # vowel "o a u i o")
+c4 silence
+
+c5 $ sound "{[arpy arpy:5 arpy:7] ~  ~, arpy arpy:5 arpy:7}" # speed "0.125" # delay "0.8" # gain "0.8"
+c5 silence
+
+solo $ c6 $ sound "lucy:2" # speed "0.2, -0.2"
+c6 silence
+
+c7 $ (0.25 ~>) $ sound "{[bd bd bd bd] ~ ~ ~, ~ [bass bass bass] ~ ~}" # delay sine1 # gain "0.6"
+c7 silence
+
+c8 $ sound "{~ ~ ~ ~, ab:2? ~ ~ ~ ~ ~ ~ ~}"

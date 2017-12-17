@@ -1,0 +1,37 @@
+cps 1.25
+
+-- george never ends
+c1 $ jux (# speed "0.75") $ often (rev) $ every 2 (density 2) $ iter 4 $ sound "george:5 [george:5 george:5] ~ ~" # cut 1 # vowel "a o a" # up (run 7)
+
+c1 silence
+
+c2 $ jux (rev) $ randslice 32 $ iter 2 $ sound "george:2*4? [george:3*4]/2" # up (run 3)
+
+c2 silence
+
+c3 $ sound "{bskick:1 ~ [bssnare:7*2]/2 ~, ~ [bsperc:3*3] ~ [bshihat*4] ~}" # delay "0.2"
+
+c3 silence
+
+
+-- THIS LINE BREAKS TIDAL
+c4 $ every 2 (density 2) $ chop 32 $ (sound "george:4*4") # speed "-0.5"
+
+hush
+ -- RUN IT TO CRASH
+
+c5 $ jux (slow 2) $ sound "metal*4 ul*4" # iter 3 (speed "0.25 0.5 0.75")
+
+c5 silence
+
+c6 $ jux (# speed "-1") $ sound "{feel feel feel feel, ~ [cp cp] ~ ~ ~}"
+
+c6 silence
+
+c7 $ sound "metal [metal metal] ~" # speed "0.125" # delay "0.2"
+
+c7 silence
+
+solo $ c8 $ n (run 5) # sound "voodoo? voodoo bottle? voodoo? can can" # gain "1.2"
+
+c9 $ sound "bass1:12*6" # vowel "a o e"

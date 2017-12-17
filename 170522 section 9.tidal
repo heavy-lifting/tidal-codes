@@ -1,0 +1,12 @@
+c1 $ jux (slow 4) $ sound "{bskick:1 ~ [bssnare:7 bssnare:7/2] ~, ~ ~ ~ [bshihat*3] ~}" # cut 1
+
+c1 silence
+
+c4 $ degradeBy 0.6 $ every 4 (rev) $ vowel "[a[ e]i]u[[e[ u o o[i]]e[u[]e]u]a a]"
+  # sound "bsguitar:4"
+  # cut 1
+  # gain "0.6"
+
+c4 silence
+
+hush

@@ -1,0 +1,74 @@
+--THIS IS HEAVY LIFTING
+--don't bother it'll take weeks
+--thanks to george michael and the band blood sport
+
+--george
+--george:1
+--george:2 - mmm
+--george:3 - oh
+--george:4 - sax
+
+--bskick:1
+--bshihat
+--bssnare:7
+--bsperc:3 - clap
+
+--bsnoise:11 - bloop
+--bsnoise:16 - click
+--bsnoise:14 - wet
+--bsnoise:13 - drum slurp
+--bsperc:2 - bip
+
+--bsbass:8 - loopAt 4
+--bsguitar:8 - randslice
+
+c1 $ jux (slow 2) $ sound "bskick bsperc bsnoise:11/2 bsnoise:16"
+  # speed "<1 2 4>"
+  # vowel "<a o>"
+  # gain "0.8"
+
+hush
+
+c1 silence
+
+c2 $ sound "george:2" # speed "-0.75"
+  # vowel "<o i e>"
+  # gain "1"
+  # cut 1
+
+c2 silence
+
+c3 $ jux (rev) $ sound "{[bshihat*4] ~ [bskick:2 bskick:2] ~, bsperc:3*3 ~ bssnare:7 bssnare:7 ~}"
+  # gain "1.2"
+  # pan sine1
+
+c3 silence
+
+c4 $ every 2 (density 2) $ sound "bsbass*4" # up "1 5 3"
+
+c4 silence
+
+c5 $ jux (rev) $ randslice 64 $ sound "george:4 ~ [george:4*2] ~" # speed "-0.5" # vowel "<a o a>"
+  # gain "0.8"
+
+c5 silence
+
+c7 $ loopAt 16 $ sound "bsbass:8 bsbass:8 ~ ~" # delay "0.2" # gain "0.8"
+
+c7 silence
+
+c6 $ slowspread ($) [slowspread (density) [2, 3], slowspread (chop) [16, 32, 64]] $ sound "{~ bsvocals:4 ~ bsvocals:4/2, ~ bsnoise:14 ~ ~}"
+  # speed "<0.5 -0.25>"
+  # vowel "a o a"
+  # gain "0.0"
+
+c6 silence
+
+c8 $ sound "[bsperc:2/2 bsperc:2*16, bsnoise:11*32]"
+  # up "<-17 -13 -15>"
+  # delay "0.2"
+  # vowel "a"
+
+  hush
+
+  BYE!!!!!!!!!!!!!

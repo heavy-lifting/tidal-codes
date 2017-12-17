@@ -1,0 +1,26 @@
+hush
+
+c1 $ slow 2 $ sound "{mouth ~ [mouth mouth] ~, ~ mouth mouth ~ ~}" # vowel "o a o" # delay "0.1"
+c1 silence
+
+c2 $ slow 2 $ sound "bass [cp cp] bass ~" # vowel "a o a" # gain "0.0"
+c2 silence
+
+c7 $ slow 2 $ sound "{~ ~ ~ ~, ~ cp [cp cp] [cp cp cp]}" # pan sine1 # vowel "o a o" # gain "0.0"
+c7 silence
+
+c3 $ jux (rev) $ slow 2 $ sound "{feel? feel? feel? feel?, stab? stab? stab? stab? stab?}" # iter 4 (up "-5 -7 -12 -5") # gain "0.8"
+c3 silence
+
+hush
+
+c4 $ sound "arpy*4" # iter 3 (speed "-0.25 -0.33 -0.124") # gain "0.4"
+c4 silence
+
+c5 $ slow 2 $ sound "bass*4" # speed "0.25 0.33 0.124 0.25" # gain "0.0"
+c5 silence
+
+c6 $ randslice 32 $ sound "xrf*4?" # gain "1"
+c6 silence
+
+hush

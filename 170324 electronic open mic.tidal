@@ -1,0 +1,38 @@
+cps 1
+
+c1 $ jux (slow 2) $ sound "{bsperc:3 ~ [bshihat*4] ~, ~ ~ ~ ~ [bsperc:3*3]}"
+  # gain "0.2"
+  # pan sine1
+  # delay "0.2"
+
+c1 silence
+
+--every 2 density 2
+c2 $ every 2 $ density 2 $ sound "bsbass:1(8,3)"
+  # cut 1
+  # up "1 7 3"
+  # gain "0.4"
+  # vowel "a o a"
+
+c2 silence
+
+c3 $ sound "bsvocals*4"
+  # speed "-0.25 0.25"
+  # cut 1
+  # vowel "a o a"
+  # gain "0.4"
+
+c3 silence
+
+c4 $ randslice 64 $ sound "xrf xrf"
+  # gain "1.2"
+
+  c5 $ jux (slow 2) $ every 4 (rev) $ sound "~ bsguitar:0 [bsguitar:0 bsguitar:0] bsguitar:0"
+    # up "<-1 -5 -3>"
+    # vowel "a o a"
+    # gain "0.4"
+
+solo $ c6 $ jux (# vowel "a o a") $ sound "{bskick*8 ~ ~ ~, ~ ~ ~ bsguitar:4*3 ~}"
+    # gain "0.0"
+
+hush

@@ -1,0 +1,39 @@
+bps (120/60)
+
+c1 $ slow 2 $ sound "{~ ~ ~ ~, [tink tink] [tink tink] ~ ~ ~}" # gain "0.8" # shape "0.2"
+c1 silence
+
+c2 $ slow 2 $ iter 4 $ sound "{[bd hh] [bd hh] [cp cp] hh, ~ ~ ~ what:10 what:10, ab:2 ~ ~ ~}" # shape "0.1"
+c2 silence
+
+c3 $ randslice 8 $ sound "lucy" # speed "0.5"
+c3 silence
+
+
+c4 $ slow 2 $ sound "bd [cp cp] bd [hh hh]"
+c4 silence
+
+c5 $ slow 2 $ sound "bass*4" # speed sine1
+c5 silence
+
+hush
+
+c5 $ sound "xrf" # vowel "a"
+c5 silence
+
+c7 $ iter 6 $ often (rev) (slow 2 $ sound "{~ ~ ~ ~, bass*6}" # up "-3 -5 -14 -2" # gain "0.6" # delay "0.4" # pan sine1)
+c6 silence
+
+c6 $ jux (rev) (density 2 $ randslice 8 $ sound "milk*4" # vowel "a i o u" # up "-1 -5 -7 -2" # delay "0.2")
+c6 silence
+
+c8 $ sometimes (rev) (iter 4 $ sound "bass*6" # up "-10 -14 -17 -14")
+c8 silence
+
+c6 $ iter 4 $ sound "{[arpy:0 arpy:5 arpy:7 arpy:3]}" # speed "0.25" # gain "0.6" # delay "0.4" # vowel "a o a o"
+c8 silence
+
+c5 $
+
+--# speed "-0.5" # vowel "a"
+c3 silence

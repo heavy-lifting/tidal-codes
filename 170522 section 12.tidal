@@ -1,0 +1,9 @@
+c1 $ sound "{bskick:1 ~ bskick:1 ~, ~ [~ bsperc:3/2] ~ ~}" # cut 1
+
+c1 silence
+
+c2 $ jux (slow 2) $ randslice 2 $ sound "{bsvocals:8 ~ ~ ~, ~ bsvocals:8 ~, ~ ~ bsvocals:8 ~ ~}" # gain "0.7"
+  # vowel "<a o p>"
+  # cut 2
+
+  hush

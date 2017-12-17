@@ -1,0 +1,61 @@
+--harsh realm
+--bsbass:3 - medium trill
+--bsbass:4 - medium melodic
+--bsbass:5 - sim to 4 but with more phase
+--bsbass:6 - shorth
+--bsbass:7 - medium riff
+--bsbass:8 - warped fadout - could be nice for granular synthesis
+--bsguitar:8 - medium with breath
+--bsguitar:9 - short jangly
+--bsguitar:10 - click
+--bsguitar:11 - two clicks
+--bsguitar:12 - click
+--bskick:0 - fat pop at end
+--bskick:1 - fat
+--bskick:2 - flatter
+--bskick:3 - distorted
+--bskick:4 - rhythm
+--bsnoise:11 - bloop
+--bsnoise:12 - a bit disco? short
+--bsnoise:13 - drum slurp
+--bsnoise:14 - wet
+--bsnoise:15 - dramatic ring
+--bsnoise:16 - click
+--bsnoise:17 - medium fairies
+--bsnoise:18 - short as above
+--bsperc:2 - bip
+--bsperc:3 - clap
+--bsperc:4 - stab
+--bssnare:7 - thud
+--bsvocals:1 - rotates around the corner long
+--bsvocals:2 - i am here
+--bsvocals:3 - imagine the feeling
+--bsvocals:4 - meeting
+--bsvocals:5 - not vocals
+--bsvocals:6 - not vocals - lil buzz - clicks short?
+--bsvocals:7 - longer clicks and stuff - clicks long?
+
+
+c1 $ sound "{bsnoise:11/2 ~ ~ ~, ~ [bsnoise:16 bsnoise:16?] ~ ~ ~}"
+c1 silence
+
+c2 $ iter 4 $ sound "{bskick:1 [bsperc:3 bsperc:3] bskick:1 ~, ~ bshihat ~ bshihat*3 ~}"
+c2 silence
+
+c3 $ sound "bssnare:7*4"
+c3 silence
+
+c4 $ randslice 16 $ sound "[bsguitar:8 bsguitar:8 bsguitar:8] ~ bsguitar:8" # up " -3 -1 -5"
+c4 silence
+
+c5 $ iter 2 $ sound "~ ~ ~ bsvocals:4/2" # speed "-1"
+c5 silence
+
+c6 $ sound "bsnoise:14 ~ [bsnoise:13*2] ~"
+c6 silence
+
+c7 $ jux (density 2) $ loopAt 4 $ sound "bsbass:8"
+c7 silence
+
+c8  $
+hush

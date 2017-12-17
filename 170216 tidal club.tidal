@@ -1,0 +1,31 @@
+c1 $ sound "bd sn"
+
+--use a function then a list in square brackets to apply different parameters each cycle
+c1 $ slowspread (density) [2,4] $ iter 3 $ sound "{arpy [arpy:3 arpy] arpy:7 ~, bd sn cp bd [sn sn] cp}"
+
+-- use the dollar in brackets to apply functions over time rather than different parameters to one function
+c1 $ slowspread ($) [(# speed "1"), (# speed "0.5"), (# speed "0.25")] $ slowspread ($) [(# delay "1"), (# delay "0.5")] $ iter 3 $ sound "{bd sn [hh hh] ~,arpy*5}"
+c1 silence
+
+--you can combine slowspreads inside the slowspread...!
+c1 $ slowspread ($) [slowspread (density) [2, 3], slowspread (chop) [16, 32, 64]] $ sound "[arpy arpy:3 arpy:5, bsvocals:8]" # speed "0.75"
+c1 silence
+
+c2 $ iter 3 $ sound "{bskick:1 bssnare:3 bskick:1, [~ ~] bshihat:2 [bshihat:2 bshihat:2] [bshihat:2 bshihat:2 bshihat:2]}" # delay "0.2"
+c2 silence
+
+c3 $ sound "bsvocals:8"
+c3 silence
+
+hush
+
+c4 $ jux (rev) $ slowspread (density) [2, 1] $ slowspread (iter) [1, 2, 3] $ sound "bsperc [bsperc bsperc] bsperc" # speed "0.75 [0.25 0.5] 1" # vowel "o a o" # gain "1"
+c4 silence
+
+c5 $ sound "bsperc"
+c5 silence
+
+-- do x is an alternative for slowspread (have to line up x and chop) - this isn't documented so spend some time with it....
+
+c1 $ do   x <- (density 2 "2 3 4")
+          slow x $ sound "arpy(5,8)" # iter 3  (speed "0.25 0.75 0.5 0.165")

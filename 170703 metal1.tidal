@@ -1,0 +1,31 @@
+minferno
+mdarkness
+mlust
+mdying
+msorrow
+mlethal
+mfate
+
+msnare1
+msnare2
+mrim
+mside
+msnare3
+
+mfloor
+mrack1
+mrack2
+
+cps 1
+
+d1 $ sound "mfate*3 mfate*5" # shape 0.5 # cutoff 1000
+
+hush
+
+d2 $ sound "mrack2 mrack1 mside mrim*4"
+
+d3 $ degradeBy 0.4 $ sound "mpower(9,4)" # cut 1 # speed "0.6"
+
+hush
+
+d3 silence

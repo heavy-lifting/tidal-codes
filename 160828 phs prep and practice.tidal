@@ -1,0 +1,32 @@
+c1 $ slow 2 $ sound "{mouth? [mouth mouth]? ~ ~, ~ ~ ~ can? [can can]?}" # delay "0.2" # vowel "a o a" # gain "0.6"
+c1 silence
+
+c2 $ sound "{mouth [voodoo voodoo] mouth ~, ~, ~ ~ ~ ~ ~ ~ ~ ~ }" # up "-2 -5 -7" # gain "0.6"
+c2 silence
+
+c5 $ loopAt 0.1 $ randslice 16 $ sound "[egg egg] [egg:1 egg:1]" # gain "1.2" # shape "0.2" # vowel "i"
+c5 silence
+
+c6 $ slow 32 $ sound "pers pers" # speed "1 -1" # pan sine1
+c6 silence
+
+c7 $ (slow 2) $ jux (rev) $ sound "{~ ~ ~ ~, ~ ~ ~]}" # speed "-0.4" # gain "0.4"
+c7 silence
+
+c8 $ jux (rev) $ iter 3 $ sound "{bd bd bd, ul ul ul ul ul}" # up "1 5 7 3 5" # gain "0.6"
+c8 silence
+
+c1 $ sound "hh [hh hh] [hh hh hh]" # vowel "o" # gain "0.8"
+c1 silence
+
+c2 $ randslice 32 $ sound "xrf? xrf? xrf?" # cut "3" # gain "1.2" # speed "-1 1 1"
+c2 silence
+
+c3 $ chop 64 $ sound "tabla" # speed "0.5"
+c3 silence
+
+c4 $ sound "lucy:5"
+c4 silence
+
+c5 $ iter 4 $ jux (slow 2) $ sound "{bd [sn sn] bd [sn sn], hh hh [hh hh]}"
+c5 silence

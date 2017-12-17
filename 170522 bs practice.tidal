@@ -1,0 +1,99 @@
+cps 1.2
+
+c1 $ jux (slow 4) $ sound "{bskick:1 ~ [bshihat], ~ [bshihat*2] ~, ~ bssnare:7 ~ [bshihat*3], ~ ~ ~ ~}"
+
+c1 silence
+
+c2 $ loopAt 3 $ chop 8 $ sound "bsnoise:14 bsnoise:14"
+
+c2 silence
+
+c3 $ degradeBy 0.5 $ sound "bsperc:6*6"
+
+c3 silence
+
+c4 $ sound ""
+
+hush
+
+
+--------
+
+
+cps 1.2
+
+c1 $ jux (slow 4) $ sound "{bskick:1 ~ ~, ~ ~ ~ ~}" # cut 1
+
+c1 silence
+
+c2 $ loopAt 2 $ chop 8 $ sound "bsnoise:21" # vowel "<a o a o>"
+  # gain "<0.4 0.4 0.0 0>"
+
+c2 silence
+
+c3 $ degradeBy 1 $ sound "bsperc:6*6"
+
+c3 silence
+
+c4 $ sound "bsnoise:6" # gain "<0 0 0 0.6>" # vowel "a" # cut 1
+
+hush
+
+------
+
+
+c1 $ jux (slow 4) $ sound "{bskick:1 ~ [bssnare:7 bssnare:7/2] ~, ~ ~ ~ [bshihat*3] ~}" # cut 1
+
+c1 silence
+
+c4 $ degradeBy 0.6 $ every 4 (rev) $ vowel "[a[ e]i]u[[e[ u o o[i]]e[u[]e]u]a a]"
+  # sound "bsguitar:4"
+  # cut 1
+  # gain "0.6"
+
+c4 silence
+
+hush
+
+-----
+
+
+c1 $ jux (slow 4) $ sound "{bskick:1 ~ ~ ~, ~ ~ ~ [bshihat*3] ~}" # cut 1
+
+c1 silence
+
+c4 $ degradeBy 0.9 $ every 4 (rev) $ vowel "[a[ e]i]u[[e[ u o o[i]]e[u[]e]u]a a]"
+  # sound "bsguitar:4"
+  # cut 1
+  # gain "0.6"
+
+c4 silence
+
+c2 $ randslice 32 $ sound "{bsvocals:11 ~ ~, ~ bsvocals:11 ~ ~, ~ ~ bsvocals:11 ~ ~}" # gain "0.7"
+
+hush
+
+-----
+
+c1 $ sound "{bskick:1 ~ bskick:1 ~, ~ [~ bsperc:3/2] ~ ~}" # cut 1
+
+c1 silence
+
+c2 $ randslice 32 $ sound "{bsvocals:11 ~ ~ ~, ~ bsvocals:11 ~, ~ ~ bsvocals:11 ~ ~}" # gain "0.7"
+  # vowel "<a o p>"
+
+hush
+
+-----
+
+c1 $ sound "{bskick:1 ~ bskick:1 ~, ~ [~ bsperc:3/2] ~ ~}" # cut 1  
+
+c1 silence
+
+c2 $ jux (slow 2) $ randslice 2 $ sound "{bsvocals:8 ~ ~ ~, ~ bsvocals:8 ~, ~ ~ bsvocals:8 ~ ~}" # gain "0.7"
+  # vowel "<a o p>"
+  # cut 1
+
+  hush
+
+-----

@@ -1,0 +1,47 @@
+-- this got somewhere good to the end
+
+-- quite nice
+ cps 1.0
+
+c1 $ sound "[bskick ~] [~ bskick:1] [~ bshihat*3]" # vowel "[o]" # delay "0.2"
+
+
+c1 silence
+
+--c1 $ sound "[bskick bsperc:3] [bskick ~] [bskick bshihat*3]" # vowel "[o]"
+
+c1 silence
+
+c3 $ degradeBy 0.2 $ jux (density 2) $ sound "{bsguitar:12 ~ ~, [bsguitar:11]}" # iter 3 (up (every 2 (+ 8) "-1 -3 -5"))
+  # cut 2
+  # vowel "<a o a>"
+  # gain "<1 1 1 1 1 0>"
+
+c3 silence
+
+c4 $ degradeBy 0.0 $ striate 8 $ sound "bsvocals bsnoise:5 bsnoise:6" # gain "0.6" # cut 1
+
+hush
+
+c5 $ degradeBy 0 $ sound "[bsperc:6 bsperc:6] bsperc:6 ~"
+
+
+-- # delay "<0 0.2 0.4>"
+
+c3 $ sound "bsguitar:11"
+
+hush
+-------
+
+cps 0.6
+
+c1 $ degradeBy 0 $ jux (rev) $ sound "[bskick bsperc:3]*3"
+  # vowel "<p p p>"
+
+c2 $ randslice 16 $ n (irand 10) # sound "bsvocals*3"
+  # cut 1
+  # gain "1"
+
+c3 $ degradeBy 1 $ sound "bsnoise:20/3 bsperc:6 ~"
+
+c4 $ degradeBy 1 $ striate 32 $ sound "bsvocals bsnoise:5 bsnoise:6"

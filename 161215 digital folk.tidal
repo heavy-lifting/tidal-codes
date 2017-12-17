@@ -1,0 +1,38 @@
+cps 0.8
+
+--playing for dancing
+
+c1 $ jux (iter 3) $ sound "{~ mouth ~ ~ ~ ~ ~ ~, gretsch ~ gretsch] cp [hh hh] ~}"
+c1 silence
+
+c2 $ randslice 128 $ sound "{~ ~ ~ ~ ~ ~ ~ ~, xrf ~ ~ ~ ~ ~}" # gain "0.5" # speed "-1"
+c2 silence
+
+hush
+
+c3 $ sound "bd"
+
+
+--midi
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+m1 <- midiStream devices "QUAD-CAPTURE" 1 synthController
+
+m2 <- midiStream devices "QUAD-CAPTURE" 2 synthController
+m3 <- midiStream devices "QUAD-CAPTURE" 1 synthController
+m4 <- midiStream devices "LoopBe Internal MIDI" 4 synthController
+m5 <- midiStream devices "LoopBe Internal MIDI" 1 synthController
+
+m1 $ midinote "60"
+
+
+
+c1 $ randslice 32 $ sound "cdn"
+
+hush
+
+m1 silence

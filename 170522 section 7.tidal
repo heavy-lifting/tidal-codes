@@ -1,0 +1,54 @@
+-- some really good bits in here
+
+cps 1.2
+
+-- over time as bring in more drones change claps to kicks
+
+c1 $ sound "{bskick:1 ~ [bskick:1], ~ [bshihat*2] ~ ~, ~ ~ bskick:1 ~ bshihat*3}"
+
+c1 silence
+
+hush
+
+--c1 $ jux (slow 4) $ sound "{bskick:1 ~ [bshihat], ~ [bshihat*2] ~, ~ bssnare:7 ~ [bshihat*3], ~ ~ ~ ~}"
+
+c1 silence
+
+c2 $ degradeBy 0 $ loopAt 3 $ chop 8 $ sound "bsnoise:14 bsnoise:14"
+  # vowel "a"
+  # gain "0.6"
+
+c2 silence
+
+--degrade out 2 and degrde in 3
+
+c3 $ degradeBy 0.5 $ every 4 (rev) $ vowel "[a[ e]i]u[[e[ u o o[i]]e[u[]e]u]a a]"
+  # sound "bsguitar:4"
+  # cut 1
+  # gain "0.6"
+  # up "<1 5 7>"
+
+--bring in c4 for drone & slowly reduce loopAts to make more rhythmic
+
+c4 $ slowspread (loopAt) [1,2,4] $ chop 4 $ sound "bsvocals*2" # vowel "a" # gain "0.6"
+
+
+------------
+
+
+c5 $ degradeBy 0.0 $ every 4 (rev) $ vowel "[a[ e]i]u[[e[ u o o[i]]e[u[]e]u]a a]"
+  # sound "bsguitar:4"
+  # cut 1
+  # gain "0.6"
+
+c4 silence
+
+c2 $ randslice 32 $ sound "{bsvocals:11 ~ ~, ~ bsvocals:11 ~ ~, ~ ~ bsvocals:11 ~ ~}" # gain "0.7"
+
+hush
+
+c3 $ sound ""
+
+c4 $ sound ""
+
+hush

@@ -1,0 +1,35 @@
+solo c1 $ slow 2 $ sound "voodoo? ~ [bottle bottle]? tink?" # vowel "o a o" # delay "0.6"
+c1 silence
+
+hush
+
+c2 $ slow 2 $ sound "{sn bd [sn sn] ~, ~ ~ sn [sn sn] ab:2?}"
+c2 silence
+
+c3 $ slow 2 $ (0.25 ~>) $ sound "ab:5 ~ ~ [what:10 what:10]" # delay "0.2" # shape sine1
+c3 silence
+
+c4 $ often (rev) (sound "{~ bass ~ bass, bass ~ [bass bass] ~ ~}" # speed sine1)
+c4 silence
+
+c5 $ (0.25 ~>) $ sound "{[arpy:7 arpy:5 arpy] ~ ~ ~, arpy arpy:5 arpy:7}" # speed "0.25" # delay "0.2" # gain "0.8" # vowel "o o u i"
+c5 silence
+
+c6 $ sound "{ab:5 ~ [bd bd bd] ~, ~ bd ~ ~ [stab stab stab]?}" # delay "0.6"
+c6 silence
+
+c8 $ sound ""
+
+$ c7 $ sound "lucy:2" # speed "0.2, -0.2"
+c7 silence
+
+--midi
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+m1 <- midiStream devices "QUAD-CAPTURE" 1 synthController
+
+m1 $ (0.25 ~>) $ often (rev) (midinote "{~ ~ ~ ~, 38 [48 48]")
+m1 silence

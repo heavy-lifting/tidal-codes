@@ -1,0 +1,38 @@
+--midi
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+m1 <- midiStream devices "QUAD-CAPTURE" 1 synthController
+m2 <- midiStream devices "QUAD-CAPTURE" 2 synthController
+m3 <- midiStream devices "QUAD-CAPTURE" 1 synthController
+m4 <- midiStream devices "LoopBe Internal MIDI" 4 synthController
+m5 <- midiStream devices "LoopBe Internal MIDI" 1 synthController
+
+
+m1 $ midinote "{[~ 42 42], [60 60 ~], [36 ~ 35]}"
+m1 silence
+
+m2 $ midinote "{[56 52 42]*2, [60 52 46] [54 46 38]}" # dur "2"
+m2 silence
+
+m3 $ midinote "{~ 50 [50 50], [47 40] [47 40] ~ ~ [38 38] ~ ~ ~}"
+m3 silence
+hush
+
+m4 $ midinote "60"
+m4 silence
+
+m5 $ midinote "38 45"
+m5 silence
+
+c1 $ sound "{bd sn bd sn, hh ~ ~ ~ ~, bass*4}" # vowel "o a o" # speed "0.8 0.6 0.3 0.8" # delay "0.2"
+c1 silence
+
+
+c2 $ often (rev) (sound "{bd? sn? hh? cp?, bass bass:1 feel}" # speed "0.4" # vowel "o a o")
+c2 silence
+
+c3 $ sound "arpy arpy:1 arpy:2 arpy:3 arpy:4"
+c3 silence

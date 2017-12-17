@@ -1,0 +1,258 @@
+KICKS
+- bskick:1
+
+SNARE
+- bssnare:0 - true snare
+- bssnare:5 - buzz, use as noise
+
+HIHAT
+- bshihat:0 - tap
+
+PERC
+- bsperc:0 - boop - nice for granular synthesis type stuff, use with slowspread density as below
+- bsperc:3 - clap
+- bsperc:6 - wooden clop
+- bsperc:7 - like 0
+- bsperc:9 - high pitched
+
+NOISE
+- bsnoise:0 - ringing, nice with loopAt
+- bsnoise:1 & 2 - long drones - nice with randslice
+- bsnoise:3 - harsh cymbal
+- bsnoise:4 - insect (panned right)
+- bsnoise:5 & 6 - fax machine
+- bsnoise:11 & 16 - boop
+- bsnoise:19 - industrial - nice with striate
+- bsnoise:20 - roar
+
+BASS
+- bsbass:8 - nice drone, use every 3 or 4
+
+GUITAR
+- bsguitar:0 - click
+- bsguitar:1 - buzz
+
+VOCALS
+- bsvocals:0 - cough
+- bsvocals:1 - rotates
+- bsvocals:2 - i am here
+- bsvocals:3 - feeling
+- bsvocals:4 - meeting
+- bsvocals:7 - long atmos noises
+- bsvocals:8 - exhale
+- bsvocals:9 - glitch
+- bsvocals:10 - long one loops well over 8 also play every 8 cycles
+- bsvocals:11 - what is work
+- bsvocals:12 - swimming
+
+hush
+
+cps 1.2
+
+c1 $ slow 2 $ jux (slow 2) $ sound "[bskick:1 bssnare] [bskick:1 bssnare/3] [bskick:1 [bsperc:3 bsperc:3/2]]"
+  # gain "1.5"
+
+c1 silence
+
+c2 $ jux (slowspread (density) [36,28,9])
+  $ jux (# vowel "<a o a o>")
+  $ slowspread (density) [3,9,18,36]
+  $ sound "bsperc:7*3"
+  # pan "<0 0.25 0.5 1>"
+
+c2 silence
+
+c3 $ slowspread (loopAt) [6,3] $ sound "bsnoise"
+
+c3 silence
+
+c4 $ randslice 8 $ sound "[bsnoise:1 bsnoise:2]*3" # cut 2
+
+c4 silence
+
+c5 $ striate 16 $ sound "<bsnoise:19*9 bsnoise:19*6 bsnoise:19*3>"
+
+c5 silence
+
+c6 $ sound "bsbass:8/3" # cut 1
+
+c6 silence
+
+hush
+
+-------
+
+hush
+
+--start here
+
+c1 $ slow 2 $ jux (slow 2) $ sound "[bskick:1 bssnare] [bskick:1 bssnare/3] [bskick:1 [bsperc:3 bsperc:3/2]]"
+  # gain "1"
+
+c1 $ degradeBy 0 $ sound "{~ [bsperc:3, bskick:1] bskick:1, [bskick:1/3 bshihat:1]}" # cut 1
+
+c2  $ degradeBy 0 $  speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "bsperc:6" # vowel "a" # gain "0.6"
+
+c2  $ degradeBy 0 $ jux (slow 2) $ speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "bsperc:6" # vowel "a" # gain "0.6"
+
+c3 $ slowspread (loopAt) [6,3] $ sound "bsnoise" # gain "0.6"
+
+c1 $ degradeBy 0 $ sound "{~ bsperc:3 bskick:1, bshihat:1*2 bshihat:1}"
+
+c3 $ sound "bsbass:8/3"
+
+c2  $ degradeBy 0.2 $ jux (slow 2) $ speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "bsperc:6" # vowel "a" # gain "0.6"
+
+c2  $ degradeBy 0.4 $ jux (slow 2) $ speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "bsperc:6" # vowel "a" # gain "0.6"
+
+c2  $ jux (degradeBy 0.4) $ speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "bsperc:6" # vowel "a" # gain "0.6"
+
+c2  $ degradeBy 0.4 $ speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "bsperc:6" # vowel "a" # gain "0.6"
+
+c2  $ degradeBy 0.8 $ speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "bsperc:6" # vowel "a" # gain "0.6"
+
+c2  $ degradeBy 1 $ speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "bsperc:6" # vowel "a" # gain "0.6"
+
+c2 $ sound "bsnoise:4/2"
+  # cut 1
+  # gain "0.8"
+  # vowel "<a o a>"
+
+c2 $ sound "[bsnoise:4/2, ~ bsnoise:5, ~ bsnoise:6 ~]"
+  # cut 1
+  # gain "0.8"
+  # vowel "<a o a>"
+
+c1 $ degradeBy 0 $ sound "{bskick:1 bskick:1 ~, bssnare ~ bssnare:7 ~}"
+
+c3 silence
+
+c2 $ chop 32 $ sound "{~ bsvocals ~, ~ ~ ~ bsvocals:8 bsvocals:8 ~ bsvocals:8 ~ ~}" # cut 1
+  # vowel "<a o p>"
+  # gain "<1 1 1 1 0>"
+
+c3 $ degradeBy 0.4 $ striate 8 $ sound "bsvocals bsnoise:5 bsnoise:6" # gain "0.6" # cut 2
+
+c1 $ degradeBy 0 $ sound "{bskick:1 bskick:1 [bsperc:6/2 bsperc:6/3], bssnare ~ bssnare:7 ~}"
+
+c1 $ jux (# vowel "a o a") $ sound "{bskick:1 bskick:1 [bsperc:6/2 bsperc:6/3], bssnare ~ bssnare:7 ~}"
+
+c1 $ sound "{bskick:1 bskick:1 [bsperc:6/2 bsperc:6/3], ~ ~ [~ bshihat*3], bssnare ~ bssnare:7 ~}"
+
+c3 $ slowspread (loopAt) [4,8] $ chop 32 $ sound "bsnoise:5" # gain "0.7"
+
+c2 $ chop 32 $ sound "{~ bsvocals ~, ~ bsperc:6 ~ bsvocals:8 bsvocals:8 ~ bsvocals:8 ~ ~}" # cut 1
+  # vowel "<a o p>"
+  # gain "<1 1 1 1 0>"
+
+c2 $ chop 32 $ sound "{~ bsvocals ~, ~ bsperc:6 ~ [bsperc:6 bsperc:6] bsvocals:8 ~ bsvocals:8 ~ ~}" # cut 1
+  # vowel "<a o p>"
+  # gain "<1 1 1 1 0>"
+
+c2 $ chop 32 $ sound "{~ bsvocals ~, ~ bsperc:6 ~ [bsperc:6 bsperc:6] bsperc:6 ~ bsperc:6 ~ ~}" # cut 1
+  # vowel "<a o p>"
+  # gain "<1 1 1 1 0>"
+
+c3 silence
+
+c2 $ chop 32 $ sound "{~ bsvocals ~, ~ bsperc:6 ~ [bsperc:6 bsperc:6] bsperc:6 ~ bsperc:6 ~ ~}" # cut 1
+  # vowel "<a o p>"
+  # gain "<1 1 1 1 0>"
+
+c1 $ sound "{bskick:1 bskick:1 [bsperc:6/2 bsperc:6/3], ~ ~ [~ bshihat*3], bssnare ~ bssnare:7 ~}"
+
+solo $ c1 $ sound "{bskick:1 bskick:1 ~, ~ bsperc:6 ~ [bsperc:6 bsperc:6] ~ ~ ~ ~ ~, bssnare ~ bssnare:7 ~}"
+
+c2 $ sound "~ ~ [bsperc:3/2 ~]"
+
+c1 $ jux (density 2) $ sound "{bskick:1 bskick:1 ~, ~ bsperc:6 ~ [bsperc:6 bsperc:6] ~ ~ ~ ~ ~, bssnare ~ bssnare:7 ~}"
+
+c2 $ jux (density 2) $ sound "~ ~ [bsperc:3/2 ~]"
+
+c3 $ slow 2 $ degradeBy 0.6 $ speed "0.2 0.4 0.6" # sound "bsnoise:3"
+  # vowel "a o"
+  # gain "0.6"
+  # cut 1
+
+c1 $ jux (density 2) $ sound "{bskick:1 bskick:1 ~, ~ bsperc:6 ~ [bsperc:6 bsperc:6] ~ ~ ~ ~ ~}"
+
+c1 $ jux (density 2) $ sound "{bskick:1 ~ bskick:1, ~ bshihat*2 ~ ~, ~ [bsperc:6 bsperc:6] ~ ~ ~ ~}"
+
+c2 $ degradeBy 0 $ loopAt 3 $ chop 8 $ sound "bsnoise:14 bsnoise:14"
+  # vowel "a"
+  # gain "0.6"
+
+c3 $ degradeBy 0.8 $ every 4 (rev) $ vowel "[a[ e]i]u[[e[ u o o[i]]e[u[]e]u]a a]"
+  # sound "bsguitar:4"
+  # cut 1
+  # gain "0.6"
+  # up "<1 5 7>"
+
+c2 $ degradeBy 0.4 $ loopAt 3 $ chop 8 $ sound "bsnoise:14 bsnoise:14"
+  # vowel "a"
+  # gain "0.6"
+
+c3 $ degradeBy 0.6 $ every 4 (rev) $ vowel "[a[ e]i]u[[e[ u o o[i]]e[u[]e]u]a a]"
+  # sound "bsguitar:4"
+  # cut 1
+  # gain "0.6"
+  # up "<1 5 7>"
+
+c1 $ sound "{bskick:1 ~ bsperc:3, ~ bshihat*2 ~ ~, ~ [bsperc:6 bsperc:6] ~ ~ ~ ~}"
+
+c2 silence
+
+c3 $ degradeBy 0.4 $ every 4 (rev) $ vowel "[a[ e]i]u[[e[ u o o[i]]e[u[]e]u]a a]"
+  # sound "bsguitar:4"
+  # cut 1
+  # gain "0.6"
+  # up "<1 5 7>"
+
+c2 $ slowspread (loopAt) [2,4] $ chop 32 $ sound "bsnoise:5" # gain "0.7"
+
+c3 $ degradeBy 0 $ every 4 (rev) $ vowel "[a[ e]i]u[[e[ u o o[i]]e[u[]e]u]a a]"
+  # sound "bsguitar:4"
+  # cut 1
+  # gain "0.6"
+  # up "<1 5 7>"
+
+c1 $ jux (# vowel "a o") $ sound "{bskick:1 ~ bsperc:3, ~ bshihat*2 ~ ~, ~ [bsperc:6 bsperc:6] ~ ~ ~ ~, bskick:1 [~ bskick:1] [~ ~ bskick:1]}"
+
+c3 $ degradeBy 1 $ every 4 (rev) $ vowel "[a[ e]i]u[[e[ u o o[i]]e[u[]e]u]a a]"
+  # sound "bsguitar:4"
+  # cut 1
+  # gain "0.6"
+  # up "<1 5 7>"
+
+c3 $ slow 2 $ degradeBy 0.8 $ speed "0.2 0.4 0.6" # sound "bsnoise:3"
+  # vowel "a o"
+  # gain "0.8"
+  # cut 1
+
+c1 $ jux (# vowel "a o") $ sound "{bskick:1 ~ bsperc:3, bskick:1 [~ bskick:1] [~ bskick:1]}"
+
+c2 $ degradeBy 0.5 $ sound "{~ ~ ~, [bsperc:6 bsperc:6] bsperc:6 ~}"
+
+c3 $ sound "bsnoise:20/3" # gain "0.6" # speed "-1"
+
+c2 $ randslice 32 $ sound "{bsvocals:11 ~ ~ ~, ~ bsvocals:11 ~, ~ ~ bsvocals:11 ~ ~}"
+  # vowel "<a o p>"
+  # gain "<0.7 0.7 0>"
+
+c1 $ jux (# vowel "a o") $ sound "{bskick:1 ~ bskick:1, bskick:1 [~ bskick:1] [~ bskick:1]}"
+
+c1 $ jux (# vowel "a o") $ sound "{bskick:1 ~ bskick:1, bskick:1 [~ bskick:1] ~ ~}"
+
+c3 $ sound "bsnoise:20/2" # gain "0.6" # speed "<-1 1 1>"
+
+c2 $ randslice 32 $ sound "{bsvocals:11 ~ bsvocals:11 ~, ~ bsvocals:11 ~, ~ ~ bsvocals:11 ~ ~}"
+  # vowel "<a o p>"
+  # gain "<0.7 0.7 0>"
+
+c3 silence
+
+solo $ c2 $ randslice 32 $ sound "{bsvocals:11 ~ bsvocals:11 ~, ~ bsvocals:11 ~, ~ ~ bsvocals:11 ~ ~}"
+  # vowel "<a o p>"
+  # gain "<0.7 0.7 0>"
+
+hush

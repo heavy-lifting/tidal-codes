@@ -1,0 +1,9 @@
+import Sound.Tidal.MIDI.Context
+
+import Sound.Tidal.MIDI.KorgKP3
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+m1 <- midiStream devices "KAOSSILATOR PRO 1 SOUND" 1 kp3

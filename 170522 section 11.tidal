@@ -1,0 +1,10 @@
+-- bit more driving - maybe combine with section 10 & 12
+
+c1 $ sound "{bskick:1 ~ bskick:1 ~, ~ [~ bsperc:3/2] ~ ~}" # cut 1
+
+c1 silence
+
+c2 $ randslice 32 $ sound "{bsvocals:11 ~ ~ ~, ~ bsvocals:11 ~, ~ ~ bsvocals:11 ~ ~}" # gain "0.7"
+  # vowel "<a o p>"
+
+hush

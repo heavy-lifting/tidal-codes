@@ -1,0 +1,23 @@
+c1 $ jux (slow 2) $ iter 4 (sound "{bskick:1 bskick:1 [bssnare:7*3] bskick:1, [bsnoise:14*3] ~ bshihat bsperc:3}") # pan sine1 # delay "0.2"
+
+c1 silence
+
+c4 $ sound "{voodoo? voodoo*8, feel*3 [~ feel] can}" # vowel "a o a"
+
+c4 silence
+
+c5 $ sound "{feel? feel feel? feel, ~ [cp cp]? ~}"
+
+c6 $ jux (slow 2) $ sound "bsnoise:16(6,13)" # iter 3 (up "1 7 3") # delay "0.2" # vowel "a"
+
+c6 silence
+
+c7 $ loopAt 8 $ sound "bsbass:8" # gain "0.8"
+
+c8 $ randslice 32 $ sound "bsguitar:8*5" # gain "0.6"
+
+c8 silence
+
+solo $ c9 $ slow 2 $ randslice 16 $ sound "george:4" # speed "-1" # delay "0.4"
+
+hush

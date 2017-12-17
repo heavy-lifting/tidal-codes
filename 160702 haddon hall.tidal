@@ -1,0 +1,25 @@
+c1 $ slow 2 $ sound "{~ ~ stab [mouth mouth], [tink tink] tink ~ [perc perc] ~}" # pan sine1 # vowel "a o a  "
+c1 silence
+
+c2 $ slow 2 $ sound "~ bottle [bottle bottle] perc" # up "0 5 7 12" # delay "0.99" # vowel "a o a"
+c2 silence
+
+hush
+
+c3 $ slow 2 $ often (rev)(sound "bass [what:10*2] ab:5 ~ ") # up "5 7 12 7" # shape "0.5" # vowel "e e u i"
+c3 silence
+
+c4 $ sound "{~ ~ ~ ~, ~ hh [hh hh] [hh hh hh]}" # pan sine1 # gain "0.6"
+c4 silence
+
+c5 $ sound "bottle [bd bd] dn [bd bd]" # delay "0.1" # vowel "a a o a"
+c5 silence
+
+c6 $ slow 2 $ every 2 (rev)(sound "metal*4") # up "7 5 12 0" # gain "0.8"
+c6 silence
+
+c7 $ slow 4 $ often (rev)(sound "{~ ~ ~ ~, arpy*5}") # speed sine1 # gain "0.4" # vowel "i i o u e" # shape "0.5"
+c7 silence
+
+c8 $ slow 2 $ sound "{ul [ul ul] ~ ~, ~ ~ ~ [stab stab] stab" # gain "0.5" # delay "0.3"
+c8 silence

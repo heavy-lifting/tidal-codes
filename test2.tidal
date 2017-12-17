@@ -1,0 +1,36 @@
+d1 $ sound "bd:2 bd:1 bd*3 bd*2"
+d2 $ sound "hh*5 hh"
+d3 $ sound "cp cp cp cp"
+d4 $ sound "bd bd bd bd [bd bd]" # speed "0.2"
+d5 $ every 3 (rev) $ (sound "cp/2 cp cp/2") # delay " 0.02/1 0.04 0.08/2"
+d6 $ slow 4 $ sound "feel:6 [feel:6 feel:6]" # vowel "a [e i]"
+d7 $ slow 4 $ sound "bd bd [bd [cp cp]] [bd cp]" # vowel "a o a o"
+d8 $ slow 4 $ sound "[~feel:6] [~feel:6] [hh hh] [hh hh]" # vowel "o e o e"
+d7 $ sound "arpy arpy [arpy arpy arpy]/2, arpy*4(7,8)" # vowel "a e i o u"
+d8 $ e 7 8 $ sound "arpy*4" # vowel "~ a e a i"
+d9 $ sound "bleep:1/4 bleep:1/4" # gain "0.8" # speed "[0.6/4, 0.8/4]"
+hush
+d6 $ sound "lucy:5/6" # speed "0.8" # delay "0.6" # gain "0.5"
+d6 $ silence
+d1 $ sound "lucy:9*5/4" # vowel "a e i o u" # delay "0.4" # gain "0.5"
+d1 $ silence
+
+d1 $ sound "lucy:0/6 lucy:1/4" # speed "0.5, 0.8" # delay "0.2"
+d2 $ sound "lucy:1/6" # speed "0.5, 0.8" # gain "0.6" # delay "0.5"
+d3 $ sound "lucy:4" # vowel "a e i o u"
+hush
+d1 $ silence
+d2 $ silence
+d3 $ silence
+
+hush
+
+d2 $ sound "HH HH"
+
+hush
+
+cps 1.4
+
+bps (100/60)
+
+hush

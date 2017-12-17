@@ -1,0 +1,212 @@
+--SUN 21 AUG AT 10:00, SHEFFIELD
+--Live Coding with TidalCycles: the patterns of music with Alexandra Cardenas
+--By: Lucy Cheesman (Sheffield Hallam University/YSWN Sheffield) & Amy Beeston (University of Sheffield/YSWN Sheffield)
+
+--Welcome to TidalCycles!
+--Live coding language written by Alex Mclean
+--tidalcycles.org
+--to find out more about live coding go to toplap.org
+
+--write the following line and evaluate it (Shift+Enter or Ctrl+Enter)
+d1 $ sound "bd"
+
+--now try changing the line of code.
+
+--to stop the sound evaluate:
+hush
+
+--we are now making patterns with different sound samples that we can find in our  SuperDirt samples folder. We can add our own samples too.
+
+--we can have two or more pattern streams running together like this:
+silence c1 $ sound "~ koy:1"
+
+c2 $ sound "~ ~ arp"
+
+c3 $ sound "pluck"  --note that the tilde creates a silence.
+
+c4 $ sound "koy:2"
+
+hush
+
+--make sure there is a blank line between each cycle!
+
+--we can silence each cycle individually like this:
+d1 silence
+
+--we can single one out by doing this:
+solo $ d2 $ sound "hh"
+
+--we can select one specific sample from a folder like this:
+d1 $ sound "bd:3"
+
+--the default bpm is 60, but we can change this like this:
+cps 1
+
+--All the samples in a pattern are played in one cycle. They will be evenly distributed.
+d1 $ sound "bd sn"
+
+d1 $ sound "bd sn hh cp mt arpy drum"
+
+d1 $ sound "bd sn hh cp mt arpy drum odx bd arpy bass2 feel future"
+
+hush
+
+--we can create a pattern inside a pattern step like this:
+d1 $ sound "[bd sn] hh" --the square brackets group the samples inside in one single step of the cycle.
+
+--we can start nesting patterns to create complexity from simplicity!
+d1 $ sound "[bd bd] [bd [sn [sn sn] sn] sn]"
+
+--we can also create polyrhythms by using commas:
+d1 $ sound "[hh hh, arpy arpy:1 arpy:2]"
+
+--and use as many layers as we want:
+d1 $ sound "[hh, sn cp sn, arpy:4 arpy:2, odx, ~ cp]"
+
+hush
+-- we can mix square brackets and commas too:
+d1 $ sound "[hh, [sn*2] cp sn, arpy:4 arpy:2, arpy [arpy:4 [arpy:1 arpy:2] arpy:3 arpy], odx, ~ cp]"
+
+--asterisks are multipliers and can be used like this:
+d1 $ sound "hh*2" --to repeat the same step as many times we want
+
+--we can also divide using / --the sample is then played half as often, in this case.
+d1 $ sound "bd/2"
+
+-- we can multiply and divide groups too:
+d1 $ sound "[bd sn]*2 cp/2"
+
+--and also whole patterns
+d1 $ sound "[[bd sn] cp]/2"
+
+hush
+
+--FUNCTIONS!
+-- we can reverse a pattern with rev
+d1 $ rev $ sound "[[bd sn] cp]"
+
+--we can reverse it only sometimes
+d1 $ sometimes rev $ sound "[[bd sn] cp]"
+
+--we can reverse it every 2 cycles
+d1 $ every 2 (rev) $ sound "[[bd sn] cp]"
+
+--we can slow or speed a pattern like this:
+d1 $ slow 2 $ sound "[[bd sn] cp]"
+
+d1 $ slow 0.5 $ sound "[[bd sn] cp]"
+
+c1 $ slow 0.1 $ density 4 $ sound "[bev]" --density 2 is the same as slow 0.5
+hush
+
+c1 $ every 2 (slow 0.5) $ every 3 (slow 2) $ sound "[bev]"
+hush
+--we can juxtapose a pattern with its own reversed version like this:
+c1 $ jux (rev) $ sound "koy/2, pluck/6, [sn:2 pluck/4]" --the reversed version will play on the right channel
+
+hush
+--we can brak a pattern:
+c1 $ brak $ sound "[[bd sn] cp]" --it makes a pattern sound a bit like a breakbeat.
+hush
+--or only brak it some times:
+c1 $ sometimes brak $ sound "[koy, pluck/6] [sn:2 pluck/4]"
+hush
+--we can iterate the patterns:
+d1 $ sound "numbers:1 numbers:2 numbers:3 numbers:4"
+
+c1 $ slow 0.2 $ sound "trump"
+
+cps 0.1
+hush
+
+--we can juxtapose this iteration!
+c1 $ jux (iter 4) $ sound "koy:7, koy:3, koy:4"
+hush
+cps 0.7
+hush
+--try this with any samples you like
+
+--palindrome reverses the pattern every other cycle:
+c1 $ palindrome $ sound "[koy:7/2, koy:3, koy:4], pluck"
+
+cps 0.6
+
+hush
+--we can chop the samples in pieces:
+d1 $ chop 10 $ sound "newnotes:2 newnotes:3 newnotes:4"
+
+--we can striate the samples! it is a granulator that mixes the samples:
+d1 $ striate 20 $ sound "newnotes metal"
+
+--we can use gap. This is another kind of granulator where every other grain is silent:
+d1 $ gap 8 $ sound "[jvbass drum:4]"
+
+hush
+
+--foldEvery transforms a pattern with a function, but only for the given number of repetitions. It is similar to chaining multiple every functions together.
+d1 $ foldEvery [3, 4, 5] (density 2) $ sound "newnotes:2 newnotes:3 newnotes:4"
+
+-- this is equal to:
+d1 $ every 3 (density 2) $ every 4 (density 2) $ every 5 (density 2) $ sound "newnotes:2 newnotes:3 newnotes:4"
+
+--we can use slowspread to apply these transformations one at a time per cycle:
+d1 $ slowspread (chop) [1, 10, 2, 4] $ sound "newnotes:2 newnotes:3 newnotes:4"
+
+d1 $ slowspread (striate) [1, 10, 2, 4] $ sound "newnotes:2 metal"
+
+--may be making a palindrome out ouf this?
+d1 $ palindrome $ slowspread (chop) [1, 10, 2, 4] $ sound "newnotes:2 newnotes:3 newnotes:4"
+--palindrome = every 2 rev
+
+--what about juxtaposing the palindrome?
+d1 $ jux (palindrome) $ slowspread (chop) [1, 10, 2, 4] $ sound "bass:2 bass:3 bass:4"
+
+hush
+--slowcat concatenates a list of patterns:
+d1 $ slowcat [sound "bd*2 sn", sound "arpy jvbass*2"]
+
+--randcat is similar to slowcat, but rather than playing the given patterns in order, picks them at random.
+d1 $ randcat [sound "newnotes", sound "jvbass", sound "drum", sound "ht"]
+
+--With stack we can group different patterns in only one stream:
+
+d1 $ stack [ sound "newnotes",
+            sound "bass",
+            sound "bd"]
+
+-------EFFECTS!
+----we can create different sound effects for our samples and synths:
+--gain is a pattern of numbers that specify volume like this"
+d1 $ sound "tok"
+    # gain "0.5"
+
+-- cutoff is a low pass filter. We give it the cutoff frequency in Hertz
+d1 $ sound "jvbass*4"
+   # cutoff "1200 200 400"
+
+--by the way, we can automate changes in the effects with a continuous function like sine1, like this:
+d1 $ sound "blip*4"
+     # cutoff (slow 4 $ scale 200 1500 sine1)
+
+d1 $ sound "tok*16"
+     # gain (slow 2 $ scale 0.1 1.2 sine1)
+
+--we can use delay:
+d1 $ sound "tok"
+     # delay "0.7" --this is the volume of the delay
+     # delaytime "0.2" -- this is the length of the delay in seconds
+     # delayfeedback "0.5" --amount of delay feeding back to itself
+
+--we can accelerate the samples:
+d1 $ sound "tink*4"
+      # accelerate "-3 3"
+
+--we can pan our samples:
+d1 $ sound "blip*4"
+      # pan "0 1"
+
+--we can apply formants to our samples:
+d1 $ sound "jvbass*2"
+      # vowel "a o"
+
+      hush

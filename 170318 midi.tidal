@@ -1,0 +1,28 @@
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+m1 <- midiStream devices "QUAD-CAPTURE" 1 synthController
+m2 <- midiStream devices "QUAD-CAPTURE" 1 synthController
+m3 <- midiStream devices "QUAD-CAPTURE" 10 synthController
+
+c1 $ sound "bd bd [cp cp]"
+c1 silence
+
+cps 0.5
+
+m1 $ every 3 (rev) $ midinote "{[40 38 42]*2, ~}"
+
+
+m1 silence
+
+m3 $ slow 2 $ midinote "60 62 64"
+m3 s5mnhilence
+
+c1 $ sound "arpy arpy:1 arpy:2"
+
+hush
+
+m1 midinote

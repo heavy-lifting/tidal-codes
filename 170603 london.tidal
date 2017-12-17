@@ -1,0 +1,60 @@
+cps 1
+
+c1 $ jux (density 2)
+  $ sound "{bskick ~ bskick ~, bsperc:6 ~ [bsperc:3 bsperc:3] bsperc:6 ~}"
+
+c2 $ sound "skel" # cut 1
+
+c2 silence
+
+c2 $ loopAt 8 $ striate 16 $ sound "skel:1 skel:1" # cut 1
+
+c2 $ slowspread (striate) [2,4] $ sound "skel:2 skel:2" # cut 1
+
+c2 $ jux (slow 2) $ up "{~ , [1[[1[[2[[]1 1]]1]]2]] ~}" # sound "skel:3" # cut 1
+
+c3 $ up "[[1 4 2 3[[1 4 2 3]]1 4 2 3]]1 4 2 3] [[1 4 2 3[[1 4 2 3]]1 4 2 3]]1 4 2 3]" # sound "skel:6" # cut 2
+
+
+c2 $ loopAt 3 $ striate 8 $ sound "skel:8 skel:8 skel:8 skel:8" # cut 1
+
+hush
+
+c2 $ sound "skel:8" # vowel "a"
+
+c2 $ slowspread (slow) [1,2,4,8] $ sound "skel:9"
+
+c3 $ slowspread (slow) [1,0.5,0.25] $ sound "skel:11 skel:11 skel:11 skel:11"
+
+c3 silence
+
+solo $ c2 $ sound "{~ , skel:12 skel:12 skel:12 ~}" # cut 1
+
+solo $ c3 $ slowspread (loopAt) [1,2,3,4]
+  $ chop 32
+  $ slowspread (density) [2,4,8]
+  $ sound "italy*8"
+  # shape 0.4
+
+c2 silence
+
+
+solo $ c4 $ sound "bsperc:6*8"
+  # vowel "<a o a>"
+  # up "<1 4 8 16>"
+  # shape "0.4"
+  # gain "1.5"
+
+c5 $ sound "skel:0" # cut 1
+
+c5 silence
+
+c6 $ sound "{bskick:1 [bsperc:3 bsperc:3/2] bskick:1 ~, ~ bshihat ~ [bshihat bshihat] [bshihat]}"
+
+c7 $ slowspread (slow) [1,2,4,8] $ sound "skel:9"
+
+c7 silence
+
+c8 $ up "[1 1[1[1 1 1 1]1 1]1 [1 1[1 1]1 1]1 1 1]" # sound "italy" # gain "1.5"
+
+hush

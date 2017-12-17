@@ -1,0 +1,28 @@
+-- what do you say to the man who wants to make rotten egg?
+
+-- good luck
+
+hush
+
+c1 $ slow 2 $ sound "{~ [tabla:14? tabla:14?] ~ ~, ~ ~ ~ ~}" # up "-1 -5 -7 -12" # delay "0.4" # vowel "o a o o" # gain "0.8"
+c1 silence
+
+c2 $ slow 2 $ sound "{[mouth perc] [ab:7 ab:7] [mouth perc] ~, ~ perc [perc perc] [perc perc]?, ab:2? ~ ~ tink? [tink tink]? ~ ~ ~ tabla?}" # gain "0.2" # vowel "a a a a"
+c2 silence
+
+c3 $ iter 4 $ slow 2 $ jux (rev) $ sound "feel [feel feel] ~ ~" # up "-5 -7 -12 -5" # delay "0.4" # gain "0.0"
+c3 silence
+
+c4 $ every 4 (rev) (sound "{~ ~ ~ ~, [arpy arpy:5 arpy:7]? [arpy:7 arpy:5 arpy:0]?}" # speed "-0.25 -0.5 -0.75 -0.5" # gain "0.0" # vowel "a o a o"
+c4 silence
+
+c5 $ randslice 32 $ sound "lucy*4" # speed "-0.5 -0.25" # gain "0.0"
+c5 silence
+
+c6 $ slow 2 $ sound "[ab:5 [ab:5 ab:5] ~, bass [bass bass] ~ ~ ~]" # up "-1 -5 -12 -5 -7" # vowel "a o a o a" # up "1 5 7 1 0" # gain "0.4"
+c6 silence
+
+c7 $ slow 2 $ sound "{[bd hh] [cp cp] [bd hh] ~, ~ ~ ~ ~ tabla}" # gain "0.6"
+c7 silence
+
+hush

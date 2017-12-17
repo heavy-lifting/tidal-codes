@@ -1,0 +1,20 @@
+c1 $ sound "cp"
+
+c1 silence
+
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>=putStrLn
+
+devices <- midiDevices
+
+m1 <- midiStream devices "Little Phatty SE II" 7 synthController
+
+m1 $ midinote "40 52"
+
+
+
+
+m1 silence
+
+m1 $ n "0 4 -8"

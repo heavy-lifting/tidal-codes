@@ -1,0 +1,17 @@
+c1 $ slow 2 $ sound "{~ tink [tink metal], ~ ~ metal ~ voodoo " # gain "0.8" # vowel "o a o"
+c1 silence
+
+c2 $ every 4 (rev) $ slow 2 $ sound "{~ ~ ~ ~, [hh hh] sn [can ~] [tink tink] ~ [mouth ~ mouth] ~}" # gain "0.5" # delay "0.2"
+c2 silence
+
+c3 $ sometimes (rev) $ sound "{mouth ~ voodoo ~ ~ metal [metal metal]}" # up "1 1 7 1 1" # gain "0.7"
+c3 silence
+
+c4 $ slow 4 $ often (rev) $ sound "{[mouth ~] [mouth ~], [perc perc] [perc:1 perc:1] ~ cp ~" # speed "0.6" # delay "0.4" # vowel "o a o e"
+c4 silence
+
+c5 $ slow 16 $ striate' 16 (1/32) $ sound "lucy:3" # speed "-0.25" # gain "0.7"
+c5 silence
+
+c6 $ slow 4 $ sound "lucy lucy" # speed "0.25, -0.25" # gain "0.7"
+c6 silence

@@ -1,0 +1,33 @@
+d3 $ often (density 2)
+  $ sound "bshihat*4"
+  # vowel "a o a"
+  # pan "1 0 1 0 1 0"
+  # gain "<1 1 1 1 1 0>"
+
+d1 $ jux (rev) $ sound "{bskick:1 ~ bssnare ~, ~ bsperc:3 ~ ~ ~}"
+  # gain "<1 1 1 0>"
+
+d8 silence
+
+d9 $ density "<2 2 4 4>"
+  $ sound "bskick*2"
+  # gain "<1 1 1 1 0>"
+
+d3 $ every 4 (# speed "-1 1")
+  $ every 2 (# cut 1)
+  $ loopAt "<4 2 8>"
+  $ density "<1 2 4>"
+  $ sound "lucy:2 lucy:2"
+  # gain "1"
+  # pan "<0 -1>"
+  # delay "0.4"
+
+d2 $ density 0.25 $ iter 3 $ n "{5(3,8), 4(3,8) 8(5,8) 10(6,8)}" # sound "jvbass" # gain "1" # speed "0.7"
+
+d5 $ sound "{skel:8 skel:8 skel:8 skel:8}" # cut 2
+
+d5 silence
+
+hush
+
+bps (150/60)

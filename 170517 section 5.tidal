@@ -1,0 +1,40 @@
+-- pretty industrial and nice
+
+c6 $ sound "bskick:1 [~ bskick:1] [~ ~ bskick:1]"
+
+c6 silence
+
+c1 $ slowspread (loopAt) [2,4] $ chop 32 $ sound "bsnoise:5" # gain "0.7"
+
+--c1 $ slowspread (loopAt) [4,8] $ chop 32 $ sound "bsnoise:5" # gain "0.7"
+
+hush
+
+c1 silence
+
+c2 $ sound "~ ~ [bsperc:3/2 ~]"
+
+c2 silence
+
+
+
+c3 $ slow 2 $ degradeBy 0.0 $ speed "0.2 0.4 0.6" # sound "bsnoise:3"
+  # vowel "a o"
+  # gain "<0.8 0>"
+  # cut 1
+
+-------
+c6 $ jux (# vowel "a o") $ sound "bskick:1 [~ bskick:1] [~ ~ bskick:1]"
+
+c6 silence
+
+c1 $ loopAt 4 $ sound "bsnoise:5"
+
+c2 $ sound "bsperc:3*2 ~ [~ bsperc:3] ~"
+
+solo $ c3 $ slow 2 $ degradeBy 0.8 $ speed "0.2 0.4 0.6" # sound "bsnoise:3"
+  # vowel "a o"
+  # gain "0.8"
+  # cut 1
+
+hush

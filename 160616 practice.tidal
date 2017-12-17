@@ -1,0 +1,37 @@
+c1 $ slow 4 $ n (run 10) # s "ul"
+c1 silence
+
+c2 $ sound "[ul:1*2] ul:3 ul:4 ul:4" # speed sine1
+c2 silence
+
+hush
+
+bps (110/60)
+
+c3 $ palindrome (sound "{bd [cp cp] [~ cp] [sn sn]?, bass [bass bass] ~ ~ ~, feel feel ~ ~ ~ feel feel ~ ~ ~ feel feel ~}" # up "1, 3, 7, 1")
+c3 silence
+
+c8 $ sound "{bd cp cp sn, can arpy kurt, monkey}"
+c7 $ sound "monkey"
+
+c7 silence
+c8 silence
+
+c4 $ palindrome (sound "bd bd cp sn arpy") # cutoff (scale 1 0)
+c4 silence
+
+c5 $ striate' 32 (1/16) $ sound "lucy:2" # speed "0.5" # delay "0.8" # cut "1"
+c5 silence
+
+c6 $ slow 2 $ sound "can? can? [can can]? can" # vowel "o a" # delay sine1 # gain sine1 # speed sine1
+c6 silence
+
+--what do you say to the man who wants to make rotten egg?
+
+c7 $ sound "bd [cp cp] bass"
+
+--"good luck"
+
+c7 $ sound "~ kurt? kurt [feel feel]" # cutoff "50"
+
+c7 silence

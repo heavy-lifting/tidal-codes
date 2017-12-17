@@ -1,0 +1,11 @@
+cps 1
+
+d1 $ sound "{~, bd*0 bd*2 bd*2 bd*1 bd*4 bd*1 bd*1 bd*0 bd*0 bd*2 bd*5 bd*2 bd*4 bd*3 bd*0 bd*1 bd*3 bd*1 bd*2 bd*3 bd*0 bd*0 bd*1 bd*2 bd*0 bd*1 bd*1 bd*0 bd*0 bd*0 bd*0}" # up "[0 2 2 1 4 1 1 0 0 2 5 2 4 3 0 1 3 1 2 3 0 0 1 2 0 1 1 0 0 0 0]" # gain "<1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>"
+
+d2 $ sound "{~, bsperc*0 bsperc*0 bsperc*9 bsperc*24 bsperc*9 bsperc*31 bsperc*22 bsperc*0 bsperc*0 bsperc*39 bsperc*24 bsperc*20 bsperc*25 bsperc*15 bsperc*0 bsperc*0 bsperc*13 bsperc*23 bsperc*22 bsperc*22 bsperc*27 bsperc*0 bsperc*0 bsperc*18 bsperc*15 bsperc*8 bsperc*22 bsperc*30 bsperc*0 bsperc*0 bsperc*27}" # up "[0 0 9 24 9 31 22 0 0 39 24 20 25 15 0 0 13 23 22 22 27 0 0 18 15 8 22 30 0 0 27]" #  up "[0 2 2 1 4 1 1 0 0 2 5 2 4 3 0 1 3 1 2 3 0 0 1 2 0 1 1 0 0 0 0]" # gain "<1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>"
+
+hush
+
+d1 $ seqP [
+  (0,1, sound "{~, bsperc*0 bsperc*0 bsperc*9 bsperc*24 bsperc*9 bsperc*31 bsperc*22 bsperc*0 bsperc*0 bsperc*39 bsperc*24 bsperc*20 bsperc*25 bsperc*15 bsperc*0 bsperc*0 bsperc*13 bsperc*23 bsperc*22 bsperc*22 bsperc*27 bsperc*0 bsperc*0 bsperc*18 bsperc*15 bsperc*8 bsperc*22 bsperc*30 bsperc*0 bsperc*0 bsperc*27}"  )
+]

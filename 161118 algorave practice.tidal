@@ -1,0 +1,27 @@
+cps 0.75
+
+c1 $ sound "{bskick feel bskick*2 feel, [hh/4 hh], ~ ~ [hh hh] ~}" # delay "0.1"
+c1 silence
+
+c2 $ sound "{~ ~ ~ ~, voodoo*2 voodoo*2 voodoo*2 ~}" # vowel "a o" # delay "0.2" # gain "1.2"
+c2 silence
+
+c3 $ jux (rev) $ every 2 (density 2) $ sound "{ul? ~ ~ ~, ~ ~ ~ ~ ~}" # iter 3 (speed "0.633 0.465 0.987 1.2")
+c3 silence
+
+c4 $ randslice 32 $ sound "lucy*4" # speed "0.8"
+c4 silence
+
+c5 $ sound "{~ ~ ~ ~, [arpy arpy:3 arpy:7]}" # iter 3 (speed "0.25 0.165 0.33 0.25")
+c5 silence
+
+c6 $ jux (slow 2) $ every 3 (rev) $ sound "metal*2? metal? [~ metal]? metal" # iter 2 (speed "-0.25 -0.33 -0.165") # vowel "o a o"
+c6 silence
+
+c7 $ density 2 $ sound "{arpy arpy:3 arpy:5, [arpy arpy:3 arpy:7]/2}" # speed "-0.25 -0.25 -0.25"
+c7 silence
+
+c8 $ randslice 32 $ sound "pers" # gain "2"
+c8 silence
+
+hush

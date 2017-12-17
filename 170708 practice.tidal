@@ -1,0 +1,68 @@
+cps 1
+
+d1 $ superimpose (iter 4) $ jux (density 4) $ sound "{cp ~, ~ [hh hh] [hh hh hh]}"
+  # shape "0.2 0.4 0.6 0.8"
+  # vowel "<a o a p>"
+
+d2 $ sound "italy:2"
+
+hush
+
+d3 $ slowspread (loopAt) [1,2,4]
+  $ slowspread (density) [0.5,1,2,3]
+  $ sound "skel:1*8"
+  # vowel "<a o>"
+  # cut 1
+  # cutoff "400 500 600 700 800"
+  # gain "<1 1 1 0>"
+
+d4 $ slowspread (slow) [1,2,3,4] $ chop 32 $ sound "skel:9*4" # gain "<1 0>"
+
+d4 $ loopAt 2 $ sound "skel:2 skel:2" # up (irand 6)
+
+hush
+
+d4 $ degradeBy 0.5 $ sound "sanmarino*16" # speed (sine1) # pan (sine1 - 1)
+
+d5 $ degradeBy 0.2 $ sound "sanmarino*16" # speed (1 + sine1) # pan (sine1 + 1)
+
+d4 $ slowspread (density) [1,2,3,4] $ slowspread (loopAt) [1,2,3,4,5]
+  $ sound "italy*4"
+  # gain "<1 1 1 0>"
+
+d5 $ sound "skel:4" # cut 1
+
+hush
+
+solo $ d6
+  $ weave 10 (sound "bsperc")
+  [up (run 8)
+  # speed rand
+  # vowel "a o a"
+  # delay "0.2 0.6"]
+
+d1 $ jux (density 2) $ superimpose (slow 2) $ iter 4 $ sound "{bskick:1 ~ bskick:1 ~, ~ bsperc:3 ~ bsperc:3 ~, bsperc:6*3 ~}" # gain "<1 1 1 1 1 1 1 0>"
+
+d8 $ slowspread (loopAt) [1,2,3,4,5] $ slowspread (density) [1,2,4] $ sound "italy*5" # gain "<1 1 1 0>"
+
+solo $ d9 $ sound "skel:1*8" # cut 5 # cutoff "<400 500 600 700>"
+
+d1 $ sound "{bsperc:6 [bsperc:6*3] bsperc:3 ~, bskick:1}" # gain "<1 1 1 1 1 1 1 0>"
+
+d9 $ slowspread (density) [1,2,4] $ sound "bsnoise:4*8" # cut 2 # up ((run 8) - 16)
+
+d2 $ loopAt 3 $ sound "skel:8" # gain "<1 0 0 0>"
+
+d3 $ superimpose (density 4) $ sound "{~, skel:12 skel:12 skel:12 ~}" # cut 1 # gain "<1 1 1 1 1 1 1 0>" # slowspread (iter) [4,3,2,1] (speed "<1 0.5 1 -1>")
+
+d1 $ slow 4 $ sound "numbers:1 numbers:2 numbers:3 numbers:4" # slowspread (iter) [3,2,1] (up "<1 8 16>")
+
+solo $ d1 $ sound "skel" # cut 1
+
+hush
+
+d2 silence
+
+d5 silence
+
+d5 $ slowspread (slow) [1,2,3,4] $ sound "skel:9"

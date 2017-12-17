@@ -1,0 +1,91 @@
+bps (85/60)
+
+hush
+
+-- italy group = alpha
+d2 $ slow 1.5 $ sound "italy italy italy italy"
+  # cut 1
+  # iter 4 (speed "0.5 2 1 4")
+
+-- albania group = beta
+d2 $ slow 1.5 $ sound "[cp cp] bd"
+
+d3 $ sound "hh hh hh hh"
+
+hush
+
+-- italy group - alpha
+d1 $ n (irand 8) # sound "voodoo"
+
+d2 silence
+
+d3 silence
+
+-- alpha and beta
+d2 $ slow 2 $ sound "bsperc [bsperc bsperc] [bsperc bsperc] bsperc"
+  # iter 4 (speed "1 [4 2]")
+
+d1 silence
+
+-- albania - we need bpm 85 e.g. bps (85/60)
+-- albania loops at 8
+-- watch out as loopAt won't kick in necessarily on time so need to time changover
+-- think about transitions on albania section
+
+-- albania group = beta
+d7 $ randslice 16 $ sound "albania*2 ~" # speed "-1"
+
+-- alpha close in
+-- d6 $ slowspread (loopAt) [8] $ sound "albania"
+
+d1 silence
+
+d2 $ sound "albania" # cut 1
+
+solo $ d6 $ slowspread (loopAt) [8] $ sound "albania"
+
+d8 $ slowspread (loopAt) [4] $ sound "albania albania"
+
+solo $ d1 $ sound "albania" # cut 1
+
+
+-- italy group = alpha
+hush
+
+
+d6 $ (slow 2) $ sound "sn:8 ~ sn:8 ~"
+
+d1 silence
+
+-- albania group = beta
+
+d7 $ sound "hh hh hh hh"
+
+-- next line turns off albania
+d1 $ sound "albania" # cut 1 # gain 0
+
+-- albania group = beta
+d8 $ sound "~ [cp cp]"
+
+d6 silence
+
+
+
+-- italy group = alpha - beta joins in at the end
+
+
+d9 $ slow 1.5 $ sound "sweden [sweden sweden] [sweden sweden sweden] sweden"
+  # up "1 2 3 4 5"
+  # gain 1.8
+
+
+solo $ d9 $ slow 1.5 $ sound "sweden [sweden sweden] [sweden sweden sweden] sweden"
+    # up "1 2 3 4 5"
+    # gain 1.8
+
+
+d7 silence
+
+d6 silence
+
+hush

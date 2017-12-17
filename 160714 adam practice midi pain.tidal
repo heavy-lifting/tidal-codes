@@ -1,0 +1,65 @@
+c1 $ slow 2 $ sound "{~ bd [cp cp], ~ ~ [feel feel] feel ~}"
+
+c1 silence
+
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+m1 <- midiStream devices "Little Phatty SE II" 1 synthController
+
+m1 $ midinote "60"
+m1 silence
+m2 <- midiStream devices "QUAD-CAPTURE" 1 synthController
+
+m2 $ sometimes (rev) (midinote "48? [52 52] ~ ~")
+m2 silence
+bps (128/60)
+
+c1 $ every 4 (rev) $ sound "{~ ~ ~ [ul ul]?, ~ ~ ~ [can can]? perc?}" # vowel "a o a"
+
+hush
+
+
+
+c1 silence
+
+c2 $ sound "ul*4 what:10 ~" # up "1 5 7 12 1" # vowel "i i u"
+c2 silence
+
+c3 $ sound "{[cp cp] ~ ~ ~, ~ ~ cp [cp cp] [cp cp cp]}" # delay sine1 # gain "0.7"
+c3 silence
+
+c4 $ sound "{bd [hh hh] ~ hh, arpy [arpy arpy] [~ arpy] ~ ~ voodoo [bass voodoo] ~ ~}" # vowel "a a i u o e e u a" # speed "0.7"
+c4 silence
+
+c5 $ sound "lucy" # speed "0.4, -0.4"
+c5 silence
+
+c6 $ sound "[arpy arpy:3 arpy:7]" # speed "0.25" # gain "0.8"
+c6 silence
+
+c7 $ slow 2 $ sound "{tink? ~ ~ [mouth mouth]?, ~ ~ perc [bottle bottle] ~}" # vowel "a a o a u" # delay "0.2"
+c7 silence
+
+c8 $ slow 2 $ sound "{hh ~ [cp cp]? ~, ~ what:10 feel ~ ~}" # speed "0.4"
+c8 silence
+
+c1 $ sometimes (rev) (sound "metal*4" # up "1 5 12 7") # vowel "a o a" # delay "0.2"
+c1 silence
+
+c2 $ sound "lucy" # speed "0.4, -0.4"
+c2 silence
+
+c2 $ slow 2 $ often (rev) (sound "what:10*4?" # up "1 5 12 7 5")
+c2 silence
+
+c3 $ every 2 (rev) (sound "{~ [tink mouth] ~ ~, bd bottle ~  ~ ~ }")
+c3 silence
+
+hush
+
+c4 $ often (rev) (sound "{~ ~ ~ ul, metal ~ ~ ~ ~}") # vowel " a a a o a"
+c4 silence

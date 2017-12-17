@@ -1,0 +1,8 @@
+
+d1 $ sound (samples "*2" (irand 3)) # cutoff "900" # resonance "0.2 0.4"
+d1 silence
+
+d2 $ sound "bd bd bd [bd bd]" # up "5 3 1 8" # resonance
+
+d2 $ sound "feel*pRand"
+d2 silence

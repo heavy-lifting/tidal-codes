@@ -1,0 +1,27 @@
+hush
+
+bps (90/60)
+
+d6 $ jux (# speed "-1") $ chop 16 $ sound "cdn" # n "<0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16>" # gain "<2 0 0 0>"
+
+d1 $ sound "water:2*2"
+  # speed "-1"
+  # cut 1
+
+d2 $ sound "{bskick:1*2, bsperc:3}"
+  # lpf 4000
+
+d3 $ sometimes (density 2)
+  $ sound "hh*4"
+  # lpf 4000
+
+d4 $ degradeBy (0.8)
+  $ sound "water*64"
+  # lpf (scale 600 4000 sine)
+  # cut 2
+  # vowel "a"
+
+d5 $ slowspread (loopAt) [4,2,1,0.5]
+  $ slowspread (density) [0.5,1,2,4]
+  $ sound "water:2*4"
+  # gain 1.3

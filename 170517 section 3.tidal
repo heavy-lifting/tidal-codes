@@ -1,0 +1,52 @@
+-- working nicely
+
+c3  $ slow 2 $  speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "noise:16"
+
+c4 $ sound "bsguitar:19" # gain "0.6"
+
+hush
+
+c5 $ (slow 2) $ iter 4 $ sound "~ ~ bsguitar:19 bsguitar:19"
+  # gain "0.6"
+  # up "[~ ~ -5 -7]"
+
+c5 silence
+
+c6 $ speed "0.25 0.125" # sound "bsnoise:10" # gain "0.5" # cut 3 # vowel "<a o>"
+
+-- be careful with b6 here
+
+c6 silence
+
+hush
+------
+
+c1 $ sound "{~ bsperc:3*2 ~ ~ ~, bskick:1}" # cut 1
+
+c1 silence
+
+c2 $ jux (# vowel "<a o a>") $ slowspread (loopAt) [10,9,8] $ chop 32 $ sound "bsnoise:15 bsnoise:15"
+
+c2 silence
+
+c3 $ speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "noise:16"
+
+c3 silence
+
+-------
+
+c3 $ degradeBy 0.0 $ speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "noise:16"
+
+solo $ c4 $ loopAt 3 $ sound "bsnoise:10" # gain "1"
+
+c4 silence
+
+hush
+
+c5 $ sound "bskick:1 bskick:1 bskick:1"
+
+c1 $ sound "bsnoise:4/2"
+  # cut 1
+  # gain "0.8"
+  # vowel "<a o a>"
+  

@@ -1,0 +1,10 @@
+cps 1
+
+c5 $ sound "{bskick cp [cp cp] ~, ~ ~ hh [hh hh] [hh hh hh]}" # gain "0.6"
+c5 silence
+
+c6 $ loopAt 2 $ striate 4 $ sound "bsbass*4" # gain "0.8"
+c6 silence
+
+c7 $ jux (# speed "-1") $ randslice 32 $ density 8 $ every 2 (rev) $ sound "lucy:2*4 lucy:2*4?" # gain "0.8" # vowel "o a o"
+c7 silence

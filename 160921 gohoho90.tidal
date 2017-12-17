@@ -1,0 +1,3 @@
+c1 $ density 2 $ striate 584 $ sound "gohoho90*4"
+
+c2 $ density 4 $ randslice 292 $ sound "gohoho90*4" # speed "-1"

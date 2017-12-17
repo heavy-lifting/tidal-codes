@@ -1,0 +1,32 @@
+bps (130/60)
+
+c1 $ slow 2 $ jux (rev) $ sound "{bd:3 bd:3 [mouth mouth]? mouth, ~ [ab:7*2]? what:7 bottle ~, mouth [mouth mouth]?}" # vowel " o a o" # delay "0.2" # gain "0.6"
+c1 silence
+
+c2 $ loopAt 32 $ randslice 32 $ sound "xrf xrf ~ ~" # gain "1.2"
+
+c2 $ jux (density 2) $ every 2 (rev) $ slow 2 $ sound "{[ab:4*2] [bd:3 bd:3] bd:3 ab:4, ~ ~ ~ ~}" # gain "0.0" # vowel "o a ~ ~"
+c2 silence
+
+c3 $ jux (slow 2) $ sound "{feel [feel feel] feel feel, [what:10*2] stab what:10 ~}" # iter 3 (up "1 5 7") # delay "0.6" # gain "0.0"
+c3 silence
+
+c4 $ jux (rev) $ slow 2 $ sound "{bass? [bass bass]? bass? [bass bass bass]?, what:10 what:10 ~ what:10 what:10 [bass bass bass]?}" # iter 3 (speed "-0.33 -0.125 -0.24 [0.33 0.125 0.24]") # gain "0.0" # delay "0.2" # vowel "o ~ a ~ o"
+c4 silence
+
+c5 $ jux (density 2) $ randslice 32 $ sound "lucy ~ [lucy lucy] [lucy ~]" # speed "-0.25 0.25 -0.33 0.165" # gain "0.4 # vowel "
+c5 silence
+
+c6 $ jux (rev) $ sound "{~ ~ ~ ~, arpy arpy:5 arpy:7}" # iter 4 (speed "-1 -0.2 -0.124 -1") # vowel "i i i i" # gain "0.4"
+c6 silence
+
+c7 $ sound "metal*6?" # speed "-0.025 -0.133 -0.165" # cut "1" # gain "0.4" # delay "0.2" # vowel "a o a"
+c7 silence
+
+c8 $ sound "lucy ~ ~ ~" # cut "1" # speed "-0.25" # gain "0.8"
+c8 silence
+
+
+---heavy lifting
+
+--

@@ -1,0 +1,31 @@
+cps (153/60)
+
+c1 $ jux (# speed "-1") $ every 3 (slow 4) $ slowspread (density) [1, 2] $ sound "bd bd bd bd"
+c1 silence
+
+c1 $ sound "bd"
+
+c2 $ jux (rev) $ gap (128) $ sound "george:1*4"
+c2 silence
+
+c3 $ jux (# speed "0.5") $ every 3 (slow 2) $ sound "george:2/2 george:3" # cut "-1" # gain "1.2"
+c3 silence
+
+c4 $ jux (slowspread ($) [(# speed "0.5"), (# delay "0.5")]) $ randslice 128 $ sound "george:4 george:4 george:4 george:4" # speed "0.75"
+c4 silence
+
+c5 $ every 4 (density 2) $ sound "bshihat:5*2"
+c5 silence
+
+hush
+
+c5 $ smash 3 [2,3,4] $ sound "george"
+c5 silence
+
+c7 $ slow 8 $ chop 128 $ sound "george george:1" # gain "1" # cut "1"
+c1 silence
+
+c2 $ slowspread ($) [slowspread (density) [2, 3], slowspread (chop) [16, 32, 64]] $  sound "george:2 george:3" # gain "0.6" # cut "1"
+c2 silence
+
+hush

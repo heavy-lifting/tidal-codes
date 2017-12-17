@@ -1,0 +1,22 @@
+solo $ c1 $ slow 2 $ sound "{voodoo ul [ul ul] ~, can ~ ~ ~ ~}" # vowel "oao" # delay "0.2"
+c1 silence
+
+$ c2 $ slow 2 $ sound "{~ sn hh sn, ~ sn [hh hh] sn}" # gain "0.8" # pan sine1
+c2 silence
+
+c3 $ every 4 (rev)(sound "{what:10? bass*3, ab:5? ~ ~ ~}" # up "-4 -5 -2 -7 -12" # gain "0.8" # vowel "ouiou")
+c3 silence
+
+c4 $ every 2 (rev) (sound "{arpy*4, arpy*3}" # speed "0.25 0.5 0.25 0.75" # vowel "aeioi" # gain "0.5" # pan sine1)
+c4 silence
+
+c5 $ slow 4 $ often (rev) (sound "{~ ~ ~ ~, what:10*4?}" # speed "0.8 0.2 0.4" # gain "0.6" # shape "0.2 0.4 0.6")
+c5 silence
+
+c6 $ sound "metal [metal metal] ~ ~" # up "2 -2 4 -2" # vowel "ooau" # delay "0.2" # gain "0.6"
+c6 silence
+
+c7 $ slow 4 $ sound "lucy" # speed "0.2, -0.2" # gain "0.6"
+c7 silence
+
+hush

@@ -1,0 +1,68 @@
+solo $ c1 $ jux (slowspread (slow) [2,3,4]) $ sound "bsnoise:4 bsvocals [bsperc:3 bsperc:3] bsnoise:4"
+  # vowel "<a o a>"
+  # up "<1 7 3 5>"
+  # shape "0.8"
+  # cut 2
+
+c1 silence
+
+c2 $ jux (rev)
+  $ sound "{bskick ~ bskick ~ ~ , ~ bsperc:6 bsperc:6 ~ [bsperc:6 bsperc:6]}"
+  # gain 1.5
+
+c2 silence
+
+c4 $ slowspread (loopAt) [1,2,3,4,5]
+  $ chop 32
+  $ slowspread (density) [2,4,8]
+  $ sound "{italy*5}"
+  # shape 0.4
+
+c4 silence
+
+hush
+
+c5 $ slowspread (loopAt) [4,8] $ chop 32 $ sound "azerbaijan*4" # gain "1.5"
+
+c6 $ jux (iter 4) $ sound "bskick [bsperc:3 bsperc:3/2] bskick ~" # gain "1.5"
+
+hush
+
+c2 $ loopAt 6 $ sound "skel:4"
+
+c1 silence
+
+c2 $ loopAt 3 $ striate 8 $ sound "skel:8 skel:8"
+
+c3 $ slowspread (slow) [1,2,4,8] $ sound "skel:9"
+
+c3 silence
+
+solo $ c4 $ sound "skel:13" # cut 1
+
+c4 silence
+
+hush
+
+c3 silence
+
+c1 silence
+
+
+
+
+c1 silence
+
+c7 $ sound "bsperc:3*5"
+  # up "<1 5 3>"
+  # vowel "o a p"
+
+
+c5 silence
+
+c1 $ speed "[1[1[1 1[1]1[1 1 1[ 1[1]]]]]]]"
+  # sound "skel:11"
+  # cut 1
+  # gain "<1 0>"
+
+hush

@@ -1,0 +1,23 @@
+bps (109/60)
+
+c1 $ slow 2 $ sound "{mouth? [mouth*3]? ~ ~, can [mouth*2]? ~ ~ mouth*4? ~}" # iter 3 (speed "0.33 0.24 0.165")
+c1 silence
+
+c2 $ slow 2 $ jux (rev) $ sound "{bd:3 [ab:4 ab:4] bd:3 ~, hh [hh hh] [hh hh hh]}" # delay "0.2" # vowel "o a a o" # pan sine1 # speed "0.8" # gain "0.0"
+c2 silence
+
+c3 $ every 2 (slow 2) $ jux (slow 2) $ sound "{less less [less less]? less, [feel feel] [feel feel] feel}" # iter 3 (speed "0.24 0.33 0.12") # gain "0.0"
+c3 silence
+
+c4 $ every 2 (rev) $ sound "{[arpy arpy:5 arpy:7 arpy:3] ~ ~ ~, [arpy arpy arpy]*4}" # iter 3 (speed "-0.23 -0.33 -0.42") # vowel " a o a a" # gain "0.0" # delay "0.2"
+c4 silence
+
+c5 $ iter 4 $ sound "{metal metal metal metal, ~ [metal metal] ~}" # iter 4 (speed "-0.24 -0.33 -0.51 -0.12") # gain "0.9" # vowel "i u i u" # delay "0.4"
+c5 silence
+
+c6 $ slow 2 $ sound "tabla:14 ~ ~ ~" # vowel "a o a"
+c6 silence
+
+hush
+
+c7 $ sound "bd"

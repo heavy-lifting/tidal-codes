@@ -1,0 +1,18 @@
+--what do you say to the man who wants to make rotten egg
+
+c1 $ every 3 (rev) $ sound "[mouth mouth] tink [can can]? voodoo?" # delay sine1
+c1 silence
+
+c2 $ sometimes (rev) $ sound "{gretsch gretsch:2 [cp cp] gretsch, ~ ~ ~ ~ off, stab ul stab ~ ~ ~ metal metal ~ ~ ~ tabla:2? tabla:1?}" # gain "0.5"
+c2 silence
+
+--"good luck"
+
+c3 $ sound "lucy" # speed "-0.25, 0.25" # gain "0.5"
+c3 silence
+
+c4 $ sound "{~ [cp cp] ~, bass bass bass bass ~ ~ ~ bass ~}" # speed sine1
+c4 silence
+
+hush
+c

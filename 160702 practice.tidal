@@ -1,0 +1,25 @@
+bps(128/60)
+
+c1 $ slow 2 $ sound "[mouth mouth mouth] voodoo ~ voodoo" # vowel " a a a o" # delay "0.9"
+c1 silence
+
+c2 $ (0.25~>) $ slow 2 $ sound "cp [cp cp cp] ~ ~" # gain "0.8"
+c2 silence
+
+c3 $ slow 2 $ sound "~ ~ [hh hh hh] hh" # vowel "o i u u "
+c3 silence
+
+c4 $ sound "less*4?" # up "0 0 7 17"
+c4 silence
+
+c5 $ every 2 (rev)(sound "ul [ul ul] ab:2")
+c5 silence
+
+c6 $ every 4 (rev)(sound "metal [metal metal] ~ metal metal ~ ~ [metal metal]") # speed "0.8" # up sine1
+c6 silence
+
+c7 $ slow 2 $ every 2 (rev)(sound "arpy arpy [arpy arpy] ~") # up "7 7 5 12" # delay "0.8" # vowel "a o a"
+c7 silence
+
+c8 $ (0.25 ~>) $ sound "arpy*4" # delay "0.9" # up "0 5 7 12"
+c8 silence

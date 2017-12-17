@@ -1,0 +1,26 @@
+-- shelve this bit?
+
+c2 $ degradeBy 0.2 $ sound "{[bskick:1]*4, [bsperc:3]/3 ~}"
+
+c2 silence
+
+c1 $ slow 2 $ sound "bsperc:6*4 ~"
+
+c4 $ degradeBy 0.9 $ slowspread (density) [0.5,1,2] $ iter 4 (up (run 4)) # sound "bsvocals:0" # cut 1
+
+
+
+hush
+
+-------
+
+c1 $ slowspread (density) [0.125,0.0165,0.25] $ sound "bsperc:6*4 bsperc:6 bsperc:6*2 bsperc:6"
+
+c2 $ degradeBy 0.9 $ jux (density 0.5) $ sound "{[bskick:1]*4, [bsperc:3]/3 ~}"
+
+solo $ c3 $ degradeBy 0.8 $ jux (density 2) $ randslice 32 $ sound "bsnoise:9 [bsnoise:9 bsnoise:9] bsnoise:9 [bsnoise:9[bsnoise:9]bsnoise:9]"
+  # up "<-1 -5 -3>"
+
+c4 $ sound "bsvocals:0" # cut 1 # speed "8"
+
+hush

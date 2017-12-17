@@ -1,0 +1,25 @@
+cps 0.5
+
+d1 $ sound "italy" # speed "0.125" # cut 1
+
+d1 silence
+
+d2 $ degradeBy 0.8 $ slowspread (loopAt) [40, 46, 54] $ chop 128 $ sound "xrf" # gain 1.5 # delay 0.4
+
+d1 silence
+
+d3 $ degradeBy 0.8 $ sound "bsperc:3/4" # speed "-0.125" # gain 0.8 # vowel "o" # cutoff 800
+
+d4 $ degradeBy 0.8 $ loopAt 8 $ chop 8 $ sound "cdn:1" # gain 1
+
+d3 silence
+
+d5 $ slowspread (loopAt) [3,4,5] $ sound "bsperc*4" # vowel "a o a" # cut 2
+
+hush
+
+d6 $ slowspread (loopAt) [8,4] $ sound "belgium"
+
+d7 $ sound "skel" # cut 1
+
+hush

@@ -1,0 +1,21 @@
+bps (127/60)
+
+c1 $ sound "{bd:3 ~ bd:3 ~, ~ cp ~ [cp cp], ~ [sn sn] ~ sn}" # delay "0.1"
+c1 silence
+
+c2 $ jux (rev) $ sound "{bass ~ [bass bass], ~ what:10 ~ [what:10 what:10] ~ what:10}" # speed "0.32 1.24 0.89"
+c2 silence
+
+c3 $ every 2 (density 2) $ jux (slow 2) $ sound "metal*4" # iter (3) (speed "0.32 0.64 0.24")
+c3 silence
+
+c4 $ sound "{~, [arpy arpy arpy] arpy arpy arpy}" # speed "-0.25 -0.333 -0.165 -0.27"
+c4 silence
+
+c5 $ every 5 (rev) $ sound "{~ ~ ~ ~, ~ ~ hh [hh hh] [hh hh hh]}" # pan sine1
+c5 silence
+
+c6 $ randslice 32 $ jux (rev) $ iter 4 $ sound "lucy ~ [lucy lucy] ~" # speed "1 ~ -1 ~" # vowel "o ~ a ~"
+c6 silence
+
+hush

@@ -1,0 +1,11 @@
+c1 $ sound "bskick" # resonance "0.5"
+
+hush
+
+# vowel "a e i o u"
+
+# delay "1"
+
+# crush "32"
+
+# shape "1"

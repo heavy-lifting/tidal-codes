@@ -1,0 +1,40 @@
+-- bit more driving - maybe combine with section 10 & 12
+
+c1 $ sound "{bskick:1 ~ bskick:1 ~, ~ [~ bsperc:3/2] ~ ~}" # cut 1
+
+c1 silence
+
+c2 $ randslice 32 $ sound "{bsvocals:11 ~ ~ ~, ~ bsvocals:11 ~, ~ ~ bsvocals:11 ~ ~}" # gain "0.7"
+  # vowel "<a o p>"
+
+hush
+
+
+-- from section 12
+
+c1 $ sound "{bskick:1 ~ bskick:1 ~, ~ [~ bsperc:3/2] ~ ~}" # cut 1
+
+c1 silence
+
+c2 $ jux (slow 2) $ randslice 2 $ sound "{bsvocals:8 ~ ~ ~, ~ bsvocals:8 ~, ~ ~ bsvocals:8 ~ ~}" # gain "0.7"
+  # vowel "<a o p>"
+  # cut 2
+
+  -- from section 10
+
+hush
+
+  c1 $ jux (slow 4) $ sound "{bskick:1 ~ bskick:1 ~, ~ ~ ~ [bshihat*3] ~}" # cut 1
+
+  c1 silence
+
+  c4 $ degradeBy 0.9 $ every 4 (rev) $ vowel "[a[ e]i]u[[e[ u o o[i]]e[u[]e]u]a a]"
+    # sound "bsguitar:4"
+    # cut 1
+    # gain "0.6"
+
+  c4 silence
+
+  c2 $ randslice 32 $ sound "{bsvocals:11 ~ ~, ~ bsvocals:11 ~ ~, ~ ~ bsvocals:11 ~ ~}" # gain "0.7" # cut 2
+
+  hush

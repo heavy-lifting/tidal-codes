@@ -1,0 +1,17 @@
+-- need to think about this bit..
+
+cps 1.2
+
+c1 $ jux (# vowel "<a o a>") $ sound "{bskick:1 ~ [~], ~ [~ bsperc:12] ~, ~ bshihat ~ [bshihat bshihat/2] ~}"
+
+c1 silence
+
+c2 $ loopAt 3 $ chop 8 $ sound "bsnoise:14 bsnoise:1"
+
+c2 silence
+
+c3 $ loopAt 6 $ striate 128 $ sound "bsnoise:17*3"
+
+c3 silence
+
+hush

@@ -1,0 +1,48 @@
+c1 $ slow 2 $ every 4 (rev)$ sound "{bd bd bd bd bd, bd [hh hh] hh hh}" # delay "0.2"
+c1 silence
+
+c2 $ iter 4 $ randslice 32 $ sound "{lucy*4, lucy:2*3}" # speed "0.8 -0.8" # vowel "a o a"
+c2 silence
+
+c3 $ sound "[cp cp] [~ ~ ~ cp] ~ [cp cp]" # gain "0.6"
+
+hush
+
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+m1 <- midiStream devices "QUAD-CAPTURE" 1 synthController
+
+m1 $ midinote "40 52"
+
+bps (110/60)
+
+c1 $ every 4 (rev) $ sound "{bd [sn sn]? [~ cp cp] [cp cp], ~ ~ hh [hh hh] [hh hh hh]}" # vowel "o a o" # pan "-1 0 -0.5 1"
+c1 silence
+
+c2 $ every 3 (rev) $ sound "bass [bass bass]? ~  bass" # up "-5 -7 -12" # delay "0.2"
+c2 silence
+
+c3 $ iter 4 $ slow 2 $ sound "{ul? [stab? stab?]? ul? ul?, [arpy? arpy:5 arpy:7]}" # speed "0.25" # vowel "o o e e" # delay sine1
+c3 silence
+
+hush
+
+c4 $ sound $ iter 4 $ "mouth mouth voodoo voodoo [can can] perc" # gain "1.2" # speed sine1
+c4 silence
+
+
+c5 $ density 4 $ randslice 32 $ sound "lucy*3?" # speed "-1, -1" # vowel " a a a a"
+c5 silence
+
+c6 $ sound "{bd sn [cp cp] bd, [voodoo*8] ~ [can*6] ~ }?" # delay "0.2" # gain "0.8"
+c6 silence
+
+c7 $ sound $ iter 4 $ "metal [metal*3] metal metal*2? metal?" # speed sine1 # vowel "o a o" # gain "0.0"
+c7 silence
+
+c8 $ density 4 $ randslice 32 $ sound "{xrf? xrf? [xrf xrf], lucy egg egg}" # gain "0.8" # speed "-1, 1" # vowel "a i o e"
+c8 silence

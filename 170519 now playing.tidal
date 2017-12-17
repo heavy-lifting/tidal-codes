@@ -1,0 +1,31 @@
+it's the mum
+
+with thanks to the band blood sport and the eurovision song contest
+
+cps 1.2
+
+c1 $ jux (slow 2) $ degradeBy 0.4 $ (sound "{bsperc:3 ~ [~ bsperc:3] bsperc:3, ~ [bshihat*3 bsperc:3] ~ bsperc:3}")
+
+c1 silence
+
+c2 $ jux (density 2) $ every 3 (rev) $ sound "{ireland:0 ~ [ireland:1 ireland:0], ireland:1 ireland:1}" # cut 1
+  # up "1 5 3 7"
+  # vowel "<o a p>"
+  # gain "0.0"
+
+c3 $ slowspread (loopAt) [2,4,6] $ chop 32 $ sound "bulgaria" # cut 1
+
+c3 silence
+
+c4 $ jux (# delay "0.2") degradeBy 0.4 $ sound "sweden*5" # up "0 5 3"
+  # gain "0.0"
+
+solo $ c5 $ jux (density 2) $ up "-4 -6 -8 -2" # sound "bsperc:2" # delay sine1
+  # vowel "<a o a p>"
+
+hush
+
+
+
+
+hush

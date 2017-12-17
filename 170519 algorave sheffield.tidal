@@ -1,0 +1,32 @@
+cps 1.2
+
+c1 $ sound "{bskick:1 bskick:1, ~ [cp cp] ~ ~}"
+
+c2 $ slowspread (loopAt) [16,8] $ chop 4 $ sound "belgium"
+
+c2 silence
+
+c3 $ sound "georgia" # up "{-3 -1, -5 -1 -7}"
+
+c3 silence
+
+c4 $ loopAt 12 $ chop 16 $ sound "azerbaijan azerbaijan"
+
+c5 $ every 2 (density 2) $ jux (# speed "0.5 1 0.25") $ sound "[bsperc/2, bsperc:2 bsperc:2/2 bsperc:2]" # iter 3 (up "-1 -3 -5")
+
+c5 silence
+
+c6 $ jux (rev)
+  $ iter 4
+  $ somecyclesBy 0.5 (density 2)
+  $ sound "{ ~ ~ bsvocals ~, ~ ~ bsnoise:4}"
+  # cut 1
+  # vowel "<a p o>"
+
+c7 $ speed "[1 2 [1[1 2 ] 1[2 1] 2] 1[1 [2 ]1 ]2 1]" # sound "noise:16" # pan sine1
+
+c8 $ degradeBy 0.8 $ sound "sweden*5" # iter 4 (up "4 3 5 1") # vowel "a o e"
+
+c8 $ sound "sanmarino"
+
+hush
