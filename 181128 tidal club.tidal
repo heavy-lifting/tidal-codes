@@ -1,0 +1,19 @@
+d1 $ sound "arpy*16" # speed ((cF 1 "42") * 12) # gain (cF 1 "42")
+
+d2 $ sound "bd [cp cp cp cp]" # gain (1-(cF 1 "42"))
+
+d3 $ loopAt (1+ cT 1 "42") $ sound "bev"
+
+d1 silence
+
+p "hello" $ sound "bskick:1*3"
+
+unsolo "hello"
+
+
+
+hush
+
+d3 $ loopAt 16 $ sound "bev"
+
+cps 1

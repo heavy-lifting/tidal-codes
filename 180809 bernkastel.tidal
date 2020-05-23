@@ -1,0 +1,11 @@
+bps (180/60)
+
+d2 $ sometimes (hurry 0.5) $ loopAt 8 $ chop 8 $ sound "wood*4" # cut 1
+
+d3 $ loopAt "<8 16 32>" $ chop 4 $ sound "wood:1*2" # cut 2 # gain 1.2
+
+d4 $ chop "<64 32 16 8 4 2>" $ sound "glass:2 ~" # gain "<1 1 0 1 0>" # cut 3
+
+d5 $ sound "wood:3" # cut 4 # speed 0.5 # vowel "<a o p>"
+
+hush

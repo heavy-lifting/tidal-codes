@@ -1,0 +1,60 @@
+cps 1.2
+
+d9 $ sound "ro(3,8)"
+# slow 8 (midinote (scale 40 80 saw))
+# legato 0.25
+# midichan "0"
+
+d7 $ stack [midicmd "control*16" # ctlNum "12" # control "127 30 [30 30] 90 90 [30 30] 60",
+       midicmd "control*16" # ctlNum "13" # control "127 80 70 60",
+       midicmd "control*16" # ctlNum "92" # control "<0 127 >"
+      ] # s "kp3"
+
+      hush
+
+d8 $ midicmd "midiClock*48" # s "[ro,kp3]" # midichan "0"
+
+d2 $ sound "~ [~ bssnare:7] ~ ~"
+
+hush#
+
+d5 $ jux (hurry 0.5) $ sound "<tink(5,8) tink(9,16)>" # legato 0.125
+
+
+d6 $ jux (iter 2) $ sound "<bskick:1 bskick:1><bskick:1(3,8)>" # shape 0.2
+
+d2 $ sound "bskick:1*2" # shape 0.4
+
+d5 $ slow 2 $ jux (hurry 2) $ sound "vkb:3(3,8)" # speed "<1 2 0.5>" # shape 0.4 # legato 2
+
+
+hush
+
+let
+  (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+  (midichan, midichan_p) = pF "midichan" (Nothing)
+  (progNum, progNum_p) = pF "progNum" (Nothing)
+  (val, val_p) = pF "val" (Nothing)
+  (uid, uid_p) = pF "uid" (Nothing)
+  (array, array_p) = pF "array" (Nothing)
+  (frames, frames_p) = pF "frames" (Nothing)
+  (seconds, seconds_p) = pF "seconds" (Nothing)
+  (minutes, minutes_p) = pF "minutes" (Nothing)
+  (hours, hours_p) = pF "hours" (Nothing)
+  (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+  (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+  (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+  (control, control_p) = pF "control" (Nothing)
+
+  import qualified Sound.Tidal.Scales as Scales
+
+  padx = cc 12
+  pady = cc 13
+  pad touch = cc 92
+  fx depth = cc 94
+  slider = cc 93
+  hold = cc 95
+  a = note a1 - 45
+  b = note b1 - 47?
+  c = note c1 - 36
+  d = note d1 - 38/

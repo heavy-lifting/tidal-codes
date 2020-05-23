@@ -1,0 +1,40 @@
+bps (90/60)
+
+let
+    (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+    (midichan, midichan_p) = pF "midichan" (Nothing)
+    (progNum, progNum_p) = pF "progNum" (Nothing)
+    (val, val_p) = pF "val" (Nothing)
+    (uid, uid_p) = pF "uid" (Nothing)
+    (array, array_p) = pF "array" (Nothing)
+    (frames, frames_p) = pF "frames" (Nothing)
+    (seconds, seconds_p) = pF "seconds" (Nothing)
+    (minutes, minutes_p) = pF "minutes" (Nothing)
+    (hours, hours_p) = pF "hours" (Nothing)
+    (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+    (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+    (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+    (control, control_p) = pF "control" (Nothing)
+
+d9 $ midicmd "midiClock*48" # s "kp3" # midichan "1"
+
+d9 silence
+
+d8 $ density 2 $ stack [midicmd "control*16" # ctlNum "12" # control "{~ ,127 30 90 60}",
+       midicmd "control*16" # ctlNum "13" # control "127 90 60 30",
+       midicmd "control" # ctlNum "92" # control "127"
+      ] # s "kp3"
+
+hush
+
+d3 $ degradeBy 0.8 $ jux (every 2 $ slow 4) $ n (irand 8) # sound "amencutup"
+
+d4 silence
+
+d4 $ degradeBy 0.8 $ jux (iter 2) $ sound "{[~ bsperc:3], ~ bshihat*6}"
+
+d1 $ every 2 (hurry 2) $ sound "xa:3 [xa:3 xa:3]" # gain 1.4
+
+d2 $ loopAt 2 $ chop "<8 4 16>" $ sound "xa:1 xa:1" # gain 1.2 # cut 2
+
+solo $ d5 $ loopAt 2 $ sound "xa:5"

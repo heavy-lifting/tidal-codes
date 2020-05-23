@@ -1,0 +1,25 @@
+cps 1.5
+
+d1 $ loopAt "<8 4>" $ chop 16 $ sound "bsbass:2*4"
+
+d5 $ sound ""
+
+d2 silence
+
+d3 $ chunk 2 (hurry 2) $ sound "bsvocals bsvocals/2 bsvocals/3 bsvocals/5"
+
+d2 $ sound "bcperc:3"
+
+d4 $ sound "{paper:3 [bsperc:6*2], paper:3 ~ [bsperc:6*2] ~ bb:3}" # shape 0.3 # gain 0.9 # cut 4
+
+d5 $ sometimes (hurry 0.5) $ degradeBy 0.2 $ loopAt "<16 8>" $ chop 8 $ sound "bsvocals:1 bsvocals:1" # cut 1 # vowel "a"
+
+d1 $ loopAt "<8 4>" $ chop 2 $ sound "wood*4" # cutoff 1200
+
+d3 $ loopAt "<16 8>" $ sound "wood:1 wood:1" # vowel "o" # cut 1
+
+solo $ d4 $ loopAt 16 $ chop 2 $ sound "bol bol" # cut 1
+
+hush
+
+d2 $ striate "<32 16 8 >" $ sound "glass:2 glass:3/2 glass:2/3 glass:2/4" # vowel "a o p" # cut 2

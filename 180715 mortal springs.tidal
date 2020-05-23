@@ -1,0 +1,229 @@
+bps (180/60)
+
+hush
+
+cps (-1)
+
+solo $ d1 $ sound "bol" # cut 1
+
+d1 silence
+
+d2 $ loopAt "<16 8 4>" $ chop 32 $ sound "zip*16" # cut 1
+
+d2 silence
+
+d3 $ loopAt "<32 32>" $ chop 8 $ sound "bow*16" # cut 2
+
+d6 $ degradeBy 1 $ jux (hurry 2) $ slow 4 $ midinote "{30 40 ~ [40 30], 30 ~ 40}"
+  # sound "qc"
+  # midichan "3"
+  # sustain "2"
+  # gain "3"
+
+-----
+bps (180/60)
+
+hush
+
+cps (-1)
+
+d1 $ degradeBy 1 $ loopAt "<16 8 4>" $ chop "<16 8>" $ sound "glass glass glass glass"
+
+d2 silence
+
+d2 $ slow 2 $ sound "glass:1"
+
+d3 $ density "<1 2 3 4 5>" $ loopAt "<8 4 2 1>" $ sound "glass:2*4" # cut 1 # gain "<1 1 1 0>"
+
+d4 $ slow 8 $ sound "glass:3" # cut 4
+
+----
+
+bps (180/60)
+
+hush
+
+cps (-1)
+
+d9 $ midicmd "midiClock*48" # s "[ko3]" # midichan "0"
+
+d1 $ randslice 8 $ sound "wood" # cut 1
+
+d7 $ degradeBy 1 $ randslice 32 $ sound "{~ [wood:3 wood:3] ~ [~ wood:3], ~ wood:3 wood:3 ~ wood:3}" # speed "1 1 -1"
+
+
+d3 $ degradeBy 1 $ loopAt "<16 8>" $ chop 32 $ sound "wood:1 wood:1" # cut 3
+
+d6 $ iter 4 $ jux (# midinote "60 ~ 50 ~") $ midinote "[~ 35] [35 35]"
+  # sound "qc"
+  # midichan "3"
+  # sustain "0.5"
+  # gain "3"
+
+d6 $ iter 4 $ jux (# midinote "60 ~ 50 ~") $ midinote "[~ 35] [35 35]"
+  # sound "qc"
+  # midichan "3"
+  # sustain "0.5"
+  # gain "3"
+
+hush
+
+d6 $ iter 4 $ midinote "{[~ 35] [35 35], 60 ~ 50 ~ 60}"
+  # sound "qc"
+  # midichan "3"
+  # sustain "0.5"
+  # gain "3"
+
+
+d6 $ jux  (0.25 ~>) $ iter 4 $ midinote "{[~ 35] [35 35], 60 ~ 50 ~ 60}"
+  # sound "qc"
+  # midichan "3"
+  # sustain "0.5"
+  # gain "3"
+
+d5 $ sound "bskick:1" # gain 1.4
+
+hush
+
+d2 silence
+
+bps (180/60)
+
+hush
+
+cps (-1)
+
+-- runs throughout
+d1 $ sound "tink*16" # vowel " a o p" # slow 16 (gain (sine1 + 0.4)) # pan rand
+
+d6 silence
+
+d2 $ sound "super808/2" # gain 1
+
+hush
+
+------- amen break
+
+d5 $ rarely (slow 2) $ jux (chunk 4 (hurry 0.5)) $ sound "amencutup*8" # n (irand 7) # gain 1
+
+d6 $ jux (density 2) $ sound "{super808, super808 ~ super808 ~ super808}" # n "<1 2 4 3>"
+
+d7 $ sound "bsperc:6*4"
+
+------ amen break degrade
+
+d5 $ (degradeBy (slow 4 $ "<0.2 0.2 0.4 0.4 0.8 0.8 0.8 0.8>")) $ rarely (slow 2) $ jux (chunk 4 (hurry 0.5)) $ sound "amencutup*8" # n (irand 7) # gain "<1 1 1 1 1 1 1 0>"
+
+d6 $ (degradeBy (slow 4 $ "<0.2 0.2 0.4 0.4 0.8 0.8 0.8 0.8>")) $ jux (density 2) $ sound "{super808, super808 ~ super808 ~ super808}" # n "<1 2 4 3>"
+
+----- amen break regrade
+
+d5 $ (degradeBy (slow 4 $ "< 0.8 0.8 0.8 0.8 0.4 0.4 0.2 0.2 >")) $ rarely (slow 2) $ jux (chunk 4 (hurry 0.5)) $ sound "amencutup*8" # n (irand 7) # gain "<1 1 1 1 1 1 1 0>"
+
+d6 $ (degradeBy (slow 4 $ "<0.8 0.8 0.8 0.8 0.4 0.4 0.2 0.2>")) $ jux (density 2) $ sound "{super808, super808 ~ super808 ~ super808}" # n "<1 2 4 3>"
+
+-----
+-- jam bits not using?
+d3 $ jux (hurry 0.5) $ sometimes (hurry 2) $ sound "bsperc:6*3" # gain "<1 1 1 0>"
+
+d3 silence
+
+d4 $ sound "noise"
+
+----
+
+
+
+bps (180/60)
+
+cps (-1)
+
+--friendly--
+
+d1 $ sound "hh"
+
+hush
+
+--descent--
+
+
+bps (180/60)
+
+cps (-1)
+
+hush
+
+d1 $ slow 32 $ sound "{mb:2 [mb:3 mb:4], mb mb:1 mb [mb mb]}"
+
+d2 $ jux (slow 2) $ sound "bb/5 bb/4 bb/3 bb/2" # shape 0.4
+
+d1 $ jux (iter 4) $ slow 4 $ sound "{mb:2 [mb:2 mb:2], mb:2 ~ mb:2 [mb:2 mb:2] ~}" # cut 1 # up "<8 11 9 12> <8 11 10> <13 10 12 9 11>"
+
+d2 $ jux (slow 2) $ sound "bb/5 bb/4 bb/3 bb/2" # n (run 4) # shape 0.4
+
+d3 $ sound "paper:3" # shape 0.8
+
+d4 $ sound "pebbles" # cut 2
+
+d4 $ randslice 32 $ sound "pebbles" # cut 2
+
+d4 $ randslice 64 $ sound "pebbles*2" # cut 2
+
+d5 $ loopAt 32 $ chop 64 $ sound "mb:3*8" # cut 3
+
+d1 $ jux (iter 4) $ slow 4 $ randslice 256 $ sound "{mb:2 [mb:2 mb:2], mb:2 ~ mb:2 [mb:2 mb:2] ~}" # cut 1 # up "<8 11 9 12> <8 11 10> <13 10 12 9 11>"
+
+
+d4 $ jux (iter 4) $ density 2 $ sound "{~, [~ cp] ~ cp cp ~}"
+
+
+d2 $ jux (density 2) $ sound "bb/5 bb/4 bb/3 bb/2" # n (run 4) # shape 0.4
+
+
+hush
+
+
+cps (-1)
+
+bps (180/60)
+
+-----
+
+d9 $ midicmd "stop" # sound "[qc,ko3]"
+
+d9 $ midicmd "[start]" # sound "[qc,ko3]"
+
+d8 $ midicmd "midiClock*48" # s "[qc,ko3]" # midichan "0"
+
+d6 $ chunk 3 (density 2) $ midinote "{40 60 50, 60 50 45 40 45}"
+  # sound "qc"
+  # midichan "3"
+  # sustain "0.2"
+  # gain "3"
+
+  hush
+
+  bps (180/60)
+
+d2 $ stack [midicmd "control*16" # ctlNum "12" # control "{~ ,0 90 30 60}",
+       midicmd "control*16" # ctlNum "13" # slow 2 (iter 4 (control "[30 60] 90 60 30")),
+       midicmd "control" # ctlNum "92" # control "127"
+      ] # s "ko3" # midichan "0"
+
+import qualified Sound.Tidal.Scales as Scales
+
+let
+  (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+  (midichan, midichan_p) = pF "midichan" (Nothing)
+  (progNum, progNum_p) = pF "progNum" (Nothing)
+  (val, val_p) = pF "val" (Nothing)
+  (uid, uid_p) = pF "uid" (Nothing)
+  (array, array_p) = pF "array" (Nothing)
+  (frames, frames_p) = pF "frames" (Nothing)
+  (seconds, seconds_p) = pF "seconds" (Nothing)
+  (minutes, minutes_p) = pF "minutes" (Nothing)
+  (hours, hours_p) = pF "hours" (Nothing)
+  (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+  (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+  (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+  (control, control_p) = pF "control" (Nothing)

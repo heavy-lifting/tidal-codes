@@ -1,0 +1,103 @@
+cps 1
+
+-- don't forget tidal thinks midi channels start at 0!!!!!!!
+
+bps (60/90)
+
+d9 $ midicmd "stop" # sound "[qc,kp3]"
+
+d9 $ midicmd "[start]" # sound "[qc,kp3]"
+
+d8 $ midicmd "midiClock*48" # s "[qc,kp3]" # midichan "1"
+
+d7 $ slow 2 $ stack [midicmd "control*16" # ctlNum "12" # control "{~ ,0 90 30 60}",
+       midicmd "control*16" # ctlNum "13" # slow 2 (iter 4 (control "[30 60] 90 60 30")),
+       midicmd "control" # ctlNum "92" # control "127"
+      ] # s "kp3"
+
+d7 silence
+
+
+
+d1 silence
+
+d2 $ jux (hurry "<2>") $ sound "super808(3,8)"
+
+
+d1 $ jux (density "<2 2 2 4>")
+  $ every 2 (chunk 2 $ hurry 2)
+  $ sound "{bb bb:4, paper/2 paper/3, ~ paper:3 [bsperc:6*3] paper:3 ~}"
+  # shape 0.3
+
+-- next bit
+
+d2 $ (jux $ slow 2) $ up "1 3(6,8) 5(3,8) 3" # sound "bb:5"
+
+d1 silence
+
+d1 $ sound "{bb:6}" # cut 1
+
+-- next bit
+
+bps (150/60)
+
+d2 $ every 1 (slow 16) $ jux (iter 4.chunk 4 (hurry 2)) $ sound "{bskick:1 ~ bskick:1 ~, paper:2 ~ paper:2 ~ paper:2}" # shape "0.3"
+
+d3 $ sound "tink*16" # gain (slow 16 $ sine1)
+
+d2 silence
+
+-- next bitttttt
+
+d2 $ degradeBy 1 $ slow 4 $ chunk 4 (hurry "<2 4 0.5 1>") $ sound "bsperc:6*8?"
+
+d3 $ slow 4 $ jux (slow 2) $ sound "{~ ~ ~ ~, bssnare:7 ~ bssnare:7}"
+
+d3 silence
+
+d4 $ slow 8 $ jux (hurry 0.25) $ sound "can(3,8)" # vowel "a"
+
+d4 silence
+
+-- okkkkkk next biiiiiiit
+
+d1 $ hurry 0.5 $ sound "{bskick:1, bsperc*4}" # vowel "a o p" # hpf 500
+
+d2 $ every 2 (# gain "0") $ sound "bshihat*3" # gain 0.9
+
+d6 silence
+
+-- noisssseeeeeeeeeeeeeeee
+
+bps (120/60)
+
+d1 $ sound "jvbass" # speed "<0.5 0.75>" # shape 0.4
+
+d2 $ degradeBy 1 $ jux (iter 4) $ sound "{perc, bsperc:3/3, [bskick:1 [~ bsperc:3]]}"
+
+d7 silence
+
+d3 $slow 16 $ n (irand 8) # sound "bb" # cut 3
+
+
+-- import them scales!!!
+
+import qualified Sound.Tidal.Scales as Scales
+
+-- in tidal, define the following parameters:
+
+let
+  (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+  (midichan, midichan_p) = pF "midichan" (Nothing)
+  (progNum, progNum_p) = pF "progNum" (Nothing)
+  (val, val_p) = pF "val" (Nothing)
+  (uid, uid_p) = pF "uid" (Nothing)
+  (array, array_p) = pF "array" (Nothing)
+  (frames, frames_p) = pF "frames" (Nothing)
+  (seconds, seconds_p) = pF "seconds" (Nothing)
+  (minutes, minutes_p) = pF "minutes" (Nothing)
+  (hours, hours_p) = pF "hours" (Nothing)
+  (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+  (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+  (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+  (control, control_p) = pF "control" (Nothing)

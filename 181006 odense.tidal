@@ -1,0 +1,38 @@
+cps 1.5
+
+d1 $ iter 4 $ chunk 4 (hurry 0.5)  $ midinote "30 45 [26 35] 60"
+# sound "ro"
+# midichan "0"
+
+d5 $ degradeBy 0 $ jux (density 0.5) $ density "<0.5 1 2>" $ loopAt "<1 2 4 8>" $ sound "zip*4" # cut 2 # vowel "<a p a>"
+
+d6 $ sound "{~ ~, bskick [bskick bskick] ~, bssnare:7 ~ bssnare:7 ~ ~} "
+
+d2 $ jux (iter 4.rev) $ randslice 32 $ sound "{~ ~, wood:3 ~ [wood:3 wood:3] ~ [wood:3 wood:3 wood:3]}"
+
+d3 $ randslice 256 $ sound "pebbles*16?" # gain 0.8 # cut 1
+
+d5 $ loopAt "<8 4>" $ chop 1 $ sound "skel:8 skel:8" # cut 2
+
+d5 silence
+
+
+hush
+
+let
+  (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+  (midichan, midichan_p) = pF "midichan" (Nothing)
+  (progNum, progNum_p) = pF "progNum" (Nothing)
+  (val, val_p) = pF "val" (Nothing)
+  (uid, uid_p) = pF "uid" (Nothing)
+  (array, array_p) = pF "array" (Nothing)
+  (frames, frames_p) = pF "frames" (Nothing)
+  (seconds, seconds_p) = pF "seconds" (Nothing)
+  (minutes, minutes_p) = pF "minutes" (Nothing)
+  (hours, hours_p) = pF "hours" (Nothing)
+  (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+  (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+  (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+  (control, control_p) = pF "control" (Nothing)
+
+  import qualified Sound.Tidal.Scales as Scales

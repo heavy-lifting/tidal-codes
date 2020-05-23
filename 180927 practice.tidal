@@ -1,0 +1,82 @@
+import qualified Sound.Tidal.Scales as Scales
+
+cps 2
+
+let
+  (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+  (midichan, midichan_p) = pF "midichan" (Nothing)
+  (progNum, progNum_p) = pF "progNum" (Nothing)
+  (val, val_p) = pF "val" (Nothing)
+  (uid, uid_p) = pF "uid" (Nothing)
+  (array, array_p) = pF "array" (Nothing)
+  (frames, frames_p) = pF "frames" (Nothing)
+  (seconds, seconds_p) = pF "seconds" (Nothing)
+  (minutes, minutes_p) = pF "minutes" (Nothing)
+  (hours, hours_p) = pF "hours" (Nothing)
+  (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+  (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+  (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+  (control, control_p) = pF "control" (Nothing)
+
+  d9 $ midicmd "midiClock*48" # s "[ko3]" # midichan "1"
+
+    d8 $ midicmd "midiClock*48" # s "[ko3,ro]" # midichan "[1,0]"
+
+  d4 $ iter 4 $ chunk 4 (hurry 0.5)  $ midinote "30 45 [26 35] 60"
+  # sound "ro"
+  # midichan "0"
+
+
+    d4 $ midinote "30"
+    # sound "ro"
+    # midichan "0"
+
+  d1 silence
+
+  d3 $ sound "bskick:1 bskick:1" # shape "0.4"
+
+  hush
+
+  d5 $ loopAt "2 5.5" $ sound "wood wood" # gain 1 # cut 2
+
+d5 silence
+
+d2 $ jux (# up ( iter 3 ("1 5 7"))) $ loopAt "<2 4 8 4>" $ sound "wood:1*4" # vowel "<a o p>" # legato 1 # gain 1.2
+
+d2 silence
+
+d1 $ sometimes (hurry 0.5) $ iter 4 $ midinote "{[60 36] 12, ~ [45 55] ~}" # sound "ro" # midichan "0"
+
+d3 $ jux (density 0.5.iter 4) $ sound "{bskick:1 ~ , cp cp [cp cp]}" # cutoff 1800
+
+d4 $ sound "super808"
+
+d4 $ loopAt 32 $ sound "wood:2"
+
+d5 $ loopAt 32 $ chop "<64 32>" $ sound "pebbles*8" # cut 5
+
+d2 $ sometimes (hurry 0.5) $ palindrome $ sound "bb:9 [~ bb:7]" # shape 0.4 # cut 5 # gain 1.3
+
+d5 silence
+
+d5 $ sound ""
+
+solo $ d1 $ loopAt "16 12" $ chop 32 $ sound "bol bol" # gain 1.2
+
+d1 silence
+
+d6 $ loopAt 8 $ sound "mb" # gain 1.4
+
+solo $ d1 $ sound "skel:1"
+
+  hush
+
+  d1 $ loopAt 32 $  sound "mb"
+
+d1 silence
+
+d2 $ jux (rev) $ every 2 (slow 2) $ sound "{paper:3 [paper:3*2], bb:3 ~ ~ bb:2 ~}"
+
+d3 $ degradeBy 0.25 $ sometimes (hurry 0.5) $ sound "bsbass*4" # legato 0.25
+
+d4 $ sound "glass:1/5 glass/4" # legato 1

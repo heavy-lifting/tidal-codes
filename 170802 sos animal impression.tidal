@@ -1,49 +1,30 @@
-d1 $ slow 2 $ sound "italy italy italy italy"
+cps (1)
+
+d2 $ slow 2 $ sound "italy italy italy italy"
   # cut 1
   # speed "0.5 1 2 4"
 
-hush
+d1 $ slow 2 $ sound "bd bd [cp cp] bd"
 
-d1 silence
+d2 $ slow 2 $ sound "hh hh hh hh"
 
-d2 $ slow 2 $ sound "bd bd [cp cp] bd"
-
-d2 silence
-
-d3 $ slow 2 $ sound "hh hh hh hh"
-
-d3 silence
-
-hush
-
-d4 $ slow 2 $ n (irand 8)
+d2 $ slow 2 $ n (irand 8)
   # sound "voodoo"
-
-
-d4 silence
 
 hush
 
 d1 $ sound "bsperc [bsperc bsperc]"
   # iter 4 (speed "4 [1 2]")
 
-  d1 silence
-
 d2 $ slow 2 $ sound "sn:1 ~ sn:1 ~"
 
-d2 silence
+d4 silence
 
-d3 $ slow 2 $ sound "~ [cp cp] ~ ~"
+d1 $ slow 2 $ sound "~ [cp cp] ~ ~"
 
-hush
+d3 $ sound "hh hh bd/2 hh"
 
-d5 $ sound "hh hh bd hh"
-
-d2 silence
-
-hush
-
-d4 $ slow 2 $ sound "sweden [sweden sweden] [sweden sweden sweden] sweden"
+solo $ d4 $ slow 2 $ sound "sweden [sweden sweden] [sweden sweden sweden] sweden"
   # (up "1 2 3 4 5")
   # gain 1.4
 

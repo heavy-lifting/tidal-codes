@@ -1,0 +1,35 @@
+import qualified Sound.Tidal.Scales as Scales
+
+let
+  (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+  (midichan, midichan_p) = pF "midichan" (Nothing)
+  (progNum, progNum_p) = pF "progNum" (Nothing)
+  (val, val_p) = pF "val" (Nothing)
+  (uid, uid_p) = pF "uid" (Nothing)
+  (array, array_p) = pF "array" (Nothing)
+  (frames, frames_p) = pF "frames" (Nothing)
+  (seconds, seconds_p) = pF "seconds" (Nothing)
+  (minutes, minutes_p) = pF "minutes" (Nothing)
+  (hours, hours_p) = pF "hours" (Nothing)
+  (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+  (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+  (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+  (control, control_p) = pF "control" (Nothing)
+
+  d6 $  iter 4 $ chunk 4 (hurry 0.5)  $ midinote "30 45 [26 35] 60"
+  # sound "ro"
+  # midichan "0"
+
+d8 $ midicmd "midiClock*48" # s "ro" # midichan "0"
+
+d9 $ slow 2 $ jux (iter 4) $ sound "{bskick:1 bskick:1 bskick:1 bskick:1, hh hh [hh hh] [hh hh hh] bssnare:7, ~ bssnare:7 ~}" # vowel "a o a" # shape "0.4"
+
+cps 0.8
+
+hush
+
+d9 silence
+
+d2 $ sound "skel:0" # cut 1
+
+d2 silence

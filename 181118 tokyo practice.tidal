@@ -1,0 +1,38 @@
+cps 1.2
+
+d9 $ slow 8 $  midinote "30"
+  # sound "ro"
+  # legato 8
+  # midichan "0"
+
+d8 silence
+
+hush
+
+d8 $ iter 4 $ stack [midicmd "control*16" # ctlNum "12" # control "30 60 0 40",
+       midicmd "control*16" # ctlNum "13" # control "<127 90 60>",
+       midicmd "control*16" # ctlNum "92" # control "<127>"
+      ] # s "kp3"
+
+d7 $ midicmd "midiClock*48" # s "[ro,kp3]" # midichan "0"
+
+d5 $ jux (iter 4.fast 2) $ sound "{bskick:1 bskick:1, ~ bssnare:7 ~ bsperc:3*3 ~}" # shape "0.4"
+
+d4 $ slow 2 $ note (irand 8) # sound "bb" # legato 0.25
+
+d4 silence
+
+d1 $ jux (iter 3) $ loopAt "<2 4>" $ chop "<2 4 8>" $ sound "vkb:1*4" # cut 1 # gain 1.2
+
+hush
+
+  padx = cc 12
+  pady = cc 13
+  pad touch = cc 92
+  fx depth = cc 94
+  slider = cc 93
+  hold = cc 95
+  a = note a1 - 45
+  b = note b1 - 47?
+  c = note c1 - 36
+  d = note d1 - 38/

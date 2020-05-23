@@ -1,0 +1,37 @@
+cps (1)
+
+hush
+
+d2 $ slow 2 $ sound "italy italy italy italy"
+  # cut 1
+  # speed "0.5 1 2 4"
+
+d5 $ slow 2 $ sound "bd bd [cp cp] bd"
+
+hush
+
+d2 $ slow 2 $ sound "hh hh hh hh"
+
+--voodoo was here but it was working a bit weird...
+d2 $ slow 8 $ n (irand 7)
+  # sound "super808"
+
+hush
+
+
+d4 $ slow 2 $ sound "sn:1 ~ sn:1 ~"
+
+solo $ d5 $ sound "bsperc [bsperc bsperc]"
+  # iter 4 (speed "4 [1 2]")
+
+d4 silence
+
+d6 $ slow 2 $ sound "~ [cp cp] ~ ~"
+
+d7 $ sound "hh hh bd/2 hh"
+
+solo $ d4 $ slow 2 $ sound "sweden [sweden sweden] [sweden sweden sweden] sweden"
+  # (up "1 2 3 4 5")
+  # gain 1.4
+
+hush

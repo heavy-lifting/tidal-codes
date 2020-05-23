@@ -1,0 +1,73 @@
+bps (180/60)
+
+cps (-1)
+
+-- runs throughout
+d1 $ sound "tink*16?" # vowel " a o p" # slow 16 (gain (sine1 + 0.4)) # pan rand
+
+d2 $ jux (density 2) $ sound "super808/2" # gain 0.9 # gain "<1 0 1 1 0 1>"
+
+
+
+------- amen break
+
+d5 $ rarely (slow 2) $ jux (chunk 4 (hurry 0.5)) $ sound "amencutup*8" # n (irand 7) # gain "<1 1 1 1 1 1 1 0>"
+
+d6 $ jux (density 2) $ sound "{super808, super808 ~ super808 ~ super808}" # n "<1 2 4 3>"
+
+------ amen break degrade
+
+d5 $ (degradeBy (slow 4 $ "<0.2 0.2 0.4 0.4 0.8 0.8 0.8 0.8>")) $ rarely (slow 2) $ jux (chunk 4 (hurry 0.5)) $ sound "amencutup*8" # n (irand 7) # gain "<1 1 1 1 1 1 1 0>"
+
+d6 $ (degradeBy (slow 4 $ "<0.2 0.2 0.4 0.4 0.8 0.8 0.8 0.8>")) $ jux (density 2) $ sound "{super808, super808 ~ super808 ~ super808}" # n "<1 2 4 3>"
+
+----- amen break regrade
+
+d5 $ (degradeBy (slow 4 $ "< 0.8 0.8 0.8 0.8 0.4 0.4 0.2 0.2 >")) $ rarely (slow 2) $ jux (chunk 4 (hurry 0.5)) $ sound "amencutup*8" # n (irand 7) # gain "<1 1 1 1 1 1 1 0>"
+
+d6 $ (degradeBy (slow 4 $ "<0.8 0.8 0.8 0.8 0.4 0.4 0.2 0.2>")) $ jux (density 2) $ sound "{super808, super808 ~ super808 ~ super808}" # n "<1 2 4 3>"
+
+-----
+-- jam bits not using?
+d3 $ jux (hurry 0.5) $ sometimes (hurry 2) $ sound "bsperc:6*3" # gain "<1 1 1 0>"
+
+d3 silence
+
+d4 $ sound "noise"
+
+----
+
+bps (180/60)
+
+cps (-1)
+
+--friendly--
+
+d1 $ sound "hh"
+
+hush
+
+--descent--
+
+
+bps (180/60)
+
+cps (-1)
+
+hush
+
+solo $ d1 $ slow 32 $ sound "{mb:2 [mb:3 mb:4], mb mb:1 mb [mb mb]}"
+
+d2 $ jux (slow 2) $ sound "bb/5 bb/4 bb/3 bb/2" # shape 0.4
+
+d1 $ jux (iter 4) $ slow 4 $ sound "{mb:2 [mb:2 mb:2], mb:2 ~ mb:2 [mb:2 mb:2] ~}" # cut 1 # up "<8 11 9 12> <8 11 10> <13 10 12 9 11>"
+
+d2 $ jux (slow 2) $ sound "bb/5 bb/4 bb/3 bb/2" # n (run 4) # shape 0.4
+
+solo $ d3 $ sound "paper:3" # shape 0.8
+
+d4 $ sound "pebbles" # cut 2
+
+d4 $ randslice 32 $ sound "pebbles" # cut 2
+
+d5 $ loopAt 32 $ chop 64 $ sound "mb:3*8" # cut 3

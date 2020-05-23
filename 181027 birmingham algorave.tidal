@@ -1,0 +1,23 @@
+d9 $ degradeBy 1 $ jux (slow 2 ) $ iter 2 (midinote "{30 [45 55], 30 40 45 }")
+  # sound "ro"
+  # midichan "0"
+
+cps 1.5
+
+hush
+
+d8 $ midicmd "midiClock*48" # s "ko3" # midichan "1"
+
+d1 $ degradeBy 1 $  sometimes (hurry 0.125) $ jux (fast 0.25) $ sound "[can*4? tink*8?, bsperc:6*16, [voodoo bottle/3]]"
+  # slow 4 (gain sine1)
+  # slow 2 (pan sine1)
+
+d7 $ hurry "<4 2 1>" $ sound "{bskick:1 bb/3 bskick:1 [paper:3 paper:3], ~ [bsperc:6 bsperc:6]}"
+  # slow 4 ( shape (scale 0 0.1 saw))
+  # room 0.2
+  # cut 3
+  # gain "<1 0 0 0 0>"
+
+d4 $ loopAt "<1 2 3 4 5>" $ density "< 4 2 1>" $ sound "italy italy italy italy" # cut 1 # gain "<1 0 0 0>"
+
+hush

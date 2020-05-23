@@ -1,0 +1,50 @@
+**********TOKYO YORKSHIRE LIVE CODE EXCHANGE**********
+
+**********HEAVY LIFTING**********
+
+**********SHOUT OUT TO GALDEN FOR THE LIGHTS!**********
+
+d1 $ chop 8 $ sound "glass glass/4" # cut 1 # gain 1.2 # slow 16 (cutoff (scale 0 3000 sine1))
+
+d2 $ sound "super808*2"
+
+solo $ d3 $ every 3 (density 4) $ jux (sometimes (hurry 8)) $ sound "bshihat*8" # cut 2
+
+hushh
+
+d4 $ degradeBy 1 $ hurry "<0.5 1>" $ sound "<vkb:3(3,8) vkb:3(5,8)> vkb:3" # legato 1 # iter 3 (speed "<1 2 4>")
+
+d4 silence
+
+cps 1.2
+
+d9 $ midinote "<60 40>52(3,8)"
+  # sound "ro"
+  # legato 1
+  # midichan "0"
+
+d9 silence
+
+hush
+
+d8 $ every 2 (rev) $ iter 4 $ stack [midicmd "control*16" # ctlNum "12" # control "<90 127>",
+       midicmd "control*16" # ctlNum "13" # control "30 60 90 127",
+       midicmd "control*16" # ctlNum "92" # control "127 0 127 127 0 127 127 0"
+      ] # s "kp3"
+
+d6 $ midicmd "midiClock*48" # s "[ro,kp3]" # midichan "0"
+
+
+
+
+
+  padx = cc 12
+  pady = cc 13
+  pad touch = cc 92
+  fx depth = cc 94
+  slider = cc 93
+  hold = cc 95
+  a = note a1 - 45
+  b = note b1 - 47?
+  c = note c1 - 36
+  d = note d1 - 38/
