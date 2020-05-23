@@ -1,0 +1,24 @@
+setcps (97/120)
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+hush
+
+d8$  jux (iter 4) $slow 8 $ (0.1 <~) $ midinote "<29(3,8) 32 34 32>" # sound "ro"
+  # legato "1"
+  # midichan "0"
+
+d1 $ jux (hurry 2.iter 2) $ sound "bskick:1 bskick:1/2" # shape 0.4
+
+d2 $ sometimes (hurry 0.5) $ slow 4 $ striate 16 $ sound "aps aps:2" # cut 2
+
+d3 $ randslice 32 $ sound "wood:3(3,8)"
+
+d4 $ slow 32 $ chop 512 $ sound "<apv:0 apv:2>"
+
+d3 silence
+
+hush
+
+d5 $ jux (iter 4) $ bite 8 "0 0 1 1 2 2 3 3" $ chop (range 0 32 $ cI 1 "49")
+  $ sound "apv:3*4?" # speed (cF 1 "48")

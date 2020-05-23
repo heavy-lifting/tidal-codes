@@ -1,0 +1,16 @@
+setcps (140/120)
+
+hush
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d8 $ (0.1 ~>) $ slow 8 $ sound "ro(7,19)"
+  # ( midinote "48")  # midichan "0" # legato "0.5" # gain "<1 1 1 1>"
+
+d8 silence
+
+d1 $ slow 4 $ sound "9bd(3,8)" # n "3"
+
+d2 $ degradeBy 0.9 $ jux (hurry 2) $ sound "bsperc:6*32" # hpf 5000
+
+d3 $ jux (iter 4) $ sound "tink/3 perc/2 coins/4"

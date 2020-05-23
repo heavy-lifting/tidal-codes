@@ -1,0 +1,96 @@
+setcps (135/240)
+
+hush
+
+d major
+
+d 62
+e 64
+f# 66
+g 67
+a 69
+b 71
+c# 73
+d 74
+
+a - 57
+b - 59
+c - 60
+d - 62
+e - 64
+f - 65
+g - 67
+
+
+26 Overdrive
+55 visitrs
+86 whistle
+
+bs kit
+bsnoise
+wood
+glass
+italy
+skel
+
+d1 $ jux (iter 4) $ loopAt 1 $ chop "2 4 8" $ sound "aa*4?" # cut 1
+
+d2 $ sound "bskick:1(3,8)" # shape 0.4 # gain 1.2
+
+d3 $ loopAt 1 $ chop 4 $ sound "{aa:2/4 aa:1, ~ aa:6 aa:7}" # speed "<1 -1 1 1 -1>" # cut 2
+
+hush
+
+d7 $ rarely (fast 4) $ sound "qc(<3 5 6>,8)" # iter 4 (midinote (" 57 60 64" - "<[12]>"))
+  # legato "4"
+  # midichan "2"
+
+-- jux rev it
+d1 $ jux rev $ off 0.125 (|+ n 12) $ off 0.25 (|+ n 7) $
+  midinote "<62(3,8) 66(3,8,2) 67(3,8) 69(3,8)>" # sound "supermandolin" # midichan "2"
+
+hush
+
+d1 silence
+
+d9 $ midicmd "midiClock*48" # s "[qc]" # midichan "0"
+
+hush
+
+d8 $ midinote ("[62],[ 66], [69]" - "<12 -12 12>") # sound "qc"
+  # legato "4"
+  # midichan "2"
+
+d8 silence
+
+d1 $ every 4 (slow 4) $ jux (rarely (hurry 2)) $ sound "{[bskick:1*2],[bshihat:3*8?]}" # shape 0.4
+
+d1 silence
+
+d7 $ jux (iter 4)  $ midinote ("<62(3,8) 66(5,8) 69(6,8)>" - "<-24 0>") # sound "supermandolin"
+  # legato "4"
+  # midichan "2"
+
+setcps 1.1
+
+d2 $ every 4 (slow 4) $ slow 2 $ jux (iter 4) $ sound "{bssnare:1 ~ bsperc:3/2  ~, ~ bsperc:6*3 ~ bsperc:3*2 ~ } "
+
+d2 silence
+
+d3 $ every 4 (slow 4)  $ density "<4 1>" $ sound "bsnoise:5" # cut 1 # gain 1
+
+d3 silence
+
+d4 $ slow 16 $ loopAt 2 $ chop "4" $ sound "wood*4" # cut 4
+
+d5 silence
+
+d5 $ every 4 (slow 4)  $ density "<1 2 3 4 5>" $ loopAt "<1 2 0.5>" $ sound "italy*8" # cut 2
+
+hush
+
+d6 $ density "< 1 1 1 1 1 2>" $ loopAt "<8 4 8>" $ striate "<4 4 16 4>" $ sound "glass*4"
+
+
+
+  hush

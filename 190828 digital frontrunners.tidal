@@ -1,0 +1,90 @@
+
+**HEAVY LIFTING does TIDALCYCLES at DIGITAL FRONTRUNNERS 2019**
+
+heavy-lifting.org
+
+**********INTRO**********
+
+- what is live coding? - writing and executing code live
+
+- typically refers to coding to generate sound and/or visuals
+
+- maybe you've heard of algorave?
+
+- there's lots of different approaches to live coding
+
+- toplap.org
+
+**********TIDALCYCLES**********
+
+- what is tidal? a haskell-based functional programming language
+
+- tidal itself doesn't actually make any sound
+
+- it generates patterns - you can send these to hardware and software to make music (or visuals)
+
+- tidalcycles.org
+
+**********DRUM BEAT**********
+
+d1 $ sound "bskick:1"
+
+setcps (140/120)
+
+***********BASS LINE***********
+
+<41 44 48>
+
+<44 48 51>
+
+<48 51 44>
+
+<43 46 48>
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d8 $ (0.65 <~) $ midinote "41" # sound "ro"
+  # legato "1"
+  # midichan "0"
+
+d8 silence
+
+**********TEXTURE**********
+
+d4 $ loopAt 4 $ sound "glass:2" # cutoff 1500
+
+d4 silence
+
+hush
+
+---------------------------------------------------
+
+d5 $ n (run 8) # sound "super808" # gain 0.7
+
+d5 $ loopAt "<2 2 2 2 4>" $ striate 64 $ sound "<aa/4 aa> aa*2 " # cut 2
+
+d5 $ sometimes (hurry 0.5) $ sound "bsperc:6*8?"
+
+d5 $ jux (hurry 2) $ sound "{can ~ bottle/4 ~, bsnoise:5}" # cut 2
+
+d5 $ loopAt "<8 16>" $ striate 8 $ sound "bsvocals:2*4" # cut 2
+
+d5 $ jux (iter 4) $ loopAt "<1 2 >" $ chop "<64 32 16>" $ sound "wood" # cut 1
+
+d5 $ iter 2 $ loopAt "[2,4]" $ striate 8 $ sound "[aa*2]" # cut 1
+
+d3 $ jux (hurry 0.5) $ sound "{cpu2:2*8?, cpu2:3(3,8)}" # shape 0.2
+
+d3 $ sound "cpu2:2*8?" # pan (slow 2 $ sine)
+
+d5 $ jux (iter 4) $ sound "bb bb:1/2 bb:2/3 bb:3/4" # cut 2
+
+d5 $ every 4 (density 4) $ slow 2 $ sound "bsnoise:3" # cut 1 # vowel "a"
+
+d5 $ loopAt 2 $ sound "{vkw:2, ~ ~ bsvocals ~ ~}"
+
+d5 $ loopAt 4 $ sound "<glass:1 glass:3>"
+
+d5 $ density "<1 2 4 8 4 2 1>" $ loopAt "<4 8 >" $ chop "<8 16 32>" $ sound "glass:2*4" # cut 1
+
+d5 $ sound "vkl(<3 5 6>,8)" # iter 4 (speed "0.5 1 2 0.25")

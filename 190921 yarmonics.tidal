@@ -1,0 +1,9 @@
+setcps 0.4
+
+d6 $ density (range 1 64 (cR 1 "49")) $fast 4 $ jux (iter 4 ) $ slow 2$ sound "{ya:281 ~, ~ ya:28 ~ ya:28 ~}" # cut 2# room (slow 8 $ saw)
+
+d1 $ density (range 1 64 (cR 1 "49"))$ jux (iter 4) $ striate 4 $ sound "ya:5 ya:7 ~ ~" # note "<1 3 5 5>" # room (slow 8 $ saw)
+
+d2 $ density (range 1 64 (cR 1 "49"))$ jux (fast 1.5) $ slow 2 $ sound "ya:303 ya:239 ya:144 ~"
+
+hush

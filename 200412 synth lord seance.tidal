@@ -1,0 +1,12 @@
+setcps (80/120)
+
+d9 $ midicmd "midiClock*48" # s "[ko3,ro]" # midichan "0"
+
+d8 $ degradeBy 0 $ slow "8" $ (0.5 <~)
+  $ sound "{ro ro, ~ ro ~}"
+  # midinote "33 45 57" # midichan "0"
+  # legato 0.5
+
+d8 silence
+
+hush

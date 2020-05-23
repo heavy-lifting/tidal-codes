@@ -1,0 +1,76 @@
+**********INTRO**********
+
+- what is live coding - making music by writing and executing code live
+- but there is a lot of debate about the nuances of that
+- (i leave that to the academics)
+
+- typically to generate sound and/or visuals
+
+- maybe you've heard of algorave - it's not just that :)
+
+- there's lots of different approaches to live coding
+- i'm just going to show you my favourite today
+
+**********TIDAL**********
+
+- what is tidal? - a time machine for sound
+
+- it's a way for me to give instructions to the computer
+- and ask it to make sounds for me
+
+- it's a bit like a very complex sequencer for samples and synths
+
+- it's hard to explain! but i'll try to show you what i mean
+
+**********SAMPLES**********
+
+setcps (135/120)
+
+d1 $ jux (iter 4) $ every 4 (rev) $ sound "bskick:1 ~ bskick:1 [bsperc:3] ~"
+
+hush
+
+d1 $ every 4 (fast 2) $ sound "<bskick:1 bskick:1(3,8)>" # vowel "<a o>"
+
+d2 $ sound "bskick:1 ~ bsperc:3 ~"
+
+d3 $ loopAt "<2 1>" $ striate "4 8 4" $ sound "george:2*4" # cut 2
+
+d3 $ loopAt "<2 1>" $ striate "4" $ sound "george:2*4" # cut 1 # vowel "<a o p>"
+
+hush
+
+**********SYNTHS**********
+
+- i can control hardware synths with midi (musical instrument digital interface)
+
+- midi is a way for different instruments to communicate with each other
+- midi was developed in the 1980s
+
+- midi messages carry instructions, not sound
+
+- here's some midinote chords
+- (i need this to refer to because i don't know music theory!)
+
+<41 44 48>
+
+<44 48 51>
+
+<48 51 44>
+
+<43 46 48>
+
+d9 $ midicmd "midiClock*48" # s "[qc]" # midichan "0"
+
+hush
+
+d8$ jux (iter 4) $ slow 2 $ midinote ("[<43 51 44>,46,48](3,8)")
+  # sound "[qc]"
+  # legato "0.25"
+  # midichan "2"
+
+d4 $ sound "bskick:1*2"
+
+d5 $ sometimes (hurry 0.5) $ sound "bsperc:6*8?"
+
+hush

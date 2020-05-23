@@ -1,0 +1,10 @@
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+hush
+
+d8 $slow 2 $  (0.65 <~) $ midinote "<41 44 46 44>" # sound "ro"
+  # legato "2"
+  # midichan "0"
+
+
+d1 $ sound ""

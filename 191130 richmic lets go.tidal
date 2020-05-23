@@ -1,0 +1,31 @@
+setcps (97/120)
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+hush
+
+<29(3,8) 32 34 32>
+
+d8 $jux (iter 4) $ degradeBy 0 $ slow 4 $ (0.1 <~) $ midinote "<29(3,8) 32 34 29>" # sound "ro"
+  # legato "1"
+  # midichan "0"
+  # cut 2
+
+d8 silence
+
+d1 $ loopAt 16 $ sound "aps:4"
+
+d1 silence
+
+d4 $ striate 512 $ density 2 $ degradeBy 0.99 $ jux (iter 2) $ sound "{bskick:1, bskick:1(<2>,8)?}" # shape 0.4
+
+d5 $ degradeBy 0.99 $ striate 256 $ sound "{~ b:2 ~ [~ bb:3], bb:2 bb:1/2 ~ ~ }" # vowel "<p a p o p>" # cut 3
+
+hush
+
+d2 $ density (range 0 64 (cR 1 "48"))
+  $ midinote "<48 36 48> ~"
+  # sound "rtw" # cut 3
+  # gain (range 1 1 (cF 1 "n"))
+  # resonance (cF 1 "49")
+  # cutoff (segment 1 (cF 1 "50"))

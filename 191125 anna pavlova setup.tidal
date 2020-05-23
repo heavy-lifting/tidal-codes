@@ -1,0 +1,31 @@
+TO DO:
+master samples
+organise samples
+
+
+setcps (97/240)
+
+d1 $ jux (iter 4) $ bite 8 "0 0 1 1 2 2 3 3" $ chop (range 0 32 $ cI 1 "49") $ sound "ap:2*4?" # speed (cF 1 "48") # gain 1.4
+
+d2 $ every 9 (density 8) $ jux (sometimes (hurry 2)) $ sound "bskick:1(<3 5 6>,8)" # shape 0.4 # gain 1.2
+
+d3 $ density (range 1 64 $ cR 1 "50") $ loopAt 2 $  sound "ap:5" # gain 1.4 # cut 2
+
+d4 $ loopAt 2 $ striate (range 0 16 $ segment 4 (cI 1 "n")) $  sound "ap:8*32" # cut 3 # gain 1.8
+
+d5 $ every 8 (density 8) $ sound "bsvocals"
+
+d6 $ every 8 (density 8) $ sound "hh*6?"
+
+d7 $ iter 2 $ jux (# speed "-1") $ striate 4 $ sound "ap:9*2" # gain ("<1 1 1 0>" * 1.6) # cut 4
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+hush
+
+d8 $every 8 (fast 8) $ fast 8 $ jux (fast 2.iter 4) $ midinote ("<41(3,8) 44(6,8) 46(5,8) 44(3,8)>" - "<12 -12 12>") # sound "ro"
+  # legato "4"
+  # midichan "0"
+
+
+hush

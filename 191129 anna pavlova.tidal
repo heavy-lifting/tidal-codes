@@ -1,0 +1,11 @@
+setcps (97/120)
+
+hush
+
+d1 $ jux (iter 4) $ every 4 (slow 2) $ sound "{bskick:1(3,8)}"
+
+d3 $ density (slow 32 $ range 1 64 $ saw) $ every 2 (fast 4) $ iter 3 $ jux (# speed "-1") $ randslice 128 $ sound "wood:3(3,8)" # cut 3
+
+d4 $ density (slow 32 $ range 1 64 $ saw) $ sometimes (hurry 2) $ randslice 1024 $ sound "wood:1*32?" # cut 4
+
+d5 $ density (slow 32 $ range 1 64 $ saw)$ loopAt 4 $ sound "aps:4" # cut 5

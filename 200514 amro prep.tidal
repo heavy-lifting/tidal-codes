@@ -1,0 +1,29 @@
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d8 $ (0.5 <~)
+  $ sound "{ro ro, ~ ro ~}"
+  # midinote "33 45 57" # midichan "0"
+  # legato 0.5
+
+---- HI LOZZZZZZZZZZ
+
+hush
+
+d1 $ sound "808(5,8)" # n "0 1 2 3 4 5 6 7"
+
+d1 silence
+
+d8 silence
+
+hush
+
+d1 $ s "arpy(3,8)" # n "{~ ~ ~ ~ ~ ~ ~ ~, 1 2 3 4 5}"
+
+d2 $ sound "bottle perc perc perc perc perc perc perc"
+
+(x ~ ~ x ~ ~ x ~/x ~ ~ x ~ ~ x ~)
+(1 ~ ~ 2 ~ ~ 3 ~/4 ~ ~ 5 ~ ~ 1 ~)
+
+(run 5)(3,8)
+
+hush

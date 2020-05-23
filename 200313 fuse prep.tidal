@@ -1,0 +1,24 @@
+setcps (500/120)
+
+<41 44 48>
+
+<44 48 51>
+
+<48 51 44>
+
+<43 46 48>
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d8 $ degradeBy 0.2  $ slow 1  $ (0.65 <~) $ iter 4
+  $ sound "ro*4" # midinote "<43 46> 48 <43 48> <51 44>" # midichan "0"
+
+d1 $sound "{bshihat:1*4 ~ bshihat:1*16 ~, ~ cpu2:3*8 ~ cpu2:5*16}" # shape 0.4
+
+d2 $sometimes (hurry 0.5)$ jux (slow 2) $ sound "bskick:1(3,8)" # shape 0.4
+
+d3 $ loopAt 16 $ chop 32 $ sound "zip*8" # cut 3
+
+d4 $ rarely (hurry 4) $ chop 16 $ sound "bsvocals:2/2 bsvocals:3/4" # cut 3
+
+hush

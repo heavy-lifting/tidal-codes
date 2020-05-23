@@ -1,0 +1,18 @@
+setcps (240/120)
+
+d1 $ sound "cpu1:7*4"
+  # lpf (slow 20 (range 0 3000 saw))
+  # speed (slow 20 (range 0.25 4 tri))
+
+d9 $ midicmd "midiClock*48" # s "[vt4]" # midichan "0"
+
+hush
+
+d8 $ sound "vt4*16" # midinote (irand 127)
+  # midichan "2"
+
+d2 $ slow 4 $ sound "{cpu2:1(3,8), [bsperc:3*3 ~ bsperc:3*3 ~] ~, cpu2:2*16?, cpu2:8*4 }"
+
+hush
+
+d3 $ loopAt 20 $ chop 160 $ sound "wood:1*8" # gain 0.8

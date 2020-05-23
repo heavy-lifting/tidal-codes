@@ -1,0 +1,46 @@
+d1$ loopAt 1 $ striate 16
+  $ n "<536 525 458 434 423 387 324 45 60 88 193>"
+  #sound "ya*4"
+  # pan "1 0 1 0"
+
+d2 $ sound "ya:110" # vowel "a"
+
+hush
+
+d5 silence
+
+d3 $ jux (iter 4)
+  $ density 4
+  $ loopAt 2
+  $ randslice 16
+  $sound "yd:28 yd:30" # shape 0.4 # cut 2# gain (cF 1 "53")
+
+d5 $ jux (hurry 0.5) $ every 4 (slow 8) $ sound "ya:28(7,16)" # delay (range 0 4 (cF 1 "52")) # cut "<1 2 3>"# gain (cF 1 "53")
+
+d3 $ density (range 0 64 (cR 1 "48"))
+  $ n (range 0 550 (cF 1 "51"))
+  # sound "ya(7,19)" # cut 3
+  # midinote (cF 1 "n")
+  # gain (range 1 1 (cF 1 "n"))
+  # resonance (cF 1 "49")
+  # cutoff (range 0 3000 (cF 1 "50"))
+
+hush
+
+d4 $ loopAt 0.5 $chop "<1 2 4 8 16 32>"$ sound "ya*8" # n (choose [536,525,458,434,423,387,324,45,60,88,193]) # cut 4
+
+d6 $ sound "ya:110(3,8)" # gain 1
+
+d7 $ density 2 $ sound "ya(<3 5 6>,16)" # speed "<1 1 2> 4" #  n "<475 446>"
+
+d7 silence
+
+hush
+
+solo 5
+
+hush
+
+d5 $ someCycles (hurry 2) $ sound "ya:92 ya:92/2 ~ ~"
+
+d5 silence
