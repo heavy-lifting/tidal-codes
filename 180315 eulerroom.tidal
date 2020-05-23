@@ -1,0 +1,54 @@
+let
+    (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+    (midichan, midichan_p) = pF "midichan" (Nothing)
+    (progNum, progNum_p) = pF "progNum" (Nothing)
+    (val, val_p) = pF "val" (Nothing)
+    (uid, uid_p) = pF "uid" (Nothing)
+    (array, array_p) = pF "array" (Nothing)
+    (frames, frames_p) = pF "frames" (Nothing)
+    (seconds, seconds_p) = pF "seconds" (Nothing)
+    (minutes, minutes_p) = pF "minutes" (Nothing)
+    (hours, hours_p) = pF "hours" (Nothing)
+    (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+    (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+    (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+    (control, control_p) = pF "control" (Nothing)
+
+d9 $ midicmd "midiClock*48" # s "midi" # midichan "1"
+
+d9 silence
+
+d8 $ stack [midicmd "control*16" # ctlNum "12" # control "127 30 [30 30] 90 90 [30 30] 60",
+       midicmd "control*16" # ctlNum "13" # control "127",
+       midicmd "control" # ctlNum "92" # control "0"
+      ] # s "midi"
+
+d8 silence
+
+d3 $ jux (hurry 2) $ iter 4 $ sound "{~ bssnare:7, bsperc:3 bshihat bsperc:3 bsperc:3 bshihat}" # vowel "p"
+
+d3 silence
+
+d5 $ density "<1 2 4 2 1 1>" $ sometimes (hurry 2) $ sound "bsperc:6 ~" # shape 0.3 # up (run 8)
+
+d5 silence
+
+d6 $ degradeBy 0.4 $ jux (density 4) $ iter 4 $ n "{30 0 4 ~, 3 7}" # sound "super808"
+
+d7 $ degradeBy 1 $ jux (density 2) $ sound "bsvocals/3 bsvocals/2 bsvocals bsvocals/5" # gain 1.2
+
+hush
+
+cps 0.125
+
+
+padx = cc 12
+pady = cc 13
+pad touch = cc 92
+fx depth = cc 94
+slider = cc 93
+hold = cc 95
+a = note a1 - 45
+b = note b1 - 47?
+c = note c1 - 36
+d = note d1 - 38/

@@ -1,0 +1,5 @@
+d1 $ jux (hurry 2) $ sound "bd:4*4" # shape "0.6" # delay 0.4 # pan sine1
+
+d2 $ sound "cp*16" # gain slow 2 (sine1)
+
+hush

@@ -1,0 +1,54 @@
+let
+    (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+    (midichan, midichan_p) = pF "midichan" (Nothing)
+    (progNum, progNum_p) = pF "progNum" (Nothing)
+    (val, val_p) = pF "val" (Nothing)
+    (uid, uid_p) = pF "uid" (Nothing)
+    (array, array_p) = pF "array" (Nothing)
+    (frames, frames_p) = pF "frames" (Nothing)
+    (seconds, seconds_p) = pF "seconds" (Nothing)
+    (minutes, minutes_p) = pF "minutes" (Nothing)
+    (hours, hours_p) = pF "hours" (Nothing)
+    (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+    (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+    (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+    (control, control_p) = pF "control" (Nothing)
+
+cps 1
+
+hush
+
+d9 $  midicmd "[midiClock*48]" # s "kp3" # midichan "1"
+
+d8 $ midicmd "[midiClock*48, start/4]" # s "qc" # midichan "1"
+
+d7 $ midicmd "stop" # sound "qc"
+
+d6 $ midicmd "[start]" # sound "qc"
+
+d7 silence
+
+--lfo9 (saved 4)
+
+-- and smp2 (saved 5) - need to record sample then it rolls it :)
+
+-- syn9 (NOISE) - saved 9
+
+d5 $ slow 4 $ stack [midicmd "control*8" # ctlNum "12" # iter 8 (control "15 30 45 60 75 90 105 127"),
+       midicmd "control*8" # ctlNum "13" # control "15 30 45 60 75 90 105 127",
+       midicmd "control*16" # ctlNum "92" # control "127 ~ [~ 127] 127"
+      ] # s "kp3"
+
+d5 silence
+
+-- using kp3 on mod8 top left
+
+d1 $ slow 2 $ sound "{bsperc:6*8}" # gain "<1.2 0 1.2 0>" # shape "0.3" # speed sine1
+
+d2 silence
+
+d3 $ slow 2 $ sound "perc(3,8)" # gain "<1.2 0 1.2 0>" # cut 3
+
+d4 $ loopAt 2 $ randslice 32 $ sound "italy*32" # gain "<1 0 1 0>"
+
+d2 $ slow 2 $ sound "voodoo:2(3,8)" # shape 0.4

@@ -1,0 +1,7 @@
+d1 $ sound "mar:3"
+
+d2 $ loopAt 1 $ sound "bsbass"
+
+d3 $ sound "bskick:1"
+
+hush

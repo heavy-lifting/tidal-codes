@@ -1,0 +1,50 @@
+let
+    (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+    (midichan, midichan_p) = pF "midichan" (Nothing)
+    (progNum, progNum_p) = pF "progNum" (Nothing)
+    (val, val_p) = pF "val" (Nothing)
+    (uid, uid_p) = pF "uid" (Nothing)
+    (array, array_p) = pF "array" (Nothing)
+    (frames, frames_p) = pF "frames" (Nothing)
+    (seconds, seconds_p) = pF "seconds" (Nothing)
+    (minutes, minutes_p) = pF "minutes" (Nothing)
+    (hours, hours_p) = pF "hours" (Nothing)
+    (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+    (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+    (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+    (control, control_p) = pF "control" (Nothing)
+
+cps 1.2
+
+hush
+
+d9 $ midicmd "[midiClock*48]" # s "kp3" # midichan "1"
+
+d8 $ midicmd "[midiClock*48, start/4]" # s "qc" # midichan "1"
+
+d7 $ midicmd "stop" # sound "qc"
+
+d6 $ midicmd "[start]" # sound "qc"
+
+d7 silence
+
+--lfo9 (saved 4)
+
+d5 $ stack [midicmd "control*4" # ctlNum "12" # control "<90 90 90 [115 127]>",
+       midicmd "control*8" # ctlNum "13" # control "115",
+       midicmd "control*8" # ctlNum "92" # control "127"
+      ] # s "kp3"
+
+d5 silence
+
+-- using kp3 on mod8 top left
+
+d1 $ degradeBy 0.2 $ jux (sometimes (hurry 0.5)) $ sound "{bsperc:6*8}" # gain 1.2 # shape "0.3"
+
+d7 silence
+
+d7 $ jux (hurry 0.5) $ sound "bsperc*4 ~" # gain 1.2 # iter 4 (up "1 7 5 3")
+
+d4 $ sound "bskick:1 ~" # shape 0.8
+
+hush

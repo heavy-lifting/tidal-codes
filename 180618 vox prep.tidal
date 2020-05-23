@@ -1,0 +1,163 @@
+bps (90/60)
+
+hush
+
+let
+    (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+    (midichan, midichan_p) = pF "midichan" (Nothing)
+    (progNum, progNum_p) = pF "progNum" (Nothing)
+    (val, val_p) = pF "val" (Nothing)
+    (uid, uid_p) = pF "uid" (Nothing)
+    (array, array_p) = pF "array" (Nothing)
+    (frames, frames_p) = pF "frames" (Nothing)
+    (seconds, seconds_p) = pF "seconds" (Nothing)
+    (minutes, minutes_p) = pF "minutes" (Nothing)
+    (hours, hours_p) = pF "hours" (Nothing)
+    (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+    (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+    (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+    (control, control_p) = pF "control" (Nothing)
+
+d9 $ midicmd "midiClock*48" # s "kp3" # midichan "1"
+
+d9 silence
+
+d8 $ stack [midicmd "control*16" # ctlNum "12" # iter 4 (control "[75 0] 127 [60 75] 30"),
+       midicmd "control*16" # ctlNum "13" # control "127 [90 0] 60 30 [15 75]",
+       midicmd "control" # ctlNum "92" # control "<127 127 0>"
+      ] # s "kp3"
+
+
+aa - loopAt 6
+aa:1 - loopAt 6
+aa:2 - loopAt 3
+aa:3 - loopAt 3
+
+striate/chop a lot
+
+hush
+
+d1 $ sometimes (hurry 0.5) $ loopAt 3 $ striate 32 $  sound "[aa:3? aa:2?]*4" # cut 1 # gain 1.8
+
+d1 silence
+
+d2 $ chunk 4 (hurry 2) $ sound "bsperc:6*8?"
+
+d3 $ jux (iter 4.density 2) $ sound "{super808, bssnare:7 [bsperc:3*3]}"
+
+d4 $ degradeBy 0.4 $ sound "aa:4" # cut 2 # gain 1.6
+
+d4 silence
+
+d1 $ iter 2 $ jux (density 2) $ sound "fi fi:1" # legato 2 # vowel "<a o p>" # gain "<1.4 1.4 1.4 1.4 0>"
+
+d2 $ loopAt "<24 12>" $ chop 8 $ sound "fi*4" # gain "1.4"
+
+d2 silence
+
+solo $ d4 $ loopAt 12 $ chop 8 $ sound "fi:2 fi fi:1"
+
+use fi with legato and vowel to chop up
+loop fi at 12
+
+hush
+
+solo $ d3 $ jux (sometimes $ hurry 2) $ iter 4 $ n (run 8) # sound "amencutup"
+
+d5 $ sound "super808"
+
+d1 $ every 2 (rev) $ chop 4 $ sound "deb deb:1" # cut 1 # gain 1.4
+
+d1 silence
+
+solo $ d1 $ loopAt 12 $ sound "fi fi:1 fi:2"
+
+d2 $ jux (iter 2.slow 2) $ density "<8 2 4>" $ sometimes (rev) $ loopAt 8 $ chop 4 $ sound "[deb:1 deb]*2" # legato 2 # shape "0.2" # gain 1.4 # vowel "<a o p>"
+
+d1 silence
+
+d3 $ jux (chunk 4 $ hurry 2) $ density "<2 4 4 8>" $ loopAt "<16 8>" $ sound "deb*4" # legato 2 # gain 1.4
+
+d4 $ jux (# speed "-2") $ sound "tink*32" # slow 4 (gain sine1) # pan sine1
+
+d5 $ jux (iter 4.density 2) $ sound "{~ ~, bsperc:6 [bsperc:6 bsperc:6] [bsperc:6 bsperc:6 bsperc:6]}" # delay "0.4"
+
+deb and deb:1 - loopAt 8 and 16
+
+deb 2 - loopAt 8
+deb 3 - loopAt 12
+
+and mess about with nearby nums
+
+d4 $ loopAt "<8 10 9 11>" $ sound "deb:2" # cut 1 # gain 1.4
+
+d5 $ loopAt "<14 13 12 11>" $ sound "deb:3" # cut 2 # gain 1.4
+
+solo $ d6 $ sound "{super808 ~ super808 ~, bskick:1 ~ bssnare:7 ~ [bsperc:3*2]}"
+
+hush
+
+solo $ d1 $ degradeBy 0.4 $ density "<1 2 4>" $ loopAt "<2 -2>" $ chop 4 $ sound "xa:1 xa:1" # gain 1.2 # cut 1
+
+d1 silence
+
+xa (loud) and xa:1 (quiet) - loopAt 2
+
+solo $ d2 $ loopAt 2 $ sound "xa:1/2 xa:1(3,8)" # gain 1.4 # cut 2
+
+d2 $ degradeBy 0.8 $ loopAt 2 $ chop 4 $ sound "xa:1 xa:1" # vowel "<a o p> <p a o>" # gain 1.2
+
+d2 silence
+
+d3 $ iter 2 $ jux (slow 2) $ sound "{[[bsperc:6*3] bskick:1]*4, bssnare:7}" # shape 0.4
+
+d3 silence
+
+d2 $ every 2 (hurry 2) $ sound "xa:3" # gain 1.6
+
+d4 silence
+
+solo $ d5 $ jux (density "<0.5 1 2>") $ loopAt "3" $ chop 4 $ sound "xa:4*2" # legato 2
+
+d5 silence
+
+xa:4 loopAt 3
+
+solo $ d6 $ randslice 16 $ sound "xa:5*8" # cut 6 # vowel "<a o p>" # up "<1 4 2 -3>" # gain "1.2 1.2 0 1.2 1.2"
+
+d7 $ jux (loopAt "<2 2 2 4>") $ loopAt 2 $ chop 8 $ sound "xa:5" # cut 1
+
+d8 $ sound "bd bd"
+
+d5
+
+hush
+
+d6 silence
+
+d8 $ jux (slow 2) $ chunk 4 (hurry 0.5) $ density 2 $ sound "super808*8" # iter 3 (vowel "a o p")
+
+d8 silence
+
+hush
+
+d7 $ sound "bskick:1*4" # shape "0.8"
+
+d6 $ jux (sometimes (# speed "-2")) $ every 2 (hurry 2) $ sound "xa:3" # gain 2
+
+d5 $ jux (density 2) $ sound "bsperc:5(3,8)" # shape "0.6"
+
+solo $ d4 $ degradeBy 0 $ loopAt 2 $ sound "xa/2 xa:1" # gain 2
+
+
+d6 $ density "<1 1 2 2 4>" $ loopAt "<8 16>" $ chop "<2 4 8>" $ sound "aa*4" # gain 1.6 # vowel "<a o p>" # shape "0.4" # cut 1 # cutoff "800"
+
+hush
+
+d1 $ sound "bd"
+
+d1 $ density "<1 1 1 0.5>" $ jux (# speed "-1") $ sound "bb [bb:3*3]"
+
+d1 $ jux (iter 4) $ sound "bb:17 bb(3,8) bb:7 [~ bb:17]" # cut 1 # gain 1.41
+
+d2 $ jux (rev) $ sound "{super808 ~ ~ ~, ~ ~ bshihat [bshihat bshihat] [bshihat bshihat bshihat]}"

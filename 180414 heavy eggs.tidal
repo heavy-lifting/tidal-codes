@@ -1,0 +1,40 @@
+let
+    (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+    (midichan, midichan_p) = pF "midichan" (Nothing)
+    (progNum, progNum_p) = pF "progNum" (Nothing)
+    (val, val_p) = pF "val" (Nothing)
+    (uid, uid_p) = pF "uid" (Nothing)
+    (array, array_p) = pF "array" (Nothing)
+    (frames, frames_p) = pF "frames" (Nothing)
+    (seconds, seconds_p) = pF "seconds" (Nothing)
+    (minutes, minutes_p) = pF "minutes" (Nothing)
+    (hours, hours_p) = pF "hours" (Nothing)
+    (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+    (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+    (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+    (control, control_p) = pF "control" (Nothing)
+
+cps 1
+
+hush
+
+d9 $ midicmd "[midiClock*48]" # s "kp3" # midichan "1"
+
+d8 $ midicmd "[midiClock*48, start/48]" # s "qc" # midichan "1"
+
+d7 $ midicmd "stop" # sound "qc"
+
+d6 $ midicmd "[start]" # sound "qc"
+
+d7 silence
+
+d1 $ jux (hurry 2) $ sound "cp bsperc:6*3 bskick:1 ~" # gain "1"
+
+d8 $ stack [midicmd "control*16" # ctlNum "12" # control "127 30 [30 30] 90 90 [30 30] 60",
+       midicmd "control*16" # ctlNum "13" # control "127 0",
+       midicmd "control" # ctlNum "92" # control "127"
+      ] # s "kp3"
+
+
+
+hush

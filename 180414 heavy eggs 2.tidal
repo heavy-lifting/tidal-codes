@@ -1,0 +1,63 @@
+let
+    (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+    (midichan, midichan_p) = pF "midichan" (Nothing)
+    (progNum, progNum_p) = pF "progNum" (Nothing)
+    (val, val_p) = pF "val" (Nothing)
+    (uid, uid_p) = pF "uid" (Nothing)
+    (array, array_p) = pF "array" (Nothing)
+    (frames, frames_p) = pF "frames" (Nothing)
+    (seconds, seconds_p) = pF "seconds" (Nothing)
+    (minutes, minutes_p) = pF "minutes" (Nothing)
+    (hours, hours_p) = pF "hours" (Nothing)
+    (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+    (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+    (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+    (control, control_p) = pF "control" (Nothing)
+
+cps 1.2
+
+hush
+
+d9 $ midicmd "[midiClock*48]" # s "kp3" # midichan "1"
+
+d8 $ midicmd "[midiClock*48, start/4]" # s "qc" # midichan "1"
+
+d7 $ midicmd "stop" # sound "qc"
+
+d6 $ midicmd "[start]" # sound "qc"
+
+d7 silence
+
+d5 $ stack [midicmd "control*8" # ctlNum "12" # control "<45 30 [30 90] 60> ",
+       midicmd "control*8" # ctlNum "13" # control "<60 15 30 45>",
+       midicmd "control*8" # ctlNum "92" # iter 4 (control "<127 0> 127 <0 127> 127")
+      ] # s "kp3"
+
+d1 $ jux (hurry 2) $ sound "{bsperc:3 bsperc:6(3,8) bskick:1 ~, bshihat bshihat ~ bshihat bshihat}" # gain "1"
+
+d1 silence
+
+d2 $ jux (hurry 0.5)
+  $ slow 4
+  $ n "1(3,8) 7 3(6,8) 5"
+  # sus 0.25
+  # sound "super808"
+  # gain 0.9
+
+hush
+
+d7 $ hurry 0.25
+  $ iter 4
+  $ n "{1 5 3 7, 1 5 3 5 7, 1 3 7}"
+  # sus 4
+  # sound "supermandolin"
+  # gain 0.9
+  # vowel "a"
+
+d3 $ loopAt 6 $ chop 12 $ sound "skel:9 skel:9" # cut 1 # gain 1.2
+
+d4 silence
+
+d4 $ loopAt "<4 8>" $ chop 32 $ sound "mar" # cut 2 # gain 1.2
+
+hush

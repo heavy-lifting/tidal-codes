@@ -1,0 +1,26 @@
+d1 $ loopAt 4 $ slow 4 $ slice "[7 4 6 2]*4" 4 $ sound "bsvocals:1 bsvocals:1 bsvocals:1 bsvocals:1"
+
+hush
+
+-- legato cuts samples to a regimented length (but not cut)
+
+d1 $ sound "bsvocals:1 bsvocals:5"
+  # legato
+
+  hush
+
+-- distrib - a bit like euclidian
+
+d1 $ distrib [3,8] $ sound "bd"
+
+-- but you can have more than two
+
+d2 $ distrib [3,7,16] $ sound "bd"
+
+-- that will fit 7 into 16 then 3 into what's left
+
+-- you can also put patterns inside
+
+d3 $ jux (hurry 0.5) $ distrib ["<3 6>", 8] $ sound "can"
+
+hush

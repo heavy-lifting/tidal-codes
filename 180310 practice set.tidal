@@ -1,0 +1,55 @@
+
+d5 $ jux (sometimes (hurry 2))
+  $ sound "{bskick:1 ~ bskick:1 ~ , bshihat bshihat ~ bshihat bshihat}"
+  # gain 1.4
+  # shape "0.5"
+
+d1 $ every 2 (density 4) $ sound "[bsvocals*3] ~ ~ ~" # vowel "a"
+
+d2 $ jux (hurry "<2 4 8>") $ sound "can*32?" # slow 4 (speed sine1)
+
+d2
+
+hush
+
+cps 1
+
+hush
+
+d9 $ midicmd "midiClock*48" # s "midi" # midichan "1"
+
+d8 $ stack [midicmd "control*16" # ctlNum "12" # iter 4 (control "0 [30 60] 0 127"),
+       midicmd "control*16" # ctlNum "13" # control "{~ ~ ,0 127 [90 30] 60 [30 0]}",
+       midicmd "control" # ctlNum "92" # control "127"
+      ] # s "midi"
+
+d8 silence
+
+padx = cc 12
+pady = cc 13
+pad touch = cc 92
+fx depth = cc 94
+slider = cc 93
+hold = cc 95
+a = note a1 - 45
+b = note b1 - 47?
+c = note c1 - 36
+d = note d1 - 38
+
+cps 1
+
+let
+    (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+    (midichan, midichan_p) = pF "midichan" (Nothing)
+    (progNum, progNum_p) = pF "progNum" (Nothing)
+    (val, val_p) = pF "val" (Nothing)
+    (uid, uid_p) = pF "uid" (Nothing)
+    (array, array_p) = pF "array" (Nothing)
+    (frames, frames_p) = pF "frames" (Nothing)
+    (seconds, seconds_p) = pF "seconds" (Nothing)
+    (minutes, minutes_p) = pF "minutes" (Nothing)
+    (hours, hours_p) = pF "hours" (Nothing)
+    (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+    (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+    (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+    (control, control_p) = pF "control" (Nothing)
