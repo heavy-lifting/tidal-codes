@@ -1,9 +1,53 @@
-d1 $ sound "{bskick:1 bsperc:3 bskick:1 ~, bshihat bshihat [bshihat bshihat bshihat]}"
-  # gain "<1 1 1 1>"
-
-d2 $ iter 4 $ n "0 4 6 2" # sound "superpiano"
+solo $ d1 $ jux (density (choose [2,4,1,0.5])) $ sound "{bskick:1 bsperc:3 bskick:1 ~, bshihat bshihat [bshihat bshihat bshihat]}"
+  # gain "<1>"
 
 d1 silence
+
+import qualified Sound.Tidal.Scales as Scales
+
+d4 $ jux (density 2)
+  $ sometimes (rev)
+  $ iter 4
+  $ n (toScale Scales.phrygian "0 4 6 2")
+  # sound "supersaw"
+  # gain "<0.5 0.5 0>"
+  # vowel "a o a"
+  # cutoff 800
+  # resonance sine1
+  # orbit 1
+
+hush
+
+d2 $ density (choose [1,2,4,8,16]) $ n (toScale Scales.phrygian "0 4 6 2" + chord "<dim plus>") # sound "superpwm"
+
+d3 $ degradeBy 1 $ jux (# vowel "a o p") $ sound "{bskick ~ bskick ~, cp cp [cp cp]}" # pan sine1 # orbit 2
+
+d4 $ sound "bshihat [bshihat*3] [bshihat*2]"
+
+
+hush
+
+import qualified Sound.Tidal.Scales as Scales
+
+import Sound.Tidal.Chords
+
+d2 $ slow 2
+  $ degradeBy 0.4
+  $ jux (rev)
+  $ iter 4
+  $ n ((toScale Scales.dorian "0(3,2) 4(1,2) 6(3,2) 8(5,2)") + chord "minor")
+  # s "superpwm"
+  # cutoff 1200
+  # resonance 0.2
+
+d1 $ n (toScale myscale "0 1 2 3 4 5 6 7") # sound "supermandolin"
+
+
+hush
+
+myscale = Scales.major
+
+d2 silence
 
 bps (128/60)
 
@@ -31,11 +75,16 @@ d5 $ slow 1 $ n "[-1] -5 [~ -3] [~ ~ ~ -6]" # sound "super808"
 
 hush
 
-d9 silence
+d3 silence
 
-solo $ d4 $ loopAt "<4 8>" $ chop 8 $ sound "stay:2*2"
+chords = "<major plus>"
 
-d6 $ loopAt "<8 4>" $ chop 8 $ sound "stay:3"
+scale = Scales.phrygian
+
+d4 $ loopAt "<4>" $ chop 8 $ sound "stay:2*2" # up (chord chords)
+
+
+d6 $ loopAt "<8 4>" $ chop 8 $ sound "stay:3" # up (chord "<major minor>")
 
 d7 $ loopAt "<1 2 4 8>" $ sound "stay:4*4" # cut 1
 
@@ -44,3 +93,49 @@ d8 $ loopAt 2 $ randslice 8 $ sound "stay:5*4" # cut 4
 d9 $ loopAt 2 $ sound "stay:5"
 
 hush
+
+d1 $ slow 2 $ n (toScale scale "0 1 2 3 4 5 7 8 ") # sound "superpiano"
+
+hush
+
+bps (150/60)
+
+d1 $ degradeBy 0.0 $ loopAt "<2>" $ sound "mar:0"
+
+d1 silence
+
+d2 $ loopAt 2 $ sound "mar" # cut 1 # speed "<-1 1>"
+
+d2 silence
+
+d6 $ degradeBy 0.0 $ jux (# vowel "a o a") $ loopAt "<8 16>" $ chop 32 $ sound "mar:1*32" # up "2 5 6" # cut 3
+
+d3 $ jux (iter 4) $ sound "{bskick ~ bskick [~ bssnare:7], ~ ~ ~ [bshihat bshihat] bshihat}" # shape "0.7"
+
+d4 $ sometimes (density 2) $ sound "bshihat*4?"
+
+d4 silence
+
+d5 $ loopAt "<8 4>" $ chop 8 $ sound "mar:3 mar:2" # cut 2 # up (chord "minor")
+
+d5 silence
+
+d6 $ degradeBy 1 $ randslice 32 $ sound "[mar:2 mar:3]*16" # up (chord "minor")
+
+bps (128/60)
+
+hush
+
+d1 $ sound "stay*4" # cut 1 # up "<1 4 5>"
+
+d2 $ loopAt "<4 2 1 0.5>" $ sound "stay:5"
+
+d3 $ sound "{bskick:1 [[bsperc:3 bsperc:3]] bskick:1 ~, bsperc:6}" # shape "0.4" # delay "0.4"
+
+d4 $ sound "stay:4" # cut 2 # slow 2 (up "<1 4 5>")
+
+d5 $ every 4 (density 8) $ sound "[ ~ stay:1]" # up (chord "<minor>") # pan "-1 1" # cut 4
+
+hush
+
+scale=Scales.mixolydian

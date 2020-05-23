@@ -1,0 +1,110 @@
+d5 $ midinote "0 .. 60" # sound "midi"
+
+d5 silence
+
+-- automatically sends on channel 1
+
+-- sending a start message every 4 cycles and 48 clock messages per cycle
+
+using existing cx:
+
+d1 $ midicmd "[start/4,midiClock*48]" # s "midi"
+
+d1 $ midicmd "[stop]" # s "midi"
+
+d2 $ midinote "36 41 45 47" # s "midi" # midichan "2" # velocity "500"
+
+hush
+
+hush
+
+d3 $ midinote "30 31 32 33 34 35 36 37 38 39" # s "midi" # midichan "2" # midiamp "1"
+
+cps 1
+
+hush
+
+hush
+
+make dedicated connection:
+(x1,_) <- superDirtSetters getNow
+x1 $ midicmd "[start/4,midiClock*48]" # s "midi" # nudge 0.11
+
+ --supercollider stuff
+// version 0.3
+
+// first, initialize your midi device.
+(
+MIDIClient.init;
+MIDIClient.list; // to check, which are there, you can query them
+)
+
+
+// create a midi out connection
+~midiOut = MIDIOut.newByName("FastLane USB", "Port A"); // substitute your own device here
+
+ // you may want to adjust the latency here
+~midiOut.latency = 0.0;
+
+
+
+// define one instrument called "midi" (you may call it what you like)
+// it uses the built in event type "midi" (this is predefined).
+
+~dirt.soundLibrary.addMIDI(\midi, ~midiOut);
+
+
+
+// in tidal, define the following parameters:
+
+let
+    (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+    (midichan, midichan_p) = pF "midichan" (Nothing)
+    (progNum, progNum_p) = pF "progNum" (Nothing)
+    (val, val_p) = pF "val" (Nothing)
+    (uid, uid_p) = pF "uid" (Nothing)
+    (array, array_p) = pF "array" (Nothing)
+    (frames, frames_p) = pF "frames" (Nothing)
+    (seconds, seconds_p) = pF "seconds" (Nothing)
+    (minutes, minutes_p) = pF "minutes" (Nothing)
+    (hours, hours_p) = pF "hours" (Nothing)
+    (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+    (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+    (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+    (control, control_p) = pF "control" (Nothing)
+    (amp, amp_p) = pF "amp" (Nothing)
+    (velocity, velocity_p) = pF "velocity" (Nothing)
+
+
+// the following midicmds and their parameters are then supported
+// the usual note/freq and legato/sustain parameters are taken into account
+
+polyTouch: chan, midinote, polyTouch
+program: chan, progNum
+bend: chan, val
+sysex: uid, array
+noteOn: chan, midinote, amp // default
+allNotesOff: chan
+smpte: frames, seconds, minutes, hours, frameRate
+songPtr: songPtr
+control: chan, ctlNum, control
+touch: chan, val
+noteOff: chan, midinote, amp // sent automatically, after sustain.
+
+weave
+
+started with sounds chasing one another out of phase
+
+e.g.
+
+d1 $ weave 8 (pan saw) $
+  [sound "bd sn",
+  sound "bd sn"
+  ]
+
+d4 $ sound "bd sn" # slow 8 (pan saw)
+
+d5 $ sound "bd sn" # (4 <~) slow 8 (pan saw)
+
+
+hush

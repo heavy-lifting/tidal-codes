@@ -1,0 +1,28 @@
+bps (150/60)
+
+stay:0 - boop loopAt 2
+stay:1 - don't
+stay:2 - go away loopAt 8 4
+stay:3 - intro loopAt 8 4
+stay:4 - pads
+super808
+bs kit
+mar:0 - iii
+mar:1 - presents
+mar:2 - twinkle
+mar:3 - twinkle
+
+hush
+
+import qualified Sound.Tidal.Scales as Scales
+
+import Sound.Tidal.Chords
+
+
+
+
+d2 $ slow 4 $ every 4 (slow 8) $ sound "{~ bssnare:7 ~ bssnare:7/2, bsperc:6 ~ bsperc:6}" # delay "0.4" # orbit 2
+
+hush
+
+d4 $ loopAt 8 $ sound "mar:2 mar:4"

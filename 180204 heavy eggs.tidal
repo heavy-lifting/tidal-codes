@@ -1,0 +1,106 @@
+cps 1
+
+-- don't forget tidal thinks midi channels start at 0!!!!!!!
+
+hush
+
+d1 $ midicmd "midiClock*48" # s "midi" # midichan "1"
+
+hush
+
+-- nick sample
+d2 $ loopAt 8 $ sound "nick" # gain "0.8"
+
+solo $ d2 $ sound "nick" # gain "0.8" # cut 1
+
+d2 $ loopAt "<8 4 16>" $ chop 32 $ sound "nick" # gain "0.8" # cut 1
+
+-- drum parts
+d3 $ sound "{[~ bskick:1] ~, ~ [bskick:1*2] ~ ~ }" # shape "0.25"
+
+d3 $ every 8 (rev) $ sound "{[~ bskick:1] ~, ~ [bskick:1*2] ~ ~ }" # shape "0.25"
+
+d4 $ sound "~ cp/2" # gain "1" # vowel "<p a p a>"
+
+d5 $ sound "{~ ~, ~ hh ~ ~ [hh hh]}" # shape "0.6" # lpf "3000" # orbit 1
+
+-- bass to nick's yamaha fm synth
+
+-- struture -- d, d, c, c, f, e
+
+d2 $ sound "{bskick:1*2, bshihat/2}"
+
+hush
+
+-- d
+d6 $ jux (rev)
+  $ superimpose (slow 2)
+  $ iter 4 (n (toScale Scales.major "1 7 [2 5] 3"))
+  # sound "midi"
+  # midichan "5"
+  # sustain "0.1"
+  # gain "3"
+
+hush
+
+-- c
+d6 $ jux (rev)
+  $ superimpose (slow 2)
+  $ iter 4 (n (toScale Scales.major "0 7 [2 5] 3"))
+  # sound "midi"
+  # midichan "5"
+  # sustain "0.1"
+  # gain "3"
+
+--f
+d6 $ jux (rev)
+  $ superimpose (slow 2)
+  $ iter 4 (n (toScale Scales.major "3 7 [2 5] 3"))
+  # sound "midi"
+  # midichan "5"
+  # sustain "0.1"
+  # gain "3"
+
+--e
+d6 $ jux (rev)
+  $ superimpose (slow 2)
+  $ iter 4 (n (toScale Scales.major "2 7 [2 5] 3"))
+  # sound "midi"
+  # midichan "5"
+  # sustain "0.1"
+  # gain "3"
+
+hush
+
+d6 $ jux (rev) $ superimpose (slow 2) $ iter 4 (n (toScale Scales.major "0")) # sound "midi" # midichan "5" # sustain "0.1" # gain "3"
+
+hush
+
+toScale Scales.phrygian
+
+-- chorus drums
+
+d3 $ slow 2 $ sound "[bskick:1 bskick:1 bskick:1 bskick:1]"
+
+
+hush
+
+import qualified Sound.Tidal.Scales as Scales
+
+-- in tidal, define the following parameters:
+
+let
+  (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+  (midichan, midichan_p) = pF "midichan" (Nothing)
+  (progNum, progNum_p) = pF "progNum" (Nothing)
+  (val, val_p) = pF "val" (Nothing)
+  (uid, uid_p) = pF "uid" (Nothing)
+  (array, array_p) = pF "array" (Nothing)
+  (frames, frames_p) = pF "frames" (Nothing)
+  (seconds, seconds_p) = pF "seconds" (Nothing)
+  (minutes, minutes_p) = pF "minutes" (Nothing)
+  (hours, hours_p) = pF "hours" (Nothing)
+  (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+  (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+  (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+  (control, control_p) = pF "control" (Nothing)

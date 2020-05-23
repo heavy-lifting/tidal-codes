@@ -1,0 +1,31 @@
+-- rhythmic sass
+
+cps (0.5)
+
+-- kp3 dly6 top right
+
+d1 $ sound "{[~ bskick:1] ~, ~ [bskick:1*2] ~ ~ }"
+
+d2 $ sound "~ cp/2" # gain "1" # vowel "<p a p a>"
+
+d3 $ sound "{~ ~, ~ hh ~ ~ [hh hh]}"
+
+hush
+
+-- with KP3 dly6 top right -- also used that effect with mute on KP3 just to record a delay click
+
+d4 $ jux (rev) $ superimpose (slow 2) $ iter 4 (n "1 6 [3 5] 3") # sound "super808"
+
+-- c sharp version (alternate between the two)
+
+d4 $ jux (rev) $ superimpose (slow 2) $ iter 4 (n "1 6 [3 5] 2") # sound "super808"
+
+d4 $ jux (rev)
+  $ superimpose (slow 2)
+  $ iter 4 (n "1 6 [3 5] 3") 
+  # sound "super808"
+
+
+hush
+
+d5 $ sound "bsvocals"

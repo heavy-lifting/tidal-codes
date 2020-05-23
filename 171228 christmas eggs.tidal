@@ -1,0 +1,49 @@
+import Sound.Tidal.MIDI.Context
+
+displayOutputDevices >>= putStrLn
+
+devices <- midiDevices
+
+m1 <- midiStream devices "LoopBe Internal MIDI" 1 synthController
+
+m2 <- midiStream devices "QUAD-CAPTURE" 2 synthController
+
+m3 <- midiStream devices "QUAD-CAPTURE" 3 synthController
+
+m4 <- midiStream devices "QUAD-CAPTURE" 2 synthController
+
+m2 $ every 4 (density 2) $ slow 2 $ note "[40 40 40*4, [~ 41]*3]"
+
+m4 $ slow 2 $ note "44 [44 44] 44 [44 45]"
+
+bps (150/120)
+
+bps (-1)
+
+m3 $ jux (rev) $ every 4 (density 2) $ iter 3 (note "[-18 -15 -13*2]") # dur "0.33"
+
+m1 silence
+
+m1 $ every 4 (density 2) $ slow 2 $ note "[40 40 40*4, [~ 41]*3]"
+
+
+bps (-1)
+
+m2 silence
+40 = KICK 1
+41 = KICK 2
+42 = SNARE 1
+43 = SNARE 2
+44 = CLOSED HH
+45 = OPEN HH
+46 = HIT 1
+47 = RIDE
+48 = HIT 2
+49 = CRASH
+50 = HIT 2
+51 = PERC 1
+52 = PERC 2
+
+
+
+hush

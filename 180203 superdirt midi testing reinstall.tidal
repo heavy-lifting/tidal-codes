@@ -1,0 +1,84 @@
+d4 $ slowspread (slow) [4,2]
+  $ every 4 (slow 4)
+  $ jux (rev)
+  $ iter 4
+  $ n (toScale Scales.phrygian "0 [2 6] 4 [8 0]" - "<0 12 0>")
+  # sound "midi"
+  # gain "<1 1 0 1 1>"
+
+d5 $ n ("<2(3,8) 4(3,8) 2(6,8) 8(3,8)>") # sound "midi" #
+
+
+
+-- # midicmd "control" # ctlNum 84 # control (run 127)
+
+
+hush
+
+d1 $ sound "midi" # n "0" # midichan "0" # midicmd "control" # ctlNum "91" # control "<0 127>"
+
+d2 $ slowspread (density) [2,2,2,1]
+  $ iter 3 (n (toScale Scales.phrygian "{12 14 16, 0 2 4 8}" + "<0 -5>"))
+  # sound "midi"
+
+d2 silence
+
+d3 $ slowspread (slow) [1,1,1,0.5]
+  $ n (toScale Scales.phrygian "<-12 -10 -6 -8>")
+  # sound "midi"
+  # midichan "2"
+
+d4 $ slow 2 $ n ("{45 [46 46] 45 [46 47], 54 58/4}" - "60") # sound "midi" # midichan "10"
+
+d4 silence
+
+hush
+
+  # midicmd "control"
+  # ctlNum "10"
+  # control "<0 127>"
+
+d6 $ slow 2 $ n "1 4 2 3" # sound "midi" #
+
+import qualified Sound.Tidal.Scales as Scales
+
+import Sound.Tidal.Chords
+
+hush
+
+d1 $ sound "arpy" # up (chord "major")
+
+-- automatically sends on channel 1
+
+-- sending a start message every 4 cycles and 48 clock messages per cycle
+
+using existing cx:
+
+d1 $ midicmd "[start/4,midiClock*48]" # s "midi"
+
+cps 1
+
+hush
+
+make dedicated connection:
+(x1,_) <- superDirtSetters getNow
+x1 $ midicmd "[start/4,midiClock*48]" # s "midi" # nudge 0.11
+
+
+// in tidal, define the following parameters:
+
+let
+  (midicmd, midicmd_p) = pS "midicmd" (Nothing)
+  (midichan, midichan_p) = pF "midichan" (Nothing)
+  (progNum, progNum_p) = pF "progNum" (Nothing)
+  (val, val_p) = pF "val" (Nothing)
+  (uid, uid_p) = pF "uid" (Nothing)
+  (array, array_p) = pF "array" (Nothing)
+  (frames, frames_p) = pF "frames" (Nothing)
+  (seconds, seconds_p) = pF "seconds" (Nothing)
+  (minutes, minutes_p) = pF "minutes" (Nothing)
+  (hours, hours_p) = pF "hours" (Nothing)
+  (frameRate, frameRate_p) = pF "frameRate" (Nothing)
+  (songPtr, songPtr_p) = pF "songPtr" (Nothing)
+  (ctlNum, ctlNum_p) = pF "ctlNum" (Nothing)
+  (control, control_p) = pF "control" (Nothing)
