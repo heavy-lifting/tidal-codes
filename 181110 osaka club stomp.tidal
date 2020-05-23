@@ -1,0 +1,35 @@
+cps 1.2
+
+d9 $ slow 4 $ midinote (scale 40 80 saw)
+  # sound "ro"
+  # legato 0.5
+  # midichan "0"
+
+d9 silence
+
+d8 $ stack [midicmd "control*16" # ctlNum "12" # control "127 127 127",
+       midicmd "control*16" # ctlNum "13" # control "<127 127 127 127>",
+       midicmd "control*16" # ctlNum "92" # control "<127 127 127 127>"
+      ] # s "kp3"
+
+d7 $ midicmd "midiClock*48" # s "[ro,kp3]" # midichan "0"
+
+d5 $ striate 16 $ jux (iter 4.density 0.5) $ sound "{bb bb ~ bb:3, ~ ~ [paper:3 paper:3] ~ paper:3}" # cut 1
+
+hush
+
+d2 $ degradeBy 0 $ loopAt "<4 2 1>" $ chop 4 $ sound "vkw:4"
+
+
+hush
+
+  padx = cc 12
+  pady = cc 13
+  pad touch = cc 92
+  fx depth = cc 94
+  slider = cc 93
+  hold = cc 95
+  a = note a1 - 45
+  b = note b1 - 47?
+  c = note c1 - 36
+  d = note d1 - 38/

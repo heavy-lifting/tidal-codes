@@ -1,0 +1,66 @@
+setcps (90/120)
+
+setcps 1
+
+d8 $ hurry 0.5 $ midinote "60 32 [43 50]"
+  # sound "[ro]"
+  # legato 0.25
+  # midichan "0"
+  # gain "<1 1 1 1 1>"
+
+d8 silence
+
+
+
+d9 $midinote "~"
+-- (slow 8 $ range 30 60 saw)
+  # sound "[ vt4]"
+  # legato 0.5
+  # midichan "0"
+
+d9 silence
+
+hush
+
+d7 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d2 $ sound "bskick:1 ~ bskick:1" # gain 1 # shape 0.4
+
+d5 $ jux (iter 3 ) $ density 2 $ sound "{~ ~, ~ bssnare:7 [~ bsperc:6]}"
+  # shape 0.4
+  # cutoff (slow 8 $ range 0 1500 saw)
+
+d6 $ hurry 2 $ sound "{vkb:3 ~ vkb:3 ~, vkb:2 vkb:1 vkb:2*2 vkb*1 ~ vkb:2}"
+  # up "1 5 7 3" # cut 2
+--  # cutoff (slow 8 $ range 0 1500 saw)
+
+d1 $ jux (hurry 0.5)$ sound "vkl:2*16"
+  # cut 2
+  -- # speed (slow 8 $ range 0 4 saw)
+
+d1 $ loopAt 8 $ chop 4 $ sound "bol:0 bol:1" # cut 2
+
+d2 $ sound "bskick:1*2 bskick:1" # shape 0.4
+
+d3 $ loopAt 8  $ sound "bow*4" # cut 1
+
+hush
+
+d4 $ jux (density 2.iter 4) $ sound "{cpu2:6/3 cpu2, cpu3 [cpu3:1 cpu3:2] ~ cpu3 cpu:3*2}"
+
+
+d1 $ jux (iter 4) $ loopAt 1 $ sound "{<aa [aa:2 aa:1]>, aa:2/2 aa:3/3 aa:3/5 aa:4}" # cut 1
+
+d2 $ loopAt "<2 2 1>" $ striate 4 $ sound "aa:9*4" # cut 3
+
+d3 $ loopAt "<0.25 0.5 1 2>" $ chop 4 $ sound "aa:10*4?" # cut 2
+
+d2 silence
+
+d2 $ loopAt "2 2 2 1" $ striate 8 $ sound "aa*4" # cut 3
+
+hush
+
+d1 $ loopAt 1 $ striate "<32 32 16 8>" $ sound "<aa:17 aa:16> aa:16" # cut 1
+
+d1 $ loopAt 1 $ sound "aa:0"

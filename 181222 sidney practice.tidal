@@ -1,0 +1,33 @@
+setcps 0.9
+
+d1 $ sound "[bskick:1 [bskick:1 bskick:1]]" # shape 0.4
+
+d2 $ loopAt 4 $ sound "glass glass/4" # cut 3
+
+d9 $ sometimes (hurry "<0.5 1 2>") $ iter 4 $ slow 1 $ sound "ro*8" # midinote "{30 [36 42], 32 36 32 46 42}"
+-- # midinote (range 40 80 saw)
+  -- # sound "ro"
+  # legato 0.5
+  # midichan "0"
+
+d4 $ jux (hurry 0.5) $ sound "{bb:2 [bb:3 bb:3], paper:3}"
+
+d2 silence
+
+hush
+
+d8 $ stack [midicmd "control*16" # ctlNum "12" # control "90 127 15",
+       midicmd "control*16" # ctlNum "13" # control "<30 127 60 127>",
+       midicmd "control*16" # ctlNum "92" # control "<127 127 127 127>"
+      ] # s "kp3"
+
+d7 $ midicmd "midiClock*48" # s "[ro,kp3]" # midichan "0"
+
+d3 $ loopAt "<8 2 4>" $ chop "<2 8 4 16>" $ sound "wood*4" # cut 1 # cutoff 1500
+
+d5 $ randslice 32 $ sound "wood:3 [wood:3 wood:3] [wood:3 wood:3 wood:3] ~"
+
+d4 silence
+
+
+hush

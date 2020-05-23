@@ -1,0 +1,58 @@
+setcps 1.4
+
+d8 $  density 2 $ midinote (fast 2 (range 28 40 sine))
+  # sound "[ro]"
+  # legato 2
+  # midichan "0"
+  # gain "<1 1 1 1 1>"
+
+d8 $ speed (run 8) # sound "super808"
+
+d8 silence
+
+hush
+d9 $ fast 8 $iter 4 $midinote "28 36 40 [28 36]"
+  # sound "[ vt4]"
+  # legato 0.5
+  # midichan "0"
+
+d9 silence
+
+d7 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+hush
+
+d2 $ sound "{bskick:1(3,8) }" # shape 0.4 # cut 4
+
+d3 $ sound "skel:0*4" # cut 1
+
+d3 silence
+
+
+d6 $ sound "{~ ~, bssnare:7*3 ~ [~ bsperc:3*2] ~}"
+
+d4 silence
+
+hush
+
+
+
+posted on the block like a lowlife
+i like my fanta with no ice
+she says my lifestyle is not nice
+but my woody so good i make her blow twice
+why you no grind you don't like money
+we spend money like we don't like money
+she loves an ugly man making pretty money
+and i;m an ugly man making sexy money
+
+  padx = cc 12
+  pady = cc 13
+  pad touch = cc 92
+  fx depth = cc 94
+  slider = cc 93
+  hold = cc 95
+  a = note a1 - 45
+  b = note b1 - 47?
+  c = note c1 - 36
+  d = note d1 - 38/

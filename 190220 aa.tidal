@@ -1,0 +1,100 @@
+setcps (98/60)
+
+d1 $ jux (iter 4) $ density 2 $ sound "{bskick:1, [~ bsperc:3] ~, bshihat ~ ~}" # shape 0.8
+
+d7 $ sometimes (hurry 0.5) $ sound "bsperc:6*8" # pan sine
+
+d1 silence
+
+-- separate samples into groups of related length
+
+hush
+
+d2 $ loopAt 4 $ chop 8 $ sound "my:3" # cut 2
+
+d5 $ randslice 8 $ sound "iw*2" # n (irand 16) # cut 2 # gain 1.4
+
+d2 silence
+
+d4 $ loopAt "<4 8 2 1 0.5>" $ sound "iw:5*4" # shape 0.4 # cut 1
+
+
+d2 $ sound "bskick:1*2" # shape 0.8
+
+d1 $ loopAt "4" $ chop 16 $ sound "ci:3 ci:4" # cut 2
+
+d1 $ loopAt "8" $ chop 8 $ sound "ci:1 ci:1" # cut 3
+
+d3 $ jux (slow 2) $ randslice 128 $ sound "glass(3,8)"
+
+d4 $ jux (iter 2) $ sound "{bsperc:3 [~ bsperc:3], bshihat*2?}"
+
+d4 silence
+
+d5 $ n (run 4) # sound "super808"
+
+hushop
+
+
+d1 $ loopAt 2 $ sound "am:11/4" # cut 1
+
+d2 silence
+
+d2 $ density "<1 0.5 2>" $ loopAt "<1 2 0.5 4>" $ randslice 4 $ sound "am:9*4?" # cut 2 # up "1 6 12" # shape "0.4"
+
+d7 $ often (hurry 0.5) $ sound "can*8?" # pan sine
+
+d5 $ sound "bb bb(3,8)" # n "<5 2 4>"# cut 3
+
+d7 silence
+
+d1 $ loopAt 4 $ sound "aa aa:8"
+
+d2 $ jux (iter 4) $ loopAt 2 $ chop 8 $ sound "{~, aa:2 aa:4 aa:3 aa:5}"
+
+d4 $ sound "bskick:1 [bskick:1*2]" # shape "0.8"
+
+hush
+
+d3 silence
+
+d3 $ loopAt "<2 1 1>" $ sound "{~, aa:7 aa:9 aa:10 aa:11}" # delay 0.25
+
+d5 $ jux (iter 4 ) $ sound "bshihat:1 [bshihat:1 bshihat:1] [bshihat:1 bshihat:1 bshihat:1] ~" # pan sine # delay 0.25
+
+hush
+
+setcps (100/60)
+
+d1 $ jux (slow 2) $ loopAt "<6>" $ chop "<6 12>" $ sound "ft:1 ft:2" # shape "0.6" # cut 1
+
+d3 $ sound "bssnare:7" # shape "0.8"
+
+d2 $ slow 2 $ iter 4 $ hurry "1 2 0.5" $ sound "bskick:3 bsperc" # shape "0.8"
+
+d4 $ every 4 (hurry 4) $ sound "super808*4" # n (run 4)
+
+
+d1 silence
+
+d1 $ iter 4 $ loopAt 4 $ chop "16" $ sound "jr*4?" # n "<0 3 2 1>" # cut 2 # shape "0.6"
+
+d2 $ loopAt 4 $ chop 8 $ sound "ci ci" # gain 0.8 # cut 1
+
+d3 $ sound "bskick:2 [bskick:2 bskick:2]"
+
+d5 $ jux (slow 2) $ sound "{[~ bshihat] ~, ~ ~  [bsperc:3*2] ~}"
+
+hush
+
+d1 $ loopAt 4 $ sound "my:3" # gain 1.5
+
+d2 $ loopAt 4 $ chop 8 $ sound "my:4/4 my:4/6"
+
+d3 $ jux (hurry 2) $ sound "{paper:3 [~ paper:3], ~ ~ bshihat:1*2 ~ bshihat:1*2}"
+
+d4 $ slow 2 $ loopAt "<4 8 16>" $ chop "<16 2 4 8>" $ sound "my:9" # cut 2 # shape 0.4
+
+d5 $ sound "bskick:1" # shape 0.8
+
+d2 silence

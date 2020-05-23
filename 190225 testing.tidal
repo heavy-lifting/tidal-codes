@@ -1,0 +1,7 @@
+setcps 1.5
+
+d1 $ degradeBy (iter 4 $ "1 0.5 0.125 [0.3 0.6]") $ sound "bd [~ cp] can [hh hh hh h
+
+h]"
+
+hush

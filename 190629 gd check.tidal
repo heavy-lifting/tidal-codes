@@ -1,0 +1,17 @@
+d1 $ jux (hurry 2) $ sound "cpu2(3,8)"
+
+
+d2 $ jux (iter 6) $ striate "<4 8 16>" $ sound "natty*8?" # n "0 .. 7"
+
+
+d3 $ jux (0.1 <~) $ loopAt "<4 2 2>" $ chop "<8 16 32>" $ sound "chord14*4" # cut 2
+
+
+d4 $ sound "bass8 bass10(2,5)" # n (irand 16) # up "<1 1 5 7>"
+
+
+d5 $ sometimes (hurry 0.5) $ sound "cpu2:2*8?"
+
+setcps 1.1
+
+hush

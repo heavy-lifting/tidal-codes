@@ -1,0 +1,67 @@
+
+Section 7
+
+setcps (140/120)
+
+d1$ jux (slow 2) $ (0.25 <~) $ sound "{bskick:1 bskick:1, ~ ~ bsperc:3 ~ [bshihat*3]/2}" # shape 0.4
+
+d1 silence
+
+d2 $ (0.25 <~) $ chop 4 $ loopAt "<2 4>" $ sound "vkloop*4" # cut 2 # shape 0.4
+
+d2 silence
+
+d3 $ (0.25 <~) $ loopAt 8 $ chop "<16 8 4 1>" $ sound "skel:0*2" # cut 1
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "[0]"
+
+
+d9 silence
+
+hush
+
+d1 $ loopAt "4 2" $  chop "<1 2 4>"  $sound "aa*4? aa:2" # cut 2
+
+d4 silence
+
+d2 $ loopAt 4$ striate 4 $ sound "aa:3 aa:4" # cut 2
+
+d3 $ jux (iter 2) $ sound "cpu2*2 cpu2:2" # shape 0.4 # cut 2
+
+d4 $ sound "vkl(3,8)" # gain 1.4 # cut 2
+
+d5 $ jux (iter 4) $ loopAt 4 $ chop "<4 8 1>" $ sound "bm:1 bm:0 bm:2 ~" # cut 2
+
+d1 $ sound "{bskick:1 ~ , ~ bsperc:6*4 ~}" # shape 0.4
+
+hush
+
+-- rocket
+
+<41 44 48 36 39>
+
+  d8 $ sometimes (rev) $ slow 2 $ midinote "<41(3,8) 44(5,8) 48(2,8) 36(6,8)>"
+    # sound "[ro]"
+    # legato 1
+    # midichan "0"
+    # gain "<1 1 1 1 1>"
+
+  d8 silence
+
+  hush
+
+-- kawai - not used
+
+  d7 $ jux (iter 4) $ slow 4$ midinote ("39(3,8) <45(5,8) 49(6,8)>")
+    # sound "[qc]"
+    # legato "1"
+    # midichan "2"
+    # gain "<1>"
+
+d7 silence
+
+
+d6 $ jux (iter 4) $ slow 4 $ midinote ("39(3,8) <45(5,8) 49(6,8)>")
+  # sound "[ vt4]"
+  # legato 0.5
+  # midichan "0"

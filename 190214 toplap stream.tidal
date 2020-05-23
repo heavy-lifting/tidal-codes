@@ -1,0 +1,14 @@
+setcps 1.1
+
+d1 $ jux (hurry 0.5) $ density "2 4" $ sound "bsperc:9*2? besperc:9?" # shape 0.4 # pan sine # gain 0.8
+
+d4 $ degradeBy 0.89 $ jux (density 2) $ sound "{bskick:1 bskick:1*2, ~ bsperc:3 bskick:1 bsperc:3 ~}" # shape "0.4"
+
+d6 $ degradeBy 0.99 $ jux (iter 3) $ sometimes (hurry "<2 4 0.5>") $ slow "<0.5 2 1 2 0.5>" $ sound "{bsnoise:4, ~ bsnoise:5 ~}" # cut 2
+
+d7 $ degradeBy 0.89 $ jux (sometimes (hurry 2)) $ n (run 8) # sound "super808"
+
+hush
+
+
+BYYYYYYEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE

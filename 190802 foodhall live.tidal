@@ -1,0 +1,67 @@
+setcps (126/120)
+
+CHECK SYNC
+
+d1$ (0.17 <~) $(hurry 32) $ sound "{bskick:1*2 ~, bshihat ~ [bshihat bshihat] bshihat ~}"
+  # shape 0.6
+  # gain "<1 1 1 0>"
+
+d1 silence
+
+d2 $ (0.17 <~) $ loopAt 2 $ chop 64 $ sound "vkweird:1*4?"
+
+d2 silence
+
+d3 $ (0.17 <~) $ slow 2 $ jux (iter 4)$ sound "{[~  paper:3] ~, ~ ~ paper:3 ~ ~ paper:3 paper:3 ~}"
+  # cut 1
+  # gain "<1 1 1 0>"
+
+d3 silence
+
+d4 $ (0.17 <~) $ loopAt "16 8" $ striate 16 $ sound "wood:1 wood:1" # cut 3 # gain "<1 1 1 0>"
+
+d4 silence
+
+d5 $ (0.17 <~) $ loopAt "<16 8>" $ striate "<64 16 32>"  $ sound "skel*4" # cut 2
+
+d5 silence
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "[0]"
+
+d9 silence
+
+hush
+
+-- rocket
+
+<41 44 48 36 39>
+
+d8 $degradeBy 0.2 $  jux (iter 4) $ slow "<1 0.5 1>"$ midinote "45 48/2 ~ 40*2"
+  --midinote "<41(3,8) 44(5,8) 48(2,8) 36(6,8)>"
+  # sound "[ro]"
+  # legato 1
+  # midichan "0"
+  # gain "<1 1 1 1 1>"
+
+d8 silence
+
+
+-- kawai - not used
+
+d7  $ slow 1
+  $ midinote "{48, ~ 60 ~}"
+  # sound "[qc]"
+  # legato "2"
+  # midichan "2"
+  # gain "<1>"
+
+d7 silence
+
+-- vocoder
+
+d6 $ jux (iter 4) $ slow 2 $ midinote ("41(3,8) <44(5,8) 48(6,8)>")
+  # sound "[ vt4]"
+  # legato 0.5
+  # midichan "0"
+
+d6 silence

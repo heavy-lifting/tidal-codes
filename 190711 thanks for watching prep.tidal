@@ -1,0 +1,601 @@
+setcps (106/120)
+
+
+
+d7 $ midicmd "midiClock*48" # s "[qc,ro]" # midichan "0"
+
+d8 $ ( 0.6 <~) $ slow 2 $ midinote "60 45(3,8)" + 24
+  # sound "[qc]"
+  # legato 4
+  # midichan "0"
+  # gain "<1 1 1 1 1>"
+
+
+d8 $ ( 0.8 <~) $ jux (iter 4) $ slow 2 $ (midinote "<[60,45,38](<3 5 6>,8) [60,45,68](<3 5 6>,8)>")
+    # sound "[qc]"
+    # legato 1
+    # midichan "0"
+    # gain "<1 1 1 1 1>"
+
+d7 $ sound "cpu2"
+
+hush
+
+-- romp 58
+
+d6 $ sound "bskick:1*2"
+
+- who taught you to hide inside a pint glass
+
+hush
+
+---------------------
+
+setcps (106/120)
+
+d8 $ sometimes (hurry 2) $ jux (iter 4) $ ( 0.6 <~) $ slow 1 $ midinote "60 [45 ~ ~ 50 ~ ~ 38 ~] " + 24
+  # sound "[qc]"
+  # legato 4
+  # midichan "0"
+  # gain "<1 1 1 1 1>"
+
+-- romp 61
+
+d6 $ rarely (density 8) $ sound "cpu2" # gain 0.8
+-------------------
+
+hush
+
+setcps (106/120)
+
+
+d8$ ( 0.8 <~) $ slow 1
+  $ sound "[qc](<3 5 6>,8)"
+  # iter 4 (midinote "<60 45 <60 45 38> >")
+  # legato 2
+  # midichan "0"
+  # gain "<1 1 1 1 1>"
+
+-- romp 10
+
+d6 $ sound "cpu2(<3 5 6>,8)" # gain 0.8
+
+d5 $ every 4 (density 4) $ sound "cpu2:4*3/4" # gain 0.7
+
+d4 $ sound "cpu2:2 cpu2:3*2" # gain 0.7
+
+hush
+
+-----------------------------------
+
+pon the studio
+
+d9 $ midicmd "midiClock*48" # s "[qc,ro]" # midichan "[0,1,2]"
+
+d8 $ slow 1 $ midinote "60"
+  # sound "[ro]"
+  # legato 4
+  # midichan "0"
+  # gain "<1 1 1 1 1>"
+
+d8 silence
+
+hush
+
+d7 $ sometimes (hurry 2) $slow 1 $ midinote "60(3,8)"
+  # sound "[qc]"
+  # iter 4 (up "<3 5 [8 5]>")
+  # legato 4
+  # midichan "2"
+  # gain "<1 1 1 1 1>"
+
+
+d6 $ jux ( iter 4 ) $ slow 1 $ midinote "[36(<3 5 6>,8),42 42 ~ 46] "
+  # sound "[qc]"
+  # legato 4
+  # midichan "1"
+  # gain "<1 1 1 1 1>"
+
+
+d6 $ slow 1 $ midinote ("[45,47,49] [47,49,51] [49,51,53] [51,53,55] " - 12)
+  # sound "[qc]"
+  # legato 4
+  # midichan "3"
+  # gain "<1 1 1 1 1>"
+
+
+  hush
+
+----------------------------------------------------------------
+Section 1
+
+setcps (106/120)
+
+
+  d9 $ midicmd "midiClock*48" # s "[qc,ro]" # midichan "[0,1,2]"
+
+-- rocket
+
+  d8 $ slow 8 $ jux (iter 4 ) $ hurry 0.25 $ slow 1 $ midinote "<60 [59,53] 60 60>"
+    # sound "[ro]"
+    # legato 1
+    # midichan "0"
+    # gain "<1 1 1 1 1>"
+
+  d8 silence
+
+  hush
+
+-- kawai - 43 AnalogSyn
+
+  d7 $iter 4 $ slow 4 $ midinote "{60(3,8), [59,53]*2 ~ [59,53]*2 ~ ~}"
+    # sound "[qc]"
+    # legato 8
+    # midichan "2"
+    # gain "<1 1 1 1 1>"
+
+-- dr groove drums - P004 Hip Hop 5
+
+  d6 $ midinote "[36*2 ]"
+    # sound "[qc]"
+    # legato 4
+    # midichan "1"
+    # gain "<1 1 1 1 1>"
+
+-- dr groove bass
+
+  d5 $ slow 2 $ midinote "{<36 36 [35 35] 36>, ~ 57 ~ [~ 57] ~}"
+    # sound "[qc]"
+    # legato 4
+    # midichan "3"
+    # gain "<1 0 1 0 1>"
+
+-- samples
+
+d4 $ (0.2 <~) $ loopAt "<4 16 8>" $ chop "<16 64 32>" $ sound "vkw*2" # cut 1
+
+hush
+
+
+d4 silence
+
+-----------------------------------------------------------------------
+
+
+Section 2
+
+setcps (106/120)
+
+
+  d9 $ midicmd "midiClock*48" # s "[qc,ro]" # midichan "[0,1,2,4]"
+
+-- rocket
+
+  d8 $ hurry 0.25 $ midinote "<45 45 [48 52]>"
+    # sound "[ro]"
+    # legato 4
+    # midichan "0"
+    # gain "<1 1 1 1 1>"
+
+  d8 silence
+
+  hush
+
+-- kawai - 74 glassy
+
+  d7 $ fast 2 $ midinote "<52 [52 48 57 48] 52 52 [52 48 57 48]>"
+    # sound "[qc]"
+    # legato 2
+    # midichan "2"
+    # gain "<1 1 1 1 1>"
+
+-- dr groove drums - P004 Hip Hop 5
+
+  d6 $ slow 2 $midinote "[36(3,8),35 35, 61/3 60/4 43/6 49/5 ]"
+    # sound "[qc]"
+    # legato 4
+    # midichan "1"
+    # gain "<1 1 1 1 1>"
+
+  d6 silence
+
+-- dr groove bass - FingB1(00)
+
+  d5 $ degradeBy 0.4 $ jux (iter 4) $ slow 4 $ midinote "<40 40 [35 35] 36> ~ ~ 45 ~ ~ [~ 45] ~"
+    # sound "[qc]"
+    # legato 4
+    # midichan "3"
+    # gain "<1 1 1 1 1>"
+
+d5 silence
+
+-- samples (not used)
+
+d4 $ (0.2 <~) $ loopAt "<4 16 8>" $ chop "<16 64 32>" $ sound "vkw*2" # cut 1
+
+hush
+
+--- ff synth - 124 bords
+
+d3 $ jux (iter 4) $ slow 32 $ midinote ("~ [~ ~ ~] 48 ~ ~" - 48)
+  # sound "[qc]"
+  # legato 32
+  # midichan "5"
+  # gain "<1 0 1 0 1 >"
+
+d4 silence
+
+-- also using farty filter on su10
+
+
+-------------------------------------------------------
+
+Section 3
+
+setcps (140/120)
+
+
+  d9 $ midicmd "midiClock*48" # s "[qc,ro]" # midichan "[0,1,2]"
+
+-- rocket
+
+  d8 $ slow 8 $ midinote "60"
+    # sound "[ro]"
+    # legato 8
+    # midichan "0"
+    # gain "<1 1 1 1 1>"
+
+  d8 silence
+
+  hush
+
+-- kawai - 184 pizzicato
+
+  d7 $ every 2 (slow 4) $ jux (iter 4) $ slow 2 $ midinote ("48(<3 5 6>,<8>)")
+   # up "0 4 9"
+    # sound "[qc]"
+    # legato 1
+    # midichan "2"
+    # gain "<1 0 0 0 0>"
+
+-- dr groove drums - Iip Hop 5
+
+  d6 $ midinote "{36 ~, 35 50*3 ~ 50*2 ~, ~ 42 ~ 46/2}"
+    # sound "[qc]"
+    # legato 1
+    # midichan "1"
+    # gain "<1 0 0 0>"
+
+  d6 silence
+
+-- dr groove bass - WoodB1(10)
+
+  d5 $ jux (slow 2) $ midinote "{36 [~ 40] 43 ~, 48 ~ 52 ~ 55}"
+    # sound "[qc]"
+    # legato 4
+    # midichan "3"
+    # gain "<1 0 0 1 0 1 0>"
+
+d5 silence
+
+-- samples (not used)
+
+d4 $ (0.25 <~) $ loopAt "<4 8>" $ chop "<4 2 16>" $ sound "vkloop:3*4" # cut 1
+
+d4 silence
+
+hush
+
+--- ff synth - 115 steel pans
+
+d3 $ every 4 (slow 8) $ every 4 (# legato 8) $ iter 4 $ jux (slow 2) $ jux (# iter 3 (up " 9 0 4")) $ slow 4 $ midinote ("[48(3,8), 52 ~ ~ 55 ~ ~ [~ 52] [55]]" +12)
+  # sound "[qc]"
+  -- # legato 8
+  # midichan "5"
+  # gain "<1 0 0>"
+
+d4 silence
+
+
+--------------------------------------------
+
+
+Section 4
+
+setcps (140/120)
+
+d7 $ midicmd "midiClock*48" # s "[qc,ro]" # midichan "0"
+
+d9 silence
+
+hush
+
+-- rocket
+
+  d8 $ jux (iter 2) $ slow "<1 1 1 1 2 2 4>" $ midinote "<60 64 60 67> <48 52 55>"
+    # sound "[ro]"
+    # legato 8
+    # midichan "0"
+    # gain "<1 1 1 1 1>"
+
+  d8 silence
+
+  hush
+
+-- kawai - 88 - Jan'sTheme
+
+  d7 $ slow "<1 1 1 1 2 2 4>" $ jux ( 0.125 <~) $ degradeBy 0.6 $ midinote ("60(7,8,4)")
+    # up "[<0 4 0 4 0 7 0>,< 0 4 0 7>]"
+    # sound "[qc]"
+    # legato 1
+    # midichan "2"
+    # gain "<1>"
+
+-- dr groove drums - U052 Luccle 2
+
+  d6 $ slow "<1 1 1 1 2 2 4>" $ jux (iter 2) $ midinote "{35 35*2 38/2 40/3, ~ ~ 43 112 ~}"
+    # sound "[qc]"
+    # legato 1
+    # midichan "1"
+    # gain "<1 1 1 1>"
+
+  d6 silence
+
+-- dr groove bass - DistTB(14)
+
+  d5 $ slow "<1 1 1 1 2 2 4>" $ every 4 (fast 2) $ midinote "{36 [40 40], ~ 43 ~, ~ [~ 43] ~ ~ 55 ~}"
+    # sound "[qc]"
+    # legato 1
+    # midichan "3"
+    # gain "<1>"
+
+d5 silence
+
+-- samples (not used)
+
+d4 $ (0.25 <~) $ loopAt "<4 8>" $ chop "<4 2 16>" $ sound "vkloop:3*4" # cut 1
+
+d4 silence
+
+hush
+
+--- ff synth
+
+d3 $ midinote ("60")
+  # sound "[qc]"
+  -- # legato 8
+  # midichan "5"
+  # gain "<1>"
+
+d4 silence
+
+-- also using farty filter on su10
+
+hush
+
+
+
+---------------------------------------------------------
+
+Section 5
+
+setcps (127/120)
+
+d7 $ midicmd "midiClock*48" # s "[qc,ro]" # midichan "0"
+
+d9 silence
+
+hush
+
+-- rocket
+
+  d8 $ slow "32" $ midinote "{36}"
+    # sound "[ro]"
+    # legato 1
+    # midichan "0"
+    # gain "<1 1 1 1 1>"
+
+  d8 silence
+
+  hush
+
+-- kawai - 73 - pan flute
+
+  d7 $ slow 4 $ slow "<1>" $ midinote ("[48 60/2 72/3, 56/2 53/3 51/4]")
+    # sound "[qc]"
+    # legato 0.25
+    # midichan "2"
+    # gain "<1>"
+
+d7 silence
+
+-- dr groove drums - U051 Luccle 2
+
+  d6 $ slow "1" $ midinote "{35 36, ~ [36*3] ~, [61*4 ~] ~ 60 ~, 38 50 ~ [38 38/4] ~ 50}"
+    # sound "[qc]"
+    # legato 1
+    # midichan "1"
+    # gain "<1 1 1 1>"
+
+  d6 silence
+
+-- dr groove bass - ? - U052 Luccle 2
+
+  d5 $ slow "1" $ midinote "48"
+    # sound "[qc]"
+    # legato 1
+    # midichan "3"
+    # gain "<1>"
+
+d5 silence
+
+-- samples (not used)
+
+d4 $ (0.25 <~) $ sound "cpu2" # cut 1
+
+d4 silence
+
+hush
+
+--- ff synth - 20? organ
+
+d3 $ slow 8 $ midinote ("60/5 48/4")
+  # sound "[qc]"
+  # legato 2
+  # midichan "5"
+  # gain "<1>"
+
+d3 silence
+
+hush
+
+
+---------------------------------------------------------
+
+Section 6
+
+setcps (127/120)
+
+d9 $ midicmd "midiClock*48" # s "[qc,ro]" # midichan "0"
+
+d9 silence
+
+hush
+
+-- rocket
+
+  d8 $ jux (iter 3) $ slow "0.125" $ midinote "{49 51 53 56, 56 [60 63] [56 60], 56 60 63 65 60}"
+    # sound "[ro]"
+    # legato 8
+    # midichan "0"
+    # gain "<1 1 1 1 1>"
+
+  d8 silence
+
+  hush
+
+-- kawai - 85 aah
+
+  d7 $ every 4 (hurry 2) $ slow "<0.25>" $ midinote ("<63  53 [50 51]>")
+    # sound "[qc]"
+    # legato 0.125
+    # midichan "2"
+    # gain "<1>"
+
+d7 silence
+
+-- dr groove drums - U051 Luccle 2
+
+  d6 $ jux (fast 2) $ slow "1" $ midinote "{36 ~ 36 ~,47 47 ~ ~, 50 ~ 43 ~ 50 ~}"
+    # sound "[qc]"
+    # legato 1
+    # midichan "1"
+    # gain "<1 1 1 1>"
+
+  d6 silence
+
+-- dr groove bass - ? - U052 Luccle 2
+
+  d5 $ degradeBy 1 $ hurry 2 $ jux (iter 2) $ slow "1" $ midinote "{41 44 <48 48 48 51> ~, ~ ~ ~ 41 44 51 ~ ~ ~}"
+    # sound "[qc]"
+    # legato 1
+    # midichan "3"
+    # gain "<1>"
+
+d5 silence
+
+-- samples
+
+d4 $ (0.25 <~) $ sound "cpu2/3 cpu2/6" # cut 1
+
+d4 silence
+
+hush
+
+--- ff synth - 99 akira
+
+d3 $ slow 8 $ jux (iter 4) $ midinote ("<41 43 44 46 48 49 51 53 55>, <46 48 49>, <53 55 56 58>")
+  # sound "[qc]"
+  # legato 0.125
+  # midichan "5"
+  # gain "<1>"
+
+d3 silence
+
+hush
+
+---------------------------------------------------------
+
+Section 7
+
+setcps (127/120)
+
+d9 $ midicmd "midiClock*48" # s "[qc,ro]" # midichan "0"
+
+d9 silence
+
+hush
+
+-- rocket
+
+<41 44 48 36 39>
+
+  d8 $ jux (iter 4.rev) $ slow 2 $ striate 1 $ midinote "<56 60 63 53>"
+    # sound "[ro]"
+    # legato 8
+    # midichan "0"
+    # gain "<1 1 1 1 1>"
+
+  d8 silence
+
+  hush
+
+-- kawai - not used
+
+  d7 $ slow 4 $ midinote ("39*2 [44 48]*4")
+    # sound "[qc]"
+    # legato "1"
+    # midichan "2"
+    # gain "<1>"
+
+d7 silence
+
+-- dr groove drums - U051 Luccle 2
+
+  d6 $ slow "1" $ midinote "{35(<3 5 6>,8), ~ ~ ~ ~ ~ ~, 61(2,8) 61(3,8) 61(4,8) 61(5,8) 61(6,8)  61(7,8)}"
+    # sound "[qc]"
+    # legato 1
+    # midichan "1"
+    # gain "<1 1 1 1>"
+
+  d6 silence
+
+-- dr groove bass - ? - U052 Luccle 2
+
+  d5 $ slow 2  $ midinote "<41 44 48 36 39>"
+    # sound "[qc]"
+    # legato 4
+    # midichan "3"
+    # gain "<1>"
+
+d5 silence
+
+-- samples (not used)
+
+d4 $ (0.25 <~) $ sound "cpu2/3 cpu2/6" # cut 1
+
+d4 silence
+
+hush
+
+--- ff synth - 107 chop
+
+d3 $ iter 4 $ slow "4" $ striate "<2>" $ midinote "36 39 [41 44]/3 ~"
+  # sound "[qc]"
+  # legato 2
+  # midichan "5"
+  # gain "<1 0 1 0>"
+
+d3 silence
+
+hush

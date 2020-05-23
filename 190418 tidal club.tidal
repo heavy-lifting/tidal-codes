@@ -1,0 +1,34 @@
+djf - filter sweep
+
+bite
+
+slice - chops a sound into slices and lets you play them back in a pattern
+
+d1 $ slice 4 "0 3 2 1 1 2 3 0" $ sound "arc" # cut 1
+
+bite does the same but for a pattern rather than a sound
+
+d1 $ bite 4 "0 1 1 2 3 3 [1 0]" $ sound "perc perc tink tink perc tink"
+
+squeeze allows you to make a pattern of patterns
+
+d1 $ sound (squeeze "0 [1 1]" ["bd sn",
+                              "hh cp hh cp"])
+
+splice is like slice but speeds up the samples to fit
+
+d1 $ slice 4 "0 3 2 1 1 2 3 0" $ sound "arc" # cut 1
+
+d1 $ splice 4 "0 3 2 1 1 2 3 0" $ sound "arc" # cut 1
+
+hush
+
+NEW tidal link - Carabiner
+
+sock <- carabiner tidal 4 (-0.14)
+
+d2 $ sometimes (hurry 2) $ jux (iter 4) $ note "{a g b e, a g g b e, c c f b g a}" # sound "can"
+
+d1 $ iter 4 $ jux (density 2) $ sound "{bskick:1 ~, [hh hh] ~ [hh hh], ~ bsperc:3 ~ ~}"
+
+sendMsg sock "bpm 180\n"

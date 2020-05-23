@@ -1,0 +1,11 @@
+d1 $ sound "bskick:1"
+
+d2 $ iter 2 $ jux (# speed "-1") $ sound "yar(3,8)" # n "<0 .. 10>"
+
+d3 $ jux (iter 4) $ loopAt "<1 0.5 0.25>" $ chop "8 16 4" $ sound "yar*4" # cut 1
+
+d4 $ degradeBy 0.8 $ sometimes (hurry 0.125) $ sound "yar*64?" # cut 2
+
+d3 silence
+
+hush

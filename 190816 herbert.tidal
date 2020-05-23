@@ -1,0 +1,72 @@
+
+setcps (12000/120)
+
+d9 $ midicmd "midiClock*48" # s "[qc,ro]" # midichan "0" # orbit 0
+
+d9 silence
+
+hush
+
+-- rocket
+
+<41 44 48>
+
+<44 48 51>
+
+<48 51 44>
+
+<43 46 48>
+
+  d8 $slow 4 $ midinote "<<41 [41 44] 48> <44 48 51>>"
+    # sound "[ro]"
+    # legato 0.5
+    # midichan "0"
+    # gain "<1 1 1 1 1>"
+    # orbit 0
+
+  d8 silence
+
+  hush
+
+-- kawai
+
+  d7 $ jux (iter 4.rev) $ midinote ("{[ 41] [], 53 60, 56 ~ [58 60] ~, ~ 63(3,8) ~ ~ ~}")
+    # sound "[qc]"
+    # legato "0.25"
+    # midichan "2"
+    # gain "<1 0 1 1>"
+    # orbit 0
+
+d7 silence
+
+
+--vocoder
+d6 $ jux (iter 4) $ slow "<2 4 2 8>" $ midinote ("{41(3,8) <44(5,8) 48(6,8)>, 41 44 48 }")
+  # sound "[ vt4]"
+  # legato 0.5
+  # midichan "0"
+  # orbit 0
+
+  d6 $ jux (iter 4) $ slow 2 $ midinote ("~")
+    # sound "[ vt4]"
+    # legato 0.5
+    # midichan "0"
+    # orbit 0
+
+d6 silence
+
+hush
+
+-- samples
+
+d3 $ (0.25 <~) $ degradeBy 0.6 $ sometimes (iter 4) $ slow 1 $ n ( run 8) # sound "super808?" # gain 0.8
+
+d4 $ (0.25 <~) $ jux (hurry 2) $ sound "{cpu2 [cpu2:2 cpu2:3]/3, bsperc:6*8?}"
+
+d5 $ (0.25 <~)$ jux (hurry 2) $ sound "{paper:3, bskick:1(3,8)}" # shape 0.4
+
+d2 $ (0.25 <~) $ degradeBy 0.8 $ loopAt "16 8 16" $ striate "< 16>" $ sound "skel:2*4" # cut 1
+
+d2 silence
+
+hush

@@ -1,0 +1,80 @@
+setcps (150/60)
+
+d9 $ density 0.5 $ sometimes (hurry 0.5) $ midinote (range 32 60 sine)
+  # sound "ro"
+  # legato 1
+  # midichan "0"
+
+d8 silence
+
+hush
+
+d8 $ slow 1 $ stack [midicmd "control*16" # ctlNum "12" # control "<0 30 60 127>",
+       midicmd "control*16" # ctlNum "13" # iter 4 (control "0 15 60 90 127"),
+       midicmd "control*16" # ctlNum "92" # control "<127>"
+      ] # s "kp3"
+
+hush
+
+d7 $ midicmd "midiClock*48" # s "[ro,kp3]" # midichan "0"
+
+d1 $ sound "{bskick:1 [bskick:1 bskick:1], ~ ~ bsperc:3 ~ bsperc:3 }"
+
+d4 $ often (hurry 2) $ sound "bsperc:6*8?"
+
+hush
+
+d1 silence
+
+d2 $ loopAt "<32 16>" $ sound "bol"
+
+d3 $ loopAt 8 $ sound "bow"
+
+d4 $ sound "tabla:1"
+
+hush
+
+d4 $loopAt "<4 2 1 >" $ sound "glass:*4" # cut 4
+
+d1 $ loopAt 2 $sound "wood"
+
+d1 silence
+
+d3 $ sound
+
+d3 $ density "<1 4 1 2>" $ degradeBy 0.99 $ jux (iter 4 ) $ loopAt "<4 4 4 4 4 4 2>" $ chop 8 $  sound "{~, aa:2 aa:3 aa:4 aa:5}" # cut 2
+
+d3 silence
+
+d6 silence
+
+d7 $ degradeBy 0.8 $  jux (hurry 0.5) $ sound "can*4" # speed (range 0 2 sine) # pan sine
+
+d6
+
+d7 silence
+
+
+bm - 4
+ft - 6
+jr - 4
+my - 4
+iw - 4
+am - 4
+ci - 4
+aa - 2
+
+vkw
+vkb
+vkl
+
+bow
+bol
+
+wood
+
+glass
+
+bb
+
+paper
