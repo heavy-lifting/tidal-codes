@@ -1,0 +1,59 @@
+setcps (666/4/60) -- >:D
+
+d9 $ midicmd "midiClock*48" # s "[usb]" # midichan "0"
+
+<64 68 71 >
+<60 64 68 71>
+<63 66 69>
+<59 63 66 69>
+
+THIS IS NATURE BOY :) CLOUD IS THE BLACK AND WHITE ONE :)))))
+
+d8 $ (0.0 ~>) $ density (choose [1,2,4]) $ striate 32
+  $ sound "usb(3,8)"
+  # midinote "<59 63 66 69>"
+  # legato 0.29
+
+d8 silence
+
+d7 $ ccn "[44*8]" # ccv (slow 8 $ range 0 127 saw) # sound "usb"
+
+d7 silence
+
+d2 $ density "<8 2 4>" $loopAt "<2 4 8 1>" $ chop"<2 4 8 16>" $ sound "bub bub:1 bub bub:2" # cut 1
+
+d1 $ sometimes (hurry 2) $sound "bskick:1*8?" # shape 0.4
+
+d3 $ iter 4 $ fast 2 $ jux (fast 4) $ sound "{9hh ~ 9hh? ~, ~ 9rs ~, ~ ~ 9oh ~ ~, ~ [~ 9cp] ~ ~}" # gain "<1  0 1 0>" # legato 0.25
+
+d4 $ density 2 $ every 2 (hurry "<2 2 0.5>") $ sound "rom rom:2" # cut 1
+
+
+pitch - 40
+saturation - 41
+level - 42
+cutoff - 43
+peak - 44
+attack - 45
+decay - 46
+eg int - 47
+accent - 48
+lfo rate - 49
+lfo int - 50
+
+emh
+isa
+temp
+kel
+mod
+cry
+obey
+grem
+jol
+lux
+rom
+bub
+
+
+
+hush

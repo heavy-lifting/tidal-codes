@@ -1,0 +1,9 @@
+setcps (120/60)
+
+d1 $ loopAt 2 $ sound "vkloop:2"
+
+d2 $ loopAt 32 $ sound "[baa, bees]"
+
+d3 $ loopAt "[1.5]" $ sound "vkloop:3"
+
+hush

@@ -1,0 +1,12 @@
+setcps 0.45
+
+linput = pI "linput"
+
+lname = pS "lname"
+
+d2 $ slow 2 $ s "looper" # n "<0 5 2 4 3 7 6 1>"
+
+d5 $ slow 4 $ sound "loop" # n "<0 1 2 3 4 5 6 7>"
+  # gain 0.8 # speed "[-1]" # cut 1 # legato 0.125
+
+d5 silence

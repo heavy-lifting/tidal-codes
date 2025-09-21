@@ -1,0 +1,9 @@
+setcps (95/4/60)
+
+-- looper admin
+linput = pI "linput"
+lname = pS "lname"
+
+-- looper to record loop
+-- lname to name the loop
+-- call loop or defined name to play the loop

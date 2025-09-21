@@ -1,0 +1,37 @@
+I nearly forgot.........
+
+HAPPPY BIRTHDAY ANTONIOOOOOOOOOOOOOOOOO!!!!!!!!!!!!!!
+
+
+setcps (84/120/2)
+
+41 44 48
+44 48 51
+48 51 44
+43 46 48 (51)
+
+######## supercollider is so sad ############## :(
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d8 $ (0.15 ~>) $ slow 8 $ midinote "<41 44 48>" # sound "ro"
+  # legato "0.025"
+  # midichan "0"
+
+d8 silence
+
+
+d5 $ degradeBy 0.8 $ loopAt "<4 2 8>" $ chop "<32 64 128>" $ sound "cwubby*16" # cut 1
+
+d5 silence
+
+d1 $ jux (fast 2) $ sound "{bskick:1 ~, ~ bskick:1 ~, bsperc:6 ~ ~ bsperc:6*3 ~}" # shape 0.2
+
+d7 $ degradeBy 0.8 $ randslice 64 $ sound "cdexed*128?" # legato 0.5
+
+
+#######i dunno what tht means hehe ############ yikes ##############
+
+d6 $ sound "skel"
+
+hush

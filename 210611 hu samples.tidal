@@ -1,0 +1,120 @@
+**********MANIPULATING SAMPLES**********
+
+-- So far we've just used short samples.
+-- Longer samples can cause us some problems if we’re not careful.
+-- Let’s see what happens with a long sample
+
+d1 $ sound "bev"
+
+-- wait a bit, then..
+
+hush
+
+-- As you can hear, Tidal will keep triggering the sample each cycle,
+-- even if it’s very long.
+-- Even if you stop the pattern playing,
+-- you will still need to listen while the samples play out.
+
+-- You can use cut to truncate the sample when the next one is triggered
+
+d1 $ sound "bev*16" # cut 1
+
+hush
+
+-- legato also truncates samples, but using a fixed length
+
+d1 $ sound "bev ~ bev ~" # legato "1 0.5"
+
+d2 $ sound "cp cp cp cp "
+
+hush
+
+-- We can also chop samples for a ‘granular synthesis' effect
+
+d1 $ sound "arpy"
+
+d1 $ chop 4 $ sound "arpy"
+
+d1 $ n (run 8) # sound "arpy"
+
+d1 $ chop 4 $ n (run 8) # sound "arpy"
+
+d1 $ chop 128 $ n (run 8) # sound "arpy"
+
+d1 $ chop 128 $ n (run 8) # sound "arpy" # speed sine
+
+hush
+
+-- striate is similar to chop but organises the playback in a different way
+
+d1 $ sound "arpy:1 arpy:2 arpy:3 arpy:4"
+
+d1 $ striate 4 $ sound "arpy:1 arpy:2 arpy:3 arpy:4"
+
+hush
+
+-- randslice chops the sample into pieces and then plays back a random one each cycle
+
+d1 $ sound "bev"
+
+d2 $ sound "drum*4 drum(3,8)" # n (irand 4)
+
+hush
+
+-- We can also use loopAt to fit samples to a set number of cycles:
+
+d1 $ loopAt 8 $ sound "bev"
+
+d2 $ jux (iter 4) $ sound "drum*4 drum(3,8)" # n (irand 4)
+
+d2 silence
+
+hush
+
+-- As always we can add patterns and transformations to these functions, or combine them for interesting effects
+
+d1 $ rev $ loopAt 4 $ chop 32 $ sound "bev"
+
+hush
+
+-- Slice lets you chop up a sample into bits and then rearrange those how you like
+
+d1 $ sound "breaks165"
+
+hush
+
+d1 $ slice 8 "7 [6 5 4] <3 2> <1 0>"  $ sound "breaks165"
+  # legato 1
+
+d1 $ slice 8 "7 6 5 4 4 4 4 4"  $ sound "breaks165"
+  # legato 1
+
+  hush
+
+-- Splice does the same thing but alters the speed of the sample to fit the step
+
+d1 $ slice 8 "[<0*8 0*2> 3*4 2 4] [4 .. 7]" $ sound "breaks165"
+
+d1 $ splice 8 "[<0*8 0*2> 3*4 2 4] [4 .. 7]" $ sound "breaks165"
+
+hush
+
+**********BONUS FUNCTIONS: BITE AND CHEW**********
+
+-- Bite works like slice but on the whole pattern
+
+d1 $ n "0 .. 7" # sound "arpy"
+
+d1 $ bite 4 "2 0 1 3" $ n "0 .. 7" # sound "arpy"
+
+-- the bits of pattern get squeezed or stretched to fit
+
+d1 $ bite 2 "2 0 1 3" $ n "0 .. 7" # sound "arpy"
+
+d1 $ bite 4 "2 [0 3] 1*4 1" $ n "0 .. 7" # sound "arpy"
+
+-- chew works the same as bite but also speeds up/slows down the sample speed like Splice
+
+d1 $ bite 4 "0 1*2 2*2 [~ 3]" $ n "0 .. 7" # sound "arpy"
+
+d1 $ chew 4 "0 1*2 2*2 [~ 3]" $ n "0 .. 7" # sound "arpy"

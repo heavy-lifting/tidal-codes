@@ -1,0 +1,45 @@
+148 bpm
+
+setcps (148/240)
+
+
+hush
+
+d4 $ sound "{9bd ~ 9bd*2 ~, 9sd 9sd ~ 9sd ~}"
+
+d5 $ jux ((# n "1").(iter 4)) $ sound "9hh(<9 7>,12)"
+
+unsolo 5
+
+d6 $ off 0.25 (# up "3") $ sound "bub(3,8)" # cut 6
+
+
+unsolo 2
+
+d3 $ sound
+
+hush
+
+
+d2 $ slice 2 "1 0" $ sound "rom rom/2"
+
+d3 $ sound "bskick:1*4" # shape 0.4
+
+d4 $ sound "bub(3,8)" # gain 1.2 # vowel "a"
+
+d1 $ sound "kel" # gain 1.7
+
+unsolo 7
+
+emh
+isa
+temp
+kel
+mod
+cry
+obey
+grem
+jol
+lux
+rom
+bub

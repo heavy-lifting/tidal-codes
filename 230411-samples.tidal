@@ -1,0 +1,76 @@
+d1 $  density "<1 1 2 4>" $ loopAt "<1 2 4>" $ sound "jol*4?" # cut 1
+
+d1 silence
+
+d5 $ jux (iter 4) $ sometimes (chunk 8 (hurry 2)) $ sound "[9bd(3,8), 9hh(5,16), 9rs*8?]" # gain 1
+
+d3 $ sometimes (iter 4) $ chunk 4 (hurry (slow 4 $ range 1 8 saw)) $ slice 8 (run 8) $ sound "emub:1" # legato 1 # shape (range 0 0.4 saw)
+
+d3 silence
+
+d4 $ sometimes (# legato 1) $ sometimes (fast 2) $ jux (iter 4) $ up (scale "egyptian(<3 5 6>,8)" (segment 4 $ irand 12) +| (segment 8 $ choose([0,7,-12]) )) # sound "emustab" # legato 0.5
+
+hush
+
+unsolo 3
+
+d5 $ sound "not"
+
+d7 $ jux (chunk 4 (hurry $ range 1 4 saw)) $ slice 8 ("[0 [1 1]] [[2 2] 2 ]" |+ (slow 8 $ run 8)) $ sound "bassneuro:0" # legato 1 # pan sine
+
+d1 silence
+
+d2 $ striate 4 $ loopAt "<1 2>" $ sound "break*4" # n "1 2" # cut 1
+
+d6 $ sound "castanet*16?" # shape 0.6 # gain 1.2 # speed 2
+
+hush
+
+d1 $ jux (# nudge 0.05) $ iter 4 $ chunk 3 (chop 64) $ chop 4 $ slow 4 $ sound "emus*8" # n (run 8) # legato 1
+
+unsolo 6
+
+d9 $ sound "jawharp:4(7,16, <0 2>)" # legato 2 # up (scale "egyptian" "0 4 7")
+
+d10 $ jux (# nudge 0.05) $ sound "pipe(7,8)" # n "[0,1,2,3,4,5,6,7]"
+
+d1 $ sound "kick*4"
+
+hush
+
+d1 $ chop (round <$> slow 4 $ range 1 8 saw) $ iter 8 $ sound "talkingdrum*8" # n (run 8)
+
+
+import Data.Map.Strict as Map
+
+bump :: String -> Integer -> Pattern Bool -> ControlPattern -> ControlPattern
+bump name bpc bpat pat = (Pattern $ \state -> query (maybe (bumper `overlay` pat) f $ (Map.lookup name $ controls state) >>= getR) state)
+  where f t = rotL t (bumper `overlay` pat)
+        bumper :: ControlPattern
+        bumper = (outerJoin $ (const $ pure $ Map.singleton ("__" ++ name) $ VState statef) <$> (filterOnsets $ filterValues id (rotL (1%bpc) bpat)))
+          where statef :: ValueMap -> (ValueMap, Value)
+                statef sMap = (Map.insert name v sMap, v)
+                  where v = VR $ maybe 0 (+(1%bpc)) $ Map.lookup name sMap >>= getR
+
+-- Make a 'bumper' called 'somename' (can be called anything),
+-- running at 8 beats per cycle, skipping every 32nd beat
+
+d1 $ bump "somename" 8 "{f!31 t}%8" $ stack [
+  -- this clap shouldn't play (it sometimes does the first time around for some reason)
+  struct "{f!31 t}%8" $ s "clap:4",
+  n "[0@2 2!2]*2" # sound "cpu" # legato 1
+  # speed (slow 4 $ range 1 1.5 saw)
+]
+
+-- Other patterns won't skip
+d2 $ sound "bd sd:4" # speed 2
+
+d1 $ jux () $  bump "hi" 8 "{f!15 t}%8" $ stack [
+  sound "jawharp:4(7,16, <0 2>)"
+  # legato 2
+  # up (scale "egyptian" "0 4 7")
+]
+
+d3 $ sound "kick kick/2 kick/3 kick/4"
+
+hush

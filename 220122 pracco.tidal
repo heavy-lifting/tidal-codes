@@ -1,0 +1,45 @@
+setcps (137/60/4)
+
+d1 $ sound "{9bd*8, ~ <9rs 9rs*2> ~}" # n (irand 5) # legato 0.5 # gain 1.2
+
+d2 $ degradeBy 0.6 $ jux (iter 4) $ sound "9hh(7,8) <9oh 9oh*2>" # n "0" # legato 0.25 # gain 0.9
+
+d9 $ midicmd "midiClock*48" # s "[usb]" # midichan "0"
+
+-- d1 $ $ sound "arpy"
+
+d1 silence
+
+hush
+
+d8 $ (0.0 ~>)
+  $ iter (irand 4)
+  $ midinote (off 0.125 (+7) $ off 0.25 (+12) $ "<36(3,8) 41(5,8)>")
+  # sound "usb"
+  # midichan "0"
+  # legato "<0.5>"
+  # gain "<1>"
+
+d7 $ ccn "[44*8, 49, 43*8]" # ccv (slow 4 $ range 0 127 saw) # sound "usb"
+
+d3 $ density (choose [1,2,4]) $ loopAt "<2 4>" $ striate 8 $ sound "rom" # cut 1 # gain 1.4 # n "0 1"
+
+d4 $ sound "mod"
+
+d4 silence
+
+hush
+
+
+nubass midi:
+pitch - 40
+saturation - 41
+level - 42
+cutoff - 43
+peak - 44
+attack - 45
+decay - 46
+eg int - 47
+accent - 48
+lfo rate - 49
+lfo int - 50

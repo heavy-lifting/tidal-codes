@@ -1,0 +1,26 @@
+
+midi in bollox
+
+setcps (90/60/4)
+
+d1  $jux (iter 4.(# speed "-1")) $  fast (segment 16 ((cR 1 "48")*4)) $ sound "ya:464*64" # speed (cF 1 "49") # cut 1 # note "<1(3,8) 4(6,8)> <2*4 5/4>"
+
+d2 $degradeBy 0.99 $ jux (hurry 0.25) $loopAt (4*(cR 1 "48")) $ bite 4 "1 4 2 3 4 2 3 1" $ sound "yd:13*2" # shape 0.4 #cut 2
+
+hush
+
+d4 $ degradeBy 0.99 $ slow 13 $ density (segment 8 (cR 1 "49")*64) $ sound "ya(53,89)" # legato 0.25
+
+d1 $ degradeBy 0.75 $density (segment 8 (cR 1 "49")*64)
+$ sound "ya"
+# n (range 0 550 (cN 1 "52"))
+# cut 1
+# gain (range 1 1 (cF 11 "n"))
+#  midinote (cN 1 "n")
+# speed "[0.25,1]"
+-- # cutoff (range 0 1500 (cF 1 "50"))
+-- # resonance (range 0 1 (cF 1 "53"))
+-- # room 1
+
+
+hush

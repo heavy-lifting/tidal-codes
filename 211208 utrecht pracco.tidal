@@ -1,0 +1,46 @@
+setcps (78/60/2)
+
+-- CLOCK
+d9 $ midicmd "midiClock*48" # s "[qc, stre]" # midichan "0"
+
+-- STREICHFETT
+d8 $ (0.09 ~>)
+ $ degradeBy 0.4
+ $ chop "[4 8]"
+ $ chunk 4 (slow 2)
+ $ sound "stre*2" 
+ # iter 4 (midinote "[55, 67]")
+ # legato 1
+ # gain "<1 1 1 0 1 1 0 0>"
+
+d8 silence
+ -- STREICHFETT CTRLS
+d7 $ ccn "93" # ccv (slow 4 $ range 0 127 saw) # sound "stre"
+
+-- VOLCA HERE
+d6 $ (0.09 ~>) $ chunk 4 (hurry 2) $ chop 1 $ sound "qc*4" #  midinote "<52 57 52 55>" # legato 0.5
+# gain "<1 1 0 0 1 1 0 0>"
+
+
+-- VOLCA CTRLS
+d5 $ ccn "[43,44]" # ccv (slow 8 $ range 127 0 saw) # sound "qc"
+
+d5 silence
+
+-- DRUMS HERE
+d1 $ sound "[cpu1:7*4, cpu2:8(7,8,<0 1 2>)]"
+# gain "<1 1 0 0 1 1 0 0>"
+
+
+d1 silence
+
+d3 $ sometimes (hurry 0.5) $ sound "natty(<3 5 6 7>,8)" # n (run 8) # gain 1 # vowel "a"
+# gain "<0 0 0 0 1 1 1 1>"
+
+
+d10 $degradeBy 0.4 $ jux (iter 4) $ slice 64 (slow 4 $ run 64) $  sound "[heli:3, time]" # gain 1.2 # legato 0.5 # pan rand
+# gain "<1 1 1 0 1 1 1 0>"
+
+d11 $ degradeBy 0.4 $ jux (slow 2) $ chop 2 $ sound "superpiano(7,16)" # midinote (segment 2 $ choose [50, 57, 62, 65])  # gain 0.85
+
+hush

@@ -1,0 +1,27 @@
+148 bpm
+
+setcps (148/240)
+
+d4 $ sound "bskick:1*4" # shape 0.4 # gain "<1 0 0 0 0>"
+
+hush
+
+d6 $ jux (sometimes (# speed "-1")) $ loopAt "<2 1 4>"
+  $ chop "<8 4 16>" $ sound "[<jol jol:1>, jol:2, jol:3*4]*2" # legato 1
+  # gain "<1 0 1 0>"
+
+d7 $ loopAt 2 $ sound "jol" # gain "<1 0 0>"
+
+
+emh
+isa
+temp
+kel
+mod
+cry
+obey
+grem
+jol
+lux
+rom
+bub

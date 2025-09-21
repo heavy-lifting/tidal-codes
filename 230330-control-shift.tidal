@@ -1,0 +1,103 @@
+A: HEAVY LIFTING
+V: HELLOCATFOOD
+
+setcps (999/60/4)
+
+-- CLOCK
+d12 $ midicmd "midiClock*48" # s "[nu, strf]" # midichan "0"
+
+-- VOLCA
+d11 $ (0.06 ~>) $ degradeBy 0.9 $ sometimes (density 2) $ chunk 4 (# midinote (range 64 76 saw)) $ sound "nu*8" # midinote "64 68" # legato 0.5
+
+d10 $ ccn "[44]" # ccv (range 0 127 sine) # sound "nu"
+
+-- STREICHFETT
+d9 $ (0.06 ~>) $ degradeBy 0.9 $ chunk 4 (# midinote "<64 71>") $ s "strf*8" # midinote "64 71" # legato 0.25
+
+d8 $ slow 4 $ ccn "1" # ccv "127" # sound "strf"
+
+-- SAMPLES FROM PHONEUTRIAN CRYSTAL MASHUP TY JAKE
+
+
+d4 $ sound "9sd(<3 4>,16)" # gain 0.8
+
+d5 $ striate 16 $ every 2 (hurry 4) $ sound "{kick, ~ 9hh 9hh*2 9hh*3 9oh}" # legato 1 # pan sine
+
+d6 $ jux (iter 4) $ chunk 4 (# speed (range 1 2 sine)) $ sound "[vkb*8, vkl:1*4]" # legato 0.5 # shape 0.2
+
+d7 $ chop 16 $ iter 2 $ density "<1 1 1 2 4>" $ loopAt "<4 2>" $ chop 8 $ sound "skel:8*4" # cut 1
+
+-- SUPERCOLLIDER IS A BIT UPSET :(
+
+hush
+
+--phoneutrian
+cchime
+cdexed
+cdrum
+cbass
+cwubby
+
+bb
+skel:8 (book)
+bev
+bsvocals
+9 DRUMS
+
+vk synths
+
+emub
+emud
+emufx
+emupad
+emupiano
+emus
+emustab
+emustr
+
+ender
+
+glass
+wood
+heli
+time
+not
+mod
+
+SOME NOTES
+
+<64 68 71 >
+<60 64 68 71>
+<63 66 69>
+<59 63 66 69>
+
+STRF CONTROLS
+1 - modulation wheel - 1:127
+71 - string octaves - 1:127
+72 - string release - 1:127
+73 - crescendo - 1:127
+75 - string ensemble - 1:127
+76 - solo tone - 1:127
+77 - solo tremolo - 1:127
+80 - solo attack
+81 - solo decay
+82 - balance
+91 - fx type - 0 = reverb, 1 = phaser, 2 = animate
+92 - animate amount
+93 - phaser amount
+94 - reverb amount
+121 - reset all controllers
+123 - all notes off
+
+NUBASS CTRLS
+pitch - 40
+saturation - 41
+level - 42
+cutoff - 43
+peak - 44
+attack - 45
+decay - 46
+eg int - 47
+accent - 48
+lfo rate - 49
+lfo int - 50

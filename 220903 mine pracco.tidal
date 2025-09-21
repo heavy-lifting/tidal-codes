@@ -1,0 +1,16 @@
+setcps (127/60/4)
+
+
+d3 $ degradeBy 0.8 $ sound "{kick*4, dig*16?, cpu:3(7,8)}" # shape 0.1 # delay 0.25 # speed 0.125
+
+d6 $ degradeBy 0.4$ striate 8 $ iter 4 (n "5 6 7 ~") # sound "witch" # legato 1 # speed 0.125
+
+d7 $ loopAt 4 $ sound "cow:6 cow:6"
+
+d2 $ degradeBy 0.5 $ chunk 2 (hurry "[0.5]") $ every 2 (slow 2) $ jux (iter 4)
+$ sound "[note:0(<3 5 6>,8), note:1*4, note:4(7,16)]"
+# (up "0 0 5 7 12") # gain 1.2
+
+d4 $ loopAt 4 $ sound "cow:5"
+
+hush

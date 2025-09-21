@@ -1,0 +1,41 @@
+
+setcps (150/120/4)
+
+d1 $ jux (hurry 2) $ sound "{ld(6,8), ld*3 ld*2 ld ~ ~}" # iter 4 (n "9 10 11 12") # legato 0.5
+
+d2 $ chunk 4 (fast 2) $ sound "ld:2*4" # shape 0.8
+
+d3 $ density "<1 2 4>" $ loopAt "<2 4>" $ chop "<4 4 8 16>" $ sound "cry ~  ~ cry:3" # cut 1
+
+d4 $ sometimes (hurry 0.5) $ sound "lbd*16" # legato 1 # n (choose [0,1,2])
+
+d3 $ jux (fast 0.5).(# speed 2) $ sound "lsyn(<3 5 6>,8)" # up "0 4 6"
+
+d5 $ iter 4 $ chunk 4 (hurry 2) $ density "<1 1 1 1 2 2 4>" $ sound "lb*4" # up (run 12)
+
+hush
+
+d1 $ randslice 16 $ sound "bub*4" # n "2" # legato 0.5
+
+d1 silence
+
+d3 $ sound "bub*16" # speed (choose [1,2,4,8,0.5,0.25]) # legato 1 # shape 0.1 # crush 12
+
+d3 silence
+
+d4 $ density "<1 2 3 4 5>" $ loopAt "<1 2 0.5>" $ chop "<8 4 2 16 32>" $ sound "bub:1*8?" # cut 1
+
+d5 $ jux (iter 4) $ chunk 8 (hurry 2) $ sound "[lb*3, lsyn:1*4]" # up (choose [1,4,8,12]) # legato 0.5
+
+hush
+
+ld
+bub
+cry
+mod
+not
+rom
+time
+lbd
+lsyn
+lb

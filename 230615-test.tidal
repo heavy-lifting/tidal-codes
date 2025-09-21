@@ -1,0 +1,20 @@
+######## hello
+
+d1 $ sound "numbers*4" # n "1 2 3 4"# vowel "p p a"
+
+d2 $ vowel "a <o e*3>" # sound "drum hh"
+
+d3 $ sometimesBy 0.3 (rev.fast 2)
+  $ note "0 3*2 <5 7> 5/2" # sound "arpy"
+
+d1 $ jux (# vowel "a") $ chunk "<2 4>" (fast "<2>")
+  $ sound "bd hh cp hh"
+
+hush
+
+d1 silence
+
+# mininotation (*/?:~[]{}()<>)
+# effects/control patterns/everything is a patterns
+# transformations
+#

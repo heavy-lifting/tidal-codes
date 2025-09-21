@@ -1,0 +1,11 @@
+d1 $ chop 256
+
+d1 $ sound "bev*4" # legato 4
+
+hush
+
+d1 $ cat [sound "bd*2 sn, randcat [sound "jvbass*3", sound "drum*2", sound "ht mt"]]
+
+hush
+
+# up (segment 4 (range 1 4 sine))

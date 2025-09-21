@@ -1,0 +1,32 @@
+hush
+
+setcps (range 0.1 4 (cF 1 "53"))
+
+d1 $ slow "[4,2]" $ chop "[8,1]" $ sound "paper" # shape "0.4"
+
+d2 $ jux (iter 8) $ slow 2 $ sound "paper:3 ~ paper:3 ~ paper:3 ~ paper:3 ~ paper:3 ~ ~ ~"
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d8 $ (0.1 ~>) $ chop (range 1 320 (cI 1 "55")) $ sound "ro/2"
+  # ( midinote "<36>")
+  # midichan "0"
+  # legato "<1>"
+  # gain "<1>"
+
+d7 $ density (segment 16 ((cR 1 "48")*8)) $ sound "9rs(7,19)" # lpf 1200
+
+d6 $ loopAt 0.25 $ striate (range 1 64 (cI 1 "51")) $ sound "9cp:1/2 9cp:2/3" # room 2 # hpf 3000
+
+d6 silence
+
+d5 $ slow 8 $ sound "paper(5,8)" # iter 4 (n "0 1 2 3") # shape 0.2
+
+hush
+
+d1 $jux (iter 3) $ loopAt "<4 2 2>"
+  $ fast 2
+  $ striate 64
+  $ sound "ya:520*4"
+  # cutoff (range 0 3000 (cF 1 "54"))
+# note (segment 4 ((cF 1 "n")-"<24 12 24 0 -12>"))

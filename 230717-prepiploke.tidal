@@ -1,0 +1,32 @@
+setcps 1.15
+
+d8 $ chunk 3 (hurry 2) $
+jux (slow 2) $ sound "{9rs*8?, 9bd:1 9bd:1*2, ~ 9cp/2 ~, ~ ~ 9hh 9hh*2 9hh*3}" # shape 0.2
+# pan (slow 2 $ sine)
+
+d3 $ degradeBy "<0 0 0 0.25>" $ up (scale "locrian" "<5 7 5 12>" - 12) # sound "vkb" # legato 0.5
+
+d4 $ sound "~ bsbass:6"
+
+d5 $ sound "kick kick/2"
+
+d9 $ bump "hi" 8 "{f!11 t}%8" $
+jux (iter 4) $ chunk 8 (# gain 0) $ somecyclesBy 0.25 (slow 2)
+$ up (scale "locrian" "1 7 3 5" - 12)
+# sound "vkl:3" # gain 1.3 # legato 0.5
+
+d2 $ sound "hbird:1*16?" # up (scale "locrian" (irand 8))
+
+hush
+
+d2 $ striate 2 $ loopAt "[2]" $ n " <0 1 1 2> <4 5>" # sound "cry" # shape 0.4 # legato 1
+
+d1 -- $ jux rev
+  $ slow 4
+  -- $ slow (6 * 12 / 8)
+  $ squeeze "0@4 0@3 0@2 0 0 0" [sound "bd sd ~ ht mt lt"]
+  -- # speed 1.5
+
+d2 $ s "{cp:4 cp:4 bd:4}%2"
+
+d2 $ slow 2 $ n (scale "minor" "1@4 2@3 3@2 4 5 8") #  sound "arpy"

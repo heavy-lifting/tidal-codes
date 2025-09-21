@@ -1,0 +1,157 @@
+
+**********RANDOMNESS**********
+
+-- Randomness can help us quickly introduce character and variation into our patterns
+
+-- sometimes works a bit like every, but instead of happening after a set period,
+-- changes have a random chance of appearing
+
+d1 $ sometimes (# vowel "<a i>") $ sound "drum*8"
+
+hush
+
+-- often works like sometimes but happens more often!
+
+d1 $ often (# speed "2") $ sound "drum*8"
+
+-- or we can use sometimesBy to set the likelihood of an event happening:
+
+d1 $ sometimesBy 0.1 (rev) $ sound "drum cp drum sn"
+
+hush
+
+-- 0.2 means the transformation will happen 20% of the time
+
+-- irand generates a random integer up to the number specified. e.g. to play a random sample:
+
+d1 $ sound "arpy*16" # cutoff (irand 1200)
+
+hush
+
+d1 $ n (irand 16) # sound "arpy"
+
+-- rand generates a random decimal between 0 and 1
+
+d1 $ sound "tink*16" # gain rand
+
+hush
+
+-- You can use degradeBy to remove random elements. The number indicates how likely a sample is to play:
+
+d1 $ degrade $ sound "tink*4"
+
+d2 $ degrade $ sound "cp*4"
+
+hush
+
+-- (degrade on its own is the same as degradeBy 0.5)
+
+**********CONTINUOUS PATTERNS**********
+
+-- Randomness is actually a form of continuous pattern, like an oscillator :)
+
+-- Tidal also lets us generate sine, saw, triangle and square waves
+-- There is also cosine which is a shifted sinewave
+-- And isaw which is an inverted saw wave
+
+-- By default the waves oscillate between 0 and 1, and repeat once per cycle
+
+d2 $ sound "tink*16" # speed sine
+
+d1 $ sound "tink*16" # speed cosine
+
+hush
+
+d1 $ sound "tink*16" # speed saw
+
+d1 $ sound "tink*16" # speed isaw
+
+d1 $ sound "tink*16" # speed tri
+
+d1 $ sound "tink*16" # speed square
+
+hush
+
+-- We can apply a transformation to the oscillator
+
+d1 $ sound "bev*4" # legato 2
+
+hush
+
+(slow 4 sine)
+
+-- You can adjust the range of the oscillator too
+
+d1 $ sound "tink*16" # speed sine
+
+d1 $ sound "tink*16" # speed (range 1 4 rand)
+
+d2 $ sound "bottle*8" # speed (range 2 8 rand)
+
+hush
+
+(range 1 4 sine)
+
+-- And we can add a pattern of parameters
+
+d1 $ sound "tink*16" # speed (range 1 4 sine)
+
+d1 $ sound "tink*16" # speed (range "<1 2>" "<4 8 2>" sine)
+
+hush
+
+-- or start to use other oscillators to modulate the pattern
+-- and start to do a bit of synthesis........
+
+d1 $ sound "tink*16" # speed (range (slow 4 $ range saw 1 8) (sine) sine) # cut 1
+
+hush
+
+d1 $ sound "bev"
+
+hush
+
+-- but maybe that's a little complex :P
+
+-- This is the same for the random number generators too
+
+d1 $ sound "tink*16" # speed (range 1 4 rand)
+
+-- Because these oscillators generate a constant stream of numbers
+-- there are no trigger points or structure to form a pattern:
+
+d1 $ speed sine # sound "tink"
+
+-- We can use a function called segment to sample the stream
+
+d1 $ segment (range 1 4 saw)  $ speed sine # sound "tink"
+
+d1 $ sound "tink*4" # speed sine
+
+hush
+
+-- And this is the same for rand and irand
+
+d1 $ irand 4 # sound "arpy"
+
+d1 $ segment 16 $ irand 4 # sound "arpy"
+
+hush
+
+-- And of course we can pattern that parameter too :)
+
+d1 $ segment "8 16 4 2" $ speed sine # sound "tink"
+
+-- Or apply transformations
+
+d1 $ iter 4 $ segment "8 16 4 2" $ speed sine # sound "tink"
+
+d1 $ stack [
+  sound "cp",
+  sound "hh hh"
+] # speed "0.5 1"
+
+hush
+
+-- Try bringing some continuous patterns into the code you've been working on
+-- Don't forget to use slow/fast and range to modify the pattern

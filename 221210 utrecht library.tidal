@@ -1,0 +1,53 @@
+setcps (78/60/2)
+
+-- CLOCK
+d9 $ midicmd "midiClock*48" # s "[qc, stre]" # midichan "0"
+
+-- STREICHFETT
+d8 $ (0.0 ~>)
+  $ sound "stre" #  midinote ("[<64 >,  <71 76 79>]" - "[24]") # legato 0.25
+  # gain "<1 0 0 0>"
+
+d8 silence
+
+
+-- VOLCA HERE
+d7 $ midinote "36" # sound "qc"
+
+d7 silence
+
+unsolo 7
+
+-- DRUMS HERE
+
+d1 $ slow 2 $ chop 16 $ sound "9cr" # speed "[<1 1 1 -1>]"
+
+d2 $ sound "303c*8?" # speed (choose [1,1,2,4,0.5]) # n "<0 1 2 3 >"
+
+d3 $ sound "[9bd:2(3,8), bskick:1*4]" # shape 0.4
+
+d4 $ jux (iter 4) $ density "<1 2 2 4>" $ loopAt "<2 2 4>" $ chop "<1 4 4 16>" $ sound "chain:1*4" # cut 1 # gain 1.5
+
+d5 $ fast 2 $ jux (iter 4.slow 2) $ sound "natty natty/2 natty/3 natty/4" # n (choose [0,1,2,3,4,5,6,7])
+
+unsolo 4
+
+d1 $ density "<1 2 4 8>"  $ loopAt "<2 1>" $ chop 2 $ sound "am am:1" # cut 1
+
+d2 $ loopAt 1 $ sound "am:6"
+
+unsolo 2
+
+hush
+
+d4 $ jux (slow 2) $ iter 4 $ density "<1 1  2 4>" $ loopAt "<1 2 4>" $ chop 4 $ sound "ci ci:1" # cut 1
+
+d5 $ loopAt 1 $ sound "ci ci/2" # cut 2
+
+d5 silence
+
+d1 $ sound "cwubby" # cut 1
+
+d6 $ randslice 64 $ sound "pebbles(7,8,<2,3>)" # legato 0.5 # pan rand
+
+hush

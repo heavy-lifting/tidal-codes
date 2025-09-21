@@ -1,0 +1,89 @@
+setcps (110/60/4)
+
+**************LET'S MAKE SOME RHYTHMS USING CODE!**************
+
+to make a simple pattern we write 'd1 $ sound' - and then we follow this
+with some names of samples in speech marks:
+
+d1 $ sound "c c c [c c] ~ c c c"
+
+hush
+
+c is the sound of a castanet!
+
+we run the code by putting our cursor on the line and pressing Ctrl + Enter
+
+lets add some more sounds to our pattern
+
+d1 $ sound "clap drum"
+
+we can stop the sound with 'hush'
+
+hush
+
+we can put as many sounds in as we like:
+
+d1 $ sound "c clap [~ drum] bottle latibro gretsch"
+
+but it keeps getting faster
+
+d2 $ iter 4 $ sound " c clap drum bottle drum snare hh hh"
+
+hush
+
+try making your own pattern by typing in some names of sounds
+some sounds you can try are:
+
+flick sid can metal future gabba sn mouth co gretsch mt arp h cp
+cr newnotes bass hc tabla bass0 hh bass1 bass2 oc bass3 ho odx
+diphone2 house off ht tink perc bd industrial pluck trump printshort
+jazz voodoo birds3 procshort blip drum jvbass psr wobble drumtraks koy
+rave bottle kurt latibro rm sax lighter lt arpy feel less stab ul
+
+d1 $ jux (iter 4) $ sometimes (hurry 2) $ sound "latibro procshort [~ blip] psr" # legato 0.5 # vowel "<a o p>"
+
+d2 $ sound "clap c c c c ~ c c"
+
+hush
+
+we can put a rest in the pattern using ~
+
+d2 $ slow 2 $ sound "c clap ~ bottle drum snare ~ hh"
+
+we can make our pattern faster or slower by typing 'fast' or 'slow'
+
+d1 $ fast 2 $ sound "c clap ~ bottle drum snare ~ hh"
+
+d1 $ slow 2 $ sound "c clap ~ bottle drum snare ~ hh"
+
+slow can help us if we want to make a longer pattern!
+
+d1 $ sound "c clap drum bottle drum snare hh hh clap drum drum bottle drum snare hh hh"
+
+d1 $ slow 2 $ sound "c clap drum bottle drum snare hh hh clap drum drum bottle drum snare hh hh"
+
+what happens if we change the number after fast or slow?
+
+d1 $ fast 0.25 $ sound "c clap ~ bottle drum snare ~ hh"
+
+hush
+
+d1 $ fast 4 $ sound "c clap ~ bottle drum snare ~ hh"
+
+d1 $ slow 2 $ sound "c clap ~ bottle drum snare ~ hh"
+
+d1 $ slow 4 $ sound "c clap ~ bottle drum snare ~ hh"
+
+let's try making some flamenco rhythms!
+try changing some of the sounds
+or speeding the patterns up/slowing them down
+
+d1 $ sound "clap c c c c ~ c c"
+
+d1 $ slow 2 $ sound "clap c c c c ~ c ~ ~ c c c ~ c ~ ~"
+
+d1 $ slow 2 $ sound "clap c c c c ~ c ~ ~ c c c c ~ c ~"
+
+d1 $ sound "clap c c ~ c ~ ~ ~"
+
+hush

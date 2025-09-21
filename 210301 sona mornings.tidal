@@ -1,0 +1,22 @@
+linput = pI "linput"
+
+lname = pS "lname"
+
+
+d1 $ slow 8 $ s "looper" # n "<0 5 2 4 3 7 6 1>"
+
+d1 silence
+
+setcps (1)
+
+d7 $ degradeBy 0.5 $ iter 4 $ (0.05 <~) $ n ("{~ ~ ~ ~, 1 1 1 1 5 10 10}" - "<12>" ) # sound "supermandolin" # hpf 50 # lpf 500 # gain 1.5
+
+d9 silence
+
+d9 $ degradeBy 0.5 $ n ("{~ ~ ~ ~, 1 1 1 1 5 10 10}" - "<12>" ) # sound "superpiano" # hpf 500 # gain 0.8
+
+d8 $ randslice 8 $ n "[0 1 2 3]" # sound "time" # cut 1 # gain 1.2
+
+d6 $ loopAt 4 $ chop 16 $  sound "time*8" # n (irand 5)
+
+hush

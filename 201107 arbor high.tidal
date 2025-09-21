@@ -1,0 +1,19 @@
+setcps (137/120)
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d8 $ (0.2 <~) $ sound "ro"
+  # ( midinote "<36>")
+  # midichan "0"
+  # legato "<400>"
+  # gain "<1>"
+
+d7 $ sound "9rs(3,15)" # shape 0.4
+
+d6 $ sound "9bd:1" #
+-- EVERYTHIN IS INTERESTING
+d5 $ sound "{~ ~, ~ supergong [supergong/2 supergong/3], ~ ~ 9cp:2 ~ ~}"
+
+d4 $ chop 2 $ loopAt 1 $ sound "wood wood/2 wood/3 wood/4" # n "3"
+
+hush

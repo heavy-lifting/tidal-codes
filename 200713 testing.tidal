@@ -1,0 +1,24 @@
+let sound1 = "arpy"
+
+let sound2 = "cpu"
+
+let sound3 = (sound "arpy*8?0.2")
+
+let sound4 = (sound "cpu")
+
+d2 $ fast 4 $ s (segment 1 (choose [sound1, sound2])) # n (irand 2)
+
+d3 $ randcat [sound3, sound4]
+
+hush
+
+d1 $ sound "arpy"
+
+d2 $ slow 2
+$ slice 4 " 2 3 1 0"
+$ randcat [sound3, sound4]
+# n (irand 2)
+# cut 1
+# orbit 1
+
+d1 silence

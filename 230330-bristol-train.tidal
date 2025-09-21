@@ -1,0 +1,84 @@
+setcps (137/60/4)
+
+d1 $ chunk 4 (hurry "<2 0.5>") $ slice 8 "7 6 5 4 3 2 1 0" $ loopAt 2 $ sound "skel:8 skel:8" # legato 1 # gain 1.2
+
+d2 $ chunk 4 (# gain 0) $ jux (iter 4) $ sound "{kick kick kick kick, 9sd*3 ~ ~, ~ ~ 9hh 9hh*2 [9hh*2 9oh]}"
+
+d3 $ sometimes (hurry "0.5 2") $ chunk 4 (# speed (range 1 2 sine)) $ sound "vkb*8" # speed "0.5" # legato 0.5 # shape 0.8
+
+unsolo 1
+
+hush
+
+d4 $ every 2 (density 2) $ slice 8 "0 <0 1 2 3>" $ sound "bsvocals:3" # legato "0.5 1" # gain 1.2 # shape 0.2 # speed (choose [1,22])
+
+d5 $ sometimes (hurry 2) $ chop "[1,4]" $ sound "9rs*16?" # shape 0.4
+
+d6 $ every 4 (density "8 1") $ sound "vkl" # speed (choose [1,1,1,4,7])
+
+d7 $ jux (slow 2) $ sound "kick kick(3,8)"
+
+d5 silence
+
+d1 $ chop 4 $ sound "[cchime,cdexed]" # n (irand 4) # legato 1 # gain 1.5
+
+d2 $ jux (iter 4) $ slice 8 "0 2 4 6" $ sound "cdrum:1" # gain 1.5
+
+d3 $sound "cwubby" # legato 1 # gain 1.5
+
+d4 $ sometimes (fast 2) $ splice 16 "0 [1 1] 4 6 [6 7] [9 10] 11" $ sound "cbass" # gain 1.5 # legato 0.5
+
+unsolo 4
+
+? harry's poems
+
+hush
+
+--phoneutrian
+cchime
+cdexed
+cdrum
+cbass
+cwubby
+
+bb
+skel:8 (book)
+bev
+bsvocals
+9 DRUMS
+
+vk synths
+
+
+emub
+emud
+emufx
+emupad
+emupiano
+emus
+emustab
+emustr
+
+ender
+
+d8 $ striate 4 $ sound "emub*8"
+
+d7 $ sound "{emud, emud*8}" # n (irand 8) # legato 1 # shape 0.4
+
+d6 $ iter 4 $ chunk 4 (# speed (range 1 2 saw)) $ sound "emustab:1(<3 5 6>,8)" # legato 1
+
+d4 $ sound "emupiano" # n (irand 4) # size 0.4 # room 0.1 # cut 1
+
+hush
+
+d2 $ slice 32 (run 16) $ loopAt "<8 16>" $ sound "george:1 george:1" # cut 1
+
+d2 silence
+
+d1 $ sound "kick*4"
+
+d3 $ sound "{9sd(7,19)}"
+
+d5 $ chunk 4 (# speed "-1") $ jux (iter 4) $ sound "{~ ~ ~ ~, 9hh*5 ~ ~ 9hh*4 ~}"
+
+hush

@@ -1,0 +1,69 @@
+
+-- Fiddle with how the cps is set so it can be manipulated with the
+-- beat function later
+setcps = setF "tempo"
+
+-- Then this needs to be run at least once for the rest to work (you
+-- can then tweak it on the fly)
+setcps 0.4
+
+-- We also need to define some functions
+let _beats :: Time -> Time -> ControlPattern -> ControlPattern
+    _beats use total pat = stack [scps,
+                                  zoom (0, use/total) $ pat
+                                 ]
+      where scps = cps ("^tempo" |* (pure $ fromRational $ total/use))
+    -- Beats is for only playing a given number of beats of the total
+    beats :: Pattern Time -> Pattern Time -> ControlPattern -> ControlPattern
+    beats = tParam2 _beats
+    -- j1 etc is like d1 but the change only happens at cycle
+    -- boundaries (so the timing doesn't go wrong)
+    j1 = jumpIn' 1 0
+    j2 = jumpIn' 2 0
+    j3 = jumpIn' 3 0
+    j4 = jumpIn' 4 0
+    j5 = jumpIn' 5 0
+    j6 = jumpIn' 6 0
+    j7 = jumpIn' 7 0
+    j8 = jumpIn' 8 0
+
+-- Ok!
+
+-- Play all the beats
+j1 $ beats 8 8 $ n "1 2 3 4 5 6 7 8" # sound "numbers" # legato 2
+
+j2 $ beats "<2 4 2 6 7>" "<8 8 7>" $ jux (slow 2) $ sometimes (hurry 2) $ fast 4 $ sound "superpiano" # n (choose [0,4,7,12]) - 24 # room 0.6 # size 0.4 # amp 0.4
+
+-- Play 7 beats out of 8 (skips the last one)
+j1 $ beats "<2 4 2 6 7>" "<8 8 7>" $ n "1 2 3 4 5 6 7 8" # sound "drum"
+
+-- Yes you can pattern that
+j1 $ beats "<2 3 4 5 6 7 8>" 8 $ n "0 1 9 4 2 5 1 5" # sound "drum"
+
+j1 $ beats "<8 ! 4 7>" 8 $ stack [n "{0 1 9 4, 2, 5 1 5}" # sound "dig",
+  s "cb(5,8,2)" # speed 1.8
+  ]
+
+  j2 $ beats "<8 ! 4 7>" 8 $ n "{0 1 0 [2 2 2]}" # sound "cpu" # speed 1.8
+    ]
+
+j2 $ sound "brick"
+
+j3 $ beats "<8 ! 4 7>" 8 $ iter 4 $ stack [n "2 [2 2] 1 [1]" # s "numbers",
+  s "bsnoise:3(5,8,2)" # speed 1.8
+  ] # vowel "a o"
+
+hush
+
+-- I thought it would be good to be able to within this choose some different feet to mess about with the rhythm more
+-- also I reckon it might be nice to have some kind of underpinning beat that is maybe independent from setcps//uses it's own core cps. meams we might struggle to change tempo during the setF
+-- maybe something with struct? i never use it https://tidalcycles.org/docs/reference/conditions/#struct
+-- or ideally like choose([with, feet, in, here])
+-- can we set the parameters for beats globally so we can work on diff patterns? and change on the fly - like we have a global cps can we have a global 'beats'
+
+j1 $ beats "<8 ! 4 7>" 8 $ stack [n "{0 1 9 4 2, 5 1 5}" # sound "drum",
+  s "cb(5,8,2)" # speed 1.8,
+  slow 1 $ chop 16 $ s "breaks165" # speed 0.95 # gain 1.1
+  ]
+
+  hush

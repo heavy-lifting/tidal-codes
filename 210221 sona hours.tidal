@@ -1,0 +1,28 @@
+timer sounds from freesound.org (blessed are the freesound contributers)
+korg er-1 drum sounds via legowelt.org
+
+er
+chain
+heli
+time
+work
+
+setcps (150/240)
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d8 $ slow 8 $ (0.35 <~) $ degradeBy 0.0 $ sound "ro"
+  # ( midinote "<43>")
+  # midichan "0"
+  # legato 8
+  # gain "1"
+
+d8 silence
+
+d1 $ slow 8 $ loopAt "<4 8 2>" $ striate "<32 16>" $ n "0 1 2 3" # sound "chain"
+
+d2 silence
+
+d2 $ randslice 1 $ n (run 8) # sound "time"  
+
+hush

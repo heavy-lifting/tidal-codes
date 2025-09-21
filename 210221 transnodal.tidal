@@ -1,0 +1,14 @@
+timer sounds from freesound.org (blessed are the freesound contributers)
+korg er-1 drum sounds via legowelt.org
+
+er
+chain
+heli
+time
+work
+
+setcps (150/240)
+
+d2 $ sound "time*8" # n (run 8)
+
+hush

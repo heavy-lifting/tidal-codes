@@ -1,0 +1,12 @@
+
+
+
+
+d3 $ loopAt 32 $ sound "zip"
+
+d3 silence
+
+
+d1 $ sound "drum"
+
+hush

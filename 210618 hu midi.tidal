@@ -1,0 +1,54 @@
+********** MIDI **********
+
+-- Check out the SuperCollider file MIDI_template.scd to see how to initialise MIDI in superdirt
+
+-- We use MIDI much the same as anything else in Tidal:
+
+d1 $ note "0 2 4 7" # s "friendly"
+
+hush
+
+-- We can choose a MIDI channel using midichan (remember Tidal starts counting at 0!)
+-- so midichan 1 = MIDI channel 2
+-- this has tripped me up SO MANY TIMES
+
+d2 $ note "0(3,8) 4(3,8)" # s "friendly" # midichan 1
+
+hush
+
+-- this is where midinote comes in handy, particularly for controlling drum machines
+
+d3 $ midinote "{43 48 46 40, 36*4}" # s "friendly" # midichan 2
+
+-- to send MIDI CCs we use ccn to define the control number
+-- and ccv to define the control value
+
+-- the following sends a pattern of values to control number 30 over four cycles
+d4 $ ccv (range 1 127 sine) # ccn 30 # s "friendly" # midichan 3
+
+hush
+
+-- And if you like you can give the parameter a friendly name:
+
+let chorusFeed = 30
+
+d4 $ slow 8 $ ccv "32 64 90 127" # ccn chorusFeed # s "friendly"
+
+-- We can send MIDI clock signal too,
+-- although Tidal isn't very good at receiving clock yet...
+
+d9 $ midicmd "midiClock*48" # sound "friendly" # midichan "0"
+
+setcps 2
+
+-- If you need to sync Tidal to an external device I would recommend looking into TidalLink
+
+-- You can also send start and stop messages if your synth needs them:
+
+once $ sound "arpy"
+
+hush
+
+once $ midicmd "stop" # s "midi"
+
+once $ midicmd "start" # s "midi"

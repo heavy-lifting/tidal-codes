@@ -1,0 +1,9 @@
+setcps (105/60/4)
+
+d5 $ sound "{bskick:1*4} " # shape 0.4 # gain 1.2
+
+d3 $ sound "<brick ~ [~ bsnoise:4*4] ~>" # cut 1
+
+d4 $ randslice 128 $ sound "work*8?" # legato 1 # n (irand 5) # speed "[1,-1]"
+
+hush

@@ -1,0 +1,85 @@
+********** SYNTHS **********
+
+-- Tidal comes with some built in synth sounds and you can add your own sound to SuperCollider
+-- Or you can use MIDI to control hardware or software synths
+-- You can also control other devices using Open Sound Control (OSC)
+
+-- The syntax for controlling synths is the same as for Samples
+-- But some of the control patterns might work differently
+-- I find with synths, it makes a lot of sense to define your note pattern on the left
+
+-- We can call notes with numbers:
+d1 $  sound "superpiano(5,8)" # n (irand 8)
+
+d1 silence
+
+-- Some synths to try:
+physical modeling synths: supermandolin, supergong, superpiano, superhex
+a basic synth drumkit: superkick, superhat, supersnare, superclap, super808
+four analogue-style synths: supersquare, supersaw, superpwm, supercomparator
+two digital-style synths: superchip, supernoise
+
+-- Or note names:
+d1 $ n "c a f e" # sound "supermandolin"
+
+-- We can use s and f to indicate sharps and flats
+d1 $ n "g bf ds" # sound "supergong"
+
+-- We can use note name and number to choose our octave
+d1 $ n "c4 c5 c6 c7" # sound "supersaw"
+
+-- Or we can call midinotes (this is more useful for MIDI stuff though, clearly)
+d1 $ midinote "41 44 48 44" # sound "superchip"
+
+
+-- The sustain command lets us control the length of the note:
+d1 $ n "c4 c5 c6(3,8) c7" # sound "supernoise" # gain 0.8
+
+hush
+
+d1 $ n "c4 c5" # sound "supersaw" # sustain 2 # gain 0.8
+
+hush
+
+-- and of course we can use any mini-notation, transformations, and effects that we like:
+d1 $ every 4 (slow 2) $ jux (iter 4) $ n "c(3,8) a f/2 e" # sound "superpiano" # room 0.5 # sustain 0.25
+
+-- if we're not good at music theory we can use the scale function to keep everything in key:
+d1 $ n "0 3 5 7" # sound "superpiano"
+
+hush
+
+d1 $ n (scale "minor" "0 3 5 7") # sound "superpiano"
+
+d1 $ n (scale "<minor major>" "0 3 5 7") # sound "superpiano"
+
+-- scaleList gives us a list of all available scales
+-- (and you can define your own, but we won't be looking at that today)
+
+scaleList
+
+-- We can create chords using the mininotation:
+
+d1 $ n "[f,gs,c] [c,ds,gs]" # sound "superpiano"
+
+hush
+
+-- And pattern them:
+
+d1 $ n "[f,gs,c]*2 [c,ds,gs](3,8)" # sound "superpiano"
+
+-- But we can also use the Tidal chord library to define shorthands for chords
+
+-- First we need to import the chord library
+
+import Sound.Tidal.Chords
+
+-- chordList gives us a list of Chords
+
+chordList
+
+-- to call chords we use '
+
+d1 $ n "c'sevenSharp5flat9(3,8)" # sound "superpiano"
+
+hush

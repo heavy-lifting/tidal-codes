@@ -1,0 +1,44 @@
+********** TIDAL LOOPER **********
+
+-- Tidal looper is a sampler for Tidal developed by mrreason//thgrund
+-- for install instructions please see slides
+
+-- run the following lines of code to define some parameters:
+linput = pI "linput"
+
+lname = pS "lname"
+
+d9 $ sound "drum(3,8)" # vowel "a"
+
+hush
+
+-- then call 'looper' to record to the buffer
+-- I'm using slow to extend the length of the sample
+
+d1 $ slow 1 $ s "looper"
+
+hush
+
+-- we then play the sample back using 'loop'
+
+d2 $ slow 2 $ sound "loop"
+
+-- We can treat this like any other samples
+
+d2 $ slow 4 $ chop 32 $ sound "loop" # speed "-1" # cut 1
+
+d2 silence
+
+-- we can record multiple samples to different buffers using n
+-- there are 8 buffers by default
+-- if we run the looper as a normal pattern it will continuously record:
+
+d3 $ slow 1 $ sound "looper" # note "<0 1 2 3 4 5 6 7>" # lname "hello"
+
+d3 silence
+
+d4 $ sound "hello" # note "0" # cut 1
+
+d5 $ sound "drum"
+
+hush

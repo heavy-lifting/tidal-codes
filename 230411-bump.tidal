@@ -1,0 +1,34 @@
+import Data.Map.Strict as Map
+
+bump :: String -> Integer -> Pattern Bool -> ControlPattern -> ControlPattern
+bump name bpc bpat pat = (Pattern $ \state -> query (maybe (bumper `overlay` pat) f $ (Map.lookup name $ controls state) >>= getR) state)
+  where f t = rotL t (bumper `overlay` pat)
+        bumper :: ControlPattern
+        bumper = (outerJoin $ (const $ pure $ Map.singleton ("__" ++ name) $ VState statef) <$> (filterOnsets $ filterValues id (rotL (1%bpc) bpat)))
+          where statef :: ValueMap -> (ValueMap, Value)
+                statef sMap = (Map.insert name v sMap, v)
+                  where v = VR $ maybe 0 (+(1%bpc)) $ Map.lookup name sMap >>= getR
+
+-- Make a 'bumper' called 'somename' (can be called anything),
+-- running at 8 beats per cycle, skipping every 32nd beat
+
+d1 $ bump "somename" 8 "{f!31 t}%8" $ stack [
+  -- this clap shouldn't play (it sometimes does the first time around for some reason)
+  struct "{f!31 t}%8" $ s "clap:4",
+  n "[0@2 2!2]*2" # sound "cpu" # legato 1
+  # speed (slow 4 $ range 1 1.5 saw)
+]
+
+
+hush
+
+setcps (0.25)
+
+-- Other patterns won't skip
+d2 $ sound "9oh sd:4!5" # speed 1
+
+d3 $ bump "hex" 6 "{~ ~ ~ ~ ~ ~, f!11 t}" $ n "0 1 2 3 4 5 " # sound "alphabet"
+
+
+
+d3 $ n "0 1 2 3 4 5 " # sound "alphabet"

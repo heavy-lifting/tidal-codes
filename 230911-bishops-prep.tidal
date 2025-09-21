@@ -1,0 +1,100 @@
+
+
+once $ sound "hnoise:1"
+
+d1 $ loopAt 2 $ slow 16 $ n (run 8) # sound "emufx"
+
+d2 $ degradeBy (slow 8 $ saw) $ sound "hbird:1*64" # speed 0.125 -- # pan perlin # hpf (range 600 3000 perlin)
+
+d2 silence
+
+once $ sound "bir" # n "[0,1,2,3,4,5,6,7]"
+
+d1 $ silence
+
+hush
+
+d3  $ degradeBy (slow 8 $ saw)   $slow 4 $ sound "fi" # shape 0.4 # n (choose ([0,1]))
+
+d4 $degradeBy (slow 8 $ range 1 0 saw) $ sound "dig*32"   # n (irand 36)   # pan perlin  # hpf (range 600 3000 perlin)
+
+once $ sound "bbb:2"
+
+
+#### looper of keypresses?
+
+********** TIDAL LOOPER **********
+
+-- Tidal looper is a sampler for Tidal developed by mrreason//thgrund
+-- for install instructions please see slides
+
+-- run the following lines of code to define some parameters:
+linput = pI "linput"
+
+lname = pS "lname"
+
+d9 $ sound "drum(3,8)" # vowel "a"
+
+d9 silence
+
+-- then call 'looper' to record to the buffer
+-- I'm using slow to extend the length of the sample
+
+d1 $ slow 1 $ s "looper" -- ok we can try itsdsdsdsdsdsd,jkshvv
+
+d1 silence
+
+hush
+
+ok not sure if this will work
+
+-- we then play the sample back using 'loop'
+
+d2 $ slow 1 $ sound "loop" # size "0.4" # room "0.1" # delay 0.05
+
+-- We can treat this like any other samples
+
+d2 $ sound "hello" # cut 1 #  n "<7 6 5 4 3 2 1 0>"
+
+once $ sound "lux" # n "[0,1,2,3]"
+
+d4 $ slow 8 $ chunk 16 (hurry 4) $ sound "st:2(47,64)" # legato 4
+
+unsolo 4
+
+d2 silence
+
+-- we can record multiple samples to different buffers using n
+-- there are 8 buffers by default
+-- if we run the looper as a normal pattern it will continuously record:
+
+once $ slow 8 $ sound "looper" # note "<0 1 2 3 4 5 6 7>" # lname "hello"
+
+d3 silence
+
+still don't realy know where this is goingccshdhddhkinda
+
+/hi there. hope you are all having a nice evening
+
+I'm LUCY
+I'm doing something a bit different today
+I hope it goes ok.
+
+/hi I'm LUCY
+doing something a bit different today
+hope it goes ok
+need to keep typing for a bit, so we don't lose th einput on the budfffer
+
+hushffffffhhhhhhhhhhhhh
+
+d9 $ degradeBy (slow 64 $ range 0 1 saw) $ density "<1 2 4 >" $ chop "<1 1 2 4 8>" $ loopAt 1 $ sound "[~]" # cut 1
+
+d9 silence
+
+d6 $ chunk 4 (# speed "-1") $ slow 2 $ slice 64 (segment 8 $ round <$> range 1 64 perlin) $  sound "st:4"
+
+d7 $ sometimes (# speed "-1") $ sound "bbb" # n (irand 8) # speed 0.125 # legato 1
+
+d8 $ loopAt "[8,4]" $ sound "<zip:1 bow>"
+
+setcps (93/60/4)

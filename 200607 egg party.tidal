@@ -1,0 +1,27 @@
+setcps (150/120)
+
+hush
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d8 $ (0.2 ~>) $ slow "<1 0.5>" $ sound "ro"
+  # ( midinote "<43 46 48>")  # midichan "0" # legato "0.125" # gain "<1 1 1 1>"
+
+d3 silence
+
+9bd 9cp 9cr 9hh 9ht 9lt 9mt 9oh 9rd 9rs 9sd
+
+d2 $ slow 2 $ sound "[bsperc:6(7,16), tink(3,16), coins/2 coins]" # cut 1
+
+d1 $ slow 2 $ sound "<9ht(3,8) [9sd 9sd]>" # n "0 .. 8" # shape 0.4
+
+hush
+
+d3 $ slow "<1 1 1 2 4 8 16>"
+  $ iter 4
+  $ jux (hurry 2)
+  $ sound "{9bd ~ 9bd/2 ~, 9hh 9hh*2 ~ 9hh*3 9oh}"
+  # n "<0 1 2 3>"
+  # shape 0.4 # cut 4 # hpf 5000
+
+d4 $ slow 1 $ sound "9lt(5,17)" # cut 5 # hpf 3000

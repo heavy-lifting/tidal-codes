@@ -1,0 +1,27 @@
+HEAVY LIFTING VS MRWEED666 (minecraft java edition)
+ # cracked it
+
+d1 $ loopAt "<1 2 3 4 8>" $ chop 4 $ sound "cow:3*4 cow:4 cow:6 cow:6" # cut 1
+
+d2 $ loopAt "[2,4]" $ sound "cow:5"
+
+d3 $ loopAt 1 $ striate 4 $ n "[0,1,2,3,4,5,6,7,8,9,10]" # sound "cow" # speed "0.5"
+
+d4 $ sometimes (hurry 0.5) $ sound "wither:5" # speed "[-1, 0.5]"
+
+
+hush
+
+cave
+cow
+damage
+dig
+ender
+note
+portal
+random
+skelly
+villager
+witch
+wither
+zombie

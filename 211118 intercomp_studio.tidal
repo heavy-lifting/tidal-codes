@@ -1,0 +1,100 @@
+
+Am (ACEA) (69 72 76 81) Em (EBEG) (64 71 76 79) G (GBDG) (67 71 74 79) Dm (DADF) (62 69 74 77)
+e f# gabcde (64 66 67 69 71 72 74 76)
+
+setcps (78/60/2)
+
+-- CLOCK
+d8 $ midicmd "midiClock*48" # s "[msp, stre]" # midichan "0"
+
+-- STREICHFETT HERE
+d9 $ (0.015 ~>)
+  $ slow 32
+  $ every 8 (fast 2)
+  $ iter 4
+  $ chop "<4 4 8 16>"
+  $ slow 2
+  $ jux (slow 2)
+  $ sound "stre*4?"
+  # midinote("<64 67> <71 71> <76 74> <79 79>" - "[0,12]")
+  # legato 0.5
+
+d9 $ midinote "60" # sound "stre"
+
+  $ jux (iter 4)
+  $ midinote ("<64 67> <71 71> <76 74> <79 79>" - 24) # sound "stre" # legato 1
+
+d9 silence
+
+-- VOLCA HERE
+d7 $ (0.015 ~>) $ midinote "<52 57 52 55>" # sound "msp?" # legato "<0.5>"
+
+d7 silence
+
+-- DRUMS HERE (ODD CHANNELS)
+d1 $ slow 16 $ jux (iter 4) $ every 2 (hurry 2) $ sound "[cpu*2, cpu:4*4?]"
+
+d1 $ sound "bskick:1*4" # shape 0.7 # legato 0.35
+
+hush
+
+d3 silence
+
+d3 $ slow 2 $ sound "<cpu:5 cpu:5>"
+
+d1 silence
+
+d3 $ sound "bskick:1"
+
+d3 silence
+
+d2 silence
+
+hush
+
+-- PIANO HERE (EVEN CHANNELS)
+d2 $ slow 64
+$ every 2 (jux rev.fast 2)
+$ chop "[1,<2 2 4 8>]"
+$ fast "<2 2 2  2 2 2 2 4>"
+$ sound "[superpiano(<3 2 2 5>,8)]"
+# midinote (choose [64, 66, 67, 69, 71, 72, 74, 76] - "[12, 0]")
+# room "1"
+# size "0.6"
+# dry "0.5"
+# gain 0.825
+
+
+hush
+
+-- volca ctrl values
+
+pitch - 40
+saturation - 41
+level - 42
+cutoff - 43
+peak - 44
+attack - 45
+decay - 46
+eg int - 47
+accent - 48
+lfo rate - 49
+lfo int - 50
+
+-- streichfett control values
+1 - modulation wheel - 1:127
+71 - string octaves - 1:127
+72 - string release - 1:127
+73 - crescendo - 1:127
+75 - string ensemble - 1:127
+76 - solo tone - 1:127
+77 - solo tremolo - 1:127
+80 - solo attack
+81 - solo decay
+82 - balance
+91 - fx type - 0 = reverb, 1 = phaser, 2 = animate
+92 - animate amount
+93 - phaser amount
+94 - reverb amount
+121 - reset all controllers
+123 - all notes off

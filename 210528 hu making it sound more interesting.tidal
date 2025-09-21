@@ -1,0 +1,233 @@
+
+
+**********EFFECTS**********
+
+--Tidal has lots of effects we can use to change the way things sound.
+
+--vowel is a filter which adds a vowel sound
+-- try a, e, i, o and u
+
+d1 $ sound "drum drum drum drum"
+
+hush
+
+d1 $ sound "drum drum drum drum" # vowel "o"
+
+--We create patterns of effects in much the same way we create patterns of sounds.
+--We call these effect and sound patterns 'control patterns'. So:
+
+d1 $ sound "drum drum" # vowel "a o e e"
+
+hush
+
+-- Remember that we can use "<>" to schedule across cycles
+
+d1 $ sound "drum drum drum drum" # vowel "<a o e e>"
+
+hush
+
+-- You can add a non-vowel letter to pause the vowel effect
+
+d1 $ n (run 4) # sound "jvbass" # vowel "a e u i" # speed 1 # cut 1
+
+hush
+
+-- Tidal does its best to map patterns across to one another
+
+d1 $ sound "drum drum drum drum" # vowel "a o e"
+
+hush
+
+-- The structure comes from the left - try swapping the parameters
+
+d1 $ vowel "a o p i a u i s" # sound "drum"
+
+hush
+
+-- gain changes the volume of different sounds
+
+d1 $ sound "bd hh sn:1 hh sn:1 hh" # gain "0.4"
+
+hush
+
+-- speed and up are used for pitching samples.
+
+-- speed affects the speed of playback,
+-- e.g. 2 = play the sample twice as fast and move the note up an octave
+
+d1 $ sound "numbers:1*4" # speed "1 1.5 2 0.5" # legato "0.25 0.5"
+
+d2 $ sound "~ rave" # cut 1
+
+d3 $ sound "bev" # legato "1"
+
+hush
+
+-- Or we can take the pattern from the speed parameter
+
+
+
+d1 $ speed "1 2 ~ 4" # sound "jungbass:6" # legato 0.25
+
+hush
+
+-- up pitches the sample up in semitones, e.g. 12 = up an octave
+
+d1 $ up "[0, 2, 4]" # sound "jungbass:6"
+
+hush
+
+-- pan allows us to create stereo effects - 0 = left, 0.5 = middle, 1 = right
+
+d1 $ sound "numbers:1 numbers:2 numbers:3 numbers:4" # pan "<[0,0.5] 1>"
+
+hush
+
+-- shape adds distortion (but be careful - it also makes the sound much louder)
+
+d1 $ sound "kurt:4 kurt:4"
+
+d1 $ sound "kurt:4 kurt:4"
+  -- # shape "0 0.78"
+  # gain "0.7"
+  # vowel "<a o p>"
+
+hush
+
+-- feeling brave ?
+-- Try more effects: https://tidalcycles.org/index.php/Category:Control_Functions
+
+-- delay / delaytime / delayfeedback / cutoff / resonance / room / size
+
+**********TRANSFORMING PATTERNS**********
+
+-- We can start to make much more complex patterns using transformations
+
+-- Using functions like slow you can start to transcend the cycle
+
+-- slow stretches the pattern over more cycles
+
+d1 $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+d1 $ slow "<4 2 1>" $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+hush
+
+-- fast squashes the pattern into less than one cycle
+
+-- You might also see people writing density - it’s the same thing!
+
+d1 $ slow "<0.5 1 [ 1 2]>" $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+hush
+
+-- fast 0.5 is the same as slow 2!
+
+d1 $ fast 0.5 $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+-- hurry is similar to fast, but also applies a speed transformation
+
+d1 $ sound "arpy arpy arpy:1 arpy:2"
+
+d1 $ hurry 2 $ sound "arpy arpy arpy:1 arpy:2"
+
+d1 $ hurry 0.5 $ sound "arpy arpy arpy:1 arpy:2"
+
+-- and of course you can put a pattern into your transformation too!
+
+d1 $ hurry "0.5 1 2" $ sound "arpy arpy arpy:1 arpy:2"
+
+d1 $ hurry "<0.5 1 2>" $ sound "arpy arpy arpy:1 arpy:2"
+
+-- OK SO WHAT EXACTLY IS GOING ON HERE????
+
+d1 $ n "0 1" # sound "drum"
+
+d1 $ fast "0.5" $ n "0 1" # sound "drum"
+
+d1 $ fast "2" $ n "0 1" # sound "drum"
+
+d1 $ jux (rev)
+  $ iter 4
+  $ fast "0.5 2 4 1"
+  $ n "0(<3 2>,8) 1"
+  # sound "drum? cp"
+  # vowel "<a o p>"
+
+hush
+
+-- You can reverse a pattern with ‘rev’
+
+d1 $ fast "1 2" $ every 4 ( rev) $ sound "arpy arpy:1 arpy:2 arpy:3"
+  # speed "{1 0.5, -1 2 -0.5}"
+
+hush
+
+-- Or play it forwards and then backwards with ‘palindrome’
+
+d1 $ palindrome $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+hush
+
+-- iter starts the pattern at a different point each cycle,
+-- shifting it the given number of times until it gets back to where it started
+
+d1 $ jux (rev) $ iter 4 $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+hush
+
+d1 $ slow 2 $ iter 4 $ n "0 1 2 3" # sound "numbers"
+
+hush
+
+-- every allows us to schedule transformations or effects in different cycles
+--e.g. every fourth cycle, play twice as fast:
+
+d1 $ every "<4 3>" (slow "1 2") $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+hush
+
+-- ... or you could schedule an effect in the same way, using #
+
+d1 $every 4 (rev) $ iter 4 $ sound "arpy arpy:1 arpy:2 arpy:3" # vowel "a"
+
+hush
+
+-- jux (short for 'juxtapose') takes a transformation or an effect and plays it in one speaker
+-- the original pattern plays in the other speaker.
+
+d1 $ rev $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+d1 $ jux (rev) $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+d1 $ n "0 1 2 3" # sound "drum"
+
+hush
+
+-- or we can chain multiple transformations together with .
+
+
+d1 $ jux (hurry 2.rev.iter 4) $ sound "arpy arpy arpy:1 arpy:2"
+
+d1 $ jux (rev . slow 1.5) $ sound "arpy arpy:1 arpy:2 arpy:3"
+
+-- chunk applies a transformation or an effect to a different part of the pattern each time.
+-- For example with 4 as a parameter, it will step through each quarter of the cycle.
+
+d1 $ chunk 4 (hurry 2) $ sound  "alphabet:0 alphabet:1 alphabet:2 alphabet:3"
+
+
+
+hush
+
+-- Remember that (almost) everything is a pattern so we can apply these transformations to our effects too!
+
+d1 $ sound "jvbass [jvbass jvbass] jvbass ~" # speed "1 [3 5] 7"
+
+d1 $ sound "rave [arpy jvbass] arpy ~" # every 4 (rev) (speed "1 [3 5] 7") # cut 1
+
+hush
+
+d1 $ sometimes (rev) $ "cp hh bd sn"
+
+hush

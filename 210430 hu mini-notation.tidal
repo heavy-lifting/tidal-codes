@@ -1,0 +1,230 @@
+
+-- If you see a line of code with two dashes at the start like this,
+-- it’s called a comment.
+-- This is text that the computer will always ignore,
+-- so you can annotate your code.
+
+**********GETTING STARTED**********
+
+--Once everything is installed, follow the following startup procedure each time.
+
+-- Launch SuperDirt
+-- In Supercollider, type 'SuperDirt.start'
+-- Then run the code by holding down 'Ctrl/Cmd' and pressing 'Enter'
+-- (while your cursor is on the same line as the code).
+-- Launch TidalCycles - In Atom, start a new file
+-- and save it with a .tidal extension
+-- (e.g. `examples.tidal`)
+
+**********BASIC PATTERNS**********
+
+-- The basic format for making sound in Tidal looks like this
+-- And you run the code by pressing Ctrl + Enter
+-- Make sure you always leave a blank line in between two lines of code
+
+d1 $ sound "drum bd hh cp "
+
+hush
+
+d2 $ sound "hh*4"
+
+hush
+
+-- You can stop making a sound using silence:
+
+d1 $ silence
+
+hush
+
+-- or by pressing ctrl + the number of the channel
+-- i.e. ctrl + 1 will silence d1
+-- press it again to un-silence
+
+-- Pick a different sound from the same set, with `:`
+
+d1 $ sound "drum:1"
+
+-- Some of the samples which come with Tidal are listed below. Try some out!
+
+flick sid can metal future gabba sn mouth co gretsch mt arp h cp
+cr newnotes bass hc tabla bass0 hh bass1 bass2 oc bass3 ho odx
+diphone2 house off ht tink perc bd industrial pluck trump printshort
+jazz voodoo birds3 procshort blip drum jvbass psr wobble drumtraks koy
+rave bottle kurt latibro rm sax lighter lt arpy feel less stab ul
+
+-- You can see what other sounds there are
+-- (or add your own) by looking in the Dirt-Samples folder.
+-- You can find it via the SuperCollider menu:
+-- 'File > Open user support directory > downloaded-quarks > Dirt-Samples'.
+
+-- Make a sequence
+d1 $ sound "bd hh sn hh hh tink perc perc perc perc"
+
+hush
+
+-- The more steps in the sequence, the faster it goes:
+
+d1 $ sound "bd bd hh bd"
+
+d2 $ sound "tink ~ perc bottle arpy"
+
+-- This is because of the way Tidal handles time.
+-- There is a universal ‘cycle’ (sort of like a musical 'bar')
+-- which is always running.
+-- Tidal will play all of the sounds between the speech marks in one cycle,
+-- unless we tell it not to
+-- (we’ll learn how to do that later).
+-- You’ll also notice Tidal will space the sounds out evenly within the cycle
+-- Which means we can end up with polyrhythmic structures (more on those later).
+
+-- We can change the length of the cycle using setcps
+-- (where cps stands for cycles per second)
+-- This is a bit like bpm (beats per minute).
+
+setcps (137/60/4)
+
+-- You can use d1, d2, d3...d9 to play multiple sequences at the same time
+
+d2 $ sound "jvbass*4"
+
+
+hush
+
+-- You can stop all the running patterns with hush.
+
+hush
+
+-- Or you can `solo` one channel:
+
+d1 $ sound "jvbass jvbass:2"
+
+d2 $ sound "sn sn:2 bd sn"
+
+unsolo 2
+
+-- now only the second pattern will be playing
+
+unsolo 2
+
+hush
+
+-- now both will be playing, again
+
+-- Let add some more variety to our sequences.
+
+-- Add a silence/rest with ~:
+
+d2 $ sound "bd ~ ~ ~ sn:5 ~ bd:2 ~"
+
+d2 silence
+
+-- Fit a subsequence into a step with square brackets:
+
+d2 $ sound "bd sn [~ [hh hh]] cp"
+
+d1 $ sound "jvbass jvbass*2 ~ jvbass:2 "
+
+hush
+
+-- This can make for flexible time signatures:
+
+d1 $ sound "[]"
+
+d2 $ sound "arpy arpy:2"
+
+hush
+
+-- You can put subsequences inside subsequences:
+
+d1 $ sound "[[bd bd] bd sn:5] [bd sn:3]"
+
+hush
+
+-- Keep going..
+
+d1 $ sound "[[bd [bd bd bd bd]] bd sn:5] [bd sn:3]"
+
+hush
+
+-- You can repeat a step with *:
+
+d1 $ sound "bd sd*2"
+
+-- This works with subsequences too:
+
+d1 $ sound "bd [sd cp]*2"
+
+hush
+
+-- Or you can do the opposite using /:
+
+d1 $ sound "bd sn/2"
+
+d1 $ sound "bd [sn cp hh hh]/2"
+
+hush
+
+-- * works by 'speeding up' a step to play it multiple times.
+-- / works by 'slowing it down'.
+
+-- We can also schedule patterns across cycles using < and >:
+
+d1 $ sound "bd <sd cp jvbass>"
+
+hush
+
+d1 $ sound "<bd sn> <sd [cp cp]>"
+
+-- We can add a bit of randomness using ?
+-- ? means the sound will play with 50% probability
+
+d2 $ sound "hh*8?"
+
+hush
+
+**********EFFECTS**********
+
+--Tidal has lots of effects we can use to change the way things sound.
+--We aren't going to look at these in detail today,
+--the important thing is that we can use the mini-notation in other places
+--to create control patterns
+
+-- vowel is a filter which adds a vowel sound
+-- try a, e, i, o and u
+
+d1 $ sound "drum drum drum drum"
+
+hush
+
+d1 $ sound "drum drum drum drum" # vowel "o"
+
+-- We create patterns of effects in much the same way we create patterns of sounds.
+-- We call these effect and sound patterns 'control patterns'. So
+
+d1 $ sound "drum drum drum drum" # vowel "a o i"
+
+hush
+
+-- Remember that we can use "<>" to schedule across cycles
+
+d1 $ sound "drum drum drum drum" # vowel "<a o e e>"
+
+hush
+
+-- You can add a non-vowel letter to pause the vowel effect
+
+d1 $ sound "drum drum drum drum" # vowel "a o p p"
+
+-- Tidal does its best to map patterns across to one another
+
+d1 $ sound "drum drum drum drum" # vowel "a o e"
+
+hush
+
+-- The structure comes from the left - try swapping the parameters
+
+d1 $ vowel "a o e" # sound "hh cp sn tink bottle arpy"
+
+d2 $ sound "arpy" # note "<0 2 3 4 5 7>"
+
+hush

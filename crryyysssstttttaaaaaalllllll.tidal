@@ -1,0 +1,34 @@
+setcps (84/120/2)
+
+hush
+
+d1 $ jux (iter 8) $ slice 8 "0 2 4 6 1 3 5 7"$ sound "cbass cbass" # legato 1 # n (irand 4)
+
+d1 silence
+
+d2 $ density (choose [ 0.5, 0.25]) $ loopAt "<1 2>" $ chop (choose [2, 4, 8]) $  sound "cchime:1 cchime:2"
+
+d2 silence
+
+d4 $ slow 8 $ jux (slice 16 (segment 16 $(irand 16))) $ chop 16 $ sound "cdexed*4"
+
+hush
+
+d5 $ slow 8 $ chop 1028 $ sound "cdexed"
+
+d6 $ sometimes (hurry "<0.5 2>") $ randslice 64 $ sound "cwubby*32"
+
+d3 $ degrade
+  $ fast 1
+  $ slice 8 (iter 8 $ "7 6 5 4 3 2 1 0")
+  $ sound "cdrum"
+  # legato 1
+  # n "<0 1 2 3 4 5>"
+
+  d3 $ slow 1
+    $ randslice 16
+    $ sound "cdrum(<3 5 6>,8)"
+    # legato 1
+    # n "<0 1 2 3 4 5>"
+
+hush

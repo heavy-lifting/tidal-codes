@@ -1,0 +1,164 @@
+**********MIDI IN**********
+
+-- First check out the 22-superdirt-midi.sc worksheet
+-- There's some code you need to run in SuperCollider
+
+-- Once you've done that you can use CC's in to tidal:
+
+d1  $jux (iter 4.(# speed "-1")) $  fast (segment 16 ((cR 1 "48")*4)) $ sound "ya:464*64" # speed (cF 1 "49") # cut 1 # note "<1(3,8) 4(6,8)> <2*4 5/4>"
+
+-- In the above line of code '1' is the midi channel and '12' is the CC number
+-- Don't forget tidal starts counting MIDI channels at 0 ;)
+
+hush
+
+setcps (105/120/2)
+
+hush
+
+d1$ sound "{~, bsperc:3*12 ~ ~ }"
+
+cF 1 "49"
+
+d2 $jux (hurry 0.5)
+  $loopAt (4*(cR 1 "48"))
+  $ bite 4 "1 4 2 3 4 2 3 1"
+  $ sound "yd:13*2" # shape 0.4 #cut 2
+
+d3 silence
+
+d5 $ density "<1 1 1 2>"
+  $ loopAt "<4 4 2>"
+  $ striate 64 $ sound "[ya ya:1]*4" # n "<1>"
+
+d5 silence
+
+d4 $ degradeBy (cF 1 "53")
+  $ n (segment 64((cF 1 "49")*550))
+  # sound "wood:2 glass glass:1" # cut 2
+  # note (segment 4 ((cF 1 "n")-"<24 12 24 0 -12>"))
+  # cutoff (range 0 1500 (cF 1 "52"))
+
+d4 silence
+
+d8 $ density (segment 8 (cR 1 "49")*64)
+  $ sound "ya*8"
+  #  n (segment 8 (cF 1 "48")*550)
+  # cut 1 # midinote "60(<3 5 6>,8)"
+  # gain 0.7
+
+hush
+
+d1 $ density (segment 8 (cR 1 "49")*64)
+  $ sound "ya" # n (range 0 550 (cF 1 "52"))
+  # cut 1
+  # gain (range 1 1 (cF 1 "n"))
+  # midinote (cF 1 "n") # cutoff (range 0 1500 (cF 1 "50")) # resonance (range 0 1 (cF 1 "53")) # room 1
+
+d1 $
+  chop (range 0 8 (segment 16 $ cI 1 "50")) $
+  sound "ya" # n (cF 1 "48") # cut 2
+
+d3 silence
+
+hush
+
+d3 $ loopAt 4 $ bite 8 "7 5 6 0 5 3 4 2 1" $ sound "yd*4"# gain 2
+
+ (cF 1 "50" * 4)
+
+setcps 0.6
+
+d1 $jux (iter 3) $ loopAt "<4 2 2>"
+  $ fast 2
+  $ striate 64
+  $ sound "ya:520*4"
+  # cutoff (range 0 3000 (cF 1 "54"))
+# note (segment 4 ((cF 1 "n")-"<24 12 24 0 -12>"))
+
+hush
+
+#0-546
+
+d2 $ sound "ya" # n "(<464,435,334,411,325,310,92,261,306>, 435,306)"
+
+d4 $ sound "paper:2"
+
+hush
+
+-- use akai controller to route midi and slide things in and out
+
+d2 $ loopAt 1 $ sound "ya" # n (irand 546)
+
+d2 silence
+
+d3 $ slow 2 $ sound "ya:10(<3 5 6>,8)"
+
+d3 silence
+
+d9 $ note "<1 1 5 7>" # sound "ya:446(7,19)" # shape 0.4
+
+bass
+475
+446
+391
+101
+188
+231 ish
+242
+
+hush
+
+d4 $ loopAt 0.5 $ sound "ya" # n (choose [536,525,458,434,423,387,324,45,60,88,193])
+
+d4 silence
+
+atmos
+536
+525
+458
+434
+423
+387
+324
+45
+60
+88
+193
+
+drums
+28 sort of snare
+110 sort of snarey kick
+281 could be cut down into hat
+
+
+hit
+524
+513
+335
+332
+5
+7
+95
+144
+239
+303
+
+vox
+464
+435
+334
+411
+325
+310
+92?
+261
+306
+
+weird
+195
+254
+273
+426
+473
+494

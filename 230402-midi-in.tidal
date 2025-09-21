@@ -1,0 +1,44 @@
+d1 $ fast ((segment 1 $ cT 1 "4") * 8) $ slice (segment 1 $ range 1 8 $ cI 0 "2") (segment 1 $ range 1 8 (cI 0 "3"))
+  $ s "break" # n (segment 1 $ range 1 16 $ cN 0 "1")
+  # gain (segment 1 $ range 0 2 $ cF 1 "5")
+
+
+d1 $ sound "strf" # midinote "60"
+
+d1 $ every 8 (fast 8) $ fast 4 $ slice 8 (segment 1$ round <$> (slow 8 $ range 1 8 sine)) $ loopAt "< 1 2>" $ sound "skel:8" # gain 1.2 # legato 1
+
+d2 $ sound "{bskick(5,<8>), 9bd:3*4}" # shape 0.6
+
+d3 $ jux (iter 4) $ sometimes (hurry 0.5) $ sound "9hh*8 9oh/4"
+
+d4 $ sound ""
+
+unsolo 1
+
+
+d1 $ slice 8 4 $ sound "bev"
+
+d2 $ sound "arpy" # speed (round <$> range 1 8 (cF 0 "92"))
+
+(segment 8 $ range 1 8 ((cI 0 "92")/127))
+
+hush
+
+(extractI $ (cF 0 "92"))
+
+:t extractI
+
+toInt :: Float -> Int
+toInt = round
+
+:t segment
+
+d2 $ sound "arpy*8" # speed (quantise 2 $ segment 8 $ range 1 8 (cF 0 "92"))
+
+hush
+
+d1 $ slice (segment 8 $ range 1 8 (cF 0 "92")) $ sound "break" # legato 1
+
+round 3.2 :: Int
+
+fromIntegral <$> pat.

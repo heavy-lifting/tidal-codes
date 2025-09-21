@@ -1,0 +1,27 @@
+
+setcps 0.46
+
+j1 $ beats 8 8 $ n "0 1 9 4 2 5 1 5" # sound "drum"
+
+all $ beats "<2 3 4 5>" 8
+
+j1 $ jux rev $ off "<0.25 0.125>" (# crush 2) $ n "4@2 6 5 4@2 6 5"
+  # sound "potsandpans" # djf 0.8 # room 0.5 # sz 0.96
+  # speed (slow 8 $ range 1 1.5 saw)
+
+j5 $ sound "cpu:2*4"
+
+-- Yes you can pattern that
+j2 $ slice 8 "7 0 6 1 5 2 4 3" $ s "arc"
+
+j2 $ reset "<t t(3,8)>" $
+  jux rev $ iter 4 $ chop 16 $ s "breaks165" # speed 0.7 # djf 0.75
+
+
+j3 $ reset "<t _ t*4>" $ chunk 4 (hurry 2) $ every 4 (rev) $ jux (iter 4) $ sound "superpiano superpiano*2" # midinote (choose [64, 66, 67, 69, 71, 72, 74, 76] - choose [12, 24, 0, 24]) # gain 0.9 # size 0.3 # room 0.3
+
+
+  Am (ACEA) (69 72 76 81) Em (EBEG) (64 71 76 79) G (GBDG) (67 71 74 79) Dm (DADF) (62 69 74 77)
+  e f# gabcde (64 66 67 69 71 72 74 76)
+
+j4 $ s "kick:5*4"

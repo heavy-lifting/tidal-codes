@@ -1,0 +1,20 @@
+d3$rev $ chop ((+) 2 $ slow "1 2"
+  $ rev $ fast "0.5  0.25 " 2)
+  $ sound "[hsaw:4, <hsaw:9 <hsaw:7 hsaw:4>>] [~ hsaw:2] <hsaw:4 <hsaw:9 hsaw:7>>(<1 1 2 1>,7) hsaw:12"
+  # legato 0.5
+
+d4 $ sound "cpu*4" # shape 0.4
+
+d1 $(#) (vowel $ fast "0.5  0.25 " "o")
+  $ rev $ fast "0.5 1 2 0.5"
+  $ (#) (sound "bd [~ ~ bd] bd [~ bd ~]")
+  $ chop ((+) (rev $ fast "0.5  1 " 2) $ slow "0.5 1 2 0.5" 2) $ fast 2 $ speed 2 # gain 1.2
+
+hush
+
+d1$sound "808bd:2*2 dr:-1 ~ [~ clubkick:1] 808bd [~ sn:4] clubkick [~ clubkick]"
+
+
+
+d2 $(#) ((#) (vowel "i") $ rev
+  $ slow "0.5 1 2 0.5" $ chop (slow "0.5 1 2 0.5" $ rev 2) $ fast "0.5  0.25 " $ rev $ fast (slow 2 "0.5  0.25 ") $ speed 2) $ rev $ fast "  2 4 " $ sound "extra:23*2 <extra:22 extra:20> [~ extra:15] extra:11"

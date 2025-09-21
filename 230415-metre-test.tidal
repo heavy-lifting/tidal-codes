@@ -1,0 +1,42 @@
+
+setcps 0.5
+
+d1 $ sometimes (hurry 2) $ sound "9rs*12?"
+
+d3 $ iter 4 $ n "{0, 1 ~ [2 3] 5 ~ }%6" # sound "cpu" # shape 0.4
+
+d2 $ slow 2 $ bump "epi" 12 (randcat ["{f!11 t}%12",  "{f!12}%12"])
+$ up (scale "ritusen" "{[0 [4 4]] [4 [7 7]] [0 [4 4]] [0 [4 7]] [4 [7 7]] [12 12]}") #
+ sound "emub" # gain "[1] [1] [1 [<1 1 0 1 1 1> <1 1 1 1 1 0>]] [1] [1] [1]" # legato 0.5
+
+ d2 $ slow 2 $ bump "epi" 12 (randcat ["{f!11 t}%12",  "{f!12}%12"])
+ $ up (scale "ritusen" "{[0 [4 4]] [4 [7 7]] [0 [4 4]] [0 [4 7]] [4 [7 7]] [12 12]}") #
+  sound "emub" # legato 0.5
+
+
+d2 $ bump "epi" 12 "{f!23 t}%12"
+$ up (scale "minor" "1*2 2*2 3*2 4*2 5*2 6*2") # sound "numbers" # legato 1
+
+d4 $ jux (iter 4).(rev) $ fast 3
+$ n (scale "ritusen" (randcat(["[1 [2 2]]", "1 2"])) |+ choose([0,4,7]))  # sound "superpiano" # legato 0.5
+
+hush
+
+d5 $ fast (range 1 4 perlin) $ sound "numbers*12" # speed (range 1 4 perlin) # legato 0.5 # gain 1.2 # vowel "a" # shape 0.2
+
+scaleList
+
+
+
+
+
+import Data.Map.Strict as Map
+
+bump :: String -> Integer -> Pattern Bool -> ControlPattern -> ControlPattern
+bump name bpc bpat pat = (Pattern $ \state -> query (maybe (bumper `overlay` pat) f $ (Map.lookup name $ controls state) >>= getR) state)
+  where f t = rotL t (bumper `overlay` pat)
+        bumper :: ControlPattern
+        bumper = (outerJoin $ (const $ pure $ Map.singleton ("__" ++ name) $ VState statef) <$> (filterOnsets $ filterValues id (rotL (1%bpc) bpat)))
+          where statef :: ValueMap -> (ValueMap, Value)
+                statef sMap = (Map.insert name v sMap, v)
+                  where v = VR $ maybe 0 (+(1%bpc)) $ Map.lookup name sMap >>= getR

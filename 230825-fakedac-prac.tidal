@@ -1,0 +1,69 @@
+##### HI I'M LUCY AND I MAKE IT UP AS I GO ALONG :)
+
+THANKS 4 WATCHING :))))))))))))))
+
+d12 $ (0.0 ~>) $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+setcps (137/60/4)
+
+### BEEP BEEEEEEP CLOWN EMOJI
+
+d11 $ (0.05 ~>)  $ degradeBy 0.99 $ chunk 2 (fast 16) $ slow "[4,2, 1]" $ chop "<4 8>"
+$ note (scale "locrian" "1 5" -12) # sound "ro" # midichan "0" # legato "<0.5>"
+
+d11 silence
+
+d4 $ chunk 2 (# gain 0) $ jux (iter 4) $ slice 8 "7 6 5 4 3 2 1 0" $ up (scale "phrygian" "1 1 1 1 1 1 5 7") # sound "emub" # legato (choose [0.5,1])
+
+d5 $ fast "<1 1 2 4 8>" $ loopAt "< 2 4 1>" $ chop 4 $ sound "not:3 mod" # legato 1
+
+d1 $ degradeBy 0.9 $ jux (iter 4) $ chunk 2 (hurry 4)  $ sound "[bskick:1*4, 9cp]" # shape 0.7
+
+d2 $ loopAt 2 $ sound "[wood:3, wood:1]"-- samples from the vaults
+
+d6 $ sound "skel" # cut 2
+
+hush
+
+d3 $density "<1 1 1 0.5>" $ chop "<4 16 8>" $ loopAt "<8 4>" $ sound "glass glass:1/2" # cut 1
+
+d4 $ randslice 128 $ sound "pebbles*16?"
+
+hush
+
+d10 $ ccn "[74*8]" # ccv (slow 8 $ range 30 111 saw) # sound "ro"
+
+emupiano
+emus
+emustab
+emustr
+
+emh
+isa
+temp
+mod
+obey
+lux
+rom
+bub
+cpu2
+bb
+
+SOME NOTES
+
+<64 68 71 >
+<60 64 68 71>
+<63 66 69>
+<59 63 66 69>
+
+RO CONTROLS
+
+74 Cutoff
+71 Resonance
+73 Env Mod
+77 LFO Depth
+80 Vibrato Mod LFO
+75 ENV Decay
+103 ENV Sustain
+72 ENV Release
+5 Glide

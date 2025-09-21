@@ -1,0 +1,78 @@
+setcps (137/60/4)
+
+all $ degradeBy (slow 8 $ range 0 0.4 saw)
+
+d5 $ slow 8  $ off (0.125) (# speed 0.5).(# crush 6) $ sound "grem:2" # gain 1.4 # legato 2
+
+d7 $ every 8 (# gain 0) $ every 4 (hurry 2) $ off 0.125 (# crush 6) $ sound "9bd*4" # gain 1.3 # shape 0.2
+
+d1 $ bump "hi" 8 "{f!15 t}%8" $ chop 8 $ up (scale "mixolydian" "<0 4 0 7>") # sound "emub"
+# cut 1 # gain 0.9 # crush 2 # room 0.3 # sz 0.3
+
+d1 silence
+
+hush
+
+--samples
+steeldrum
+woodblock
+jinglebells
+potsandpans
+doomgong
+
+cbass
+cchime
+cdexed
+cdrum
+cwubby
+
+hbird
+hperc
+
+emupiano
+emus
+emustab
+emustr
+
+emh
+isa
+temp
+mod
+obey
+lux
+rom
+bub
+cpu2
+bb
+
+-- SOME NOTES
+
+<64 68 71 >
+<60 64 68 71>
+<63 66 69>
+<59 63 66 69>
+
+-- RO CONTROLS
+
+74 Cutoff
+71 Resonance
+73 Env Mod
+77 LFO Depth
+80 Vibrato Mod LFO
+75 ENV Decay
+103 ENV Sustain
+72 ENV Release
+5 Glide
+
+-- bump
+
+import Data.Map.Strict as Map
+
+bump :: String -> Integer -> Pattern Bool -> ControlPattern -> ControlPattern
+bump name bpc bpat pat = (Pattern $ \state -> query (maybe (bumper `overlay` pat) f $ (Map.lookup name $ controls state) >>= getR) state)
+  where f t = rotL t (bumper `overlay` pat)
+        bumper :: ControlPattern
+        bumper = (outerJoin $ (const $ pure $ Map.singleton ("__" ++ name) $ VState statef) <$> (filterOnsets $ filterValues id (rotL (1%bpc) bpat)))
+          where statef :: ValueMap -> (ValueMap, Value)
+                statef sMap = (Map.insert name v sMap, v)
+                  where v = VR $ maybe 0 (+(1%bpc)) $ Map.lookup name sMap >>= getR

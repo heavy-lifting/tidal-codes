@@ -1,0 +1,45 @@
+setcps (127/120)
+
+hush
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d8 $ (0.2 ~>)
+  $ density "<1 1 1 2 4 1 1 2 4>"
+  $ sound "ro ~ ro/2"
+  # ( midinote "<48 58> <60 60 70>")
+  # midichan "0"
+  # legato "1"
+  # gain "<0 1 0 1 0 0 0>"
+
+d8 silence
+
+hush
+
+d1 $ sound "{bskick:1 ~, 9bd 9bd ~ 9bd 9bd}"
+  # n "3"
+  # shape 0.4
+  # gain "1 "
+
+d3 $ every 8 (density 4) $ sound "9rs 9oh/2 ~"
+  # gain "<1 0 0>"
+
+d2 $ every 32 (density 8) $ jux (iter 4. slow 2)
+  $ sound "{ ~ [~9hh*3], ~ ~ 9cp*7 ~ ~, ~ 9sd*3 ~}"
+  # note "<0 0 0 0 1 2 3>" # cut 1
+  # gain "<0 0 0 1 1 0>"
+
+d6 $ loopAt 16 $ sound "zip*4" # cut 4
+  # gain "<0 0 0 1 0 0 0 >"
+
+d7 $ density "<1 1 1 2 2 4>" $ loopAt "<16 32>"
+$ striate "<64 32 16>"
+ $ sound "[bol bow]*4" # cut 1 # vowel "<o a p>"
+ # gain "<0 0 0 1  0 0 >"
+
+d2 silence
+
+d4 $ slow 2
+  $ sometimes (hurry "<0.5 2>")
+  $ sound "vkb(7,8)" # cut 3
+  # gain "<0 1 0 0 0 0 0>"

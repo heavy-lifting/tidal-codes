@@ -1,0 +1,47 @@
+setcps (95/4/60)
+
+-- looper admin
+linput = pI "linput"
+lname = pS "lname"
+
+-- looper to record loop
+-- lname to name the loop
+-- call loop or defined name to play the loop
+
+hi I'm Lucy. I'm doing something a bit different today. I hope it works ok.
+
+once $ sound "looper" # lname "loop2"
+
+d1 $ degradeBy (slow 32 $ range 1 0 saw) $ (hurry 0.25)
+$ chunk 4 (# speed "-1") $ chop "<64>" $ loopAt "[1,2]" $ sound "<loop loop2>"
+# pan perlin # room 0.2 # size 0.2
+
+d1 silence
+
+once $ sound "bir" # gain 1.1 # n "[0,1,2,3,4]"
+
+d3 $every 8 (chop 32) $ loopAt 4 $ jux (# speed "-1") $ sound "ten" # gain 1.2
+
+d4 $ degradeBy 0.99 $ chunk 8 (hurry 4)
+$ slice 8 (segment 8 $ round <$> range 0 7 perlin)
+$ sound "ap:2" # gain 1.3
+
+d4 silence
+
+d5  $ slow 4 $ sound "ap" # shape 0.2 # n (choose ([9,10,11])) # gain 1.2
+
+once $ sound "ap:10" # gain 1.2
+
+once $ sound "bbb:1" # speed "[-1]"
+
+once $ sound "st:4" # gain 1.2
+
+once $ sound "ten:1" # gain 1.2
+
+hush
+
+once $ sound "fi" # shape 0.1 # n "[0,1,2]"
+
+d1 $ every 4 (hurry 4) $ slow 2 $ sound "emub" #n  "[01,2,3,4,5,6,7,8,9]" # legato 1
+
+d1 $ loopAt "[6,7,8]" $ sound "fi"

@@ -1,0 +1,37 @@
+setcps (78/60/2)
+-- CLOCK
+d8 $ midicmd "midiClock*48" # s "[msp, stre]" # midichan "0"
+
+-- STREICHFETT HERE
+d9 $ (0.015 ~>)
+  $ jux (iter 4)
+  $ midinote ("<64 67> <71 71> <76 74> <79 79>" - 24) # sound "stre" # legato 1
+
+d9 silence
+
+-- VOLCA HERE
+d7 $ (0.015 ~>) $ every 4 (slow 2) $ midinote "52 [~ 64]" # sound "msp" # legato "<0.5>"
+
+d7 silence
+
+-- DRUMS HERE (ODD CHANNELS)
+d1 $ jux (rev) $ sound "[cpu*4, cpu:2*6?, cpu:5]"
+
+d1 silence
+
+d3 $ sound "bskick:1"
+
+d3 silence
+
+-- PIANO HERE (EVEN CHANNELS)
+d2 $ slow 2
+$ every 4 (jux (rev).fast 2)
+$ sound "superpiano(<3 3 5 6>,8)"
+# midinote (choose [64, 66, 67, 69, 71, 72, 74, 76] - choose [12, 24, 0, 24])
+# room "1"
+# size "0.6"
+# dry "0.5"
+# gain 0.825
+
+
+hush

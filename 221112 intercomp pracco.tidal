@@ -1,0 +1,38 @@
+setcps (78/60/2)
+
+  Am (ACEA) (69 72 76 81) Em (EBEG) (64 71 76 79) G (GBDG) (67 71 74 79) Dm (DADF) (62 69 74 77)
+  e f# gabcde (64 66 67 69 71 72 74 76)
+
+d1 $ jux (rev) $ sound "superpiano(5,8)" # midinote (choose [64, 66, 67, 69, 71, 72, 74, 76] - choose [12, 24, 0, 24])
+
+d2 $ midinote "60*4 " # sound "abl"
+
+d3 $  midinote ("<64 67> <71 71> <76 74> <79 79>" - 24) # sound "stre" # legato 2
+
+d3 $ sound "bskick:1*4" # gain 1 # shape 0.2
+
+d1 silence
+
+d4 $ slow 8 $ every 4 (hurry 2) $ chop 4 $ sound "paper:3*4 paper:4"
+
+d4 silence
+
+hush
+
+CONTROLS
+1 - modulation wheel - 1:127
+71 - string octaves - 1:127
+72 - string release - 1:127
+73 - crescendo - 1:127
+75 - string ensemble - 1:127
+76 - solo tone - 1:127
+77 - solo tremolo - 1:127
+80 - solo attack
+81 - solo decay
+82 - balance
+91 - fx type - 0 = reverb, 1 = phaser, 2 = animate
+92 - animate amount
+93 - phaser amount
+94 - reverb amount
+121 - reset all controllers
+123 - all notes off

@@ -1,0 +1,27 @@
+setcps (95/4/60)
+
+once $ sound "looper"
+
+d1 $ chunk 4 (# gain 0)$ chop 128 $ sound "loop" # shape 0.4 # vowel "a"
+
+d1 silence
+
+d2 $ degradeBy 0.4 $ jux (iter 4)$ chunk 2 (# gain 0) $ chop 256 $ loopAt "[4]" $ sound "<emub emub:1>"
+
+d2 silence
+
+once $ sound "st:6" # gain 1.4
+
+d7 $ randslice (choose ([16,16,32,2])) $ sound "hbird*32?" # n (irand 2) # pan rand
+
+once $ sound "[fi,fi:1,fi:3]" # gain 1.6
+
+hush
+
+-- looper admin
+linput = pI "linput"
+lname = pS "lname"
+
+-- looper to record loop
+-- lname to name the loop
+-- call loop or defined name to play the loop

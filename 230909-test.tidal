@@ -1,0 +1,8 @@
+let tsdelay = pF "tsdelay"
+    xsdelay = pI "xsdelay"
+
+d1 $ sound "kick" #  tsdelay "8" # xsdelay "8" # sustain "64"
+
+hush
+
+setcps 1

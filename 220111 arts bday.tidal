@@ -1,0 +1,20 @@
+setcps (137/60/4)
+
+d1 $ sound "not/4" # legato 1 # n (irand 16)
+
+d2 $ degradeBy 0.8 $ slow 2
+  $ jux (iter 4)
+  $ loopAt "<1 2 4>"
+  $ chop "<1 2 3 4 5 6 7 8>" $ sound "mod*666" # cut 1 # n "1 2 3" # vowel "a"
+
+d3 $ jux (sometimes $ hurry 2)  $sound "{bskick:1(3,8), ~ 9sd*2 ~, ~ 9cp [~ 9cp] ~ ~}" # shape 0.4
+
+d4 $ loopAt "[4,2/3]" $ striate "<4 8>" $ sound "vkloop:2 vkloop:2"
+
+d5 $ jux (iter 4) $ sound "bsvocals:2 bsvocals/3 bsvocals bsvocals:5/4" # legato 0.25
+
+d6 $ sound "time" # legato 0.25 # n (irand 8)
+
+once $ n "[0,1,2,3,4,5,6,7]" # sound "time"
+
+hush

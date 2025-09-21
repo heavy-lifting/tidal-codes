@@ -1,0 +1,23 @@
+setcps (60/120)
+
+d9 $ midicmd "midiClock*48" # s "[ro]" # midichan "0"
+
+d8 $ (0.15 ~>) $ slow 16 $ ( midinote "{~ 60, 48 ~ [~ 48]}")
+  # sound "ro"
+  # midichan "0"
+  # legato "8"
+  # gain "<1 1>"
+
+d1 $ sound "paper:1"
+
+hush
+
+d1 $ slow 2 $ n "1 2 3 4 5 6 7 8" # sound "numbers" # cut 1
+
+d2 $ slow 2 $ sound "arpy(3,8)" # n "1 2 3" # cut 2
+
+d3 $ slow 2 $ sound "bottle tink tink tink tink tink tink tink" # shape 0.4
+
+hush
+
+d1 $ slow 4 $ euclid 2 8 $ sound "bd sn cp hh"

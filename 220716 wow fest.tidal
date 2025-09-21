@@ -1,0 +1,40 @@
+setcps (127/60/4)
+
+d9 $ midicmd "midiClock*48" # s "[usb]" # midichan "0"
+
+d8 $ (0.0 ~>) $ iter 4 $ degradeBy 0.9 $ every 2 (fast 2)
+  $ slow 1 $ midinote "48 <60 54> 44 54"
+  # sound "usb(5,8)"
+  # midichan "0"
+  # legato "<0.125>"
+  # gain "<1>"
+  -- # ccn "[44*8, 49, 43*8]" # ccv (slow 4 $ range 0 127 saw)
+
+
+d4 $ degradeBy 0.95 $ (slow 2) $ jux (rev) $ sound "bottle(5,8) tink" # vowel "[a]"
+
+d3 $ degradeBy 0.95 $ slow 2 $ every 4 (slow 4) $ sound "bskick:1*4"
+
+d5 $ degradeBy 0.95 $ every 4 (slow 2) $ sometimes (hurry "<2 0.5>") $ randslice 32 $ sound "wood:3*8?" # up (slow 4 $ run 16)
+
+d5 silence
+
+d6 $ degradeBy 0.95 $ slow 4 $ striate "< 2 2 4 8>" $ sound "wood ~ ~ ~" # legato 1 # speed "[1,-1]"
+
+d7 $ chunk 4 (hurry 0.5) $ striate 8 $ sound "mod not" # legato 0.5 # n "<0 0 0 1>"
+
+hush
+
+once $ "bol:1"
+
+pitch - 40
+saturation - 41
+level - 42
+cutoff - 43
+peak - 44
+attack - 45
+decay - 46
+eg int - 47
+accent - 48
+lfo rate - 49
+lfo int - 50

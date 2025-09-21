@@ -1,0 +1,40 @@
+setcps (95/4/60)
+
+d1 $ chop 256
+$ degradeBy (slow 32 $ range 0 1 saw)
+$ jux (slow 2 ) $  chunk 8 (hurry 2) $ slice 8 (run 8)
+$ loopAt "[1,2]" $ sound "loop" # legato 1
+
+d2 silence
+
+d2 $ degradeBy 0.99 $ chop 512 $ loopAt "[3,6]" $ sound "[emufx:3, ~ emufx]" # legato 1
+
+once $ sound "bir:2" # gain 1.2
+
+-- doing something a bit different today
+
+d3 $ degradeBy 1 $ density (choose ([1,8,8,2,4])) $ chop 32 $ loopAt "<4 8>" $ sound "lux [lux:1 lux:2]" # cut 1
+
+d4 $ degradeBy 0.4 $ jux (slow 2) $ slow 2 $ slice 512 (segment 32 $ round <$> range 0 127 perlin) $ jux (# speed "-1") $ sound "bbb"  # legato 0.25
+-- omg just realised why midi goes to 127!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+-- phew, didn't really know if that would work.......
+-- (also my sensei is here)
+
+d4 silence
+
+d5 $ sound "dig*256?" # n (irand 32) # legato 0.125
+
+once $ sound "st:2"
+
+
+d1 $ slow 2 $ sound "<fi:2 fi:3>" # gain 1.1
+
+hush
+
+-- looper admin
+linput = pI "linput"
+lname = pS "lname"
+
+-- looper to record loop
+-- lname to name the loop
+-- call loop or defined name to play the loop

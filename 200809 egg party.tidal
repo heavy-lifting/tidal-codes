@@ -1,0 +1,25 @@
+setcps (150/120)
+
+d9 $ midicmd "midiClock*48" # s "[ro, ko]" # midichan "0"
+
+d8 $ ( 0.75 <~) $ (chop "<8 32>") $ jux (rev) $ iter 4 $ sound "ro ro/2 ro/3 ro/4"
+  # ( midinote "36 <48 60>")
+  # midichan "0"
+  # legato "<0.25 0.5 1 2>"
+  # gain "<1 0 1 1 1>"
+
+d1 $ degradeBy 0.9 $ jux (slow 2)
+  $ sound "{9rs(3,8) 9rs(2,8), 9hh ~ 9oh ~, ~ ~ <9 cp 9cp*3>}"
+  # gain "<1 0 0>"
+
+d2 silence
+
+hush
+
+d2 $ degradeBy 0.8 $ slow 2 $ sound "9bd:3(<2 3 4 5 6>,8) 9sd/3" # shape 0.5
+
+d3 $ loopAt "<16 8 4>" $ chop 64 $ sound "egg*8" # gain 1.8 # shape 1.4
+
+d3 silence
+
+hush

@@ -1,0 +1,59 @@
+d5 $ sound "bb(<3 5 6>,16)" # legato 1 # iter 4 (n (run 16)) # speed "[1, -1]" # shape 0.2
+
+d6 $ every 4 (degrade) $ sometimes (hurry 2) $ sound "cpu:3*8" # shape 0.4
+
+d3 $ sound "cckit1*16" # fast 4 (speed "-1 1")
+
+d4 $ sound "gaiak*4" # n "1 2 3 4"
+
+hush
+
+d1 $ slow 1$ sound "mod*8" # iter 4 (n (run 8)) # legato 1
+
+d2 $ chunk 4 (hurry 8) $ sound "k*4" # shape 0.4
+
+d3 $ sometimes (hurry 4) $ iter 5
+$ fast 8 $ sound "pipe" # n "<1 2 3 4 5 6 7 8>"
+
+d6 $ sound "rash*8" # n "7"
+
+d7 $ sound "vkw*8" # n (run 8) # legato 1
+
+unsolo 7
+
+hush
+
+bassneuro
+bb
+bmsy
+break
+breaks111
+castanet
+cckit1
+cpu
+cpu2
+gaiak
+jawharp
+k
+ld
+lsyn
+meskit1
+mod
+not
+pipe
+rash
+revkit
+rom
+ser2
+sfe
+stress
+svk
+talkingdrum
+techbass
+techhit
+udu
+vbreak
+vkb
+vkl
+vkloop
+vkw
