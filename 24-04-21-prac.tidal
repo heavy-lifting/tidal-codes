@@ -1,0 +1,27 @@
+setcps (105/2/120)
+
+
+once $ sound "pebbles"
+
+d1 $ randslice 64 $ sound "pebbles(<3 5>,8)" # legato 0.5
+
+d2 $ sound "bb" # n (irand 8) # legato 1
+
+d3 $ sound "{9hh ~ ~ ~, ~ ~ 9cp ~ ~}"
+
+d4 $ sound "emub ~ ~ ~" # legato 1
+
+hush
+
+
+
+import Data.Map.Strict as Map
+
+bump :: String -> Integer -> Pattern Bool -> ControlPattern -> ControlPattern
+bump name bpc bpat pat = (Pattern $ \state -> query (maybe (bumper `overlay` pat) f $ (Map.lookup name $ controls state) >>= getR) state)
+  where f t = rotL t (bumper `overlay` pat)
+        bumper :: ControlPattern
+        bumper = (outerJoin $ (const $ pure $ Map.singleton ("__" ++ name) $ VState statef) <$> (filterOnsets $ filterValues id (rotL (1%bpc) bpat)))
+          where statef :: ValueMap -> (ValueMap, Value)
+                statef sMap = (Map.insert name v sMap, v)
+                  where v = VR $ maybe 0 (+(1%bpc)) $ Map.lookup name sMap >>= getR

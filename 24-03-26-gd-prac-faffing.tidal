@@ -1,0 +1,57 @@
+-- for next time:
+-- bring big interface
+-- audio envelope - via soft synth or similar
+-- sound out from rocket?
+-- tidal to cv - 0-5 volts, or -5 to +5 volts (investigate - arduino? gd has DAC)
+
+
+setcps (10/9)
+
+all $ degradeBy 0.99
+
+d2 $ iter 4 $ off (1/8) (chop "<4 8>")
+$ bump "lc" 8 "{f!31 t}%8"
+$ every 8 (# gain 0) $ slow 2 $ sound "kalimba(<3 5 7>,16)"
+# pan (slow 8 $ range 0 1 tri) # shape 0.4 # speed (slow 4 $ range "-1" 3 tri) # legato 0.5
+
+
+d1 $ sound "kick" # pan 0
+
+hush
+
+-- d9 $ midicmd "midiClock*48" # s "[kp3, mbr, qc]" # midichan "0"
+-- for some reason midi clock wasn't working and was causing me issues....
+
+d9 silence
+
+-- KP3
+
+-- Y
+
+d8 $ fast 1 $ ccv "120" # ccn 13 # s "kp3"# midichan "0"
+
+-- X
+d7 $ fast 1 $ ccv "127" # ccn 12 # s "kp3"# midichan "0"
+
+-- ON/off
+d6 $ ccv "[127 0]*2" # ccn 92 # s "kp3"# midichan "0"
+
+-- MBR
+d4 $ (0 <~) $ every 4 (fast 2) $ sound "mbr*4"
+  # n (scale "minor" (choose [4,7,12,0]) - "[~ ~ 12,24]") # midichan "0" # legato " <0.5 1>" # gain "<1>"
+
+-- QC
+
+d5 $ every 8 (# gain 0) $ slow 2 $ chunk 4 (fast (choose [2,2,0.5])) $ midinote "60*4?" # sound "qc" # legato 0.5
+
+--bump
+import Data.Map.Strict as Map
+
+bump :: String -> Integer -> Pattern Bool -> ControlPattern -> ControlPattern
+bump name bpc bpat pat = (Pattern $ \state -> query (maybe (bumper `overlay` pat) f $ (Map.lookup name $ controls state) >>= getR) state)
+  where f t = rotL t (bumper `overlay` pat)
+        bumper :: ControlPattern
+        bumper = (outerJoin $ (const $ pure $ Map.singleton ("__" ++ name) $ VState statef) <$> (filterOnsets $ filterValues id (rotL (1%bpc) bpat)))
+          where statef :: ValueMap -> (ValueMap, Value)
+                statef sMap = (Map.insert name v sMap, v)
+                  where v = VR $ maybe 0 (+(1%bpc)) $ Map.lookup name sMap >>= getR

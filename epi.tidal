@@ -1,0 +1,15 @@
+### we are epiploke :))))))))))
+
+
+setcps 0.83
+
+d4 $ bump "hi" 8 "{f!31 t!5}%8"
+$ sound "bottle(<3 5 6>,8)" # iter 4 (up (scale  "mixolydian" "0 3 5"))
+
+d3 $ chunk 3 (hurry 2) $ sound "woodblock(<3 5 6>,16)" # pan perlin
+
+all $ (degradeBy 0.2).(chop 4)
+
+d1 $ sound ""
+
+hush

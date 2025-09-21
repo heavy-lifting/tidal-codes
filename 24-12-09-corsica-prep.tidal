@@ -1,0 +1,87 @@
+setcps (147/60/4)
+
+d1 $ jux (iter 4) $ loopAt "<1 2 4>"
+  $ density "<1 2 4 8>"
+  -- $ striate 4
+  $ sound "mar:3 mar:2" # cut 1
+
+d2 $ slow 4 $ sound "emub:16" # legato 1
+
+d3 $ iter 4
+$ density "<8 4 2 1>"
+$ loopAt "< 1 2 4 8>" $ chop "<4 8 16 32 64>" $ sound "mar:1*4" # cut 2
+
+d1 $ jux (iter 4) $ loopAt "<4 8>" $ chop "<1>" $ sound "mar:3 mar:2"
+
+d6 $ sound "9hh*8" # legato 0.25
+
+d5 silence
+
+all $ id
+
+d4 $ sound "super808*4" # shape 0.4 # gain 1.2
+
+unsolo 4
+
+d5 $ off (1/8) (|+ up "[5 7 12]") $ sound "lsyn:1(3,8)" # up (scale "ritusen" (choose [0,1,2,3,4,5,6,7,8]) - "12")
+# legato 1 # gain 1.1 # room 0.5 # size 0.5
+
+d2 $ slice 8 (segment 8 $ irand 8) $ sound "mmch:7"
+# up (scale "ritusen" (slow 8 $ run 8)) # legato 0.125 # gain 1.2
+
+d2 silence
+
+d3 $ sound "vkb*16" # shape 0.4 # speed 0.5 # legato 0.5
+
+d8 $ loopAt 8 $ sound "<lux:2 lux:1 lux:3 lux>" # gain 1.1
+
+once $ sound "nihongo:1"
+
+d1 $ loopAt 2 $ sound "stay:2 stay"# gain 1
+
+d2 $ loopAt 1 $ sound "stay:5"
+
+once $ sound "stay:6"
+
+d3 silence
+
+d9 $ someCyclesBy 0.125 (fast 8)
+  $ sound "emud*8" # irand 64 # legato 1 # gain 1.1
+
+unsolo 8
+
+hush
+
+d1 $ randslice 16 $ sound "speak*16" # n (irand 60) # gain 1.1
+
+-- notes
+- mar - 3&2 twinkly, 0&1 vox
+- lsyn
+- lux
+- nihongo
+- st
+- toradora
+- stay - loop 0,2,3,4,5  hit 1
+- emustab
+- emud (Some are long so watch out!)
+- paper
+- bb
+- segasynths
+- speak
+- jawharp
+- africanperc
+- udu
+- davadaporan
+- grem
+- rom
+- cbass
+- cchime
+- cdexed
+- csubs
+- cwubby
+
+
+
+hush
+
+hush

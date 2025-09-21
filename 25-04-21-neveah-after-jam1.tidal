@@ -1,0 +1,77 @@
+-- NOTES/THOUGHTS
+
+-- hmmmmmmm.... so I'm thinking layering drums/bass with industrial sounds/samples
+-- use sega synths?? might not be allowed commercially to do this but can use for now maybe?
+-- sparse-ish beats (maybe like bjork where is the line transitioning from dense to sparse?)
+-- hifi or low fi synths?
+-- consistent sound palette/aesthetic between tracks/sections
+-- keep rhyhtms pretty settled for now to allow for vox development - can increase complexity later
+
+-- SETUP
+hush
+
+-- Chord stuff
+
+d1 $ slow 4 $ up ((scale "minor" "0 5 3 7") |+ (slow 8 $ "<'min7 'min>")) # sound "lsyn:3" # sz 0.2 # room 0.4
+
+--- SECTION 1----
+-- maybe super simple loop the steps with a bassline and some scatty drums
+
+
+d3 $ degradeBy 0.8 $ loopAt "<4 2 1 8>" $ chop "<1 1 1 1 1 2 4 8>" $ sound "heli:1*4" # gain 2 # cut 3
+
+d3 silence
+
+d9 $ slow 8 $ sound "cpu:3(7,16)" # legato 0.25 -- consistent drums
+
+d10 $ slow 4 $ off ("<0.25!3 0.125>") (sometimes (chop 8)) $ sound "kick:5*4" # shape 0.4 -- maybe keep drum palette more consistent
+
+d9 silence
+
+d11 $ up (scale "minor" "<0 0 2*2 4(3,8)>") # sound "mmb:2" # cut 1 # gain 0.9 # shape 0.4
+
+---- SECTION 1
+-- maybe start with heli loop on it's own
+-- maybe thing about transitions - like every 8 bars so we get more linearity
+-- needs to be noisier/more industrial - think about sound palette
+
+d11 $ up (scale "minor" "0 <0 3> <5 7 3 5> 5")
+# sound "{emub:4, sword}" # legato 1 # shape 0.4
+# squiz (slow 8 $ range 0 3 sine)
+
+d2 $ off (1/8) (# vowel "a") $ pace 8 $ expand "1 1 2 1 1 2" $ sound "9hh(5,8)" -- maybe cpu:3
+
+d4 $ jux (slow 2) $ sound "9bd(3,8) 9bd/2" # shape 0.5 # gain 1.2
+
+d9 $ slow 8 $  chop 2 $ jux (iter 4) $ sound "per(3,8) per/2" # shape 0.5 # n "6" # speed 0.25 # legato 0.5
+
+d silence
+
+unsolo 7
+
+d5 $ density "<1 0.5 0.25 0.125>" $ up (scale "minor" "<[0,3,5] < [5,7,9] [3,5,7](3,8)>>") # sound "vkl:3" # gain 1.4
+
+d6 $ off ("<0 0 0.25>") (|+ up "12")
+$ up ((scale "mixolydian" "<3 <7 7(3,8)> <[[0 0] ~] 0> [[5 3] ~ ~ ~] >") |+ ("'min"))
+# sound "mmsynth:10"
+
+d7 $ sound "9rs*16" # gain ((slow 4 $ range 0.8 1.4 saw) |* "<0 0 0 0 1 1 1 1>") # vowel (choose ["a", "o", "u"])
+
+d2 silence
+
+hush
+
+
+
+unsolo 11
+
+unsolo 4
+
+hush
+
+-- SECTION 3 ---
+
+d1 $ sound "steeldrum:7"
+
+
+d1$ n "0 1" # sound "alphabet" # pan "0 1"

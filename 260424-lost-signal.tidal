@@ -1,0 +1,48 @@
+setcps (137/2/120)
+
+d7 $ sometimes (density 0.25) $ iter 4 $ jux (hurry "2 4") $ sound "bskick:1*4" # shape 0.4 # legato 0.25 # pan rand
+
+d1 $ chop 2 $ jux (iter 4) $ sound "castanet(9,16)" # shape 0.3 # pan rand
+
+d5 $ sound "udu"
+
+d2 $ loopAt "<2 1 0.5 0.25>" $ sound "jawharp ~"
+
+all $ degradeBy 0.0
+
+d3 $ iter 4 $ splice 8 "[~ 7] 5 [3*3 4] 1" $ sound "break"
+
+d4 $ sound ""
+
+all $ (striate 512)
+
+hush
+
+
+9bd (10) 9hh (2) 9oh (2) 9rs (1) 9sd (15) bassneuro (20)
+bb (44) break (33) castanet (26) cpu (23) emub (52)
+emud (23) emufx (36) emupad (48) emupiano (7) emus (188)
+emustab (12) emustr (8) jawharp (19) mod (5) not (16)
+pipe (20) rash (72) talkingdrum (8)
+techbass (20) techhit (54) udu (24)
+
+bottle (21) braziliandrums (34) braziliankit (51) castanet (26)
+celtic (12) claybongo (20) congoandbongo (23) davadaporan (18)
+dholak (18) djembe (12) doomgong (5) dumbongo (23)
+earthkit (229) gankokwe (13) ghatam (4) jawharp (19)
+jinglebells (15) kalimba (15) kimkim (11) liquiddrum (29)
+marimba (7) metallophone (23) pakhawaj (32) palmdrum (23)
+
+pandiero (23) pipe (20) potsandpans (14) rattle (13)
+
+rattlepod (25) ritualkit (47) salsakit (54) seedshaker (13)
+shakersandguerro (20) shakersandscrapers (57)
+shakertriangle (14)
+shekere (38) steeldrum (12)
+replacing 'tabla' (26)
+tabla (23) tabor (8) taiko (21) talkingdrum (8) tambour (16)
+thumbpiano (8) tiktakdrum (10) timbale (45) toke (22)
+tonguedrum (32) triangle (12) tube (28) udu (24) whistle (26)
+woodandmetal (45) woodblock (108) woodblockandbell (58)
+woodthing (14)
+worldkit (51) worldkit2 (40)

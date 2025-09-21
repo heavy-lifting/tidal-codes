@@ -1,0 +1,38 @@
+setcps (slow 16 range 1 0 saw)
+
+hush
+``
+d9 $ midicmd "midiClock*48" # s "[kp3]" # midichan "0"
+-- KP3
+
+-- Y
+d8 $ ccv (segment 1 $ slow 8 $ range 60 127 saw) # ccn 13 # s "kp3"# midichan "0"
+
+-- X
+d7 $ ccv (segment 1 $ range 60 127 rand) # ccn 12 # s "kp3"# midichan "0"
+
+-- ON/off
+d6 $ slow 8 $ ccv "[127]" # ccn 92 # s "kp3"# midichan "0" # legato 4
+
+-- MBR
+
+d5 $ (0 <~) $ degradeBy (slow 4 $ range 1 0.2 saw) $ iter 4 $ (chop "1") $ slow "2" $ sound "mbr mbr/2 mbr/3 mbr/4"
+  # midinote "36 48 60"  # midichan "0" # legato "0.25" # gain "<0.8>"
+
+d2 $ sometimesBy 0.25 (hurry 0.5) $ sound "kick(3,8)" # shape 0.2 # cut 1
+
+d3 $ jux (iter 4) $ sound "{~ ~ ~ ~, led led ~ [~ led] 9cp*4}" # n (irand 4) # legato 0.5
+
+
+
+--bump
+import Data.Map.Strict as Map
+
+bump :: String -> Integer -> Pattern Bool -> ControlPattern -> ControlPattern
+bump name bpc bpat pat = (Pattern $ \state -> query (maybe (bumper `overlay` pat) f $ (Map.lookup name $ controls state) >>= getR) state)
+  where f t = rotL t (bumper `overlay` pat)
+        bumper :: ControlPattern
+        bumper = (outerJoin $ (const $ pure $ Map.singleton ("__" ++ name) $ VState statef) <$> (filterOnsets $ filterValues id (rotL (1%bpc) bpat)))
+          where statef :: ValueMap -> (ValueMap, Value)
+                statef sMap = (Map.insert name v sMap, v)
+                  where v = VR $ maybe 0 (+(1%bpc)) $ Map.lookup name sMap >>= getR

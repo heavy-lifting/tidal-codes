@@ -1,0 +1,55 @@
+setcps (105/60/4)
+
+d7 $ jux (iter 4) $ off (1/8) (chop 32).(hurry "<0.25 0.5>") $ up (scale "ritusen" "0 0 5 7") # sound "tone" # n "<2>"
+
+d1 $ jux (slow 2 ) $ loopAt "[4,2]" $ striate 8 $ sound "long*2" # n (irand 8) # cut 1
+
+d2 $ slow 4 $ striate 8 $ sound "st:2 st:6" # gain 1.3 # legato 1
+
+d7 silence
+
+once $ sound "st:5" # gain 1.2
+
+d1 $ off (1/8) (chop 4) $ gap 32 $ sound "emub"# iter 3 ( vowel "a o p") # up (scale "mixolydian" "<7 7 5> <7 [~ 3]> 5 12")
+
+unsolo 2
+
+hush
+
+d4 $ degradeBy 0.2 $ density "[1, 2]" $ gap 16 $ loopAt "<4>" $ sound "ap:11" # gain 1.3 # cut 1
+
+d5 $ off (1/4) (# speed "-1").(# legato 0.5) $ sound "{per:1 per:4/2, ~ ~ bb}"
+
+belluno
+- st:0, st:1, st:3 (64,128)
+extract
+- st:2 (8,16)
+taxi
+- st:6 (8,16)
+train
+- st:7 (16)
+detect
+- st:5
+
+mmfx:6
+
+ap 4, 9, 10, 11
+
+paper
+
+bb
+
+udu, castanet, jawharp
+
+
+
+
+
+
+
+some ideas:
+keyboard loops - need to install looper for that though so depends a bit on that
+keyboard sounds - kaoss pad
+belluno/taxi/extractor etc
+choppy SOE samples
+bring in some weird synths

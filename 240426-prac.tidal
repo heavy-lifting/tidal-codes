@@ -1,0 +1,75 @@
+setcps (137/2/120)
+
+d3 $ slow 8 $ jux (iter 4)
+$ density "<1 1 2 [1 4]>"
+$ striate 4 $ chop "<1 2 4 8 16 32>" $ loopAt "<2 1 0.5>"
+$ sound "numbers*4?" # cut 2 # room 0.4 # sz 0.4 # gain 1.2
+# vowel "<a o p>"
+
+d4 $ sound "emub" # speed "0.5"--
+
+d1 $ sound "emud*8" # shape 0.4
+
+d2 $ jux (iter 4) $ sound "9rs(3,8)"
+
+d3 $ randslice 8 $ sound "mmsynth:3(9,16)" # up (scale "ritusen" (slow 8 $ run 8))
+
+all $ slow 2
+
+hush
+
+d4 $ sound ""
+
+d9 $ chunk 4 (hurry "<2 0.5>" ) $  jux (iter 4) $ splice 8 "7 [5 8] 3 [1 2*2]" $ sound "break" # legato 1
+
+d8 $ sometimes (# speed "-1") $  jux (rev) $ off (1/8) (chop 8).(|+ up "<12 7>") $ up (scale "ritusen" "0!7 8") # sound "pipe"
+
+9bd (10) 9hh (2) 9oh (2) 9rs (1) 9sd (15) bassneuro (20)
+bb (44) break (33) castanet (26) cpu (23) emub (52)
+emud (23) emufx (36) emupad (48) emupiano (7) emus (188)
+emustab (12) emustr (8) jawharp (19) mod (5) not (16)
+pipe (20) rash (72) talkingdrum (8)
+techbass (20) techhit (54) udu (24)
+
+bottle (21) braziliandrums (34) braziliankit (51) castanet (26)
+celtic (12) claybongo (20) congoandbongo (23) davadaporan (18)
+dholak (18) djembe (12) doomgong (5) dumbongo (23)
+earthkit (229) gankokwe (13) ghatam (4) jawharp (19)
+jinglebells (15) kalimba (15) kimkim (11) liquiddrum (29)
+marimba (7) metallophone (23) pakhawaj (32) palmdrum (23)
+
+pandiero (23) pipe (20) potsandpans (14) rattle (13)
+
+rattlepod (25) ritualkit (47) salsakit (54) seedshaker (13)
+shakersandguerro (20) shakersandscrapers (57)
+shakertriangle (14)
+shekere (38) steeldrum (12)
+replacing 'tabla' (26)
+tabla (23) tabor (8) taiko (21) talkingdrum (8) tambour (16)
+thumbpiano (8) tiktakdrum (10) timbale (45) toke (22)
+tonguedrum (32) triangle (12) tube (28) udu (24) whistle (26)
+woodandmetal (45) woodblock (108) woodblockandbell (58)
+woodthing (14)
+worldkit (51) worldkit2 (40)
+
+
+--bump
+import Data.Map.Strict as Map
+
+bump :: String -> Integer -> Pattern Bool -> ControlPattern -> ControlPattern
+bump name bpc bpat pat = (Pattern $ \state -> query (maybe (bumper `overlay` pat) f $ (Map.lookup name $ controls state) >>= getR) state)
+  where f t = rotL t (bumper `overlay` pat)
+        bumper :: ControlPattern
+        bumper = (outerJoin $ (const $ pure $ Map.singleton ("__" ++ name) $ VState statef) <$> (filterOnsets $ filterValues id (rotL (1%bpc) bpat)))
+          where statef :: ValueMap -> (ValueMap, Value)
+                statef sMap = (Map.insert name v sMap, v)
+                  where v = VR $ maybe 0 (+(1%bpc)) $ Map.lookup name sMap >>= getR
+
+-- Make a 'bumper' called 'somename' (can be called anything),
+-- running at 8 beats per cycle, skipping every 32nd beat
+
+d1 $ bump "somename" 8 "{f!31 t}%8" $ stack [
+  -- this clap shouldn't play (it sometimes does the first time around for some reason)
+  struct "{f!31 t}%8" $ s "clap:4",
+  n "[0@2 2!2]*2" # sound "cpu" # legato 1
+  # speed (slow 4 $ range 1 1.5 saw)

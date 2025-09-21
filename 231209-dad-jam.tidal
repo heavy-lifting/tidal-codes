@@ -1,0 +1,19 @@
+setcps (95/8/60)
+
+hush
+
+d8 $ sometimesBy 0.125 (hurry 2) $ every 4 (# lfo 1) $ jux (iter 4).(fast 2) $ struct ("[t,t(6,8)]")
+  $ n (scale "minor" "c g <f a> e" - 24)
+  # sound "supersaw" # gain 0.7 # legato 0.5 # resonance (slow 4 $ saw)
+
+d1 $ chunk 4 (hurry 2) $ sound "tink(3,8)"
+
+d2 $ every 2 (density 2) $ chunk 4 (hurry 2) $ sound "gretsch:2*4"
+
+d3 $ chunk 4 (# speed sine) $ sound "hh27*16?"
+
+d4 $ every 2 (striate 32) $ every 3 (chop 32) $ sound "h h" # n (irand 4)
+
+d5 $ sound "feel*2"
+
+hush

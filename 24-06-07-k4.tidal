@@ -1,0 +1,5 @@
+d5 $ slow 8 $ midinote "[48]" # sound "qc" # legato 1 # gain 1.3 # miditouch "<1 [0 0.25 5 1]>"
+
+d1 $ sound "kick"
+
+hush

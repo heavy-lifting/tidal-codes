@@ -1,0 +1,98 @@
+**HEAVY LIFTING does TIDALCYCLES at DELL TECHNOLOGIES FORUM 2024**
+
+heavy-lifting.org
+
+**********INTRO**********
+
+- what is live coding? - writing and executing code live
+
+- typically refers to coding to generate sound and/or visuals
+
+- maybe you've heard of algorave?
+
+- there's lots of different approaches to live coding
+
+- toplap.org
+
+**********TIDALCYCLES**********
+
+- what is tidal? a haskell-based functional programming language
+
+- tidal itself doesn't actually make any sound
+
+- it generates patterns - you can send these to hardware and software to make music (or visuals)
+
+- tidalcycles.org
+
+**********DRUM BEAT**********
+
+d1 $ jux (slow 2)
+$ every 8 (slow 2)
+$ (iter 4)
+$ sound "{bskick:1 ~ bssnare*2 [~ bsperc:6*4], ~ ~ ~ ~ cpu:8}" # gain 1.1 # shape 0.2
+
+setcps (137/60/4)
+
+***********BASS LINE***********
+
+d12 $ midicmd "midiClock*48" # s "[mf]" # midichan "0"
+
+d11 $ (0.05 ~>)
+  $ someCycles (rev)
+  $ off (1/4) (|+ note "<0 0 7 12>")
+  $ jux (slow 2)
+  $ sound "mf(<3 5>,8)"
+  # note (scale "minor" "0 3 7 5" - 24)
+  # legato "<1 0.5>"
+  # midichan "0"
+
+d8 silence
+
+- we can play with the hardware while the pattern remains the same
+- let's choose a bass sound and tweak it
+- corrosion is nice
+
+**********TEXTURE**********
+
+# put some nintendo stuff in here if the samples are cleared.
+# if not then bs samples
+
+d2 $ loopAt "<1 2 0.5 1>"
+  $ chop "4"
+  $  sound "zip*4" # cut 2
+  # vowel "a"
+  # pan (rand)
+
+********** VISUALS *********
+a.show()
+a.setBins(8)
+s0.initCam()
+src(s0).out
+//.color(a.fft[1], () => a.fft[7]*60, [0, 50, 100]).out(o0)
+
+
+all $ id
+
+hush
+
+- all this below here is good :)
+
+d3 $ jux (chunk 4 (hurry 4))
+$ sound "bskick:1 bskick:1 bskick:1 +bskick:1"
+# shape 0.4
+
+d4 $ someCycles (chop 4)
+$ chunk 4 (# speed "-1")
+$ sound "9rs(7,16, <0 3 5>)"
+
+d5 $ density ("<1 1 2 4>") $ loopAt "<1 2>" $ chop 4 $ sound "frogger:4*4" # gain 0.8 # cut 1
+
+d4 silence
+
+hush
+
+d6 $ jux (iter 4) $ density "<1 1 2 4>" $ loopAt "<1 0.5 0.25 2 1>" $ sound "nintendo:2*4" # gain 0.6 # cut 1
+
+d7 $ off (1/8) (chop 128) $ sound "~ ~ ~ nintendo:1/4" # gain 0.6
+
+d8 $ off (1/8) (iter 4) $ sound "bb(3,8)" # n (run 8) + "<0 4>" # cut 1

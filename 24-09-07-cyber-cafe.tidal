@@ -1,0 +1,43 @@
+a: heavy lifting (lucy)
+v: hellocatfood (antonio)
+
+setcps (137/60/4)
+
+d12 $ midicmd "midiClock*48" # s "[ko]" # midichan "0"
+
+-- K03
+--X
+d11 $ (0.05 ~>) $ iter 8 $  ccv (slow 2 $ segment 8 $ range 0 127 saw) # ccn "[13]" # sound "ko"
+
+--Y
+d10 $ (0.05 ~>) $ iter 2 $ ccv "<30 60 90 127>" # ccn "[14]" # sound "ko"
+
+--ON/OFF
+d9 $ (0.05 ~>) $ every 4 (chop 2) $ slow 2$ ccv "[ 0]!7 0" # ccn "[93]" # sound "ko"
+
+d6 $ chop 2 $ off (1/8) (degradeBy 0.5) $ sound "bskick:1(3,8)" # shape 0.4 # gain "<1 1 1 0>"
+
+d7 $ chop 8 $ jux (iter 4) $ chunk 4 (hurry "0.5 2") $ sound "c(<2 5 3 6>,8)?" # vowel "<a o p>" # pan (slow 4 $ sine) # gain "<1 1 1 1 1 0>"
+
+d3 $ jux (iter 4) $ chunk 4 (hurry 4) $ sound "bb*8?" # n (irand 8) # legato 0.25 # gain "<1 1 1 1 0>"
+
+d5 $ sound "lb(3,8) lb:3" # legato 1
+
+all $ sometimesBy 0.7 (chop 16).(#speed "-1").(#gain 0)
+
+
+
+hush
+
+bb
+mod
+not
+grem
+skel
+long
+per
+text
+tone
+mmb
+emub
+4

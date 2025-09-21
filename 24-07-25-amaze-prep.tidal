@@ -1,0 +1,17 @@
+d1 $ jux (iter 4) $ off (1/8) (chop 4) $ sound "segadrum(7,16)" # n (irand 16)
+
+d2 $ sometimes (rev)
+$ off (1/8) (|+ n "<3 4 5 12>") $ slice 32 "1 1 <4 7> 5"
+$ sound "tron:3"
+
+d3 $ n "<3 4>" # sound "segaflute"
+
+d4 $ jux (slow 2) $ sound "segaoboe:6(5,8)" # legato 0.25 # up (scale "ritusen" (irand 12))
+
+d5 $ sometimesBy 0.25 (hurry 2) $ sound "kick kick/2 kick kick/3" # speed 0.5
+
+d6 $ slow 2 $ sound "speak" # n (irand 100)
+
+hush
+
+d1 $ sound "data" # n (irand 128)

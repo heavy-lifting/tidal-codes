@@ -1,0 +1,39 @@
+
+setcps (105/60/4)
+
+-- mfr 82 arp-fi
+d1 $ iter 4
+$ note (scale "ritusen" "[0 -3 [~ -7] ~, -24 -]") # sound "mfr"
+
+d2 $ jux (iter 4)
+$ midinote "[36*4 - - [- 39/2] , 35(3,8), <- - [51 49]*4 -> ]"
+# sound "uno" # midichan 1
+
+once $ sound "st" # gain 1.4
+
+d4 $ slice 8 "0 2 4 6" $ up (scale "ritusen" "<7 <5 5 5 3>>" - 36)
+# sound "mmb:7"# legato 1
+
+d7 silence
+
+d7 $ midinote "38 40" # sound "uno"
+
+hush
+
+uno:
+KICK 1: note C2 (36)
+KICK 2: note B1 (35)
+SNARE: note D2 (38) + note E2 (40)
+CLAP: note D#2 (39)
+RIM: note C#2 (37)
+CLOSED HAT: note F#2 (42)
+OPEN HAT: note A#2 (46)
+TOM1: note F2 (41)
+TOM2: note G2 (43)
+CYMBAL: note C#3 (49)
+RIDE: note D#3 (51)
+COWBELL: note G#3 (56)
+
+nice mfr sounds
+82 arp fi
+84 betel

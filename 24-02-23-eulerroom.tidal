@@ -1,0 +1,37 @@
+
+HI I'M HEAVY LIFTING FROM SHEFFIELD UK
+I'M HERE TODAY WITH YAXU :)
+
+d2 $ degradeBy 0.4 $ chop 132 $ slow 4 $ chop (slow 8 $ round <$> range 1 64 saw) $ sound "9rs(7,16)?"
+
+d3 $ slow 2 $ chop "[64]" $ jux (iter 4).(hurry "<2 1 0.5>")
+  $ up (scale "ritusen" "<<0 8> 1 <3 5> 1>") # sound "mmb:1 mmb/2 mmb/3 mmb/4" # legato 1
+
+d4 $ sometimes (fast 2) $ jux (slow "<2 1 0.5>") $ sound "bskick:1(<3 5>,8)" # shape 0.4
+
+d5 $ sometimes (fast 2) $ sound "{bb ~ ~ bb*3, ~ 9cp ~}" # n (irand 4)
+
+d5 silence
+
+hush
+
+d6 $ loopAt 4 $ sound "st:2 st:6"
+
+
+
+once $ sound "st"
+
+setcps (110/120/2)
+
+hush
+
+import Data.Map.Strict as Map
+
+bump :: String -> Integer -> Pattern Bool -> ControlPattern -> ControlPattern
+bump name bpc bpat pat = (Pattern $ \state -> query (maybe (bumper `overlay` pat) f $ (Map.lookup name $ controls state) >>= getR) state)
+  where f t = rotL t (bumper `overlay` pat)
+        bumper :: ControlPattern
+        bumper = (outerJoin $ (const $ pure $ Map.singleton ("__" ++ name) $ VState statef) <$> (filterOnsets $ filterValues id (rotL (1%bpc) bpat)))
+          where statef :: ValueMap -> (ValueMap, Value)
+                statef sMap = (Map.insert name v sMap, v)
+                  where v = VR $ maybe 0 (+(1%bpc)) $ Map.lookup name sMap >>= getR

@@ -1,0 +1,2 @@
+d1 $ jux (rev) $ fast (slow 32 $ segment 360 $ range 0 128 sine)
+$ n (run 4) # sound "cpu" 

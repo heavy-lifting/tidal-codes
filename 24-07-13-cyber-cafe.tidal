@@ -1,0 +1,24 @@
+d9 $ midicmd "midiClock*48" # s "[phm, ko]" # midichan "0"
+
+d8  $ chop 8 $ iter 4 $ off (1/4) (|+ midinote "5 12") $ midinote (scale "doric" "7? 5*3?" + "-12 0")
+  # sound "phm"
+  # legato "1 0.5"
+  # midichan "0"
+
+d8 silence
+
+d7 $ (0 ~>) $ ccv (segment 4 $ slow 8 $ range 0 65 sine) # ccn "[13]" # sound "ko"
+
+d6 $ (0 ~>) $ ccv (segment 4 $ slow "2 4" $ range 0 40 saw) # ccn "[14]" # sound "ko"
+
+d5 $ (0 ~>) $ (slow 8) $ iter 4 $ ccv "[127 0]*8 [127 0] 127 0" # ccn "[93]" # sound "ko"
+
+d1 $ chop 8 $ sound "text:15 text:17" # legato 1
+
+d3 $ sound "tone:4(3,8) tone:5" # shape 0.4 # vowel "<o a p>" # iter 4 (up (scale "doric" "0 5 7"))
+
+d2 $ sound "per per/2 per/3 per/4"
+
+all $ (degradeBy 0)
+
+hush

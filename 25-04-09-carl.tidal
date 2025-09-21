@@ -1,0 +1,20 @@
+
+setcps (17/60/4)
+
+d4 silence
+
+POOR COMPUTER!!!!!!!!!!!!!!!!!1
+
+d6 $ density "<1 1 2 4 8>" $ every 2 ( fast 4) $ chop 8
+$  every 4 (hurry 8) $ jux (iter 4) $ s "{~, bsnoise:4, ~ udu ~ ~ 9cp*2, ~ ~  c*4}" # vowel (choose ["a", "o", "e"])
+# shape 0.2
+
+unsolo 6
+
+d7 $ every 4 (# gain 0) $ slow 2 $ every 2 (hurry 8).(chop 8) $ every 8 (# gain 0)
+$ off (1/8) (hurry "<0.5 2>") $ chop "<1 1 1 2 4 8 16>" $ up (scale "mixolydian" "<0(3,8) 0*8 1(5,8) 7>")
+# sound "<emub>" # gain 0.9 # legato 0.5
+
+d8 $ chop "<1 1 2 4 8>" $ loopAt "<1 2>" $ sound "glass:3 glass:4" # cut 14
+
+hush

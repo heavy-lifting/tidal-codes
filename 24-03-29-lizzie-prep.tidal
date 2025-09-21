@@ -1,0 +1,15 @@
+setcps(157/120/2)
+
+-- HIIIIII WE ARE LIZZIE AND LUCY AKA DIGITAL LIFTING
+
+nudgeAll $ 0.01
+
+d1 $ sound "bskick:1*4" # shape 0.6
+
+d3 $ degradeBy 0.9 $  density "<1 1 2 4>" $ striate "[4,8,16]" $ loopAt "< 1 2 0.5>" $ n "2 3 4" # sound "bsvocals*4?" # cut 1
+
+d2 $ striate 256 $ n "0 1 2 4" # sound "numbers" # speed 0.125 # legato 0.5
+
+all $ (# gain "<1 0 1 1 0 0>")
+
+hush

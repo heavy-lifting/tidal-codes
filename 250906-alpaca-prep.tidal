@@ -1,0 +1,154 @@
+setcps (95/60/4)
+
+d1 $ note (scale "ritusen" "0 3 7 5" - 24) # sound "qc"
+
+-- some ideas
+-- write a massive template stack for midi ccs on unodrum/mfr? (or at least for the universal ones?)
+
+-- lest test mfr midi ccs
+d1 $ (0.03 ~>) $ note ("c(3,8) a f(3,8) e" - 24)
+# sound "mfr" # ccn "[94]" # ccv (slow 4 $ range 0 127 saw)
+
+-- mfr midi ccs
+9 osc type (changes roughly every 12)
+10 osc wave
+12 osc timbre
+13 osc shape
+
+23 filter cutoff
+83 filter resonance
+
+24 cycling env amount
+28 cycling env hold
+102 cycling env rise
+103 cycling env fall
+
+29 envelope sustain
+105 envelope attack
+106 envelope decay
+26 filter amount
+
+94 lfo rate (sync)
+
+d11 $ (0.03 ~>) $ iter "<4 8>" $ superimpose (iter 4)
+$ off (iter 4 $ "<0.25 0.5 0.25 0.125>") (|+ iter 2 (note "7 12"))
+$ struct "t(3,8) f" $ note (scale "minor" "<0 0 2 4>" -24)
+# sound "qc" # midichan "0" # legato "<1>"
+
+
+d4 $ slow 2 $ slice 16 "0 1 2 3 ~ 13 14 15" $ sound "<obey>" # gain 1.4 # legato 1
+
+d5 $ sound "bottle:1*16?"
+
+
+-- microfreak on channel 1
+-- unodrum on channel 2
+
+d10 $ (0.03 ~>) $ note (scale "chromatic" "{0(3,8) 0*2 0*4 0*2, ~ ~ 1 2 3*2,  ~ ~ 4 5 [6 7] 8}" - 24)
+# sound "ud" # midichan "1" # legato "<0.5>" # amp 1.3
+
+d1 $ randslice 2 $ sound "mmb*4" # cut 1
+
+d10 silence
+
+d2 $ off (1/8) (# vowel "a")
+$ sound "cpu cpu [cpu ~ cpu cpu] cpu*4" # gain "<1 1 1 0>" # amp 0.6
+
+d6 silence
+
+d12 $ midicmd "midiClock*48" # s "[qc,ud]" # midichan "0"
+
+d3 $ (0.03 ~>) $ midinote "39*16" # sound "ud" # midichan "1" # legato "<1>" # amp 0.9 # ccn 83 # ccv "0 1 2 3 4" -- # ccn 38 # ccv (slow 4 $ range 0 127 sine)
+
+d5 $ sound "cpu*4"
+
+d6 $ (0.03 ~>) $ midinote "56*16" # sound "ud" # midichan "1" # legato "<0.5>" # amp 0.9
+# ccn "[89, 55]" # ccv "[1 2 3 4 5, 0 15 30 45 60 75 80]" -- # ccn 55 # ccv (range 0 127 saw)
+
+d11 $ (0.03 ~>) $ note (scale "minor" "<0*4>" -24)
+# sound "qc" # midichan "0" # legato "<0.5>"
+
+-- midinotes for unodrum
+36 KICK 1
+35 KICK 2
+38 SNARE
+39 CLAP
+37 RIM
+42 CLOSED HAT
+46 OPEN HAT
+41 TOM1
+43 TOM2
+49 CYMBAL
+51 RIDE
+56 COWBELL
+
+-- unodrum ccs
+17 compression
+18 drive
+
+21 kick 1 tune
+22 kick 1 snap
+23 kick 1 decay
+24 kick 1 fm tune
+25 kick 1 gm amount
+26 kick 1 sweep
+80 kick 1 sound (1-5) NOT 0-4!!!!
+
+28 kick 2 tune
+29 kick 2 snap
+30 kick 2 decay
+81 kick 2 sound
+
+32 snare tune (sounds great)
+33 snare snap
+34 snare decay
+35 snare lpf
+82 snare sound (1-5)
+
+38 clap decay
+83 clap sound (1-5)
+
+40 closed hat tune
+41 close hat decay
+84 closed hat sound (1-5)
+
+43 open hat tune
+44 open hat decay
+85 open hat sound (1-5)
+
+46 rim tune
+47 rim decay
+86 rim sound (1-5)
+
+49 tom1 tune
+50 tom1 decay
+87 tom1 sound (1-5)
+
+52 tom2 tune
+53 tom2 decay
+88 tom2 sound (1-5)
+
+55 cowbell tune
+56 cowbell decay
+89 cowbell sound (1-5)
+
+58 ride tune
+59 ride decay
+90 ride sound (1-5)
+
+61 cymbal tune
+62 cymbal decay
+91 cymbal sound (1-5)
+
+
+--bump
+import Data.Map.Strict as Map
+
+bump :: String -> Integer -> Pattern Bool -> ControlPattern -> ControlPattern
+bump name bpc bpat pat = (Pattern $ \state -> query (maybe (bumper `overlay` pat) f $ (Map.lookup name $ controls state) >>= getR) state)
+  where f t = rotL t (bumper `overlay` pat)
+        bumper :: ControlPattern
+        bumper = (outerJoin $ (const $ pure $ Map.singleton ("__" ++ name) $ VState statef) <$> (filterOnsets $ filterValues id (rotL (1%bpc) bpat)))
+          where statef :: ValueMap -> (ValueMap, Value)
+                statef sMap = (Map.insert name v sMap, v)
+                  where v = VR $ maybe 0 (+(1%bpc)) $ Map.lookup name sMap >>= getR
